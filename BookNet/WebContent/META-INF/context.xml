@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Resource
+		name="jdbc/TestDB"
+		auth="Container"
+		type="javax.sql.DataSource"
+		maxTotal="8"
+		maxIdle="2"
+		maxWaitMillis="10000"
+		username="hello"
+		password="hello"
+		driverClassName="oracle.jdbc.driver.OracleDriver"
+		url="jdbc:oracle:thin:@localhost:1521:orcl"
+	/>
+</Context>
