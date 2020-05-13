@@ -38,7 +38,7 @@ public class Dispatch extends HttpServlet {
 		try {
 			String path = this.getClass().getResource("").getPath();
 			// 파일을 스트림으로 만들고
-			fin = new FileInputStream(path + "../resource/cls.properties");
+			fin = new FileInputStream(path + "../resource/clPageTurner.properties");
 			prop.load(fin);
 		} catch (Exception e) {
 			e.printStackTrace();
