@@ -1,0 +1,59 @@
+html, body {
+	height: 100%;
+	margin-bottom: 0px;
+}
+.mxw {
+	max-width: 700px;
+}
+.mxw2 {
+	max-width: 1000px;
+}
+.box {
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	margin: 10px;
+}
+.h-100 {
+	height: 100%;
+}
+.h-80p {
+	height: 80px;
+}
+.h-100p {
+	height: 100px;
+}
+.h300 {
+	height: 300px;
+}
+.h450 {
+	height: 450px;
+}
+.h-auto {
+	height: auto;
+}
+.w-auto {
+	width: auto;
+}
+.mb0 {
+	margin-bottom: 0px;
+}
+.w-150 {
+	width: 150px;
+}
+.inblock {
+	display: inline-block;
+}
+.w-margin {
+	margin-right: 5px;
+	margin-left: 5px;
+}
+.pd-10 {
+	padding: 10px;
+}
+.pd-5 {
+	padding: 5px;
+}
+.pdh-10 {
+	padding: 0px 10px;
+}
