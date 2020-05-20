@@ -3,11 +3,9 @@
 <title>FixedPage for Templates</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel='stylesheet'
-	href='https://fonts.googleapis.com/css?family=Roboto'>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/BookNet/css/proj.css">
+<link rel="stylesheet" href="/BookNet/css/w3.css">
+
 <style>
 html, body, h1, h2, h3, h4, h5, h6 {
 	font-family: "Roboto", sans-serif
@@ -160,14 +158,14 @@ html, body, h1, h2, h3, h4, h5, h6 {
 					<span class="span_icons"> <!-- 알림페이지:: 메인페이지에서 메인부분만 변경! -->
 						<button type="button" id="butt" class="aBtn">
 							<img class="iconimg" id=""
-								src="/grapeFruit/img/iconmonstr-bell-7-240.png">
+								src="/BookNet/img/iconmonstr-bell-7-240.png">
 						</button>
 					</span> <span class="span_icons"> <img class="iconimg" id=""
-						src="/grapeFruit/img/iconmonstr-compass-4-240.png">
+						src="/BookNet/img/iconmonstr-compass-4-240.png">
 					</span> <span class="span_icons"> <img class="iconimg" id=""
-						src="/grapeFruit/img/iconmonstr-pen-15-240.png">
+						src="/BookNet/img/iconmonstr-pen-15-240.png">
 					</span> <span class=span_icons> <img class="iconimg" id=""
-						src="/grapeFruit/img/iconmonstr-user-19-240.png">
+						src="/BookNet/img/iconmonstr-user-19-240.png">
 					</span>
 				</div>
 			</div>

@@ -160,14 +160,14 @@ html, body, h1, h2, h3, h4, h5, h6 {
 					<span class="span_icons"> <!-- 알림페이지:: 메인페이지에서 메인부분만 변경! -->
 						<button type="button" id="butt" class="aBtn">
 							<img class="iconimg" id=""
-								src="/grapeFruit/img/iconmonstr-bell-7-240.png">
+								src="/BookNet/img/iconmonstr-bell-7-240.png">
 						</button>
 					</span> <span class="span_icons"> <img class="iconimg" id=""
-						src="/grapeFruit/img/iconmonstr-compass-4-240.png">
+						src="/BookNet/img/iconmonstr-compass-4-240.png">
 					</span> <span class="span_icons"> <img class="iconimg" id=""
-						src="/grapeFruit/img/iconmonstr-pen-15-240.png">
+						src="/BookNet/img/iconmonstr-pen-15-240.png">
 					</span> <span class=span_icons> <img class="iconimg" id=""
-						src="/grapeFruit/img/iconmonstr-user-19-240.png">
+						src="/BookNet/img/iconmonstr-user-19-240.png">
 					</span>
 				</div>
 			</div>

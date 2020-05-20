@@ -6,10 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>회원용 메인페이지</title>
-<link rel="stylesheet" href="/grapeFruit/css/proj.css">
-<link rel="stylesheet" href="/grapeFruit/css/copy(1).css">
-<script type="text/javascript" src="/grapeFruit/js/jquery-3.5.0.min.js"></script>
-<script type="text/javascript" src="/grapeFruit/js/proj.js"></script>
+<link rel="stylesheet" href="/BookNet/css/proj.css">
+<script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
+<script type="text/javascript" src="/BookNet/js/proj.js"></script>
 <style>
 </style>
 <script type="text/javascript">
@@ -32,17 +31,17 @@
 					<span class="span_icons"> 
 						<!-- 알림페이지:: 메인페이지에서 메인부분만 변경! -->
 						<button type="button" id="butt" class="aBtn">
-							<img class="iconimg" id="" src="/grapeFruit/img/iconmonstr-bell-7-240.png">
+							<img class="iconimg" id="" src="/BookNet/img/iconmonstr-bell-7-240.png">
 						</button>
 					</span> 
 					<span class="span_icons"> <img class="iconimg" id=""
-						src="/grapeFruit/img/iconmonstr-compass-4-240.png">
+						src="/BookNet/img/iconmonstr-compass-4-240.png">
 					</span> 
 					<span class="span_icons"> <img class="iconimg" id=""
-						src="/grapeFruit/img/iconmonstr-pen-15-240.png">
+						src="/BookNet/img/iconmonstr-pen-15-240.png">
 					</span> 
 					<span class=span_icons> <img class="iconimg" id=""
-						src="/grapeFruit/img/iconmonstr-user-19-240.png">
+						src="/BookNet/img/iconmonstr-user-19-240.png">
 					</span>
 				</div>
 			</div>
