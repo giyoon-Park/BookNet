@@ -398,8 +398,8 @@ select::-ms-expand {
 	width: 240px;
 	height: 44px;
 	margin: 0 auto;
-	background-image:
-		url(https://static.nid.naver.com/images/ui/join/m_naver_logo_20191126.png);
+	/* background-image:
+		url(https://static.nid.naver.com/images/ui/join/m_naver_logo_20191126.png); */
 	background-repeat: no-repeat;
 	background-position: 0 0;
 	-webkit-background-size: 240px auto;
