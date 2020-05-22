@@ -13,7 +13,7 @@
 }
 
 /* Modal Content Box */
-.modal-content {
+.a-modal-content {
 	float: right;
 	background-color: #fefefe;
 	margin: 55px auto; /* 15% from the top AND centered */
@@ -22,6 +22,16 @@
 	border: 1px solid #888;
 	width: 50%; /* Could be more or less, depending on screen size */
 	border-radius: 6px;
+	z-index: 2;
+}
+
+.w-modal-content {
+	background-color: #fefefe;
+	margin: 0 auto;
+	padding: 20px;
+	border: 1px solid #888;
+	border-radius: 6px;
+	width: 700px;
 	z-index: 2;
 }
 
