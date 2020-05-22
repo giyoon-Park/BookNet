@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>비회원 메인페이지</title>
-<link rel="stylesheet" href="/BookNet/seo/css/proj.css">
+<link rel="stylesheet" href="/BookNet/seo/css/seo_proj.css">
 <link rel="stylesheet" href="/BookNet/css/proj.css">
 <script type="text/javascript" src="/DohyuProj/js/jquery-3.5.0.min.js"></script>
 <style>
@@ -15,6 +15,14 @@
     scrollbar-width: none; /* Firefox */
 }*::-webkit-scrollbar {
 display: none; /*Chrome, Safari, Opera*/
+}
+#logolink{
+	text-decoration: none;
+	color:black;
+	 font-weight: 400;
+}#logolink:active{
+	color:black;
+	 font-weight: 400;
 }
 </style>
 <script>
@@ -32,30 +40,93 @@ $(function(){
       $(location).attr('href','/clsProj/member/join.cls');
    })
    $('.dCJp8').click(function(){
-      $('.rBNOH').remove();
+      $('.closeing').remove();
    })
+   // 스크롤 함수
   $(document).scroll(function() {
     var maxHeight = $(document).height();
     var currentScroll = $(window).scrollTop() + $(window).height();
     if (maxHeight <= currentScroll + 100) {
-       $('.posts_area').append('<article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><div class="wrtProf"><img src="https://img.icons8.com/cotton/64/000000/apple--v1.png"/></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div></article>');
+       $('.posts_area').append('<article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><img src="https://img.icons8.com/nolan/64/apple-seed.png" style=" width: 49px;height: 49px; position: relative ; right: 215px; bottom: 19px;"/><div class="wrtProf"></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div></article>');
     }
     
   })
+  	// footerUp
+			var hei = $('#footer-wrap').css("height");
+			 $("#footer-wrap").mouseenter(function(){
+					if($('#footer-wrap').css("height") == "100px"){
+						$('#footer-wrap').css("transition","all 0.6s");
+						$('#footer-wrap').css("background-color","black");
+						$('#footer-wrap').css("color","white");
+						$('#footer-wrap').css("height","200px");
+						
+					} else if($('#footer-wrap').css("height") == hei){
+						$('#footer-wrap').css("transition","all 0.6s");
+						$('#footer-wrap').css("background-color","black");
+						$('#footer-wrap').css("color","white");
+						$('#footer-wrap').css("height","200px");
+					}
+			 	$("#footer-wrap").mouseleave(function(){
+			 		if($('#footer-wrap').css("height") == "200px"){
+			 			$('#footer-wrap').css("height", "100px");
+						$('#footer-wrap').css("background-color","#fff");
+						$('#footer-wrap').css("color","#000");
+						$('#footer-wrap').css("transition","all 0.6s");
+						$('#footer-wrap').css("overflow","hidden");
+			 		}
+				});
+			});
+			
+ 
 })
 </script>
+<script>
+// 시계만들기
+function printClock() {
+  var clock = document.getElementById("clock");            // 출력할 장소 선택
+  var currentDate = new Date();                                     // 현재시간
+  var calendar = currentDate.getFullYear() + "-" + (currentDate.getMonth()+1) + "-" + currentDate.getDate() // 현재 날짜
+  var amPm = 'AM'; // 초기값 AM
+  var currentHours = addZeros(currentDate.getHours(),2); 
+  var currentMinute = addZeros(currentDate.getMinutes() ,2);
+  var currentSeconds =  addZeros(currentDate.getSeconds(),2);
+			  
+	  if(currentHours >= 12){ // 시간이 12보다 클 때 PM으로 세팅, 12를 빼줌
+	  	amPm = 'PM';
+	  	currentHours = addZeros(currentHours - 12,2);
+	  }
+			
+	  if(currentSeconds >= 50){// 50초 이상일 때 색을 변환해 준다.
+	     currentSeconds = '<span style="color:#de1951;">'+currentSeconds+'</span>'
+	  }
+	  clock.innerHTML = currentHours+":"+currentMinute+":"+currentSeconds +" <span style='font-size:50px;'>"+ amPm+"</span>"; //날짜를 출력해 줌
+			  
+	  setTimeout("printClock()",1000);         // 1초마다 printClock() 함수 호출
+	}
+			
+function addZeros(num, digit) { // 자릿수 맞춰주기
+	  var zero = '';
+	  num = num.toString();
+	  if (num.length < digit) {
+	    for (i = 0; i < digit - num.length; i++) {
+	      zero += '0';
+	    }
+	  }
+	  return zero + num;
+}
+</script>
 </head>
-<body>
+<body onload="printClock()"/>
    <div>
       <!-- 본문부분 -->
       <div id="contents-wrap">
          <div class="contents">
             <!-- 좌측 게시글 부분 -->
             <div class="posts_area">
-               <article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><div class="wrtProf"><img src="https://img.icons8.com/cotton/64/000000/apple--v1.png"/></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div></article>
-               <article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><div class="wrtProf"><img src="https://img.icons8.com/cotton/64/000000/apple--v1.png"/></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div></article>
-               <article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><div class="wrtProf"><img src="https://img.icons8.com/cotton/64/000000/apple--v1.png"/></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div></article>
-            </div>
+               <article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><img src="https://img.icons8.com/nolan/64/apple-seed.png" style=" width: 49px;height: 49px; position: relative ; right: 215px; bottom: 19px;" /><div class="wrtProf"></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div></article>
+               <article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><img src="https://img.icons8.com/nolan/64/apple-seed.png" style=" width: 49px;height: 49px; position: relative ; right: 215px; bottom: 19px;"/><div class="wrtProf"></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div></article>
+               <article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><img src="https://img.icons8.com/nolan/64/apple-seed.png" style=" width: 49px;height: 49px; position: relative ; right: 215px; bottom: 19px;"/><div class="wrtProf"></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div></article>
+            </div>   
             <!-- 우측 정보 부분 : 고정페이지로 들어갈 것-->
             <div class="info_area">
                <div style="width: 100%; height: 200px; margin-top: 15px; border: solid 1px white;">
@@ -72,10 +143,11 @@ $(function(){
       <div id="header-wrap">
          <div class="header">
             <div class="logobox">
-               <!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
-               <div style="box-sizing: border-box; font-size: 30px; text-align: center;">
-               <a href="/BookNet/main/mem_main.cls">PageTurner</a></div>
-            </div>
+               		<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
+               	 <div style="box-sizing: border-box; font-size: 30px; text-align: center;">
+              	 	<a href="/BookNet/main/mem_main.cls" id="logolink">PageTurner</a>
+              	 </div>
+       		</div>
             <div class="searchbox">
                <input class="searchinput" type="text" placeholder="search">
             </div>
@@ -88,11 +160,8 @@ $(function(){
          </div>
       </div>
       <!-- 풋터부분 -->
-      <div id="footer-wrap">
-         <div class="footer" style="text-align: center;">footer</div>
-      </div>
       <!-- Footer Link -->
-      <div class="bgalss dCJb6 rBNOH Igw0E pmxbr HcJZg XfCBB IY_1 4EzTm" style="z-index: 2; height:111.938px; bottom: 0px; position: fixed;">
+      <div class="closeing bgalss dCJb6 rBNOH Igw0E pmxbr HcJZg XfCBB IY_1 4EzTm" style="z-index: 2; height:111.938px; bottom: 0px; position: fixed;">
          <!-- close button -->
          <button class="xqRnw dCJp8">
             <!-- <span aria-label="닫기" style="text-align: center; margin: 0px auto;"><img src="https://img.icons8.com/plasticine/100/000000/close-window.png" style="width: 24px; height: 24px;"/></span> -->
@@ -136,8 +205,23 @@ $(function(){
          <!-- /div area -->
       </div>
       <!-- /Footer Link -->
-            
-            <!-- <div class="linkfoot" id="foot-link"><a href="#" >Form Join</a></div>-->
+      		<!-- 풋터부분 -->
+		<footer id="footer-wrap" style="padding:10px; height: 100px;">		
+					<h3 style="position:absolute; top:0px; left: 350px; display: flex;">Company</h3><br><h4 style="position:absolute;  top:25px; left: 352px; display: flex; font-size: 10pt;">Increpas</h4><br><h4 style="position:absolute; top:45px; left: 352px; display: flex; font-size:10pt;">서울특별시 관악구 신림동 시흥대로 552</h4>
+					<h3 style="position:absolute; top:0px; left: 800px; display: flex;">Project_Team</h3><br><h4 style="position:absolute; top:25px; left: 802px; display: flex; font-size: 10pt;">BookNet KOR</h4><br><h4 style="position:absolute; top:45px; left: 802px; display: flex; font-size:10pt;">PageTurner</h4>
+					<h3 style="position:absolute; top:0px; left: 1200px; display: flex;">만든이</h3><br><h4 style="position:absolute; top:25px; left: 1202px; display: flex; font-size: 10pt;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:45px; left: 1202px; display: flex; font-size:10pt;">서 동혁 | 우 현우 |</h4>
+			    <small>
+			    <p style="position:absolute; top:120px; left: 800px; display: flex;">Copyright © 2018 tcpschool.co.,Ltd. All rights reserved.</p>
+			    <address style="position:absolute; top:140px; left: 800px; display: flex;">Contact webmaster for more information. 070-1234-5678</address>
+			    </small>
+			    <img src="https://img.icons8.com/dusk/64/000000/finn.png" style="position:absolute; top:100px; left: 1497px; display: flex; width:64px; height: 64px;"/>
+			    <img src="https://img.icons8.com/dusk/64/000000/jake.png" style="position:absolute; top:100px; left: 1582px; display: flex; width:64px; height: 64px;"/>
+			    <img src="https://img.icons8.com/dusk/64/000000/stich.png" style="position:absolute; top:100px; left: 1667px; display: flex; width:64px; height: 64px;"/>
+			    <img src="https://img.icons8.com/dusk/64/000000/homer-simpson.png" style="position:absolute; top:100px; left: 1752px; display: flex; width:64px; height: 64px;"/>
+			    <img src="https://img.icons8.com/dusk/64/000000/futurama-zoidberg.png" style="position:absolute; top:100px; left: 1837px; display: flex; width:64px; height: 64px;"/>
+			    <div style="border:2px solid #fff; width: 400px; height:120px; line-height:65px; color:#fff;font-size:60px; text-align:center; position:absolute; top:50px; left: 1490px;" id="clock">
+				</div>
+		</footer>
    </div>
 </body>
 </html>

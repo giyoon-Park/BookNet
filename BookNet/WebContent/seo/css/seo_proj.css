@@ -2,11 +2,11 @@
    margin: 0;
    padding: 0;
 }
-a{
+.logot{
 	color:black;
 	text-decoration: none;
 }
-a:visited{
+.logot:visited{
 	color: black;
 }
 #header-wrap {
@@ -27,7 +27,6 @@ a:visited{
    width: 100%;
    background-color: #fff;
 }
-
 .header {
    width: 900px;
    height: 60px;
@@ -106,9 +105,8 @@ a:visited{
 .footer {
    width: 900px;
    height: 80px;
-   margin: 0 auto; /* border: solid 1px black; */
+    margin: 200px auto; /* border: solid 1px black; */
 }
-
 .span_icons { /*float: left;*/
    display: inline-block;
    width: 30px;
@@ -481,4 +479,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebe9f9', end
 .foot-box{
     border-radius: 4px;
     padding: 5px 35px;
+}
+.bdcolor{
+	color: green;
 }
