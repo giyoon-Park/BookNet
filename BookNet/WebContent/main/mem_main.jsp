@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고정페이지 틀</title>
+<title>회원 메인페이지</title>
 <link rel="stylesheet" href="/BookNet/css/proj.css">
 <link rel="stylesheet" href="/BookNet/css/modal.css">
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
