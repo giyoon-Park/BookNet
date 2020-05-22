@@ -477,12 +477,6 @@ html[lang=zh-hans] .sel {
 	padding-top: 5px
 }
 
-
--moz-document url-prefix {
-	sel {background: 0 0
-}
-
-}
 .error {
 	display: block;
 	margin: 8px 0 -1px;

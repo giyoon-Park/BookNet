@@ -10,7 +10,11 @@
 <style>
 </style>
 <script type="text/javascript">
-	
+	$(document).ready(function(){
+		$('#btnJoin').click(function(){
+			$('#join_form').submit();
+		});
+	});
 </script>
 </head>
 <body>
@@ -20,7 +24,7 @@
 </div>
 <!-- // header -->
 
-<form id="join_form" method="post" action="로그인Proc">
+<form id="join_form" method="post" action="/BookNet/member/joinProc.cls">
     <input type="hidden" id="token_sjoin" name="token_sjoin" value="CrMVbMuUqJxRkOD4">
     <input type="hidden" id="encPswd" name="encPswd" value="">
     <input type="hidden" id="encKey" name="encKey" value="">
@@ -47,9 +51,9 @@
                     </div>
 
                     <div class="join_row">
-                        <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+                        <h3 class="join_title"><label for="pw">비밀번호</label></h3>
                         <span class="ps_box int_pass" id="pswd1Img">
-							<input type="password" id="pswd1" name="pswd1" class="int" title="비밀번호 입력" aria-describedby="pswd1Msg" maxlength="20">
+							<input type="password" id="pw" name="pw" class="int" title="비밀번호 입력" aria-describedby="pswd1Msg" maxlength="20">
                             <span class="lbl"><span id="pswd1Span" class="step_txt"></span></span>
 						</span>
                         <span class="error_next_box" id="pswd1Msg" style="display:none" aria-live="assertive">5~12자의 영문 소문자, 숫자와 특수기호(_)만 사용 가능합니다.</span>
@@ -89,12 +93,12 @@
                         <div class="bir_wrap">
                             <div class="bir_yy">
 								<span class="ps_box">
-									<input type="text" id="yy" placeholder="년(4자)" aria-label="년(4자)" class="int" maxlength="4">
+									<input type="text" id="yy" name="yy" placeholder="년(4자)" aria-label="년(4자)" class="int" maxlength="4">
 								</span>
                             </div>
                             <div class="bir_mm">
 								<span class="ps_box">
-									<select id="mm" class="sel" aria-label="월">
+									<select id="mm" name="mm" class="sel" aria-label="월">
 										<option value="">월</option>
 										  	 			<option value="01">
                                                             1
@@ -137,7 +141,7 @@
                             </div>
                             <div class=" bir_dd">
 								<span class="ps_box">
-									<input type="text" id="dd" placeholder="일" aria-label="일" class="int" maxlength="2">
+									<input type="text" id="dd" name="dd" placeholder="일" aria-label="일" class="int" maxlength="2">
 									<label for="dd" class="lbl"></label>
 								</span>
                             </div>
@@ -146,9 +150,9 @@
                     </div>
 
                     <div class="join_row join_sex">
-                        <h3 class="join_title"><label for="gender">성별</label></h3>
+                        <h3 class="join_title"><label for="gen">성별</label></h3>
                         <div class="ps_box gender_code">
-                            <select id="gender" name="gender" class="sel" aria-label="성별">
+                            <select id="gen" name="gen" class="sel" aria-label="성별">
                                 <option value="" selected="">성별</option>
                                         <option value="M">남자</option>
                                         <option value="F">여자</option>
@@ -158,9 +162,9 @@
                     <span class="error_next_box" id="genderMsg" style="display:none" aria-live="assertive"></span>
 
                     <div class="join_row join_email">
-                        <h3 class="join_title"><label for="email">본인 확인 이메일<span class="terms_choice">(선택)</span></label></h3>
+                        <h3 class="join_title"><label for="email">본인 확인 이메일</label></h3>
                         <span class="ps_box int_email box_right_space">
-							<input type="text" id="email" name="email" placeholder="선택입력" aria-label="선택입력" class="int" maxlength="100">
+							<input type="text" id="mail" name="mail" placeholder="선택입력" aria-label="선택입력" class="int" maxlength="100">
 						</span>
                     </div>
                     <span class="error_next_box" id="emailMsg" style="display:none" aria-live="assertive"></span>
@@ -818,7 +822,7 @@
                     </div>
                     <div class="int_mobile_area">
 						<span class="ps_box int_mobile">
-							<input type="tel" id="phoneNo" name="phoneNo" placeholder="전화번호 입력" aria-label="전화번호 입력" class="int" maxlength="16">
+							<input type="tel" id="tel" name="tel" placeholder="전화번호 입115757175력" aria-label="전화번호 입력" class="int" maxlength="16">
 							<label for="phoneNo" class="lbl"></label>
 						</span>
                         <a href="https://nid.naver.com/user2/V2Join.nhn?token_sjoin=CrMVbMuUqJxRkOD4&amp;chk_all=on&amp;termsService=on&amp;termsPrivacy=on&amp;termsLocation=Y&amp;termsEmail=Y#" class="btn_verify btn_primary" id="btnSend" role="button">
@@ -842,7 +846,7 @@
                 <div class="join_row join_email">
                     <h3 class="join_title"><label for="email">관심분야<span class="terms_choice">(선택)</span></label></h3>
                     <span class="ps_box int_email box_right_space">
-						<input type="text" id="nickname" name="nickname" title="닉네임" class="int" maxlength="40">
+						<input type="text" id="interest" name="interest" title="관심분야" class="int" maxlength="40">
 					</span>
                 </div>
                 <!-- //관심분야 -->
