@@ -82,40 +82,6 @@
 							태그<!-- 게시글 해시태그 부분 -->
 						</div>
 					</article>
-					<article class="eachPost" id="이곳은게시물번호가들어갈자리">
-						<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
-						<div class="wrtInfo">
-							<div class="wrtProf">
-								<img src="">
-							</div>
-							<div class="wrter" id="">
-								<b>작성자아이디</b>
-							</div>
-							<div class="like-butt" id="" >
-								<span style="font-size: 12px; line-height: 0px;" class="comt-img"></span>
-							</div>
-							<div class="like-butt" id="" style="display: flex;'">
-								<span style="font-size: 12px; line-height: 0px;" class="like-img"></span>
-							</div>
-						</div>
-						<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
-						<div class="postCont" style="text-align: center; font-size: 16px;">
-							<!-- 도서사진, 도서이름, 게시글본문 -->
-							<div class="book-pic">
-								<!-- 도서 사진 들어갈 부분 -->
-							</div>
-							<div class="book-name">
-								<!-- 도서명 들어갈 부분 -->
-							</div>
-							<div class="post-body">
-								<!-- 게시글 부분 -->
-							</div>
-						</div>
-						<!-- 게시글 해시태그 부분 -->
-						<div class="etcdiv" style="text-align: center; font-size: 16px;">
-							태그
-						</div>
-					</article>
 				</div>
 				<!-- 우측 정보 부분 : 고정페이지로 들어갈 것-->
 				<div class="info_area">
