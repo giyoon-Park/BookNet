@@ -826,7 +826,7 @@
 							<label for="phoneNo" class="lbl"></label>
 						</span>
                         <a href="https://nid.naver.com/user2/V2Join.nhn?token_sjoin=CrMVbMuUqJxRkOD4&amp;chk_all=on&amp;termsService=on&amp;termsPrivacy=on&amp;termsLocation=Y&amp;termsEmail=Y#" class="btn_verify btn_primary" id="btnSend" role="button">
-                            <span class="">인증번호 받기</span>
+                            <span class="">누르지마세요!</span>
                         </a>
                     </div>
                     <div class="ps_box_disable box_right_space" id="authNoBox">
