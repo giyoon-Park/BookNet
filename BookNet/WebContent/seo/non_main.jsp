@@ -222,8 +222,8 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 					<h3 style="position:absolute; top:0px; left: 800px; display: flex;">Project_Team</h3><br><h4 style="position:absolute; top:25px; left: 802px; display: flex; font-size: 10pt;">BookNet KOR</h4><br><h4 style="position:absolute; top:45px; left: 802px; display: flex; font-size:10pt;">PageTurner</h4>
 					<h3 style="position:absolute; top:0px; left: 1200px; display: flex;">만든이</h3><br><h4 style="position:absolute; top:25px; left: 1202px; display: flex; font-size: 10pt;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:45px; left: 1202px; display: flex; font-size:10pt;">서 동혁 | 우 현우 |</h4>
 			    <small>
-			    <p style="position:absolute; top:120px; left: 800px; display: flex;">Copyright © 2018 tcpschool.co.,Ltd. All rights reserved.</p>
-			    <address style="position:absolute; top:140px; left: 800px; display: flex;">Contact webmaster for more information. 070-1234-5678</address>
+			    <p style="position:absolute; top:120px; left: 800px; display: flex;">Copyright © 2020 BookNet.co.,Ltd. All rights reserved.</p>
+			    <address style="position:absolute; top:140px; left: 800px; display: flex;">Contact increpas for more information. </address>
 			    </small>
 			    <img src="https://img.icons8.com/dusk/64/000000/finn.png" style="position:absolute; top:100px; left: 1497px; display: flex; width:64px; height: 64px;"/>
 			    <img src="https://img.icons8.com/dusk/64/000000/jake.png" style="position:absolute; top:100px; left: 1582px; display: flex; width:64px; height: 64px;"/>

@@ -49,11 +49,70 @@
 			    }
 			    
 			  })
-
+		  	// footerUp
+			var hei = $('#footer-wrap').css("height");
+			 $("#footer-wrap").mouseenter(function(){
+					if($('#footer-wrap').css("height") == "100px"){
+						$('#footer-wrap').css("transition","all 0.6s");
+						$('#footer-wrap').css("background-color","#F7B3D2");
+						$('#footer-wrap').css("color","#FFF");
+						$('#footer-wrap').css("height","200px");
+						
+					} else if($('#footer-wrap').css("height") == hei){
+						$('#footer-wrap').css("transition","all 0.6s");
+						$('#footer-wrap').css("background-color","#F7B3D2");
+						$('#footer-wrap').css("color","#FFF");
+						$('#footer-wrap').css("height","200px");
+					}
+			 	$("#footer-wrap").mouseleave(function(){
+			 		if($('#footer-wrap').css("height") == "200px"){
+			 			$('#footer-wrap').css("height", "100px");
+						$('#footer-wrap').css("background-color","#F3F0F7");
+						$('#footer-wrap').css("color","#FFF");
+						$('#footer-wrap').css("transition","all 0.6s");
+						$('#footer-wrap').css("overflow","hidden");
+			 		}
+				});
+			});
 	});
 </script>
+<script>
+// 시계만들기
+function printClock() {
+  var clock = document.getElementById("clock");            // 출력할 장소 선택
+  var currentDate = new Date();                                     // 현재시간
+  var calendar = currentDate.getFullYear() + "-" + (currentDate.getMonth()+1) + "-" + currentDate.getDate() // 현재 날짜
+  var amPm = 'AM'; // 초기값 AM
+  var currentHours = addZeros(currentDate.getHours(),2); 
+  var currentMinute = addZeros(currentDate.getMinutes() ,2);
+  var currentSeconds =  addZeros(currentDate.getSeconds(),2);
+			  
+	  if(currentHours >= 12){ // 시간이 12보다 클 때 PM으로 세팅, 12를 빼줌
+	  	amPm = 'PM';
+	  	currentHours = addZeros(currentHours - 12,2);
+	  }
+			
+	  if(currentSeconds >= 50){// 50초 이상일 때 색을 변환해 준다.
+	     currentSeconds = '<span style="color:#de1951;">'+currentSeconds+'</span>'
+	  }
+	  clock.innerHTML = currentHours+":"+currentMinute+":"+currentSeconds +" <span style='font-size:50px;'>"+ amPm+"</span>"; //날짜를 출력해 줌
+			  
+	  setTimeout("printClock()",1000);         // 1초마다 printClock() 함수 호출
+	}
+			
+function addZeros(num, digit) { // 자릿수 맞춰주기
+	  var zero = ''; 
+	  num = num.toString();
+	  if (num.length < digit) {
+	    for (i = 0; i < digit - num.length; i++) {
+	      zero += '0';
+	    }
+	  }
+	  return zero + num;
+}
+</script>
 </head>
-<body>
+<body onload="printClock()"/>
 	<div>
 		<!-- 본문부분 -->
 		<div id="contents-wrap">
@@ -217,12 +276,12 @@
 		</div>
 		<!-- 풋터부분 -->
 		<footer id="footer-wrap" style="padding:10px; height: 100px; color: #FFF;">		
-					<h3 style="position:absolute; top:0px; left: 350px; display: flex;">Company</h3><br><h4 style="position:absolute;  top:25px; left: 352px; display: flex; font-size: 10pt;">Increpas</h4><br><h4 style="position:absolute; top:45px; left: 352px; display: flex; font-size:10pt;">서울특별시 관악구 신림동 시흥대로 552</h4>
-					<h3 style="position:absolute; top:0px; left: 800px; display: flex;">Project_Team</h3><br><h4 style="position:absolute; top:25px; left: 802px; display: flex; font-size: 10pt;">BookNet KOR</h4><br><h4 style="position:absolute; top:45px; left: 802px; display: flex; font-size:10pt;">PageTurner</h4>
-					<h3 style="position:absolute; top:0px; left: 1200px; display: flex;">만든이</h3><br><h4 style="position:absolute; top:25px; left: 1202px; display: flex; font-size: 10pt;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:45px; left: 1202px; display: flex; font-size:10pt;">서 동혁 | 우 현우 |</h4>
+					<h3 style="position:absolute; top:0px; left: 350px; display: flex;">Company</h3><br><h4 style="position:absolute;  top:30px; left: 352px; display: flex; font-size: 10pt;">Increpas</h4><br><h4 style="position:absolute; top:50px; left: 352px; display: flex; font-size:10pt;">서울특별시 관악구 신림동 시흥대로 552</h4>
+					<h3 style="position:absolute; top:0px; left: 800px; display: flex;">Project_Team</h3><br><h4 style="position:absolute; top:30px; left: 802px; display: flex; font-size: 10pt;">BookNet KOR</h4><br><h4 style="position:absolute; top:50px; left: 802px; display: flex; font-size:10pt;">PageTurner</h4>
+					<h3 style="position:absolute; top:0px; left: 1200px; display: flex;">만든이</h3><br><h4 style="position:absolute; top:30px; left: 1202px; display: flex; font-size: 10pt;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:50px; left: 1202px; display: flex; font-size:10pt;">서 동혁 | 우 현우 |</h4>
 			    <small>
-			    <p style="position:absolute; top:120px; left: 800px; display: flex;">Copyright © 2018 tcpschool.co.,Ltd. All rights reserved.</p>
-			    <address style="position:absolute; top:140px; left: 800px; display: flex;">Contact webmaster for more information. 070-1234-5678</address>
+			    <p style="position:absolute; top:120px; left: 800px; display: flex;">Copyright © 2020 BookNet.co.,Ltd. All rights reserved.</p>
+			    <address style="position:absolute; top:140px; left: 800px; display: flex;">Contact increpas for more information. </address>
 			    </small>
 			    <img src="https://img.icons8.com/dusk/64/000000/finn.png" style="position:absolute; top:100px; left: 1497px; display: flex; width:64px; height: 64px;"/>
 			    <img src="https://img.icons8.com/dusk/64/000000/jake.png" style="position:absolute; top:100px; left: 1582px; display: flex; width:64px; height: 64px;"/>
