@@ -18,7 +18,7 @@
 }
 
 #contents-wrap {
-	background-color: #F2F2F2;
+	background-color: #F3F0F7;
 	padding-top: 70px;
 }
 
@@ -26,7 +26,7 @@
 	position: fixed;
 	bottom: 0px;
 	width: 100%;
-	background-color: #F2F2F2;
+	background-color: #F3F0F7;
 }
 
 .header {
@@ -107,7 +107,7 @@
 .footer {
 	width: 900px;
 	height: 80px;
-	margin: 0 auto; /* border: solid 1px black; */
+	margin: 0px auto; /* border: solid 1px black; */
 }
 
 .span_icons { /*float: left;*/

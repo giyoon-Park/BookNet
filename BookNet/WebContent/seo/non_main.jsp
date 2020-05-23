@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html style="background-color:#F2F2F2">
+<html style="background-color: #F3F0F7">
 <head>
 <meta charset="UTF-8">
 <title>비회원 메인페이지</title>
 <link rel="stylesheet" href="/BookNet/seo/css/seo_proj.css">
-<link rel="stylesheet" href="/BookNet/css/proj.css">
-<script type="text/javascript" src="/DohyuProj/js/jquery-3.5.0.min.js"></script>
+<link rel="stylesheet" href="/BookNet/css/proj_fixed.css">
+<script type="text/javascript" src="/BookNet/seo/js/jquery-3.5.0.min.js"></script>
 <style>
 *{
     overflow-y: none;
@@ -24,6 +24,17 @@ display: none; /*Chrome, Safari, Opera*/
 	color:black;
 	 font-weight: 400;
 }
+</style>
+<style>
+	.w-x-btn {margin: 5px; width: 10px; height: 10px; line-height: 10px; font-size: 13px;}
+	.w-b-input {text-align: left; width: 100%; height: 40px; line-height: 40px;}
+	.wrt-div {width: 100%; height: 220px; line-height: 220px; margin-top: 25px;}
+	.wrt-b-img {float: left; width: 180px; margin: 0 15px; border: dashed 1px blue; text-align: center;}
+	.wrt-body {float: left; width: 440px; height: 225px; line-height: 255px; padding: 10px; text-align: center;}
+	.-a-t {float: left; width: 425px; height: 150px; line-height: 150px; margin-top: 13px;}
+	.wrt-last {width: 100%; height: 50px; line-height: 50px; padding-top: 10px; margin-top: 10px;}
+	.hash-input {float: left; width: 500px; height: 40px; line-height: 40px;}
+	.p-submit {float: right; width: 130px; height: 40px; line-height: 40px;}
 </style>
 <script>
 $(function(){
@@ -56,21 +67,21 @@ $(function(){
 			 $("#footer-wrap").mouseenter(function(){
 					if($('#footer-wrap').css("height") == "100px"){
 						$('#footer-wrap').css("transition","all 0.6s");
-						$('#footer-wrap').css("background-color","black");
-						$('#footer-wrap').css("color","white");
+						$('#footer-wrap').css("background-color","#F7B3D2");
+						$('#footer-wrap').css("color","#FFF");
 						$('#footer-wrap').css("height","200px");
 						
 					} else if($('#footer-wrap').css("height") == hei){
 						$('#footer-wrap').css("transition","all 0.6s");
-						$('#footer-wrap').css("background-color","black");
-						$('#footer-wrap').css("color","white");
+						$('#footer-wrap').css("background-color","#F7B3D2");
+						$('#footer-wrap').css("color","#FFF");
 						$('#footer-wrap').css("height","200px");
 					}
 			 	$("#footer-wrap").mouseleave(function(){
 			 		if($('#footer-wrap').css("height") == "200px"){
 			 			$('#footer-wrap').css("height", "100px");
-						$('#footer-wrap').css("background-color","#fff");
-						$('#footer-wrap').css("color","#000");
+						$('#footer-wrap').css("background-color","#F3F0F7");
+						$('#footer-wrap').css("color","#FFF");
 						$('#footer-wrap').css("transition","all 0.6s");
 						$('#footer-wrap').css("overflow","hidden");
 			 		}
@@ -206,7 +217,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
       </div>
       <!-- /Footer Link -->
       		<!-- 풋터부분 -->
-		<footer id="footer-wrap" style="padding:10px; height: 100px;">		
+		<footer id="footer-wrap" style="padding:10px; height: 100px; color: #FFF;">		
 					<h3 style="position:absolute; top:0px; left: 350px; display: flex;">Company</h3><br><h4 style="position:absolute;  top:25px; left: 352px; display: flex; font-size: 10pt;">Increpas</h4><br><h4 style="position:absolute; top:45px; left: 352px; display: flex; font-size:10pt;">서울특별시 관악구 신림동 시흥대로 552</h4>
 					<h3 style="position:absolute; top:0px; left: 800px; display: flex;">Project_Team</h3><br><h4 style="position:absolute; top:25px; left: 802px; display: flex; font-size: 10pt;">BookNet KOR</h4><br><h4 style="position:absolute; top:45px; left: 802px; display: flex; font-size:10pt;">PageTurner</h4>
 					<h3 style="position:absolute; top:0px; left: 1200px; display: flex;">만든이</h3><br><h4 style="position:absolute; top:25px; left: 1202px; display: flex; font-size: 10pt;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:45px; left: 1202px; display: flex; font-size:10pt;">서 동혁 | 우 현우 |</h4>
@@ -218,7 +229,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 			    <img src="https://img.icons8.com/dusk/64/000000/jake.png" style="position:absolute; top:100px; left: 1582px; display: flex; width:64px; height: 64px;"/>
 			    <img src="https://img.icons8.com/dusk/64/000000/stich.png" style="position:absolute; top:100px; left: 1667px; display: flex; width:64px; height: 64px;"/>
 			    <img src="https://img.icons8.com/dusk/64/000000/homer-simpson.png" style="position:absolute; top:100px; left: 1752px; display: flex; width:64px; height: 64px;"/>
-			    <img src="https://img.icons8.com/dusk/64/000000/futurama-zoidberg.png" style="position:absolute; top:100px; left: 1837px; display: flex; width:64px; height: 64px;"/>
+			    <img src="https://img.icons8.com/dusk/64/000000/futurama-zoidberg.png" style="position:absolute; top:100px; left: 1830px; display: flex; width:64px; height: 64px;"/>
 			    <div style="border:2px solid #fff; width: 400px; height:120px; line-height:65px; color:#fff;font-size:60px; text-align:center; position:absolute; top:50px; left: 1490px;" id="clock">
 				</div>
 		</footer>
