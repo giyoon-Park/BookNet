@@ -111,11 +111,15 @@ public class InterParkAPI {
 				bVO.setSaleStatus((String)tmp.get("saleStatus"));
 				list.add(bVO);
 			}
-			System.out.println(list.get(0).getTitle());
-			System.out.println(list.get(1).getTitle());
-			System.out.println(list.get(2).getTitle());
-			System.out.println(list.get(3).getTitle());
-			System.out.println(list.get(4).getTitle());
+			
+			for(int i = 0; i < list.size(); i++) {
+				System.out.println(list.get(i).getTitle());
+			}
+//			System.out.println(list.get(0).getTitle());
+//			System.out.println(list.get(1).getTitle());
+//			System.out.println(list.get(2).getTitle());
+//			System.out.println(list.get(3).getTitle());
+//			System.out.println(list.get(4).getTitle());
 		return list;
 	}
 

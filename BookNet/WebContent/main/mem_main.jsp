@@ -11,16 +11,8 @@
 <link rel="stylesheet" href="/BookNet/css/w3.css">
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
 <script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
+<script type="text/javascript" src="/BookNet/js/fixed.js"></script>
 <style>
-	.w-x-btn {margin: 5px; width: 10px; height: 10px; line-height: 10px; font-size: 13px;}
-	.w-b-input {text-align: left; width: 100%; height: 40px; line-height: 40px;}
-	.wrt-div {width: 100%; height: 220px; line-height: 220px; margin-top: 25px;}
-	.wrt-b-img {float: left; width: 180px; margin: 0 15px; border: dashed 1px blue; text-align: center;}
-	.wrt-body {float: left; width: 440px; height: 225px; line-height: 255px; padding: 10px; text-align: center;}
-	.-a-t {float: left; width: 425px; height: 150px; line-height: 150px; margin-top: 13px;}
-	.wrt-last {width: 100%; height: 50px; line-height: 50px; padding-top: 10px; margin-top: 10px;}
-	.hash-input {float: left; width: 500px; height: 40px; line-height: 40px;}
-	.p-submit {float: right; width: 130px; height: 40px; line-height: 40px;}
 </style>	
 <script type="text/javascript">
 	$(document).ready(
@@ -178,8 +170,19 @@
 									<!-- onclick="document.getElementById('actModal').style.display='none'" -->
 								<!-- 도서검색 -->
 								<div class="w-b-input">
-									<input type="search" id="" placeholder="도서검색"/>
-									<input type="button" id="" value="검색" style="width: 40px;"/>
+									<input type="search" id="" placeholder="도서검색" style="float: left; width: 190px; height: 40px; line-height: 40px;"/>
+									<input type="button" id="" value="검색" style="float: left; width: 40px; height: 40px; line-height: 40px; margin-left: 10px;"/>
+									<!-- 감정 셀렉트 -->
+									<div class="w-e-sel">
+										<select name="emotion">
+											<option value="">감정을 선택해주세요X)</option>
+											<option value="fear">덜덜;무서워욧!</option>
+											<option value="anxiety">ㅠ_ㅠ불안해요..</option>
+											<option value="excited">very exciting!</option>
+											<option value="joy">행복해요X)</option>
+											<option value="nostalgia">그리워요;ㅁ;</option>
+										</select>
+									</div>
 	 							</div>
 	 							<div class="wrt-div">
 									<div class="wrt-b-img">책!</div>

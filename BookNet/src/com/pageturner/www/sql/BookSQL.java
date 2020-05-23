@@ -55,6 +55,8 @@ public class BookSQL {
 			buff.append("ORDER BY ");
 			buff.append("	postdate DESC ");
 			break;
+		case SEL_ALL_POST_MEM: //로그인한 회원이 보는 메인페이지 :: 
+			break;
 		}
 		
 		return buff.toString();

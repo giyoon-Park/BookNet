@@ -35,6 +35,18 @@
 	z-index: 2;
 }
 
+.s-modal-content {
+	background-color: #fefefe;
+	margin: -70px auto;
+	padding: 20px;
+	border: 1px solid #888;
+	border-radius: 6px;
+	overflow: scroll;
+	width: 900px;
+	max-height: 600px;
+	z-index: 3;
+}
+
 /* Close Button */
 .close {
 	color: #aaa;

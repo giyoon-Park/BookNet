@@ -2,11 +2,12 @@
 	margin: 0;
 	padding: 0;
 	overflow-y: none;
-   -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
 }
+
 *::-webkit-scrollbar {
-display: none; /*Chrome, Safari, Opera*/
+	display: none; /*Chrome, Safari, Opera*/
 }
 
 #header-wrap {
@@ -25,7 +26,7 @@ display: none; /*Chrome, Safari, Opera*/
 	position: fixed;
 	bottom: 0px;
 	width: 100%;
-	background-color: #fff;
+	background-color: #F2F2F2;
 }
 
 .header {
@@ -167,10 +168,10 @@ display: none; /*Chrome, Safari, Opera*/
 
 .eachPost {
 	width: 410px;
-    height: 375px;
-    margin: 40px auto;
-    background-color: white;
-    padding: 10px;
+	height: 375px;
+	margin: 40px auto;
+	background-color: white;
+	padding: 10px;
 }
 
 .wrtInfo {
@@ -222,30 +223,34 @@ display: none; /*Chrome, Safari, Opera*/
 	line-height: 270px;
 }
 
-.like-img{
+.like-img {
 	margin: auto auto;
 	margin-top: 7px;
 	background-position: -233px -370px;
-    height: 25px;
-    width: 25px;
-    background-image: url(https://www.instagram.com/static/bundles/es6/sprite_glyphs_c14ffe44a4f6.png/c14ffe44a4f6.png);
+	height: 25px;
+	width: 25px;
+	background-image:
+		url(https://www.instagram.com/static/bundles/es6/sprite_glyphs_c14ffe44a4f6.png/c14ffe44a4f6.png);
 }
-.like-img:hover{ /* img 마우스 오버시*/
-       cursor:pointer;
-       transform:scale(1.1);
+
+.like-img:hover { /* img 마우스 오버시*/
+	cursor: pointer;
+	transform: scale(1.1);
 }
 
 .comt-img {
 	margin: auto auto;
 	margin-top: 7px;
 	background-position: -338px -344px;
-    height: 24px;
-    width: 24px;
-    background-image: url(https://www.instagram.com/static/bundles/es6/sprite_glyphs_c14ffe44a4f6.png/c14ffe44a4f6.png);
+	height: 24px;
+	width: 24px;
+	background-image:
+		url(https://www.instagram.com/static/bundles/es6/sprite_glyphs_c14ffe44a4f6.png/c14ffe44a4f6.png);
 }
-.comt-img:hover{ /* img 마우스 오버시*/
-       cursor:pointer;
-       transform:scale(1.1);
+
+.comt-img:hover { /* img 마우스 오버시*/
+	cursor: pointer;
+	transform: scale(1.1);
 }
 
 .etcdiv {
@@ -300,10 +305,98 @@ display: none; /*Chrome, Safari, Opera*/
 	word-wrap: break-word;
 }
 
-a{
-   color:black;
+a {
+	color: black;
 	text-decoration: none;
 }
-a:visited{
-   color: black;
+
+a:visited {
+	color: black;
+}
+
+.w-x-btn {
+	margin: 5px;
+	width: 10px;
+	height: 10px;
+	line-height: 10px;
+	font-size: 13px;
+}
+
+.w-b-input {
+	text-align: left;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+}
+
+.w-e-sel {
+	float: left;
+	width: 300px;
+	height: 20px;
+	line-height: 20px;
+	margin: 10px auto;
+	margin-left: 25px;
+}
+
+.wrt-div {
+	width: 100%;
+	height: 220px;
+	line-height: 220px;
+	margin-top: 25px;
+}
+
+.wrt-b-img {
+	float: left;
+	width: 180px;
+	margin: 0 15px;
+	border: dashed 1px blue;
+	text-align: center;
+}
+
+.wrt-body {
+	float: left;
+	width: 440px;
+	height: 225px;
+	line-height: 255px;
+	padding: 10px;
+	text-align: center;
+}
+
+.-a-t {
+	float: left;
+	width: 425px;
+	height: 150px;
+	line-height: 150px;
+	margin-top: 13px;
+}
+
+.wrt-last {
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	padding-top: 10px;
+	margin-top: 10px;
+}
+
+.hash-input {
+	float: left;
+	width: 500px;
+	height: 40px;
+	line-height: 40px;
+}
+
+.p-submit {
+	float: right;
+	width: 130px;
+	height: 40px;
+	line-height: 40px;
+}
+
+.-s-rst {
+	width: 100%;
+	padding: 10px 30px;
+	height: 55px;
+	line-height: 15px;
+	text-align: center;
+	font-size: 30px;
 }

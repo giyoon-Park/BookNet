@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="/BookNet/css/w3.css">
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
 <script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
+<script type="text/javascript" src="/BookNet/js/fixed.js"></script>
 <style>
 	.w-x-btn {margin: 5px; width: 10px; height: 10px; line-height: 10px; font-size: 13px;}
 	.w-b-input {text-align: left; width: 100%; height: 40px; line-height: 40px;}
@@ -21,6 +22,7 @@
 	.wrt-last {width: 100%; height: 50px; line-height: 50px; padding-top: 10px; margin-top: 10px;}
 	.hash-input {float: left; width: 500px; height: 40px; line-height: 40px;}
 	.p-submit {float: right; width: 130px; height: 40px; line-height: 40px;}
+	.-s-rst {width: 100%; padding: 10px 30px; height: 55px; line-height: 15px; text-align: center; font-size: 30px;}
 </style>	
 <script type="text/javascript">
 	$(document).ready(
@@ -48,10 +50,15 @@
 			$('#w-close_butt').click(function(){ //글쓰기 모달 닫기 
 				$('#writeModal').css('display', 'none');
 			});
+			
+			$('#s-close_butt').click(function(){ //도서검색 모달 닫기 
+				$('#-s-b-modal').css('display', 'none');
+			});
 	});
 </script>
 </head>
 <body>
+<form method="get" action="" id="frm">
 	<div>
 		<!-- 본문부분 -->
 		<div id="contents-wrap">
@@ -108,8 +115,8 @@
 									<!-- onclick="document.getElementById('actModal').style.display='none'" -->
 								<!-- 도서검색 -->
 								<div class="w-b-input">
-									<input type="search" id="" placeholder="도서검색"/>
-									<input type="button" id="" value="검색" style="width: 40px;"/>
+									<input type="search" id="findBook" placeholder="도서검색"/>
+									<input type="button" id="book-search" value="검색" style="width: 40px;"/>
 	 							</div>
 	 							<div class="wrt-div">
 									<div class="wrt-b-img">책!</div>
@@ -123,6 +130,24 @@
 	 								<input type="button" value="글 등록" class="p-submit" id="p-submit"/>
 	 							</div>
 							</div>
+ 							<!-- 도서검색 결과 모달창 -->
+ 							<div class="w3-modal" id="-s-b-modal">
+ 								<div id="" class="s-modal-content">
+ 									<span class="close w-x-btn" id="s-close_butt">x</span>
+ 									<div class="-s-rst">
+ 										<b>검색 결과</b>
+ 									</div>
+ 									<%-- <c:forEach var="rstBook" items="${}"> --%>
+ 									<div style="width: 100%; height: 80px; line-height: 80px; margin: 0 auto; margin-bottom: 20px; border: solid 1px black;">
+ 										<!-- 검색 결과의 수만큼 이 div가 생성되어야한다. -->
+ 										검색결과 1번!
+ 									</div>
+ 									<%-- </c:forEach> --%>
+ 									<div class="p-submit">
+		 								<input type="button" value="책 등록" class="p-submit" id="-s-b-submit"/>
+ 									</div>
+ 								</div>
+ 							</div>
 						    <!-- <div class="w3-modal-content w3-round-small">
 						      <div class="w3-container w3-center">
 						        <span onclick="document.getElementById('writeModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
@@ -144,5 +169,6 @@
 			<div class="footer" style="text-align: center;">footer</div>
 		</div>
 	</div>
+</form>
 </body>
 </html>
