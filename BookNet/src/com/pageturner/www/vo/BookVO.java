@@ -1,8 +1,8 @@
 package com.pageturner.www.vo;
 
 public class BookVO {
-	private String title, saleStatus, cvrsUrl, cvrlUrl, publisher, author, translator, link;
-	private int categoryId, isbn;
+	private String title, saleStatus, cvrsUrl, cvrlUrl, publisher, author, translator, link, isbn;
+	private int categoryId;
 	
 	public String getTitle() {
 		return title;
@@ -52,16 +52,16 @@ public class BookVO {
 	public void setLink(String link) {
 		this.link = link;
 	}
+	public String getIsbn() {
+		return isbn;
+	}
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
 	public int getCategoryId() {
 		return categoryId;
 	}
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
-	}
-	public int getIsbn() {
-		return isbn;
-	}
-	public void setIsbn(int isbn) {
-		this.isbn = isbn;
 	}
 }

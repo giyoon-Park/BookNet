@@ -2,31 +2,47 @@ package com.pageturner.www.util;
 
 import java.io.*;
 import java.net.*;
+import java.util.*;
 import org.json.simple.*;
 import org.json.simple.parser.*;
+import com.pageturner.www.vo.*;
 
 public class InterParkAPI {
 	private final String KEY = "756476FCE177C662B901F60050D436CDFFDF8BCC7C44966D95B67471225CF8EF"; //인터파크 API를 사용하기 위한 KEY값
-	final int SEARCH = 1001;
-	final int RECOMMEND = 1002;
-	final int NEWBOOK = 1003;
-	final int BESTSELLER = 1004;
+	final static int SEARCH = 1001;
+	final static int RECOMMEND = 1002;
+	final static int NEWBOOK = 1003;
+	final static int BESTSELLER = 1004;
 	
 	String api;
 	String query;
+	ArrayList<BookVO> list;
 	
-	public InterParkAPI() {}
+	public InterParkAPI() {
+		this(SEARCH, "java");
+	}
 	public InterParkAPI(int code, String keyword) {
 		keyword = keyword.replaceAll(" ", "%20");	// 뛰어쓰기를 브라우저가 인식할 수 있는 단어로 바꾼다.
+		String str = null;
+		String json = null;
 		String address = null;
 
 		selectAPI(code);
 		String base = api + "?key=" + KEY + "&";
 		
-		if(query == "query") {
-			address = base + "query=" + keyword + "&output=json";
-		} else {
-			address = base + "categoryId=100" + "&output=json";
+		try {
+			str = URLEncoder.encode(keyword, "UTF-8");
+			
+			if(query == "query") {
+				address = base + "query=" + str + "&output=json";
+			} else {
+				address = base + "categoryId=100" + "&output=json";
+			}
+			
+			json = webConnection(address);
+			this.list = parsingBookInfo(json);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -66,11 +82,44 @@ public class InterParkAPI {
 		br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		
 		json = br.readLine();
+		System.out.println(json);
 		return json;
+	}
+	
+	// json object에서 item(검색결과물)의 정보들을 담는다.
+	public ArrayList<BookVO> parsingBookInfo(String json) throws Exception{
+		ArrayList<BookVO> list = new ArrayList<BookVO>();
+		
+			JSONParser parser = new JSONParser();
+			JSONObject obj = (JSONObject)parser.parse(json);
+			
+			JSONArray item = (JSONArray)obj.get("item");
+			
+			for (int i = 0; i < item.size(); i++) {
+				BookVO bVO = new BookVO();
+				JSONObject tmp = (JSONObject)item.get(i);
+				String ctgr = (String)tmp.get("categoryId");
+				String isbn = (String)tmp.get("isbn");
+				bVO.setAuthor((String)tmp.get("author"));
+				bVO.setTitle((String)tmp.get("title"));
+				bVO.setCategoryId(Integer.parseInt(ctgr));
+				bVO.setCvrsUrl((String)tmp.get("coverSmallUrl"));
+				bVO.setCvrlUrl((String)tmp.get("coverLargeUrl"));
+				bVO.setPublisher((String)tmp.get("publisher"));
+				bVO.setTranslator((String)tmp.get("translator"));
+				bVO.setIsbn((String)tmp.get("isbn"));
+				bVO.setSaleStatus((String)tmp.get("saleStatus"));
+				list.add(bVO);
+			}
+			System.out.println(list.get(0).getTitle());
+			System.out.println(list.get(1).getTitle());
+			System.out.println(list.get(2).getTitle());
+			System.out.println(list.get(3).getTitle());
+			System.out.println(list.get(4).getTitle());
+		return list;
 	}
 
 	public static void main(String[] args) {
-
+		InterParkAPI ipAPI = new InterParkAPI(SEARCH, "java의");
 	}
-
 }
