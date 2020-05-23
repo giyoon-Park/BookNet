@@ -9,7 +9,7 @@ public class LoginProc implements PageController {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
-		String view = "/BookNet/main/mem.cls";
+		String view = "/BookNet/main/main.cls";
 		req.setAttribute("isRedirect", true);
 		
 		//jsp로부터 넘어온 파라미터값 받기 

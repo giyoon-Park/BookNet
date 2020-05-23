@@ -13,7 +13,7 @@ public class JoinProc implements PageController {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
-		String view = "/main/mem.cls";
+		String view = "/main/main.cls";
 		req.setAttribute("isRedirect", true);
 		
 		String id = req.getParameter("id");

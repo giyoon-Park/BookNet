@@ -106,7 +106,7 @@
 =========================================================
 #김이슬
 2. 회원 메인 페이지 요청
-	요청내용:/main/mem.cls
+	요청내용:/main/main.cls
 	파라미터:none
 	컨트롤러:com.pageturner.www.controller.main.Mem
 	뷰		:/main/mem_main.jsp
