@@ -12,7 +12,7 @@ import java.text.*;
 
 public class PostsVO {
 	private int pno, mno, eno, bno, genre;
-	private String id, bname, postcont, pdate, emotion, sloc, gname;
+	private String id, profile, bname, postcont, pdate, emotion, sloc, gname, hash;
 	private Date postDate;
 	private Time postTime;
 	public int getPno() {
@@ -51,6 +51,12 @@ public class PostsVO {
 	public void setId(String id) {
 		this.id = id;
 	}
+	public String getProfile() {
+		return profile;
+	}
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
 	public String getBname() {
 		return bname;
 	}
@@ -67,8 +73,8 @@ public class PostsVO {
 		return pdate;
 	}
 	public void setPdate() {
-		SimpleDateFormat form1 = new SimpleDateFormat("yyyy/MM/dd");
-		SimpleDateFormat form2 = new SimpleDateFormat("HH:mm:ss");
+		SimpleDateFormat form1 = new SimpleDateFormat("yy/MM/dd");
+		SimpleDateFormat form2 = new SimpleDateFormat("HH:mm");
 		String str = form1.format(postDate) + form2.format(postTime);
 		this.pdate = str;
 	}
@@ -92,6 +98,12 @@ public class PostsVO {
 	}
 	public void setGname(String gname) {
 		this.gname = gname;
+	}
+	public String getHash() {
+		return hash;
+	}
+	public void setHash(String hash) {
+		this.hash = hash;
 	}
 	public Date getPostDate() {
 		return postDate;

@@ -13,7 +13,7 @@ display: none; /*Chrome, Safari, Opera*/
 	position: fixed;
 	top: 0px;
 	width: 100%;
-	background-color: #fff;
+	background-color: rgb(255, 255, 255);
 }
 
 #contents-wrap {
@@ -166,16 +166,17 @@ display: none; /*Chrome, Safari, Opera*/
 }
 
 .eachPost {
-	width: 400px;
-	height: 400px;
-	margin: 25px auto;
-	/* border: dashed 1px blue; */
+	width: 410px;
+    height: 375px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 10px;
 }
 
 .wrtInfo {
 	width: 100%;
-	height: 40px;
-	line-height: 40px;
+	height: 35px;
+	line-height: 35px;
 }
 
 .wrtProf {
@@ -191,7 +192,16 @@ display: none; /*Chrome, Safari, Opera*/
 	float: left;
 	width: 100px;
 	height: 30px;
+	line-height: 30px;
 	font-size: 16px;
+}
+
+.time {
+	float: left;
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 12px;
 }
 
 .like-butt {
@@ -207,7 +217,8 @@ display: none; /*Chrome, Safari, Opera*/
 	margin-top: 10px;
 	width: 100%;
 	height: 270px;
-	border: dashed 1px red;
+	border-top: solid 1px black;
+	border-bottom: solid 1px black;
 	line-height: 270px;
 }
 
@@ -238,39 +249,55 @@ display: none; /*Chrome, Safari, Opera*/
 }
 
 .etcdiv {
-	margin-top: 10px;
 	width: 100%;
 	height: 40px;
-	border: dashed 1px blue;
 	line-height: 40px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .book-pic {
 	float: left;
 	width: 200px;
 	height: 100%;
-	margin-right: 25px;
-	border: solid 1px black;
+	margin-right: 10px;
+}
+
+.genre-name {
+	float: left;
+	width: 160px;
+	height: 25px;
+	line-height: 25px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: left;
 }
 
 .book-name {
 	float: left;
 	width: 160px;
-	height: 100px;
+	height: 35px;
+	line-height: 35px;
 	margin: 0 auto;
-	margin-top: 15px;
-	text-align: center;
-	border: solid 1px black;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align: left;
 }
 
 .post-body {
 	float: left;
-	width: 160px;
-	height: 120px;
+	width: 175px;
+	height: 170px;
+	line-height: 25px;
 	margin: 0 auto;
-	margin-top: 20px;
-	text-align: center;
-	border: solid 1px black;
+	padding: 10px;
+	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
 }
 
 a{

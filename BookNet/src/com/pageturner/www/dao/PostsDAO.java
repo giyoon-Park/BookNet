@@ -19,7 +19,7 @@ public class PostsDAO {
 	PreparedStatement pstmt;
 	ResultSet rs;
 	BookSQL bSQL;
-	PostsVO pVO;
+	PostsVO vo;
 	
 	public PostsDAO() {
 		db = new WebDBCP();
@@ -36,7 +36,28 @@ public class PostsDAO {
 		stmt = db.getSTMT(con);
 		
 		try {
-			
+			//질의명령 보내기
+			rs = stmt.executeQuery(sql);
+			//결과받기 
+			while(rs.next()) {
+				vo = new PostsVO();
+				
+				//데이터 담기 
+				vo.setPno(rs.getInt("pno"));
+				vo.setId(rs.getString("id"));
+				vo.setBname(rs.getString("bname"));
+				vo.setPostcont(rs.getString("postcont"));
+				vo.setPostDate(rs.getDate("postdate"));
+				vo.setPostTime(rs.getTime("postdate"));
+				vo.setPdate();
+				vo.setEmotion(rs.getString("emotion"));
+				vo.setSloc(rs.getString("sloc"));
+				vo.setGname(rs.getString("gname"));
+				vo.setHash(rs.getString("hash"));
+				
+				//담은 데이터(vo 클래스)를 리스트에 담기 
+				list.add(vo);
+			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html style="background-color:#F2F2F2">
+<html style="background-color: #F2F2F2">
 <head>
 <meta charset="UTF-8">
 <title>회원 메인페이지</title>
@@ -26,7 +26,7 @@
 	$(document).ready(
 		function() {
 			$('#more_butt').click(function() { //modal에서 알림페이지로 이동 
-				$(location).attr('href', '/BookNet/fixed/activity.cls');
+				$(location).attr('href', '/BookNet/alarm/alamPage.cls');
 			});
 
 			$('#aBtn').click(function() { //modal 열기
@@ -48,6 +48,16 @@
 			$('#w-close_butt').click(function(){ //글쓰기 모달 닫기 
 				$('#writeModal').css('display', 'none');
 			});
+			
+			$(document).scroll(function() {
+			    var maxHeight = $(document).height();
+			    var currentScroll = $(window).scrollTop() + $(window).height();
+			    if (maxHeight <= currentScroll + 100) {
+			       $('.posts_area').append('<article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><div class="wrtProf"><img src="https://img.icons8.com/cotton/64/000000/apple--v1.png"/></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div></article>');
+			    }
+			    
+			  })
+
 	});
 </script>
 </head>
@@ -58,42 +68,52 @@
 			<div class="contents">
 				<!-- 좌측 게시글 부분 -->
 				<div class="posts_area">
-					<article class="eachPost" id="이곳은게시물번호가들어갈자리">
-						<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
-						<div class="wrtInfo">
-							<div class="wrtProf">
-								<img src="">
+					<c:forEach var="data" items="${LIST}">
+						<article class="eachPost" id="${data.pno}">
+							<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
+							<div class="wrtInfo">
+								<div class="wrtProf">
+									<img src="">
+								</div>
+								<div class="wrter" id="">
+									<a href=""><b>${data.id}</b></a>
+								</div>
+								<div class="time" id="">
+									${data.pdate}
+								</div>
+								<div class="like-butt" id="">
+									<span style="font-size: 12px; line-height: 0px;" class="comt-img"></span>
+								</div>
+								<div class="like-butt" id="" style="display: flex;'">
+									<span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span>
+								</div>
 							</div>
-							<div class="wrter" id="">
-								<b>작성자아이디</b>
+							<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
+							<div class="postCont" style="text-align: center; font-size: 16px;">
+								<!-- 도서사진, 도서이름, 게시글본문 -->
+								<div class="book-pic">
+									<!-- 도서 사진 들어갈 부분 -->
+									<img src="${data.sloc}" style="width: 90%; height: auto;" />
+								</div>
+								<div class="genre-name" style="font-size: 12px; text-align: left;">
+									<!-- 도서장르 들어갈 부분 -->
+									${data.gname}
+								</div>
+								<div class="book-name">
+									<!-- 도서명 들어갈 부분 -->
+									<b>${data.bname}</b>
+								</div>
+								<div class="post-body">
+									<!-- 게시글 부분 -->
+									<a style="box-sizing: border-box; font-size: 18px;">${data.postcont}</a>
+								</div>
 							</div>
-							<div class="like-butt" id="">
-								<span style="font-size: 12px; line-height: 0px;"
-									class="comt-img"></span>
+							<div class="etcdiv" style="text-align: left; font-size: 13px;">
+								<!-- 게시글 해시태그 부분 -->
+								${data.hash}
 							</div>
-							<div class="like-butt" id="" style="display: flex;'">
-								<span style="font-size: 12px; line-height: 0px;"
-									class="like-img" id="likebtn"></span>
-							</div>
-						</div>
-						<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
-						<div class="postCont" style="text-align: center; font-size: 16px;">
-							<!-- 도서사진, 도서이름, 게시글본문 -->
-							<div class="book-pic">
-								<!-- 도서 사진 들어갈 부분 -->
-							</div>
-							<div class="book-name">
-								<!-- 도서명 들어갈 부분 -->
-							</div>
-							<div class="post-body">
-								<!-- 게시글 부분 -->
-							</div>
-						</div>
-						<div class="etcdiv" style="text-align: center; font-size: 16px;">
-							태그
-							<!-- 게시글 해시태그 부분 -->
-						</div>
-					</article>
+						</article>
+					</c:forEach>
 				</div>
 				<!-- 우측 정보 부분 : 고정페이지로 들어갈 것-->
 				<div class="info_area">
@@ -116,7 +136,7 @@
 					<div
 						style="box-sizing: border-box; font-size: 30px; text-align: center;">
 						<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
-						<a href="/BookNet/main/mem_main.cls">PageTurner</a>
+						<a href="/BookNet/main/mem_main.cls" style="color: #120E0A;">PageTurner</a>
 					</div>
 				</div>
 				<div class="searchbox">
