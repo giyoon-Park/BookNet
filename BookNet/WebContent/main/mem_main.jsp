@@ -48,30 +48,30 @@
 			       $('.posts_area').append('<article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><div class="wrtProf"><img src="https://img.icons8.com/cotton/64/000000/apple--v1.png"/></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div></article>');
 			    }
 			    
-			  })
+			})
 		  	// footerUp
 			var hei = $('#footer-wrap').css("height");
-			 $("#footer-wrap").mouseenter(function(){
-					if($('#footer-wrap').css("height") == "100px"){
-						$('#footer-wrap').css("transition","all 0.6s");
-						$('#footer-wrap').css("background-color","#F7B3D2");
-						$('#footer-wrap').css("color","#FFF");
-						$('#footer-wrap').css("height","200px");
-						
-					} else if($('#footer-wrap').css("height") == hei){
-						$('#footer-wrap').css("transition","all 0.6s");
-						$('#footer-wrap').css("background-color","#F7B3D2");
-						$('#footer-wrap').css("color","#FFF");
-						$('#footer-wrap').css("height","200px");
-					}
-			 	$("#footer-wrap").mouseleave(function(){
-			 		if($('#footer-wrap').css("height") == "200px"){
-			 			$('#footer-wrap').css("height", "100px");
-						$('#footer-wrap').css("background-color","#F3F0F7");
-						$('#footer-wrap').css("color","#FFF");
-						$('#footer-wrap').css("transition","all 0.6s");
-						$('#footer-wrap').css("overflow","hidden");
-			 		}
+			$("#footer-wrap").mouseenter(function(){
+				if($('#footer-wrap').css("height") == "100px"){
+					$('#footer-wrap').css("transition","all 0.6s");
+					$('#footer-wrap').css("background-color","#F7B3D2");
+					$('#footer-wrap').css("color","#FFF");
+					$('#footer-wrap').css("height","200px");
+					
+				} else if($('#footer-wrap').css("height") == hei){
+					$('#footer-wrap').css("transition","all 0.6s");
+					$('#footer-wrap').css("background-color","#F7B3D2");
+					$('#footer-wrap').css("color","#FFF");
+					$('#footer-wrap').css("height","200px");
+				}
+		 	$("#footer-wrap").mouseleave(function(){
+		 		if($('#footer-wrap').css("height") == "200px"){
+		 			$('#footer-wrap').css("height", "100px");
+					$('#footer-wrap').css("background-color","#F3F0F7");
+					$('#footer-wrap').css("color","#FFF");
+					$('#footer-wrap').css("transition","all 0.6s");
+					$('#footer-wrap').css("overflow","hidden");
+		 			}
 				});
 			});
 	});
@@ -119,9 +119,6 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 			<div class="contents">
 				<!-- 좌측 게시글 부분 -->
 				<div class="posts_area">
-				 <article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><img src="https://img.icons8.com/nolan/64/apple-seed.png" style=" width: 49px;height: 49px; position: relative ; right: 215px; bottom: 19px;" /><div class="wrtProf"></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div></article>
-               <article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><img src="https://img.icons8.com/nolan/64/apple-seed.png" style=" width: 49px;height: 49px; position: relative ; right: 215px; bottom: 19px;"/><div class="wrtProf"></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div></article>
-               <article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><img src="https://img.icons8.com/nolan/64/apple-seed.png" style=" width: 49px;height: 49px; position: relative ; right: 215px; bottom: 19px;"/><div class="wrtProf"></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div></article>
 					<c:forEach var="data" items="${LIST}">
 						<article class="eachPost" id="${data.pno}">
 							<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
@@ -171,12 +168,10 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 				</div>
 				<!-- 우측 정보 부분 : 고정페이지로 들어갈 것-->
 				<div class="info_area">
-					<div
-						style="width: 100%; height: 200px; margin-top: 15px; border: solid 1px white;">
+					<div style="width: 100%; height: 200px; margin-top: 15px; border: solid 1px white;">
 						<a></a>
 					</div>
-					<div
-						style="width: 100%; height: 200px; margin-top: 15px; border: solid 1px white;">
+					<div style="width: 100%; height: 200px; margin-top: 15px; border: solid 1px white;">
 						<a></a>
 					</div>
 				</div>
@@ -187,8 +182,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 		<div id="header-wrap">
 			<div class="header">
 				<div class="logobox">
-					<div
-						style="box-sizing: border-box; font-size: 30px; text-align: center;">
+					<div style="box-sizing: border-box; font-size: 30px; text-align: center;">
 						<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
 						<a href="/BookNet/main/mem_main.cls" style="color: #120E0A;">PageTurner</a>
 					</div>
@@ -226,14 +220,15 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 							<img class="iconimg" id="" src="/BookNet/img/iconmonstr-pen-15-240.png">
 						</button>
 						<!-- The Modal -->
+						<form method="GET" id="frm">
 						<div id="writeModal" class="w3-modal">
 							<div id="" class="w-modal-content">
 								<span class="close w-x-btn" id="w-close_butt">x</span>
 									<!-- onclick="document.getElementById('actModal').style.display='none'" -->
 								<!-- 도서검색 -->
 								<div class="w-b-input">
-									<input type="search" id="" placeholder="도서검색" style="float: left; width: 190px; height: 40px; line-height: 40px;"/>
-									<input type="button" id="" value="검색" style="float: left; width: 40px; height: 40px; line-height: 40px; margin-left: 10px;"/>
+									<input type="search" id="findBook" placeholder="도서검색" style="float: left; width: 190px; height: 40px; line-height: 40px;"/>
+									<input type="button" id="book-search" value="검색" style="float: left; width: 40px; height: 40px; line-height: 40px; margin-left: 10px;"/>
 									<!-- 감정 셀렉트 -->
 									<div class="w-e-sel">
 										<select name="emotion">
@@ -258,15 +253,26 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 	 								<input type="button" value="글 등록" class="p-submit" id="p-submit"/>
 	 							</div>
 							</div>
-						    <!-- <div class="w3-modal-content w3-round-small">
-						      <div class="w3-container w3-center">
-						        <span onclick="document.getElementById('writeModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-						       	<div class="w3-col"><a>???????</a></div>
-						       	<div class="w3-col m2"><p></p></div>
-						       	<div class="w3-col m8 w3-container"><a>게시글 작성</a></div>
-						      </div>
-						    </div> -->
+							<!-- 도서검색 결과 모달창 -->
+ 							<div class="w3-modal" id="-s-b-modal">
+ 								<div id="" class="s-modal-content">
+ 									<span class="close w-x-btn" id="s-close_butt">x</span>
+ 									<div class="-s-rst">
+ 										<b>검색 결과</b>
+ 									</div>
+ 									<%-- <c:forEach var="rstBook" items="${}"> --%>
+ 									<div style="width: 100%; height: 80px; line-height: 80px; margin: 0 auto; margin-bottom: 20px; border: solid 1px black;">
+ 										<!-- 검색 결과의 수만큼 이 div가 생성되어야한다. -->
+ 										<div style="width: 100%; height: 20px; line-height: 20px;" id="b-title"></div>
+ 									</div>
+ 									<%-- </c:forEach> --%>
+ 									<div class="p-submit">
+		 								<input type="button" value="책 등록" class="p-submit" id="-s-b-submit"/>
+ 									</div>
+ 								</div>
+ 							</div>
 						</div>
+					</form>
 					</div> 
 					<div class="span_icons"> 
 						<img class="iconimg" id="" src="/BookNet/img/iconmonstr-user-19-240.png">

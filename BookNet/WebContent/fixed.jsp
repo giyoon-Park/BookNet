@@ -140,7 +140,7 @@
  									<%-- <c:forEach var="rstBook" items="${}"> --%>
  									<div style="width: 100%; height: 80px; line-height: 80px; margin: 0 auto; margin-bottom: 20px; border: solid 1px black;">
  										<!-- 검색 결과의 수만큼 이 div가 생성되어야한다. -->
- 										검색결과 1번!
+ 										<div style="width: 100%; height: 20px; line-height: 20px;" id="b-title"></div>
  									</div>
  									<%-- </c:forEach> --%>
  									<div class="p-submit">
@@ -148,14 +148,6 @@
  									</div>
  								</div>
  							</div>
-						    <!-- <div class="w3-modal-content w3-round-small">
-						      <div class="w3-container w3-center">
-						        <span onclick="document.getElementById('writeModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-						       	<div class="w3-col"><a>???????</a></div>
-						       	<div class="w3-col m2"><p></p></div>
-						       	<div class="w3-col m8 w3-container"><a>게시글 작성</a></div>
-						      </div>
-						    </div> -->
 						</div>
 					</div> 
 					<div class="span_icons"> 
@@ -165,9 +157,22 @@
 			</div>
 		</div>
 		<!-- 풋터부분 -->
-		<div id="footer-wrap">
-			<div class="footer" style="text-align: center;">footer</div>
-		</div>
+		<footer id="footer-wrap" style="padding:10px; height: 100px; color: #FFF;">		
+			<h3 style="position:absolute; top:0px; left: 350px; display: flex;">Company</h3><br><h4 style="position:absolute;  top:30px; left: 352px; display: flex; font-size: 10pt;">Increpas</h4><br><h4 style="position:absolute; top:50px; left: 352px; display: flex; font-size:10pt;">서울특별시 관악구 신림동 시흥대로 552</h4>
+			<h3 style="position:absolute; top:0px; left: 800px; display: flex;">Project_Team</h3><br><h4 style="position:absolute; top:30px; left: 802px; display: flex; font-size: 10pt;">BookNet KOR</h4><br><h4 style="position:absolute; top:50px; left: 802px; display: flex; font-size:10pt;">PageTurner</h4>
+			<h3 style="position:absolute; top:0px; left: 1200px; display: flex;">만든이</h3><br><h4 style="position:absolute; top:30px; left: 1202px; display: flex; font-size: 10pt;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:50px; left: 1202px; display: flex; font-size:10pt;">서 동혁 | 우 현우 |</h4>
+		    <small>
+		    <p style="position:absolute; top:120px; left: 800px; display: flex;">Copyright © 2020 BookNet.co.,Ltd. All rights reserved.</p>
+		    <address style="position:absolute; top:140px; left: 800px; display: flex;">Contact increpas for more information. </address>
+		    </small>
+		    <img src="https://img.icons8.com/dusk/64/000000/finn.png" style="position:absolute; top:100px; left: 1497px; display: flex; width:64px; height: 64px;"/>
+		    <img src="https://img.icons8.com/dusk/64/000000/jake.png" style="position:absolute; top:100px; left: 1582px; display: flex; width:64px; height: 64px;"/>
+		    <img src="https://img.icons8.com/dusk/64/000000/stich.png" style="position:absolute; top:100px; left: 1667px; display: flex; width:64px; height: 64px;"/>
+		    <img src="https://img.icons8.com/dusk/64/000000/homer-simpson.png" style="position:absolute; top:100px; left: 1752px; display: flex; width:64px; height: 64px;"/>
+		    <img src="https://img.icons8.com/dusk/64/000000/futurama-zoidberg.png" style="position:absolute; top:100px; left: 1830px; display: flex; width:64px; height: 64px;"/>
+		    <div style="border:2px solid #fff; width: 400px; height:120px; line-height:65px; color:#fff;font-size:60px; text-align:center; position:absolute; top:50px; left: 1490px;" id="clock">
+			</div>
+		</footer>
 	</div>
 </form>
 </body>

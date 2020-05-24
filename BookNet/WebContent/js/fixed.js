@@ -9,19 +9,25 @@ $(document).ready(function(){
 		
 		//입력한 검색어를 변수에 저장한다.
 		var book = $('#findBook').val();
+		alert(book);
 		
 		$.ajax({
 			url : '/BookNet/ajax/searchBook.sb',
 			type : 'GET',
 			dataType : 'json',
 			data : {
-				'search_word' : book
+				'searchWord' : book
 			},
 			success : function(obj){ //obj는 ArrayList형태이다.
+				alert(obj);
 				//json type array 처리구문 
 				$.each(obj, function(index, item){
-					
+					var title = item.getTitle();
+					alert(title);
 				})
+			},
+			error : function(){
+				alert('###통신실패###');
 			}
 		});
 	});

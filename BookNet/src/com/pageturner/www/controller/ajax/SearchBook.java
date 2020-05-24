@@ -10,11 +10,11 @@ import com.pageturner.www.util.*;
 
 @WebServlet("/ajax/searchBook.sb")
 public class SearchBook extends HttpServlet {
-	public void service(HttpServletRequest req, HttpServletResponse resp) {
-		System.out.println("########");
-		
+	public void service(HttpServletRequest req, HttpServletResponse resp) {		
 		//ajax 파라미터 받기 
-		String searchWord = req.getParameter("search_word");
+		String searchWord = req.getParameter("searchWord");
+		
+		System.out.println("########" + searchWord);
 		
 		int code = 1001;
 		
