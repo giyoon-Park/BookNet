@@ -88,21 +88,51 @@ public class Dispatch extends HttpServlet {
 		// 4. 요청내용을 알아냈으니 실제 실행할 클래스를 가져온다.
 		PageController cls = map.get(realPath);
 		req.setAttribute("isRedirect", false);
-		boolean bool = false;
+//		boolean bool = false;
 		String view = cls.exec(req, resp);
-		bool = (boolean)req.getAttribute("isRedirect");
-		if(bool) {
-//		String last = view.substring(view.lastIndexOf(".") + 1);
-//		System.out.println("aaaaaa " + last);
-//		if(last.equals("cls")) {
+		
+		Boolean bool;
+		
+		try{
+			bool = (Boolean) req.getAttribute("isRedirect");
+		} catch(Exception e) {
+			e.printStackTrace();
+			bool = null;
+		}
+		
+		if( bool == null ) { 
+			PrintWriter pw = resp.getWriter();
+			try {
+				pw.println(view);
+			} catch(Exception e) {}
+		} else if(bool == true) {
+		/*
+		String last = view.substring(view.lastIndexOf(".") + 1);
+		if(last.equals("cls")) {
+			
+		*/
 			resp.sendRedirect(view);
 		} else {
 			try {
 				RequestDispatcher rd = req.getRequestDispatcher(view);
 				rd.forward(req, resp);
-			} catch (Exception e) {
+			} catch(Exception e) {
 				e.printStackTrace();
 			}
 		}
+//		bool = (boolean)req.getAttribute("isRedirect");
+//		if(bool) {
+////		String last = view.substring(view.lastIndexOf(".") + 1);
+////		System.out.println("aaaaaa " + last);
+////		if(last.equals("cls")) {
+//			resp.sendRedirect(view);
+//		} else {
+//			try {
+//				RequestDispatcher rd = req.getRequestDispatcher(view);
+//				rd.forward(req, resp);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
 	}
 }

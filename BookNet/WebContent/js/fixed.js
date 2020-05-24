@@ -12,7 +12,7 @@ $(document).ready(function(){
 		alert(book);
 		
 		$.ajax({
-			url : '/BookNet/ajax/searchBook.sb',
+			url : '/BookNet/ajax/searchBook.cls',
 			type : 'GET',
 			dataType : 'json',
 			data : {
@@ -26,8 +26,8 @@ $(document).ready(function(){
 					alert(title);
 				})
 			},
-			error : function(){
-				alert('###통신실패###');
+			error : function(request, status, error){
+				console.log("code : " + request.status + "\n message : " + request.responseText	+ "\n error : " + error);
 			}
 		});
 	});
