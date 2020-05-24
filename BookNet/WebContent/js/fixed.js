@@ -11,23 +11,25 @@ $(document).ready(function(){
 		var book = $('#findBook').val();
 		alert(book);
 		
-		$.ajax({
+		//더미데이터용으로 현재 우리 디비에 있는 책 테이블에서 검색을 하도록 한다.
+		$.ajax({ 
 			url : '/BookNet/ajax/searchBook.cls',
-			type : 'GET',
+			type : 'POST',
 			dataType : 'json',
 			data : {
 				'searchWord' : book
 			},
-			success : function(obj){ //obj는 ArrayList형태이다.
-				alert(obj);
-				//json type array 처리구문 
-				$.each(obj, function(index, item){
-					var title = item.getTitle();
-					alert(title);
-				})
+			success : function(obj){ 
+				var item = obj.item;
+				var len = item.length;
+				for(var i = 0; i < len; i++){
+					$('#b-title').append(item[i].title + '<br>');
+				}
+				
 			},
-			error : function(request, status, error){
-				console.log("code : " + request.status + "\n message : " + request.responseText	+ "\n error : " + error);
+			error : function(){
+				alert("###통신에러###");
+//				console.log("code : " + request.status + "\n message : " + request.responseText	+ "\n error : " + error);
 			}
 		});
 	});

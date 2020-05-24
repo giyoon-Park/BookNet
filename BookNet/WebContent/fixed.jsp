@@ -58,7 +58,7 @@
 </script>
 </head>
 <body>
-<form method="get" action="" id="frm">
+<form method="POST" action="" id="frm">
 	<div>
 		<!-- 본문부분 -->
 		<div id="contents-wrap">

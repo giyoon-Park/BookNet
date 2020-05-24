@@ -220,7 +220,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 							<img class="iconimg" id="" src="/BookNet/img/iconmonstr-pen-15-240.png">
 						</button>
 						<!-- The Modal -->
-						<form method="GET" id="frm">
+						<form method="POST" id="frm">
 						<div id="writeModal" class="w3-modal">
 							<div id="" class="w-modal-content">
 								<span class="close w-x-btn" id="w-close_butt">x</span>
