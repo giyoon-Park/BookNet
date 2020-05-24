@@ -15,40 +15,7 @@
 <style>
 </style>	
 <script type="text/javascript">
-	$(document).ready(
-		function() {
-			$('#more_butt').click(function() { //modal에서 알림페이지로 이동 
-				$(location).attr('href', '/BookNet/alarm/alamPage.cls');
-			});
-
-			$('#aBtn').click(function() { //modal 열기
-				$('#actModal').css('display', 'block');
-			});
-
-			$('#a-close_butt').click(function() { //modal 닫기버튼 
-				$('#actModal').css('display', 'none');
-			});
-			
-			$('#likebtn').click(function(){ //like 버튼 클릭시 빨강하트로 변경 
-				$(this).css('background-position', '-208px -370px');
-			});
-			
-			$('#wBtn').click(function(){ //글쓰기 modal 열기 
-				$('#writeModal').css('display', 'block');
-			});
-			
-			$('#w-close_butt').click(function(){ //글쓰기 모달 닫기 
-				$('#writeModal').css('display', 'none');
-			});
-			
-			$(document).scroll(function() {
-			    var maxHeight = $(document).height();
-			    var currentScroll = $(window).scrollTop() + $(window).height();
-			    if (maxHeight <= currentScroll + 100) {
-			       $('.posts_area').append('<article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><div class="wrtProf"><img src="https://img.icons8.com/cotton/64/000000/apple--v1.png"/></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div></article>');
-			    }
-			    
-			})
+	$(document).ready(function() {
 		  	// footerUp
 			var hei = $('#footer-wrap').css("height");
 			$("#footer-wrap").mouseenter(function(){
@@ -113,6 +80,10 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 </script>
 </head>
 <body onload="printClock()"/>
+<!-- 파라미터로 넘길 데이터값 -->
+<form method="POST" id="frm">
+	<input type="hidden" id="bno" name="bno"> <!-- 글 작성할때 넘겨줄 책 번호 -->
+</form>
 	<div>
 		<!-- 본문부분 -->
 		<div id="contents-wrap">
@@ -184,7 +155,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 				<div class="logobox">
 					<div style="box-sizing: border-box; font-size: 30px; text-align: center;">
 						<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
-						<a href="/BookNet/main/mem_main.cls" style="color: #120E0A;">PageTurner</a>
+						<a href="/BookNet/main/mem_main.cls" style="color: #120E0A;"><b>PageTurner</b></a>
 					</div>
 				</div>
 				<div class="searchbox">
@@ -220,7 +191,6 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 							<img class="iconimg" id="" src="/BookNet/img/iconmonstr-pen-15-240.png">
 						</button>
 						<!-- The Modal -->
-						<form method="POST" id="frm">
 						<div id="writeModal" class="w3-modal">
 							<div id="" class="w-modal-content">
 								<span class="close w-x-btn" id="w-close_butt">x</span>
@@ -242,9 +212,11 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 									</div>
 	 							</div>
 	 							<div class="wrt-div">
-									<div class="wrt-b-img">책!</div>
+									<div class="wrt-b-img">
+										<img id="sel-wrt-b-img"/>
+									</div>
 		 							<div class="wrt-body">
-		 								<p style="height: 40px; line-height: 40px;">책 제목</p>
+		 								<p style="height: 80px; line-height: 80px; margin-bottom: 30px; font-size: 25px;" id="sel-wrt-b-ttl"></p>
 	 									<textarea class="-a-t"></textarea>
 	 								</div>
 	 							</div>
@@ -261,32 +233,35 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
  										<b>검색 결과</b>
  									</div>
  									<%-- <c:forEach var="rstBook" items="${}"> --%>
- 									<div class="w100perh300 rstbook" id=""><!-- 이 div를 누르면 글작성시 bno를 파라미터로 보낼 수 있다. -->
+ 									<div class="w100perh300 rstbook" id="">
  										<!-- 검색 결과의 수만큼 이 div가 생성되어야한다. -->
- 										<div class="-s-b-img">
+  										<div class="-s-b-img">
  											<img id="b-image"/>
  										</div>
  										<div class="-s-b-info">
- 											<div style="float: left;">도서명 : </div> 
+ 											<div style="float: left; margin-right: 15px;">도서장르 : </div> 
+ 											<div style="float: left;"id="b-genre"></div>
+ 										</div>
+ 										<div class="-s-b-info">
+ 											<div style="float: left; margin-right: 15px;">도서명 : </div> 
  											<div style="float: left;"id="b-title"></div>
  										</div>
  										<div class="-s-b-info">
- 											<div style="float: left;">저 자 : </div> 
+ 											<div style="float: left; margin-right: 15px;">저 자 : </div> 
  											<div style="float: left;"id="b-author"></div>
  										</div>
  										<div class="-s-b-info" id="notrans">
- 											<div style="float: left;">옮긴이 : </div> 
+ 											<div style="float: left; margin-right: 15px;">옮긴이 : </div> 
  											<div style="float: left;"id="b-author"></div>
  										</div>
+	 									<div class="-s-b-submit">
+			 								<input type="button" value="책 등록" id="sel-b-submit"/>
+	 									</div>
  									</div>
  									<%-- </c:forEach> --%>
- 									<div class="p-submit">
-		 								<input type="button" value="책 등록" class="p-submit" id="-s-b-submit"/>
- 									</div>
  								</div>
  							</div>
 						</div>
-					</form>
 					</div> 
 					<div class="span_icons"> 
 						<img class="iconimg" id="" src="/BookNet/img/iconmonstr-user-19-240.png">

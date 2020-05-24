@@ -11,7 +11,7 @@ public class BookSQL {
 	public final int SEL_ALL_POST = 2001; //비로그인 회원 메인화면에 보여줄 게시글 질의명령 
 	public final int SEL_ALL_POST_MEM = 2002; //로그인 회원 메인화면에 보여줄 게시글 질의명령
 	
-	public final int POST_SEARCH_BOOK = 3001; //게시글 작성시 도서검색을 위한 질의명령 
+	public final int POST_SEARCH_BOOK = 3001; //게시글 작성시 도서검색을 위한 질의명령
 	
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();

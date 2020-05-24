@@ -340,34 +340,34 @@ a:visited {
 
 .wrt-div {
 	width: 100%;
-	height: 220px;
-	line-height: 220px;
-	margin-top: 25px;
+    height: 280px;
+    line-height: 220px;
+    margin-top: 25px;
 }
 
 .wrt-b-img {
 	float: left;
-	width: 180px;
-	margin: 0 15px;
-	border: dashed 1px blue;
-	text-align: center;
+    width: 195px;
+    text-align: center;
+    border: solid 1px white;
 }
 
 .wrt-body {
 	float: left;
-	width: 440px;
-	height: 225px;
-	line-height: 255px;
-	padding: 10px;
-	text-align: center;
+    width: 440px;
+    height: 225px;
+    line-height: 255px;
+    padding: 10px;
+    margin-left: 15px;
+    text-align: center;
 }
 
 .-a-t {
 	float: left;
-	width: 425px;
-	height: 150px;
-	line-height: 150px;
-	margin-top: 13px;
+    width: 425px;
+    height: 150px;
+    /* line-height: 115px; */
+    padding-top: 45px;
 }
 
 .wrt-last {
@@ -385,7 +385,7 @@ a:visited {
 	line-height: 40px;
 }
 
-.p-submit {
+.-s-b-submit {
 	float: right;
 	width: 130px;
 	height: 40px;
