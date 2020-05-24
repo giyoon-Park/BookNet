@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html style="background-color:#F2F2F2">
+<html style="background-color:#F3F0F7">
 <head>
 <meta charset="UTF-8">
 <title>고정페이지 틀</title>
@@ -111,7 +111,7 @@
 					
 					
 				$clearIpt.toggle(Boolean($ipt.val()));
-				$clearIpt.click(function(){
+				$clearIpt.click(function(){ 
 				  $("#searchinput").val('').focus();
 				  // display 속성을 none으로 바꾼다. : 감춘다
 				  $(this).hide();

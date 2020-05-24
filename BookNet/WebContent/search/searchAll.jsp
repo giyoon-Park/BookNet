@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html style="background-color:#F2F2F2">
+<html style="background-color:#F3F0F7">
 <head>
 <meta charset="UTF-8">
 <title>모든 검색 결과 페이지</title>
@@ -12,7 +12,7 @@
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
 <script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
 <script type="text/javascript" src="/BookNet/js/fixed.js"></script>
-<style>
+<style> 
 	.w-x-btn {margin: 5px; width: 10px; height: 10px; line-height: 10px; font-size: 13px;}
 	.w-b-input {text-align: left; width: 100%; height: 40px; line-height: 40px;}
 	.wrt-div {width: 100%; height: 220px; line-height: 220px; margin-top: 25px;}
@@ -196,6 +196,12 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 		<div id="contents-wrap">
 			<div class="contents">
 				<!-- 이곳에 본문내용을 넣어주세요! -->
+				<!-- 모든 검색 결과 창 -->
+				<div style="margin: 0px auto; border:10px dotted  black; ">
+					<!--  -->d
+					<div></div>
+				</div>
+				<!-- /모든 검색 결과 창 -->
 			</div>
 		</div>
 		<!-- 헤더부분 -->

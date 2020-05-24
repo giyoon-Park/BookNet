@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html style="background-color:#F2F2F2">
+<html style="background-color:#F3F0F7">
 <head>
 <meta charset="UTF-8">
 <title>해쉬태그 검색 결과 페이지</title>
@@ -276,7 +276,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
  										<div style="width: 100%; height: 20px; line-height: 20px;" id="b-title"></div>
  									</div>
  									<%-- </c:forEach> --%>
- 									<div class="p-submit">
+ 									<div class="p-submit"> 
 		 								<input type="button" value="책 등록" class="p-submit" id="-s-b-submit"/>
  									</div>
  								</div>
