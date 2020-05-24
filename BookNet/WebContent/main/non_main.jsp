@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>비회원 메인페이지</title>
-<link rel="stylesheet" href="/BookNet/seo/css/seo_proj.css">
+<link rel="stylesheet" href="/BookNet/css/nonmem.css">
 <link rel="stylesheet" href="/BookNet/css/proj_fixed.css">
 <script type="text/javascript" src="/BookNet/seo/js/jquery-3.5.0.min.js"></script>
 <style>
