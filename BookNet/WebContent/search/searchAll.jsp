@@ -28,7 +28,7 @@
 	input[type=text]:-ms-clear{
     display: none;
     }
-    
+     
     /* 다른 해상도에서 실험 해봐야함.*/
     #searchclear {
 	position: relative;
@@ -42,6 +42,24 @@
     cursor: pointer;
     color: #ccc;
     background-color: #fff;
+	}
+	.boxwrap{
+		display: table;
+		width: 100%;
+		background-color: #f3f3f3;
+		table-layout: fixed;
+	}
+	
+	.boxwrap .box{
+
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+		padding: 20px;
+	}
+	.box{
+	overflow: auto;
+	text-overflow: ellipsis;
 	}
 }
 </style>	
@@ -116,44 +134,13 @@
 				  // display 속성을 none으로 바꾼다. : 감춘다
 				  $(this).hide();
 				});
+			
+			// enter code login()함수 추가하기
+			//$(".searchinput").keyup(function(e){if(e.keyCode == 13)  login(); });
+
 });
 </script>
 <script>
-// 시계만들기
-function printClock() {
-  var clock = document.getElementById("clock");            // 출력할 장소 선택
-  var currentDate = new Date();                                     // 현재시간
-  var calendar = currentDate.getFullYear() + "-" + (currentDate.getMonth()+1) + "-" + currentDate.getDate() // 현재 날짜
-  var amPm = 'AM'; // 초기값 AM
-  var currentHours = addZeros(currentDate.getHours(),2); 
-  var currentMinute = addZeros(currentDate.getMinutes() ,2);
-  var currentSeconds =  addZeros(currentDate.getSeconds(),2);
-			  
-	  if(currentHours >= 12){ // 시간이 12보다 클 때 PM으로 세팅, 12를 빼줌
-	  	amPm = 'PM';
-	  	currentHours = addZeros(currentHours - 12,2);
-	  }
-			
-	  if(currentSeconds >= 50){// 50초 이상일 때 색을 변환해 준다.
-	     currentSeconds = '<span style="color:#de1951;">'+currentSeconds+'</span>'
-	  }
-	  clock.innerHTML = currentHours+":"+currentMinute+":"+currentSeconds +" <span style='font-size:50px;'>"+ amPm+"</span>"; //날짜를 출력해 줌
-			  
-	  setTimeout("printClock()",1000);         // 1초마다 printClock() 함수 호출
-	}
-			
-function addZeros(num, digit) { // 자릿수 맞춰주기
-	  var zero = ''; 
-	  num = num.toString();
-	  if (num.length < digit) {
-	    for (i = 0; i < digit - num.length; i++) {
-	      zero += '0';
-	    }
-	  }
-	  return zero + num;
-}
-</script>
-<script> 
 // 시계만들기
 function printClock() {
   var clock = document.getElementById("clock");            // 출력할 장소 선택
@@ -197,9 +184,108 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 			<div class="contents">
 				<!-- 이곳에 본문내용을 넣어주세요! -->
 				<!-- 모든 검색 결과 창 -->
-				<div style="margin: 0px auto; border:10px dotted  black; ">
-					<!--  -->d
-					<div></div>
+				<div style="line-height: 1; text-align: center; height:100%; margin: 0px auto; border:10px dotted  black; ">
+					<!-- 검색값-->
+					<div style="width: 100%; height: 204px;">
+						<!-- 이미지 -->
+						<div style="float: left; width: 300px; height:100%; border:1px solid red; margin:0px auto; font-size: 14px;">
+							<div style="position: relative;top:25%;left:30%;width:100px;height:100px;border: 1px solid red;border-radius: 50%;padding: 0px;">
+								<img src="https://img.icons8.com/dusk/64/000000/homer-simpson.png" style="position: relative;top: 10px;">
+							</div>
+						</div>
+						<!-- 검색어, 해시태그 -->
+						<div style=" height: 204px;float: right;width: 580px; border: 1px solid blue;">
+							<div style="height:100px;border:1px solid red;">검색어</div>
+							<table style="height: 102px;border: 1px solid yellow; font-size: 14px; " class="boxwrap">
+								<tr>
+									<td style="height:100px; border: 1px solid red;"class="box">
+										#해쉬태그
+									</td>
+									<td style="height:100px; border: 1px solid red;"class="box">
+										#해쉬태그1241241241241
+									</td>
+									<td style="height:100px; border: 1px solid red;"class="box">
+										#해쉬태그
+									</td>
+									<td style="height:100px; border: 1px solid red; "class="box">
+										#해쉬태그
+									</td>
+									<td style="height:100px; border: 1px solid red;  "class="box">
+										#해쉬태그
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<!-- 검색아이디 -->
+					<div style="float: left; width: 300px; border:1px solid red;">아이디</div>
+					<div style=" height: 203px;float: right;width: 580px; border: 1px solid blue;">
+							<table style="height: 102px;border: 1px solid yellow; font-size: 14px; " class="boxwrap">
+								<tr>
+									<td style="height:100px; border: 1px solid red;"class="box">
+										@아이디
+									</td>
+									<td style="height:100px; border: 1px solid red;"class="box">
+										@아이디@아이디@아이디@아이디
+									</td>
+									<td style="height:100px; border: 1px solid red;"class="box">
+										@아이디
+									</td>
+									<td style="height:100px; border: 1px solid red; "class="box">
+										@아이디
+									</td>
+									<td style="height:100px; border: 1px solid red;  "class="box">
+										@아이디
+									</td>
+								</tr>
+							</table>
+					</div>
+					<!-- 검색책 -->
+					<div style="float: left; width: 300px; border:1px solid red;">책<br>책</div>
+					<div style=" height: 202px;float: right;width: 580px; border: 1px solid blue;">
+							<table style="height: 102px;border: 1px solid yellow; font-size: 14px; " class="boxwrap">
+								<tr>
+									<td style="height:100px; border: 1px solid red;"class="box">
+										안녕 난 책이름 이야
+									</td>
+									<td style="height:100px; border: 1px solid red;"class="box">
+											안녕 난 책이름 이야2
+									</td>
+									<td style="height:100px; border: 1px solid red;"class="box">
+											안녕 난 책이름 이야223
+									</td>
+									<td style="height:100px; border: 1px solid red; "class="box">
+											안녕 난 책이름 이야4
+									</td>
+									<td style="height:100px; border: 1px solid red;  "class="box">
+											안녕 난 책이름 이야55
+									</td>
+								</tr>
+							</table>
+					</div>
+					<!-- 검색 해쉬태그 -->
+					<div style="float: left; width: 300px; border:1px solid red;">해쉬태그</div>
+					<div style=" height: 200px;float: right;width: 580px; border: 1px solid blue;">
+							<table style="height: 102px;border: 1px solid yellow; font-size: 14px; " class="boxwrap">
+								<tr>
+									<td style="height:100px; border: 1px solid red;"class="box">
+										#안녕 난 해쉬태그야
+									</td>
+									<td style="height:100px; border: 1px solid red;"class="box">
+										#안녕 난 해쉬태그야
+									</td>
+									<td style="height:100px; border: 1px solid red;"class="box">
+										#안녕 난 해쉬태그야
+									</td>
+									<td style="height:100px; border: 1px solid red; "class="box">
+										#안녕 난 해쉬태그야
+									</td>
+									<td style="height:100px; border: 1px solid red;  "class="box">
+										#안녕 난 해쉬태그야
+									</td>
+								</tr>
+							</table>
+					</div>
 				</div>
 				<!-- /모든 검색 결과 창 -->
 			</div>
@@ -215,7 +301,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 					</div>
 				</div>
 				<div class="searchbox">
-					<input id="searchinput" class="searchinput" type="text" placeholder="search" >
+					<input id="searchinput" class="searchinput" type="text" placeholder="search"  ><!-- onkeyup="enterkey();" -->
 					<span id="searchclear">X</span>
 				</div>
 				<div class="iconsbox">
