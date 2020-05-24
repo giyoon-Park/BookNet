@@ -16,6 +16,7 @@ public class InterParkAPI {
 	
 	String api;
 	String query;
+	JSONArray item;
 	ArrayList<BookVO> list;
 	
 	public InterParkAPI() {
@@ -82,7 +83,6 @@ public class InterParkAPI {
 		br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		
 		json = br.readLine();
-		System.out.println(json);
 		return json;
 	}
 	
@@ -90,40 +90,27 @@ public class InterParkAPI {
 	public ArrayList<BookVO> parsingBookInfo(String json) throws Exception{
 		ArrayList<BookVO> list = new ArrayList<BookVO>();
 		
-			JSONParser parser = new JSONParser();
-			JSONObject obj = (JSONObject)parser.parse(json);
-			
-			JSONArray item = (JSONArray)obj.get("item");
-			
-			for (int i = 0; i < item.size(); i++) {
-				BookVO bVO = new BookVO();
-				JSONObject tmp = (JSONObject)item.get(i);
-				String ctgr = (String)tmp.get("categoryId");
-				String isbn = (String)tmp.get("isbn");
-				bVO.setAuthor((String)tmp.get("author"));
-				bVO.setTitle((String)tmp.get("title"));
-				bVO.setCategoryId(Integer.parseInt(ctgr));
-				bVO.setCvrsUrl((String)tmp.get("coverSmallUrl"));
-				bVO.setCvrlUrl((String)tmp.get("coverLargeUrl"));
-				bVO.setPublisher((String)tmp.get("publisher"));
-				bVO.setTranslator((String)tmp.get("translator"));
-				bVO.setIsbn((String)tmp.get("isbn"));
-				bVO.setSaleStatus((String)tmp.get("saleStatus"));
-				list.add(bVO);
-			}
-			
-			for(int i = 0; i < list.size(); i++) {
-				System.out.println(list.get(i).getTitle());
-			}
-//			System.out.println(list.get(0).getTitle());
-//			System.out.println(list.get(1).getTitle());
-//			System.out.println(list.get(2).getTitle());
-//			System.out.println(list.get(3).getTitle());
-//			System.out.println(list.get(4).getTitle());
+		JSONParser parser = new JSONParser();
+		JSONObject obj = (JSONObject)parser.parse(json);
+		
+		this.item = (JSONArray)obj.get("item");
+		
+		for (int i = 0; i < item.size(); i++) {
+			BookVO bVO = new BookVO();
+			JSONObject tmp = (JSONObject)item.get(i);
+			String ctgr = (String)tmp.get("categoryId");
+			String isbn = (String)tmp.get("isbn");
+			bVO.setAuthor((String)tmp.get("author"));
+			bVO.setTitle((String)tmp.get("title"));
+			bVO.setCategoryId(Integer.parseInt(ctgr));
+			bVO.setCvrsUrl((String)tmp.get("coverSmallUrl"));
+			bVO.setCvrlUrl((String)tmp.get("coverLargeUrl"));
+			bVO.setPublisher((String)tmp.get("publisher"));
+			bVO.setTranslator((String)tmp.get("translator"));
+			bVO.setIsbn((String)tmp.get("isbn"));
+			bVO.setSaleStatus((String)tmp.get("saleStatus"));
+			list.add(bVO);
+		}
 		return list;
-	}
-
-	public static void main(String[] args) {
-		InterParkAPI ipAPI = new InterParkAPI(SEARCH, "java의");
 	}
 }
