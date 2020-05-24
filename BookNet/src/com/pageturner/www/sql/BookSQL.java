@@ -9,7 +9,9 @@ public class BookSQL {
 	public final int SEL_LOGIN = 1002;
 	
 	public final int SEL_ALL_POST = 2001; //비로그인 회원 메인화면에 보여줄 게시글 질의명령 
-	public final int SEL_ALL_POST_MEM = 2002; //로그인 회원 메인화면에 보여줄 게시글 질의명령 
+	public final int SEL_ALL_POST_MEM = 2002; //로그인 회원 메인화면에 보여줄 게시글 질의명령
+	
+	public final int POST_SEARCH_BOOK = 3001; //게시글 작성시 도서검색을 위한 질의명령 
 	
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();
@@ -33,7 +35,7 @@ public class BookSQL {
 			break;
 		case SEL_ALL_POST: //프로필 사진 가져올 수 있게 질의명령 수정해야함 
 			buff.append("SELECT ");
-			buff.append("    pt.pno, pt.mno, bname, ht.hash hash, id, postcont, postdate, emotion, gname, save_loc sloc ");
+			buff.append("    pt.pno, pt.mno, bname, ht.hash hash, id, postcont, postdate, emotion, gname, url ");
 			buff.append("FROM ");
 			buff.append("    poststab pt, membertab m, ");
 			buff.append("    (SELECT ");
@@ -44,18 +46,25 @@ public class BookSQL {
 			buff.append("    WHERE ");
 			buff.append("       p.pno = h.pno ");
 			buff.append("    GROUP BY ");
-			buff.append("        h.pno) ht, emotiontab e, genretab g, booktab b, bookpictab bp ");
+			buff.append("        h.pno) ht, emotiontab e, genretab g, booktab b ");
 			buff.append("WHERE ");
 			buff.append("    pt.pno = ht.pno (+) ");
 			buff.append("    AND pt.mno = m.mno ");
 			buff.append("    AND pt.eno = e.eno ");
 			buff.append("    AND b.genre = g.genre ");
 			buff.append("    AND pt.bno = b.bno ");
-			buff.append("    AND b.bno = bp.bno ");
 			buff.append("ORDER BY ");
 			buff.append("	postdate DESC ");
 			break;
 		case SEL_ALL_POST_MEM: //로그인한 회원이 보는 메인페이지 :: 
+			break;
+		case POST_SEARCH_BOOK:
+			buff.append("SELECT ");
+			buff.append("    bname, writer, trans, url ");
+			buff.append("FROM ");
+			buff.append("    booktab ");
+			buff.append("WHERE ");
+			buff.append("    bname LIKE ? "); //?로 값을 받을때 양 옆에 %% 추가해준다.
 			break;
 		}
 		

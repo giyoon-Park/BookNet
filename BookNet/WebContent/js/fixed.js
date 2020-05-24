@@ -19,16 +19,19 @@ $(document).ready(function(){
 			data : {
 				'searchWord' : book
 			},
-			success : function(obj){ 
-				var item = obj.item;
-				var len = item.length;
-				for(var i = 0; i < len; i++){
-					$('#b-title').append(item[i].title + '<br>');
-				}
-				
+			success : function(obj){
+				$.each(obj, function(){
+					
+				});
+//				var item = obj.item;
+//				var len = item.length;
+//				for(var i = 0; i < len; i++){
+//					$('#b-title').append(item[i].title + '<br>');
+//				}
 			},
-			error : function(){
+			error : function(error){
 				alert("###통신에러###");
+				console.log(error);
 //				console.log("code : " + request.status + "\n message : " + request.responseText	+ "\n error : " + error);
 			}
 		});

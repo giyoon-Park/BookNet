@@ -51,7 +51,7 @@ public class PostsDAO {
 				vo.setPostTime(rs.getTime("postdate"));
 				vo.setPdate();
 				vo.setEmotion(rs.getString("emotion"));
-				vo.setSloc(rs.getString("sloc"));
+				vo.setUrl(rs.getString("url"));
 				vo.setGname(rs.getString("gname"));
 				vo.setHash(rs.getString("hash"));
 				
@@ -63,6 +63,51 @@ public class PostsDAO {
 		} finally {
 			db.close(rs);
 			db.close(stmt);
+			db.close(con);
+		}
+		return list;
+	}
+	
+	//게시글작성시 도서검색결과를 보여줄 데이터베이스 전담 처리함수
+	public ArrayList<PostsVO> getSearchRst(String word){
+		ArrayList<PostsVO> list = new ArrayList<PostsVO>();
+		
+		con = db.getCon();
+		
+		String sql = bSQL.getSQL(bSQL.POST_SEARCH_BOOK);
+		
+		pstmt = db.getPSTMT(con, sql);
+		
+		//매개변수 자체를 바로 ? 입력시키면 매개변수에 맞는 결과만 검색된다. 
+		String searchWord = "%" + word + "%";
+		System.out.println(searchWord);
+		
+		try {
+			//질의명령 완성
+			pstmt.setString(1, searchWord);
+			
+			System.out.println(sql);
+			//질의명령 보내기 
+			rs = pstmt.executeQuery();
+			
+			//결과받기 
+			while(rs.next()) {
+				PostsVO vo = new PostsVO();
+				//뽑은 데이터를 vo 클래스에 담기 
+				vo.setBname(rs.getString("bname"));
+				vo.setWriter(rs.getString("writer"));
+				vo.setTrans(rs.getString("trans"));
+				vo.setUrl(rs.getString("url"));
+				
+				//리스트에 담기
+				list.add(vo);
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
 			db.close(con);
 		}
 		return list;

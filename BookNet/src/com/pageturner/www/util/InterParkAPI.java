@@ -9,7 +9,7 @@ import com.pageturner.www.vo.*;
 
 public class InterParkAPI {
 	private final String KEY = "756476FCE177C662B901F60050D436CDFFDF8BCC7C44966D95B67471225CF8EF"; //인터파크 API를 사용하기 위한 KEY값
-	final static int SEARCH = 1001;
+	public final static int SEARCH = 1001;
 	final static int RECOMMEND = 1002;
 	final static int NEWBOOK = 1003;
 	final static int BESTSELLER = 1004;
@@ -75,7 +75,7 @@ public class InterParkAPI {
 		BufferedReader br;
 		URL url;
 		HttpURLConnection conn;
-		String protocol = "GET";
+		String protocol = "POST";
 		
 		url = new URL(address);
 		conn = (HttpURLConnection)url.openConnection();
@@ -111,6 +111,17 @@ public class InterParkAPI {
 			bVO.setSaleStatus((String)tmp.get("saleStatus"));
 			list.add(bVO);
 		}
+		
+		System.out.println(json);
+		
+		for(int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i).getTitle());
+		}
+		
 		return list;
 	}
+	
+//	public static void main(String[] args) {
+//		InterParkAPI iapi = new InterParkAPI(SEARCH, "너의");
+//	}
 }

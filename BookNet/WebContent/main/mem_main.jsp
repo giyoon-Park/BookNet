@@ -144,7 +144,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 								<!-- 도서사진, 도서이름, 게시글본문 -->
 								<div class="book-pic">
 									<!-- 도서 사진 들어갈 부분 -->
-									<img src="${data.sloc}" style="width: 90%; height: auto;" />
+									<img src="${data.url}" style="width: 90%; height: auto;" />
 								</div>
 								<div class="genre-name" style="font-size: 12px; text-align: left;">
 									<!-- 도서장르 들어갈 부분 -->

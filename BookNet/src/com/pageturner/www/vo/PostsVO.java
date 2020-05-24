@@ -12,7 +12,7 @@ import java.text.*;
 
 public class PostsVO {
 	private int pno, mno, eno, bno, genre;
-	private String id, profile, bname, postcont, pdate, emotion, sloc, gname, hash;
+	private String id, profile, bname, writer, trans, postcont, pdate, emotion, url, gname, hash;
 	private Date postDate;
 	private Time postTime;
 	public int getPno() {
@@ -63,6 +63,18 @@ public class PostsVO {
 	public void setBname(String bname) {
 		this.bname = bname;
 	}
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+	public String getTrans() {
+		return trans;
+	}
+	public void setTrans(String trans) {
+		this.trans = trans;
+	}
 	public String getPostcont() {
 		return postcont;
 	}
@@ -87,11 +99,11 @@ public class PostsVO {
 	public void setEmotion(String emotion) {
 		this.emotion = emotion;
 	}
-	public String getSloc() {
-		return sloc;
+	public String getUrl() {
+		return url;
 	}
-	public void setSloc(String sloc) {
-		this.sloc = sloc;
+	public void setUrl(String Url) {
+		this.url = Url;
 	}
 	public String getGname() {
 		return gname;
