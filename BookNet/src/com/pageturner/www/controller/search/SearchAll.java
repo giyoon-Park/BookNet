@@ -9,8 +9,8 @@ public class SearchAll implements PageController {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
-
-		return null;
+		String view = "/search/searchAll.jsp";
+		return view;
 	}
 
 }

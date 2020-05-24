@@ -9,8 +9,8 @@ public class SearchMember implements PageController {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
-
-		return null;
+		String view = "/search/searchMember.jsp";
+		return view;
 	}
 
 }

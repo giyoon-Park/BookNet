@@ -9,8 +9,8 @@ public class SearchHash implements PageController {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
-
-		return null;
+		String view = "/search/searchHash.jsp";
+		return view;
 	}
 
 }

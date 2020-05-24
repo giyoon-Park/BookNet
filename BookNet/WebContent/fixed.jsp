@@ -54,6 +54,31 @@
 			$('#s-close_butt').click(function(){ //도서검색 모달 닫기 
 				$('#-s-b-modal').css('display', 'none');
 			});
+		  	// footerUp
+			var hei = $('#footer-wrap').css("height");
+			$("#footer-wrap").mouseenter(function(){
+				if($('#footer-wrap').css("height") == "100px"){
+					$('#footer-wrap').css("transition","all 0.6s");
+					$('#footer-wrap').css("background-color","#F7B3D2");
+					$('#footer-wrap').css("color","#FFF");
+					$('#footer-wrap').css("height","200px");
+					
+				} else if($('#footer-wrap').css("height") == hei){
+					$('#footer-wrap').css("transition","all 0.6s");
+					$('#footer-wrap').css("background-color","#F7B3D2");
+					$('#footer-wrap').css("color","#FFF");
+					$('#footer-wrap').css("height","200px");
+				}
+		 	$("#footer-wrap").mouseleave(function(){
+		 		if($('#footer-wrap').css("height") == "200px"){
+		 			$('#footer-wrap').css("height", "100px");
+					$('#footer-wrap').css("background-color","#F3F0F7");
+					$('#footer-wrap').css("color","#FFF");
+					$('#footer-wrap').css("transition","all 0.6s");
+					$('#footer-wrap').css("overflow","hidden");
+		 			}
+				});
+			});
 	});
 </script>
 </head>
