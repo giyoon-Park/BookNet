@@ -14,6 +14,7 @@ public class SearchBook implements PageController {
 	
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
+		req.setAttribute("isRedirect", null);
 		//파라미터 받기
 		String word = req.getParameter("searchWord");
 		
@@ -26,14 +27,18 @@ public class SearchBook implements PageController {
 		
 		//json으로 만들어주어야하는데 이때 검색결과의 수가 몇개가 될지 모른다.
 		StringBuffer buff = new StringBuffer();
+//		int rst = list.size(); //검색결과의 수 
 		for(int i = 0; i < list.size(); i++) {
 			buff.append("{");
-			buff.append("\"bname\" : " + list.get(i).getBname() + ", ");
-			buff.append("\"writer\" : " + list.get(i).getWriter() + ", ");
-			buff.append("\"trans\" : " + list.get(i).getTrans() + ", ");
-			buff.append("\"url\" : " + list.get(i).getUrl());
+			buff.append("\"bno\" : " + list.get(i).getBno() + ", ");
+			buff.append("\"bname\" : \"" + list.get(i).getBname() + "\", ");
+			buff.append("\"writer\" : \"" + list.get(i).getWriter() + "\", ");
+			buff.append("\"trans\" : \"" + list.get(i).getTrans() + "\", ");
+			buff.append("\"largeimg\" : \"" + list.get(i).getLargeimg() + "\"");
+//			buff.append("\"cnt\" : " + rst + "\"");
 			buff.append("}");
 		}
+		System.out.println(buff.toString());
 		
 		return buff.toString();
 	}

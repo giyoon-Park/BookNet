@@ -19,20 +19,31 @@ $(document).ready(function(){
 			data : {
 				'searchWord' : book
 			},
-			success : function(obj){
-				$.each(obj, function(){
-					
-				});
-//				var item = obj.item;
-//				var len = item.length;
-//				for(var i = 0; i < len; i++){
-//					$('#b-title').append(item[i].title + '<br>');
+//			tranditional: true,
+			success : function(data){
+				$('.rstbook').attr('id', data.bno);
+				$('#b-image').attr('src', data.largeimg);
+				$('#b-title').html('<b>' + data.bname + '</b>');
+				$('#b-author').html('<b>' + data.writer + '</b>');
+				if(data.trans == null){
+					$('#notrans').css('display', 'none');
+				}else {
+					$('#b-trans').html('<b>' + data.trans + '</b>');
+				}
+//				alert(data.bname);
+//				$.each(data, function(index, item){
+//					var result = '';
+//					result += index + ' : ' + item;
+//					console.log(result);
+//					alert(result);
+//				})
+//				if(obj.trans == null){
+//					//옮긴이는 출력해주지 않아도 된다.
+//					$('#b-trans').css('display', 'none');
 //				}
 			},
-			error : function(error){
-				alert("###통신에러###");
-				console.log(error);
-//				console.log("code : " + request.status + "\n message : " + request.responseText	+ "\n error : " + error);
+			error : function(){
+				alert("통신에러!");
 			}
 		});
 	});

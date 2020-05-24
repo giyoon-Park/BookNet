@@ -144,7 +144,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 								<!-- 도서사진, 도서이름, 게시글본문 -->
 								<div class="book-pic">
 									<!-- 도서 사진 들어갈 부분 -->
-									<img src="${data.url}" style="width: 90%; height: auto;" />
+									<img src="${data.largeimg}" style="width: 90%; height: auto;" />
 								</div>
 								<div class="genre-name" style="font-size: 12px; text-align: left;">
 									<!-- 도서장르 들어갈 부분 -->
@@ -257,13 +257,27 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
  							<div class="w3-modal" id="-s-b-modal">
  								<div id="" class="s-modal-content">
  									<span class="close w-x-btn" id="s-close_butt">x</span>
- 									<div class="-s-rst">
+ 									<div class="-s-rst" id="rst-cont">
  										<b>검색 결과</b>
  									</div>
  									<%-- <c:forEach var="rstBook" items="${}"> --%>
- 									<div style="width: 100%; height: 80px; line-height: 80px; margin: 0 auto; margin-bottom: 20px; border: solid 1px black;">
+ 									<div class="w100perh300 rstbook" id=""><!-- 이 div를 누르면 글작성시 bno를 파라미터로 보낼 수 있다. -->
  										<!-- 검색 결과의 수만큼 이 div가 생성되어야한다. -->
- 										<div style="width: 100%; height: 20px; line-height: 20px;" id="b-title"></div>
+ 										<div class="-s-b-img">
+ 											<img id="b-image"/>
+ 										</div>
+ 										<div class="-s-b-info">
+ 											<div style="float: left;">도서명 : </div> 
+ 											<div style="float: left;"id="b-title"></div>
+ 										</div>
+ 										<div class="-s-b-info">
+ 											<div style="float: left;">저 자 : </div> 
+ 											<div style="float: left;"id="b-author"></div>
+ 										</div>
+ 										<div class="-s-b-info" id="notrans">
+ 											<div style="float: left;">옮긴이 : </div> 
+ 											<div style="float: left;"id="b-author"></div>
+ 										</div>
  									</div>
  									<%-- </c:forEach> --%>
  									<div class="p-submit">

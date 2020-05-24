@@ -35,7 +35,7 @@ public class BookSQL {
 			break;
 		case SEL_ALL_POST: //프로필 사진 가져올 수 있게 질의명령 수정해야함 
 			buff.append("SELECT ");
-			buff.append("    pt.pno, pt.mno, bname, ht.hash hash, id, postcont, postdate, emotion, gname, url ");
+			buff.append("    pt.pno, pt.mno, bname, ht.hash hash, id, postcont, postdate, emotion, gname, largeimg ");
 			buff.append("FROM ");
 			buff.append("    poststab pt, membertab m, ");
 			buff.append("    (SELECT ");
@@ -60,11 +60,15 @@ public class BookSQL {
 			break;
 		case POST_SEARCH_BOOK:
 			buff.append("SELECT ");
-			buff.append("    bname, writer, trans, url ");
+			buff.append("    bno, bname, gname, writer, trans, largeimg, publish ");
 			buff.append("FROM ");
-			buff.append("    booktab ");
+			buff.append("    booktab b, publishtab p, genretab g ");
 			buff.append("WHERE ");
-			buff.append("    bname LIKE ? "); //?로 값을 받을때 양 옆에 %% 추가해준다.
+			buff.append("    b.publish_no = p.publish_no ");
+			buff.append("    AND b.genre = g.genre ");
+			buff.append("	AND bname LIKE ? ");
+			buff.append("    OR writer LIKE ? ");
+			buff.append("    OR publish LIKE ?");
 			break;
 		}
 		

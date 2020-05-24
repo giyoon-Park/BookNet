@@ -51,7 +51,7 @@ public class PostsDAO {
 				vo.setPostTime(rs.getTime("postdate"));
 				vo.setPdate();
 				vo.setEmotion(rs.getString("emotion"));
-				vo.setUrl(rs.getString("url"));
+				vo.setLargeimg(rs.getString("largeimg"));
 				vo.setGname(rs.getString("gname"));
 				vo.setHash(rs.getString("hash"));
 				
@@ -97,7 +97,7 @@ public class PostsDAO {
 				vo.setBname(rs.getString("bname"));
 				vo.setWriter(rs.getString("writer"));
 				vo.setTrans(rs.getString("trans"));
-				vo.setUrl(rs.getString("url"));
+				vo.setLargeimg(rs.getString("largeimg"));
 				
 				//리스트에 담기
 				list.add(vo);
