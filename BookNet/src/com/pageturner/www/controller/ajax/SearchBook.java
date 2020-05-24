@@ -34,6 +34,7 @@ public class SearchBook implements PageController {
 			buff.append("\"bname\" : \"" + list.get(i).getBname() + "\", ");
 			buff.append("\"writer\" : \"" + list.get(i).getWriter() + "\", ");
 			buff.append("\"trans\" : \"" + list.get(i).getTrans() + "\", ");
+			buff.append("\"gname\" : \"" + list.get(i).getGname() + "\", ");
 			buff.append("\"largeimg\" : \"" + list.get(i).getLargeimg() + "\"");
 //			buff.append("\"cnt\" : " + rst + "\"");
 			buff.append("}");
