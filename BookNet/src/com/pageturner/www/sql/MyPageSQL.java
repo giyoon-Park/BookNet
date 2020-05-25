@@ -33,7 +33,7 @@ public class MyPageSQL {
 			break;
 		case SEL_POST_LIST:
 			buff.append("SELECT ");
-			buff.append("    pno, postcont, postdate, eno, bname, writer, ");
+			buff.append("    pno, postcont, postdate, eno, bname, writer, linkno, ");
 			buff.append("    publish, save_name sname, save_loc sloc ");
 			buff.append("FROM ");
 			buff.append("    poststab pt, booktab bt, bookpictab bpt, publishtab pbt ");
