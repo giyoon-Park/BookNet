@@ -1,7 +1,9 @@
 package com.pageturner.www.vo;
 /**
  * 회원정보 vo
- * @author 2조
+ * @author 이명환
+ * @since 2020.05.25
+ * 
  */
 import java.sql.Date;
 import java.sql.Time;
@@ -9,7 +11,9 @@ import java.text.SimpleDateFormat;
 
 public class MemberVO {
 	private int mno;
-	private String id, pw, name, nickname, birthdate, gen, mail, tel, interest, describe, isshow, sdate, yy, mm, dd, intershow, birthshow, genshow, ori_name, save_name, save_loc;
+	private String id, pw, name, nickname, birthdate, gen, mail, tel, interest, 
+					describe, isshow, sdate, yy, mm, dd, intershow, birthshow, genshow, isinflu,
+					ori_name, save_name, save_loc;
 	private Date mdate;
 	private Time mtime;
 	
@@ -143,6 +147,12 @@ public class MemberVO {
 	}
 	public void setGenshow(String genshow) {
 		this.genshow = genshow;
+	}
+	public String getIsinflu() {
+		return isinflu;
+	}
+	public void setIsinflu(String isinflu) {
+		this.isinflu = isinflu;
 	}
 	public String getOri_name() {
 		return ori_name;
