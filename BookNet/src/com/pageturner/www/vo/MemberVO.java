@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 
 public class MemberVO {
 	private int mno;
-	private String id, pw, name, nickname, birthdate, gen, mail, tel, interest, describe, isshow, sdate, yy, mm, dd, intershow, birthshow, genshow;
+	private String id, pw, name, nickname, birthdate, gen, mail, tel, interest, describe, isshow, sdate, yy, mm, dd, intershow, birthshow, genshow, ori_name, save_name, save_loc;
 	private Date mdate;
 	private Time mtime;
 	
@@ -141,6 +141,24 @@ public class MemberVO {
 	}
 	public void setGenshow(String genshow) {
 		this.genshow = genshow;
+	}
+	public String getOri_name() {
+		return ori_name;
+	}
+	public void setOri_name(String ori_name) {
+		this.ori_name = ori_name;
+	}
+	public String getSave_name() {
+		return save_name;
+	}
+	public void setSave_name(String save_name) {
+		this.save_name = save_name;
+	}
+	public String getSave_loc() {
+		return save_loc;
+	}
+	public void setSave_loc(String save_loc) {
+		this.save_loc = save_loc;
 	}
 	
 }

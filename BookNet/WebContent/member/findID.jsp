@@ -19,6 +19,7 @@
 		$('#btn1').click(function(){
 			$('#f_write').css('display', '');
 			$('.idid').css('display', 'none');
+			$('#id').val('');
 		});
 		
 		$('#btn2').click(function(){
@@ -27,6 +28,13 @@
 		});
 		
 		$('#confirm').click(function(){
+			var idcon = $('#id').val();
+			//alert(idcon);
+			if(idcon == '') {
+				$('#frm').attr('action','/BookNet/member/findIDProc.cls');
+			} else {
+				$('#frm').attr('action','/BookNet/member/findPWProc.cls');
+			}
 			$('#frm').submit();
 		});
 	});
