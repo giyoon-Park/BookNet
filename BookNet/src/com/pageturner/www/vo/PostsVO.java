@@ -11,8 +11,8 @@ import java.sql.*;
 import java.text.*;
 
 public class PostsVO {
-	private int pno, mno, eno, bno, genre, pubno;
-	private String id, profile, bname, writer, trans, postcont, pdate, emotion, largeimg, gname, hash, publish;
+	private int pno, mno, eno, bno;
+	private String id, profile, bname, writer, trans, postcont, pdate, largeimg, gname, hash, publish;
 	private Date postDate;
 	private Time postTime;
 	public int getPno() {
@@ -38,12 +38,6 @@ public class PostsVO {
 	}
 	public void setBno(int bno) {
 		this.bno = bno;
-	}
-	public int getGenre() {
-		return genre;
-	}
-	public void setGenre(int genre) {
-		this.genre = genre;
 	}
 	public String getId() {
 		return id;
@@ -93,12 +87,6 @@ public class PostsVO {
 	public void setPdate(String pdate) {
 		this.pdate = pdate;
 	}
-	public String getEmotion() {
-		return emotion;
-	}
-	public void setEmotion(String emotion) {
-		this.emotion = emotion;
-	}
 	public String getLargeimg() {
 		return largeimg;
 	}
@@ -129,17 +117,10 @@ public class PostsVO {
 	public void setPostTime(Time postTime) {
 		this.postTime = postTime;
 	}
-	public int getPubno() {
-		return pubno;
-	}
-	public void setPubno(int pubno) {
-		this.pubno = pubno;
-	}
 	public String getPublish() {
 		return publish;
 	}
 	public void setPublish(String publish) {
 		this.publish = publish;
 	}
-	
 }
