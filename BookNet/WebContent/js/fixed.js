@@ -99,10 +99,10 @@ $(document).ready(function(){
 		var emo = $('#selEmo').val();
 		var body = $('#postBody').val();
 		var htag = $('#hash-input').val();
-		var hArr = htag.split(' ');
+		alert(htag);
 		$('#eno').val(emo);
 		$('#body').val(body);
-		$('#htags').val(hArr);
+		$('#tags').val(htag);
 //		alert(len);
 		
 		if(!emo){

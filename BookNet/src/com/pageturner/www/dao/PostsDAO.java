@@ -125,7 +125,7 @@ public class PostsDAO {
 		con = db.getCon();
 		String sql = bSQL.getSQL(bSQL.ADD_POSTS);
 		pstmt = db.getPSTMT(con, sql);
-		
+		System.out.println(sql);
 		try {
 			//질의명령 완성 
 			pstmt.setString(1, id);
@@ -143,6 +143,29 @@ public class PostsDAO {
 			db.close(con);
 		}
 		
+		return cnt;
+	}
+	
+	//게시글 작성시 작성한 해시태그를 보내줄 처리 전담함수
+	public int addHashTags(String hname) {
+		int cnt = 0;
+		
+		con = db.getCon();
+		String sql = bSQL.getSQL(bSQL.PUT_TAGS);
+		pstmt = db.getPSTMT(con, sql);
+		System.out.println(sql);
+		try {
+			pstmt.setString(1, hname);
+			
+			cnt = pstmt.executeUpdate();
+			System.out.println(cnt);
+		} catch(Exception e) {
+			System.out.println("###");
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
 		return cnt;
 	}
 }

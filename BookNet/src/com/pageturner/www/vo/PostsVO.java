@@ -11,10 +11,17 @@ import java.sql.*;
 import java.text.*;
 
 public class PostsVO {
-	private int pno, mno, eno, bno;
+	private int pno, mno, eno, bno, linkno;
 	private String id, profile, bname, writer, trans, postcont, pdate, largeimg, gname, hash, publish;
 	private Date postDate;
 	private Time postTime;
+	
+	public int getLinkno() {
+		return linkno;
+	}
+	public void setLinkno(int linkno) {
+		this.linkno = linkno;
+	}
 	public int getPno() {
 		return pno;
 	}
