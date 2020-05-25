@@ -28,16 +28,14 @@ public class JoinProc implements PageController {
 		String tel = req.getParameter("tel");
 		String interest = req.getParameter("interest");
 		String describe = req.getParameter("describe");
+		String yymmdd = yy + mm + dd;
 		
 		MemberVO mVO = new MemberVO();
 		mVO.setId(id);
 		mVO.setPw(pw);
 		mVO.setName(name);
 		mVO.setNickname(nickname);
-		mVO.setYy(yy);
-		mVO.setMm(mm);
-		mVO.setDd(dd);
-		mVO.setBirthdate();
+		mVO.setBirthdate(yymmdd);
 		mVO.setGen(gen);
 		mVO.setMail(mail);
 		mVO.setTel(tel);

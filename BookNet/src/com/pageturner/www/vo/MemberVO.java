@@ -47,7 +47,9 @@ public class MemberVO {
 		return birthdate;
 	}
 	public void setBirthdate() {
-		this.birthdate = yy + mm + dd;
+		SimpleDateFormat form1 = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat form2 = new SimpleDateFormat("HH:mm");
+		this.birthdate = form1.format(mdate) + " " + form2.format(mtime);
 	}
 	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
