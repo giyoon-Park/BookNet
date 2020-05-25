@@ -23,8 +23,8 @@
 	.w-b-input {text-align: left; width: 100%; height: 40px; line-height: 40px;}
 	.wrt-div {width: 100%; height: 220px; line-height: 220px; margin-top: 25px;}
 	.wrt-b-img {float: left; width: 180px; margin: 0 15px; border: dashed 1px blue; text-align: center;}
-	.wrt-body {float: left; width: 440px; height: 225px; line-height: 255px; padding: 10px; text-align: center;}
-	.-a-t {float: left; width: 425px; height: 150px; line-height: 150px; margin-top: 13px;}
+	.wrt-body {float: left; width: 433px; height: 225px; line-height: 255px; padding: 10px; text-align: center;}
+	.-a-t {float: left; width: 425px; height: 150px; line-height: 1; margin-top: 13px;}
 	.wrt-last {width: 100%; height: 50px; line-height: 50px; padding-top: 10px; margin-top: 10px;}
 	.hash-input {float: left; width: 500px; height: 40px; line-height: 40px;}
 	.p-submit {float: right; width: 130px; height: 40px; line-height: 40px;}
@@ -83,8 +83,9 @@
 			});
 			// footerUp
 			var hei = $('#footer-wrap').css("height"); 
+   			// 올리기
 			 $("#footer-wrap").mouseenter(function(){
-					if($('#footer-wrap').css("height") == "86.438px"){
+					if($('#footer-wrap').css("height") == "112.266px"){
 						$('#footer-wrap').css("transition","all 0.6s");
 						$('#footer-wrap').css("background-color","#F7B3D2");
 						$('#footer-wrap').css("color","#FFF");
@@ -96,9 +97,11 @@
 						$('#footer-wrap').css("color","#FFF");
 						$('#footer-wrap').css("height","186.438px");
 					}
+					
+			// 내리기
 			 	$("#footer-wrap").mouseleave(function(){
 			 		if($('#footer-wrap').css("height") == "186.438px"){
-			 			$('#footer-wrap').css("height", "86.438px");
+			 			$('#footer-wrap').css("height", "112.266px");
 						$('#footer-wrap').css("background-color","#F3F0F7");
 						$('#footer-wrap').css("color","#FFF");
 						$('#footer-wrap').css("transition","all 0.6s");
@@ -252,7 +255,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
  									</div>
  								</div>
  							</div>
-						</div>
+						</div> 
 					</div> 
 					<div class="span_icons"> 
 						<img class="iconimg" id="" src="/BookNet/img/iconmonstr-user-19-240.png">
@@ -260,11 +263,11 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 				</div>
 			</div>
 		</div>
-		      		<!-- 풋터부분 -->
-		<footer id="footer-wrap" style="padding:10px; height: 86.45px; color: #FFF;">		
-					<h3 style="position:absolute; top:40px; left: 260px; display: flex;">Company</h3><br><h4 style="position:absolute;  top:35px; left: 360px; display: flex; font-size: 10pt;">Increpas</h4><br><h4 style="position:absolute; top:55px; left: 360px; display: flex; font-size:10pt;">서울특별시 관악구 신림동 시흥대로 552</h4>
-					<h3 style="position:absolute; top:40px; left: 760px; display: flex;">Project_Team</h3><br><h4 style="position:absolute; top:35px; left: 890px; display: flex; font-size: 10pt;">BookNet KOR</h4><br><h4 style="position:absolute; top:55px; left: 890px; display: flex; font-size:10pt;">PageTurner</h4>
-					<h3 style="position:absolute; top:40px; left: 1135px; display: flex;">만든이</h3><br><h4 style="position:absolute; top:35px; left: 1202px; display: flex; font-size: 10pt;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:55px; left: 1202px; display: flex; font-size:10pt;">서 동혁 | 우 현우 |</h4>
+	<!-- 풋터부분 -->
+			<footer id="footer-wrap" style="padding:10px; height: 86.45px; color: #FFF;">		
+					<h3 style="font-size:18.72px; position:absolute; top:40px; left: 255px; display: flex;font-family:Verdana,sans-serif;">Company</h3><br><h4 style="position:absolute;  top:35px; left: 380px; display: flex; font-size: 10pt;font-family:Verdana,sans-serif;">Increpas</h4><br><h4 style="position:absolute; top:55px; left: 380px; display: flex; font-size:10pt;font-family:Verdana,sans-serif;">서울특별시 관악구 신림동 시흥대로 552</h4>
+					<h3 style="font-size:18.72px; position:absolute; top:40px; left: 735px; display: flex;font-family:Verdana,sans-serif;">Project_Team</h3><br><h4 style="position:absolute; top:35px; left: 910px; display: flex; font-size: 10pt;font-family:Verdana,sans-serif;">BookNet KOR</h4><br><h4 style="position:absolute; top:55px; left: 910px; display: flex; font-size:10pt;font-family:Verdana,sans-serif;">PageTurner</h4>
+					<h3 style="font-size:18.72px; position:absolute; top:40px; left: 1135px; display: flex;font-family:Verdana,sans-serif;">만든이</h3><br><h4 style="position:absolute; top:35px; left: 1222px; display: flex; font-size: 10pt;font-family:Verdana,sans-serif;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:55px; left: 1222px; display: flex; font-size:10pt;font-family:Verdana,sans-serif;">서 동혁 | 우 현우 |</h4>
 			    <small>
 			    <p style="position:absolute; top:120px; left: 800px; display: flex;">Copyright © 2020 BookNet.co.,Ltd. All rights reserved.</p>
 			    <address style="position:absolute; top:140px; left: 800px; display: flex;">Contact increpas for more information. </address>
