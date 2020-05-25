@@ -1,15 +1,19 @@
 package com.pageturner.www.vo;
 /**
  * 회원정보 vo
- * @author 2조
+ * @author 이명환
+ * @since 2020.05.25
+ * 
  */
 import java.sql.Date;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 
-public class memberVO {
+public class MemberVO {
 	private int mno;
-	private String id, pw, name, nickname, birthdate, gen, mail, tel, interest, describe, isshow, sdate, yy, mm, dd;
+	private String id, pw, name, nickname, birthdate, gen, mail, tel, interest, 
+					describe, isshow, sdate, yy, mm, dd, intershow, birthshow, genshow, isinflu,
+					ori_name, save_name, save_loc;
 	private Date mdate;
 	private Time mtime;
 	
@@ -47,7 +51,9 @@ public class memberVO {
 		return birthdate;
 	}
 	public void setBirthdate() {
-		this.birthdate = yy + mm + dd;
+		SimpleDateFormat form1 = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat form2 = new SimpleDateFormat("HH:mm");
+		this.birthdate = form1.format(mdate) + " " + form2.format(mtime);
 	}
 	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
@@ -123,6 +129,48 @@ public class memberVO {
 	}
 	public void setMtime(Time mtime) {
 		this.mtime = mtime;
+	}
+	public String getIntershow() {
+		return intershow;
+	}
+	public void setIntershow(String intershow) {
+		this.intershow = intershow;
+	}
+	public String getBirthshow() {
+		return birthshow;
+	}
+	public void setBirthshow(String birthshow) {
+		this.birthshow = birthshow;
+	}
+	public String getGenshow() {
+		return genshow;
+	}
+	public void setGenshow(String genshow) {
+		this.genshow = genshow;
+	}
+	public String getIsinflu() {
+		return isinflu;
+	}
+	public void setIsinflu(String isinflu) {
+		this.isinflu = isinflu;
+	}
+	public String getOri_name() {
+		return ori_name;
+	}
+	public void setOri_name(String ori_name) {
+		this.ori_name = ori_name;
+	}
+	public String getSave_name() {
+		return save_name;
+	}
+	public void setSave_name(String save_name) {
+		this.save_name = save_name;
+	}
+	public String getSave_loc() {
+		return save_loc;
+	}
+	public void setSave_loc(String save_loc) {
+		this.save_loc = save_loc;
 	}
 	
 }

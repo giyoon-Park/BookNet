@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html style="background-color:#F2F2F2">
+<html style="background-color: #F3F0F7">
 <head>
 <meta charset="UTF-8">
 <title>회원 메인페이지</title>
@@ -11,98 +11,145 @@
 <link rel="stylesheet" href="/BookNet/css/w3.css">
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
 <script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
+<script type="text/javascript" src="/BookNet/js/fixed.js"></script>
 <style>
-	.w-x-btn {margin: 5px; width: 10px; height: 10px; line-height: 10px; font-size: 13px;}
-	.w-b-input {text-align: left; width: 100%; height: 40px; line-height: 40px;}
-	.wrt-div {width: 100%; height: 220px; line-height: 220px; margin-top: 25px;}
-	.wrt-b-img {float: left; width: 180px; margin: 0 15px; border: dashed 1px blue; text-align: center;}
-	.wrt-body {float: left; width: 440px; height: 225px; line-height: 255px; padding: 10px; text-align: center;}
-	.-a-t {float: left; width: 425px; height: 150px; line-height: 150px; margin-top: 13px;}
-	.wrt-last {width: 100%; height: 50px; line-height: 50px; padding-top: 10px; margin-top: 10px;}
-	.hash-input {float: left; width: 500px; height: 40px; line-height: 40px;}
-	.p-submit {float: right; width: 130px; height: 40px; line-height: 40px;}
 </style>	
 <script type="text/javascript">
-	$(document).ready(
-		function() {
-			$('#more_butt').click(function() { //modal에서 알림페이지로 이동 
-				$(location).attr('href', '/BookNet/fixed/activity.cls');
+	$(document).ready(function() {
+		// footerUp
+		var hei = $('#footer-wrap').css("height"); 
+			// 올리기
+		 $("#footer-wrap").mouseenter(function(){
+				if($('#footer-wrap').css("height") == "112.266px"){
+					$('#footer-wrap').css("transition","all 0.6s");
+					$('#footer-wrap').css("background-color","#F7B3D2");
+					$('#footer-wrap').css("color","#FFF");
+					$('#footer-wrap').css("height","186.438px");
+					
+				} else if($('#footer-wrap').css("height") == hei){
+					$('#footer-wrap').css("transition","all 0.6s");
+					$('#footer-wrap').css("background-color","#F7B3D2");
+					$('#footer-wrap').css("color","#FFF");
+					$('#footer-wrap').css("height","186.438px");
+				}
+				
+		// 내리기
+		 	$("#footer-wrap").mouseleave(function(){
+		 		if($('#footer-wrap').css("height") == "186.438px"){
+		 			$('#footer-wrap').css("height", "112.266px");
+					$('#footer-wrap').css("background-color","#F3F0F7");
+					$('#footer-wrap').css("color","#FFF");
+					$('#footer-wrap').css("transition","all 0.6s");
+					$('#footer-wrap').css("overflow","hidden");
+		 		}
 			});
-
-			$('#aBtn').click(function() { //modal 열기
-				$('#actModal').css('display', 'block');
-			});
-
-			$('#a-close_butt').click(function() { //modal 닫기버튼 
-				$('#actModal').css('display', 'none');
-			});
-			
-			$('#likebtn').click(function(){ //like 버튼 클릭시 빨강하트로 변경 
-				$(this).css('background-position', '-208px -370px');
-			});
-			
-			$('#wBtn').click(function(){ //글쓰기 modal 열기 
-				$('#writeModal').css('display', 'block');
-			});
-			
-			$('#w-close_butt').click(function(){ //글쓰기 모달 닫기 
-				$('#writeModal').css('display', 'none');
-			});
+		});
 	});
 </script>
+<script>
+// 시계만들기
+function printClock() {
+  var clock = document.getElementById("clock");            // 출력할 장소 선택
+  var currentDate = new Date();                                     // 현재시간
+  var calendar = currentDate.getFullYear() + "-" + (currentDate.getMonth()+1) + "-" + currentDate.getDate() // 현재 날짜
+  var amPm = 'AM'; // 초기값 AM
+  var currentHours = addZeros(currentDate.getHours(),2); 
+  var currentMinute = addZeros(currentDate.getMinutes() ,2);
+  var currentSeconds =  addZeros(currentDate.getSeconds(),2);
+			  
+	  if(currentHours >= 12){ // 시간이 12보다 클 때 PM으로 세팅, 12를 빼줌
+	  	amPm = 'PM';
+	  	currentHours = addZeros(currentHours - 12,2);
+	  }
+			
+	  if(currentSeconds >= 50){// 50초 이상일 때 색을 변환해 준다.
+	     currentSeconds = '<span style="color:#de1951;">'+currentSeconds+'</span>'
+	  }
+	  clock.innerHTML = currentHours+":"+currentMinute+":"+currentSeconds +" <span style='font-size:50px;'>"+ amPm+"</span>"; //날짜를 출력해 줌
+			  
+	  setTimeout("printClock()",1000);         // 1초마다 printClock() 함수 호출
+	}
+			
+function addZeros(num, digit) { // 자릿수 맞춰주기
+	  var zero = ''; 
+	  num = num.toString();
+	  if (num.length < digit) {
+	    for (i = 0; i < digit - num.length; i++) {
+	      zero += '0';
+	    }
+	  }
+	  return zero + num;
+}
+</script>
 </head>
-<body>
+<body onload="printClock()"/>
+<!-- 파라미터로 넘길 데이터값 -->
+<form method="POST" id="frm">
+	<input type="hidden" id="bno" name="bno"> <!-- 글 작성할때 넘겨줄 책 번호 -->
+	<input type="hidden" id="eno" name="eno"> <!-- 글 작성할때 넘겨줄 감정번호 -->
+	<input type="hidden" id="body" name="body"> <!-- 글 작성할때 넘겨줄 게시글 본문 -->
+	<input type="hidden" id="tags" name="tags"> <!-- 글 작성할때 넘겨줄 해시태그 -->
+	<
+</form>
 	<div>
 		<!-- 본문부분 -->
 		<div id="contents-wrap">
 			<div class="contents">
 				<!-- 좌측 게시글 부분 -->
 				<div class="posts_area">
-					<article class="eachPost" id="이곳은게시물번호가들어갈자리">
-						<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
-						<div class="wrtInfo">
-							<div class="wrtProf">
-								<img src="">
+					<c:forEach var="data" items="${LIST}">
+						<article class="eachPost" id="${data.pno}">
+							<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
+							<div class="wrtInfo">
+								<div class="wrtProf">
+									<img src="">
+								</div>
+								<div class="wrter" id="">
+									<a href=""><b>${data.id}</b></a>
+								</div>
+								<div class="time" id="">
+									${data.pdate}
+								</div>
+								<div class="like-butt" id="">
+									<span style="font-size: 12px; line-height: 0px;" class="comt-img"></span>
+								</div>
+								<div class="like-butt" id="" style="display: flex;'">
+									<span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span>
+								</div>
 							</div>
-							<div class="wrter" id="">
-								<b>작성자아이디</b>
+							<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
+							<div class="postCont" style="text-align: center; font-size: 16px;">
+								<!-- 도서사진, 도서이름, 게시글본문 -->
+								<div class="book-pic">
+									<!-- 도서 사진 들어갈 부분 -->
+									<img src="${data.largeimg}" style="width: 90%; height: auto;" />
+								</div>
+								<div class="genre-name" style="font-size: 12px; text-align: left;">
+									<!-- 도서장르 들어갈 부분 -->
+									${data.gname}
+								</div>
+								<div class="book-name">
+									<!-- 도서명 들어갈 부분 -->
+									<b>${data.bname}</b>
+								</div>
+								<div class="post-body">
+									<!-- 게시글 부분 -->
+									<a style="box-sizing: border-box; font-size: 18px;">${data.postcont}</a>
+								</div>
 							</div>
-							<div class="like-butt" id="">
-								<span style="font-size: 12px; line-height: 0px;"
-									class="comt-img"></span>
+							<div class="etcdiv" style="text-align: left; font-size: 13px;">
+								<!-- 게시글 해시태그 부분 -->
+								${data.hash}
 							</div>
-							<div class="like-butt" id="" style="display: flex;'">
-								<span style="font-size: 12px; line-height: 0px;"
-									class="like-img" id="likebtn"></span>
-							</div>
-						</div>
-						<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
-						<div class="postCont" style="text-align: center; font-size: 16px;">
-							<!-- 도서사진, 도서이름, 게시글본문 -->
-							<div class="book-pic">
-								<!-- 도서 사진 들어갈 부분 -->
-							</div>
-							<div class="book-name">
-								<!-- 도서명 들어갈 부분 -->
-							</div>
-							<div class="post-body">
-								<!-- 게시글 부분 -->
-							</div>
-						</div>
-						<div class="etcdiv" style="text-align: center; font-size: 16px;">
-							태그
-							<!-- 게시글 해시태그 부분 -->
-						</div>
-					</article>
+						</article>
+					</c:forEach>
 				</div>
 				<!-- 우측 정보 부분 : 고정페이지로 들어갈 것-->
 				<div class="info_area">
-					<div
-						style="width: 100%; height: 200px; margin-top: 15px; border: solid 1px white;">
+					<div style="width: 100%; height: 200px; margin-top: 15px; border: solid 1px white;">
 						<a></a>
 					</div>
-					<div
-						style="width: 100%; height: 200px; margin-top: 15px; border: solid 1px white;">
+					<div style="width: 100%; height: 200px; margin-top: 15px; border: solid 1px white;">
 						<a></a>
 					</div>
 				</div>
@@ -113,10 +160,9 @@
 		<div id="header-wrap">
 			<div class="header">
 				<div class="logobox">
-					<div
-						style="box-sizing: border-box; font-size: 30px; text-align: center;">
+					<div style="box-sizing: border-box; font-size: 30px; text-align: center;">
 						<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
-						<a href="/BookNet/main/mem_main.cls">PageTurner</a>
+						<a href="/BookNet/main/main.cls" style="color: #120E0A;"><b>PageTurner</b></a>
 					</div>
 				</div>
 				<div class="searchbox">
@@ -158,29 +204,70 @@
 									<!-- onclick="document.getElementById('actModal').style.display='none'" -->
 								<!-- 도서검색 -->
 								<div class="w-b-input">
-									<input type="search" id="" placeholder="도서검색"/>
-									<input type="button" id="" value="검색" style="width: 40px;"/>
+									<input type="search" id="findBook" placeholder="도서검색" style="float: left; width: 190px; height: 40px; line-height: 40px;"/>
+									<input type="button" id="book-search" value="검색" style="float: left; width: 40px; height: 40px; line-height: 40px; margin-left: 10px;"/>
+									<!-- 감정 셀렉트 -->
+									<div class="w-e-sel">
+										<select name="emotion" id="selEmo">
+											<option value="">감정을 선택해주세요X)</option>
+											<option value="2">덜덜;무서워욧!</option>
+											<option value="3">ㅠ_ㅠ불안해요..</option>
+											<option value="4">very exciting!</option>
+											<option value="1">행복해요X)</option>
+											<option value="5">그리워요;ㅁ;</option>
+										</select>
+									</div>
 	 							</div>
 	 							<div class="wrt-div">
-									<div class="wrt-b-img">책!</div>
+									<div class="wrt-b-img">
+										<img id="sel-wrt-b-img"/>
+									</div>
 		 							<div class="wrt-body">
-		 								<p style="height: 40px; line-height: 40px;">책 제목</p>
-	 									<textarea class="-a-t"></textarea>
+		 								<p style="height: 80px; line-height: 80px; margin-bottom: 30px; font-size: 25px;" id="sel-wrt-b-ttl"></p>
+	 									<textarea class="-a-t" id="postBody"></textarea>
 	 								</div>
 	 							</div>
 	 							<div class="wrt-last">
-	 								<input type="text" placeholder="hashTags" class="hash-input" id=""/>
+	 								<input type="text" placeholder="hashTags" class="hash-input" id="hash-input"/>
 	 								<input type="button" value="글 등록" class="p-submit" id="p-submit"/>
 	 							</div>
 							</div>
-						    <!-- <div class="w3-modal-content w3-round-small">
-						      <div class="w3-container w3-center">
-						        <span onclick="document.getElementById('writeModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-						       	<div class="w3-col"><a>???????</a></div>
-						       	<div class="w3-col m2"><p></p></div>
-						       	<div class="w3-col m8 w3-container"><a>게시글 작성</a></div>
-						      </div>
-						    </div> -->
+							<!-- 도서검색 결과 모달창 -->
+ 							<div class="w3-modal" id="-s-b-modal">
+ 								<div id="" class="s-modal-content">
+ 									<span class="close w-x-btn" id="s-close_butt">x</span>
+ 									<div class="-s-rst" id="rst-cont">
+ 										<b>검색 결과</b>
+ 									</div>
+ 									<%-- <c:forEach var="rstBook" items="${}"> --%>
+ 									<div class="w100perh300 rstbook" id="">
+ 										<!-- 검색 결과의 수만큼 이 div가 생성되어야한다. -->
+  										<div class="-s-b-img">
+ 											<img id="b-image"/>
+ 										</div>
+ 										<div class="-s-b-info">
+ 											<div style="float: left; margin-right: 15px;">도서장르 : </div> 
+ 											<div style="float: left;"id="b-genre"></div>
+ 										</div>
+ 										<div class="-s-b-info">
+ 											<div style="float: left; margin-right: 15px;">도서명 : </div> 
+ 											<div style="float: left;"id="b-title"></div>
+ 										</div>
+ 										<div class="-s-b-info">
+ 											<div style="float: left; margin-right: 15px;">저 자 : </div> 
+ 											<div style="float: left;"id="b-author"></div>
+ 										</div>
+ 										<div class="-s-b-info" id="notrans">
+ 											<div style="float: left; margin-right: 15px;">옮긴이 : </div> 
+ 											<div style="float: left;"id="b-author"></div>
+ 										</div>
+	 									<div class="-s-b-submit">
+			 								<input type="button" value="책 등록" id="sel-b-submit"/>
+	 									</div>
+ 									</div>
+ 									<%-- </c:forEach> --%>
+ 								</div>
+ 							</div>
 						</div>
 					</div> 
 					<div class="span_icons"> 
@@ -189,10 +276,23 @@
 				</div>
 			</div>
 		</div>
-		<!-- 풋터부분 -->
-		<div id="footer-wrap">
-			<div class="footer" style="text-align: center;">footer</div>
-		</div>
+<!-- 풋터부분 -->
+			<footer id="footer-wrap" style="padding:10px; height: 86.45px; color: #FFF;">		
+					<h3 style="position:absolute; top:40px; left: 255px; display: flex;font-family:Verdana,sans-serif;">Company</h3><br><h4 style="position:absolute;  top:35px; left: 380px; display: flex; font-size: 10pt;font-family:Verdana,sans-serif;">Increpas</h4><br><h4 style="position:absolute; top:55px; left: 380px; display: flex; font-size:10pt;font-family:Verdana,sans-serif;">서울특별시 관악구 신림동 시흥대로 552</h4>
+					<h3 style="position:absolute; top:40px; left: 735px; display: flex;font-family:Verdana,sans-serif;">Project_Team</h3><br><h4 style="position:absolute; top:35px; left: 910px; display: flex; font-size: 10pt;font-family:Verdana,sans-serif;">BookNet KOR</h4><br><h4 style="position:absolute; top:55px; left: 910px; display: flex; font-size:10pt;font-family:Verdana,sans-serif;">PageTurner</h4>
+					<h3 style="position:absolute; top:40px; left: 1135px; display: flex;font-family:Verdana,sans-serif;">만든이</h3><br><h4 style="position:absolute; top:35px; left: 1222px; display: flex; font-size: 10pt;font-family:Verdana,sans-serif;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:55px; left: 1222px; display: flex; font-size:10pt;font-family:Verdana,sans-serif;">서 동혁 | 우 현우 |</h4>
+			    <small>
+			    <p style="position:absolute; top:120px; left: 800px; display: flex;">Copyright © 2020 BookNet.co.,Ltd. All rights reserved.</p>
+			    <address style="position:absolute; top:140px; left: 800px; display: flex;">Contact increpas for more information. </address>
+			    </small>
+			    <img src="https://img.icons8.com/dusk/64/000000/finn.png" style="position:absolute; top:100px; left: 1497px; display: flex; width:64px; height: 64px;"/>
+			    <img src="https://img.icons8.com/dusk/64/000000/jake.png" style="position:absolute; top:100px; left: 1582px; display: flex; width:64px; height: 64px;"/>
+			    <img src="https://img.icons8.com/dusk/64/000000/stich.png" style="position:absolute; top:100px; left: 1667px; display: flex; width:64px; height: 64px;"/>
+			    <img src="https://img.icons8.com/dusk/64/000000/homer-simpson.png" style="position:absolute; top:100px; left: 1752px; display: flex; width:64px; height: 64px;"/>
+			    <img src="https://img.icons8.com/dusk/64/000000/futurama-zoidberg.png" style="position:absolute; top:100px; left: 1830px; display: flex; width:64px; height: 64px;"/>
+			    <div style="/*border:2px solid #fff;*/ width: 400px; height:80px; line-height:65px; color:#fff;font-size:60px; text-align:center; position:absolute; top:10px; left: 1490px;" id="clock">
+				</div>
+		</footer>
 	</div>
 </body>
 </html>

@@ -1,14 +1,21 @@
+<%--
+	이 페이지는 비회원에게 보여지는 게시물 메인페이지 | 로그인, 가입하기 유도 페이지 입니다.
+  @author 서동혁
+  @version v.0.1.0
+  @since 2020.05.25
+ --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html style="background-color:#F2F2F2">
+<html style="background-color: #F3F0F7">
 <head>
 <meta charset="UTF-8">
 <title>비회원 메인페이지</title>
-<link rel="stylesheet" href="/BookNet/seo/css/seo_proj.css">
-<link rel="stylesheet" href="/BookNet/css/proj.css">
-<script type="text/javascript" src="/DohyuProj/js/jquery-3.5.0.min.js"></script>
+<link rel="stylesheet" href="/BookNet/css/nonmem.css">
+<link rel="stylesheet" href="/BookNet/css/proj_fixed.css">
+<script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
 <style>
+
 *{
     overflow-y: none;
    -ms-overflow-style: none; /* IE and Edge */
@@ -16,6 +23,7 @@
 }*::-webkit-scrollbar {
 display: none; /*Chrome, Safari, Opera*/
 }
+
 #logolink{
 	text-decoration: none;
 	color:black;
@@ -24,20 +32,49 @@ display: none; /*Chrome, Safari, Opera*/
 	color:black;
 	 font-weight: 400;
 }
+	input[type=text]:-ms-clear{
+    display: none;
+    }
+    #searchclear {
+	position: relative;
+    left: 135px;
+    top: -52px;
+    bottom: 0;
+    width: 10px;
+    /* height: 14px; */
+    /* margin: auto; */
+    font-size: 12px;
+    cursor: pointer;
+    color: #ccc;
+    background-color: #fff;
+}
 </style>
+<style>
+	/* transition css */
+	.eachPost{
+		overflow: hidden;
+	}
+	.eachPostTran{
+		position: relative;
+		right: 205px;
+		hegiht: 157.5px;
+		width: 205px; 
+	}
+</style>
+<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
 <script>
 $(function(){
    $('#lbtn').click(function(){
-      $(location).attr('href','/clsProj/member/login.cls');
+      $(location).attr('href','/BookNet/member/login.cls');
    })
    $('#lbtn2').click(function(){
-      $(location).attr('href','/clsProj/member/login.cls');
+      $(location).attr('href','/BookNet/member/login.cls');
    })
-   $('#jbtn').click(function(){
-      $(location).attr('href','/clsProj/member/join.cls');
+   $('#jbtn').click(function(){ 
+      $(location).attr('href','/BookNet/member/join.cls');
    })
    $('#jbtn2').click(function(){
-      $(location).attr('href','/clsProj/member/join.cls');
+      $(location).attr('href','/BookNet/member/join.cls');
    })
    $('.dCJp8').click(function(){
       $('.closeing').remove();
@@ -47,38 +84,61 @@ $(function(){
     var maxHeight = $(document).height();
     var currentScroll = $(window).scrollTop() + $(window).height();
     if (maxHeight <= currentScroll + 100) {
-       $('.posts_area').append('<article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><img src="https://img.icons8.com/nolan/64/apple-seed.png" style=" width: 49px;height: 49px; position: relative ; right: 215px; bottom: 19px;"/><div class="wrtProf"></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div></article>');
+       $('.posts_area').append('<article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><img src="https://img.icons8.com/nolan/64/apple-seed.png" style=" width: 49px;height: 49px; position: relative ; right: 215px; bottom: 19px;"/><div class="wrtProf"></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --><button class="Bbtn">버튼</button></div></article>');
     }
     
   })
   	// footerUp
-			var hei = $('#footer-wrap').css("height");
+			var hei = $('#footer-wrap').css("height"); 
+   			// 올리기
 			 $("#footer-wrap").mouseenter(function(){
-					if($('#footer-wrap').css("height") == "100px"){
+					if($('#footer-wrap').css("height") == "112.266px"){
 						$('#footer-wrap').css("transition","all 0.6s");
-						$('#footer-wrap').css("background-color","black");
-						$('#footer-wrap').css("color","white");
-						$('#footer-wrap').css("height","200px");
+						$('#footer-wrap').css("background-color","#F7B3D2");
+						$('#footer-wrap').css("color","#FFF");
+						$('#footer-wrap').css("height","186.438px");
 						
 					} else if($('#footer-wrap').css("height") == hei){
 						$('#footer-wrap').css("transition","all 0.6s");
-						$('#footer-wrap').css("background-color","black");
-						$('#footer-wrap').css("color","white");
-						$('#footer-wrap').css("height","200px");
+						$('#footer-wrap').css("background-color","#F7B3D2");
+						$('#footer-wrap').css("color","#FFF");
+						$('#footer-wrap').css("height","186.438px");
 					}
+					
+			// 내리기
 			 	$("#footer-wrap").mouseleave(function(){
-			 		if($('#footer-wrap').css("height") == "200px"){
-			 			$('#footer-wrap').css("height", "100px");
-						$('#footer-wrap').css("background-color","#fff");
-						$('#footer-wrap').css("color","#000");
+			 		if($('#footer-wrap').css("height") == "186.438px"){
+			 			$('#footer-wrap').css("height", "112.266px");
+						$('#footer-wrap').css("background-color","#F3F0F7");
+						$('#footer-wrap').css("color","#FFF");
 						$('#footer-wrap').css("transition","all 0.6s");
 						$('#footer-wrap').css("overflow","hidden");
 			 		}
 				});
 			});
-			
- 
-})
+				// search clear
+				var $ipt = $('#searchinput'),
+				    $clearIpt = $('#searchclear');
+						// keyup시 x표시
+					$ipt.keyup(function(){
+					  $("#searchclear").toggle(Boolean($(this).val()));
+					});
+						
+						
+					$clearIpt.toggle(Boolean($ipt.val()));
+					$clearIpt.click(function(){
+					  $("#searchinput").val('').focus();
+					  // display 속성을 none으로 바꾼다. : 감춘다
+					  $(this).hide();
+					});
+					
+				// login_alert	
+				$('#searchinput').keyup(function(e){
+					if(e.keyCode==13){
+						swal ( "Oops" ,  "Please use after login!" ,  "error" );
+					}
+				})
+}) 
 </script>
 <script>
 // 시계만들기
@@ -117,6 +177,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 </script>
 </head>
 <body onload="printClock()"/>
+
    <div>
       <!-- 본문부분 -->
       <div id="contents-wrap">
@@ -145,16 +206,17 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
             <div class="logobox">
                		<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
                	 <div style="box-sizing: border-box; font-size: 30px; text-align: center;">
-              	 	<a href="/BookNet/main/mem_main.cls" id="logolink">PageTurner</a>
+              	 	<a href="/BookNet/main/non.cls" id="logolink">PageTurner</a>
               	 </div>
        		</div>
             <div class="searchbox">
-               <input class="searchinput" type="text" placeholder="search">
+               <input id="searchinput" class="searchinput" type="text" placeholder="search"  >
+               	<span id="searchclear">X</span>
             </div>
             <div class="iconsbox">
                <!-- 상단 로그인, 가입하기 버튼 -->
-               <a href="#" class="ft-log foot-box mg-whtie" id="lbtn">로그인</a>
-               <a href="#" class="ft-join joinc0l0" style="padding-left:15px;" id="jbtn">가입하기</a>
+               <a href="#" class="ft-log foot-box mg-whtie"  style="color: #fff;"id="lbtn">로그인</a>
+               <a href="#" class="ft-join joinc0l0" style="padding-left:15px; color:rgba(var(--d69,0,149,246),1);" id="jbtn">가입하기</a>
                <!-- /상단 로그인, 가입하기 버튼 -->
             </div>
          </div>
@@ -191,35 +253,35 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
             <div class="ft-btn">
                <!-- Login -->
                <div class="mt-12">
-                  <a href="#" class="ft-log foot-box mg-whtie" id="lbtn2">로그인</a>
+                  <a href="#" class="ft-log foot-box mg-whtie"style="color: #fff;" id="lbtn2">로그인</a>
                </div>
                <!-- /Login -->
                <!-- Join -->
                <div style="text-align:center; margin-top: 12px; padding: 0px 30px;">
-                  <a href="#" class="ft-join joinc0l0" id="jbtn2">가입하기</a>
+                  <a href="#" class="ft-join joinc0l0" style="color:rgba(var(--d69,0,149,246),1);"id="jbtn2">가입하기</a>
                </div>
                <!-- /Join -->
             </div>
             <!-- /Login, Join button -->
-         </div>
+         </div> 
          <!-- /div area -->
       </div>
       <!-- /Footer Link -->
-      		<!-- 풋터부분 -->
-		<footer id="footer-wrap" style="padding:10px; height: 100px;">		
-					<h3 style="position:absolute; top:0px; left: 350px; display: flex;">Company</h3><br><h4 style="position:absolute;  top:25px; left: 352px; display: flex; font-size: 10pt;">Increpas</h4><br><h4 style="position:absolute; top:45px; left: 352px; display: flex; font-size:10pt;">서울특별시 관악구 신림동 시흥대로 552</h4>
-					<h3 style="position:absolute; top:0px; left: 800px; display: flex;">Project_Team</h3><br><h4 style="position:absolute; top:25px; left: 802px; display: flex; font-size: 10pt;">BookNet KOR</h4><br><h4 style="position:absolute; top:45px; left: 802px; display: flex; font-size:10pt;">PageTurner</h4>
-					<h3 style="position:absolute; top:0px; left: 1200px; display: flex;">만든이</h3><br><h4 style="position:absolute; top:25px; left: 1202px; display: flex; font-size: 10pt;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:45px; left: 1202px; display: flex; font-size:10pt;">서 동혁 | 우 현우 |</h4>
+	<!-- 풋터부분 -->
+			<footer id="footer-wrap" style="padding:10px; height: 86.45px; color: #FFF;">		
+					<h3 style="position:absolute; top:40px; left: 255px; display: flex;font-family:Verdana,sans-serif;">Company</h3><br><h4 style="position:absolute;  top:35px; left: 380px; display: flex; font-size: 10pt;font-family:Verdana,sans-serif;">Increpas</h4><br><h4 style="position:absolute; top:55px; left: 380px; display: flex; font-size:10pt;font-family:Verdana,sans-serif;">서울특별시 관악구 신림동 시흥대로 552</h4>
+					<h3 style="position:absolute; top:40px; left: 735px; display: flex;font-family:Verdana,sans-serif;">Project_Team</h3><br><h4 style="position:absolute; top:35px; left: 910px; display: flex; font-size: 10pt;font-family:Verdana,sans-serif;">BookNet KOR</h4><br><h4 style="position:absolute; top:55px; left: 910px; display: flex; font-size:10pt;font-family:Verdana,sans-serif;">PageTurner</h4>
+					<h3 style="position:absolute; top:40px; left: 1135px; display: flex;font-family:Verdana,sans-serif;">만든이</h3><br><h4 style="position:absolute; top:35px; left: 1222px; display: flex; font-size: 10pt;font-family:Verdana,sans-serif;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:55px; left: 1222px; display: flex; font-size:10pt;font-family:Verdana,sans-serif;">서 동혁 | 우 현우 |</h4>
 			    <small>
-			    <p style="position:absolute; top:120px; left: 800px; display: flex;">Copyright © 2018 tcpschool.co.,Ltd. All rights reserved.</p>
-			    <address style="position:absolute; top:140px; left: 800px; display: flex;">Contact webmaster for more information. 070-1234-5678</address>
+			    <p style="position:absolute; top:120px; left: 800px; display: flex;">Copyright © 2020 BookNet.co.,Ltd. All rights reserved.</p>
+			    <address style="position:absolute; top:140px; left: 800px; display: flex;">Contact increpas for more information. </address>
 			    </small>
 			    <img src="https://img.icons8.com/dusk/64/000000/finn.png" style="position:absolute; top:100px; left: 1497px; display: flex; width:64px; height: 64px;"/>
 			    <img src="https://img.icons8.com/dusk/64/000000/jake.png" style="position:absolute; top:100px; left: 1582px; display: flex; width:64px; height: 64px;"/>
 			    <img src="https://img.icons8.com/dusk/64/000000/stich.png" style="position:absolute; top:100px; left: 1667px; display: flex; width:64px; height: 64px;"/>
 			    <img src="https://img.icons8.com/dusk/64/000000/homer-simpson.png" style="position:absolute; top:100px; left: 1752px; display: flex; width:64px; height: 64px;"/>
-			    <img src="https://img.icons8.com/dusk/64/000000/futurama-zoidberg.png" style="position:absolute; top:100px; left: 1837px; display: flex; width:64px; height: 64px;"/>
-			    <div style="border:2px solid #fff; width: 400px; height:120px; line-height:65px; color:#fff;font-size:60px; text-align:center; position:absolute; top:50px; left: 1490px;" id="clock">
+			    <img src="https://img.icons8.com/dusk/64/000000/futurama-zoidberg.png" style="position:absolute; top:100px; left: 1830px; display: flex; width:64px; height: 64px;"/>
+			    <div style="/*border:2px solid #fff;*/ width: 400px; height:80px; line-height:65px; color:#fff;font-size:60px; text-align:center; position:absolute; top:10px; left: 1490px;" id="clock">
 				</div>
 		</footer>
    </div>

@@ -11,10 +11,17 @@ import java.sql.*;
 import java.text.*;
 
 public class PostsVO {
-	private int pno, mno, eno, bno, genre;
-	private String id, bname, postcont, pdate, emotion, sloc, gname;
+	private int pno, mno, eno, bno, linkno;
+	private String id, profile, bname, writer, trans, postcont, pdate, largeimg, gname, hash, publish;
 	private Date postDate;
 	private Time postTime;
+	
+	public int getLinkno() {
+		return linkno;
+	}
+	public void setLinkno(int linkno) {
+		this.linkno = linkno;
+	}
 	public int getPno() {
 		return pno;
 	}
@@ -39,23 +46,35 @@ public class PostsVO {
 	public void setBno(int bno) {
 		this.bno = bno;
 	}
-	public int getGenre() {
-		return genre;
-	}
-	public void setGenre(int genre) {
-		this.genre = genre;
-	}
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
+	public String getProfile() {
+		return profile;
+	}
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
 	public String getBname() {
 		return bname;
 	}
 	public void setBname(String bname) {
 		this.bname = bname;
+	}
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+	public String getTrans() {
+		return trans;
+	}
+	public void setTrans(String trans) {
+		this.trans = trans;
 	}
 	public String getPostcont() {
 		return postcont;
@@ -67,31 +86,31 @@ public class PostsVO {
 		return pdate;
 	}
 	public void setPdate() {
-		SimpleDateFormat form1 = new SimpleDateFormat("yyyy/MM/dd");
-		SimpleDateFormat form2 = new SimpleDateFormat("HH:mm:ss");
-		String str = form1.format(postDate) + form2.format(postTime);
+		SimpleDateFormat form1 = new SimpleDateFormat("yy/MM/dd");
+		SimpleDateFormat form2 = new SimpleDateFormat("HH:mm");
+		String str = form1.format(postDate) + " " + form2.format(postTime);
 		this.pdate = str;
 	}
 	public void setPdate(String pdate) {
 		this.pdate = pdate;
 	}
-	public String getEmotion() {
-		return emotion;
+	public String getLargeimg() {
+		return largeimg;
 	}
-	public void setEmotion(String emotion) {
-		this.emotion = emotion;
-	}
-	public String getSloc() {
-		return sloc;
-	}
-	public void setSloc(String sloc) {
-		this.sloc = sloc;
+	public void setLargeimg(String largeimg) {
+		this.largeimg = largeimg;
 	}
 	public String getGname() {
 		return gname;
 	}
 	public void setGname(String gname) {
 		this.gname = gname;
+	}
+	public String getHash() {
+		return hash;
+	}
+	public void setHash(String hash) {
+		this.hash = hash;
 	}
 	public Date getPostDate() {
 		return postDate;
@@ -105,6 +124,10 @@ public class PostsVO {
 	public void setPostTime(Time postTime) {
 		this.postTime = postTime;
 	}
-	
-	
+	public String getPublish() {
+		return publish;
+	}
+	public void setPublish(String publish) {
+		this.publish = publish;
+	}
 }

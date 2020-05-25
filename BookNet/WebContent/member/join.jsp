@@ -1,3 +1,7 @@
+<!-- 
+작성자: 이명환
+작성일: 20.05.25
+ -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -46,7 +50,6 @@
                         <h3 class="join_title"><label for="id">아이디</label></h3>
                         <span class="ps_box int_id">
 							<input type="text" id="id" name="id" class="int" title="ID" maxlength="20">
-                            <span class="step_url">@naver.com</span></span>
                         <span class="error_next_box" id="idMsg" style="display:none" aria-live="assertive"></span>
                     </div>
 

@@ -115,7 +115,13 @@
 	요청내용:/post/postWriteProc.cls
 	파라미터:mno, bno, postcont, linkno, eno, hname, publish, gname, writer, trans, ori_name
 	컨트롤러:com.pageturner.www.controller.post.PostWriteProc
-	뷰		:redirect(/main/mem.cls)
+	뷰		:redirect(/main/main.cls 혹은 머물렀던 페이지로 이동)
+		
+(+) 게시글 작성시 도서검색 요청
+	요청내용	: /ajax/searchBook.cls
+	파라미터	: 검색어
+	컨트롤러	: com.pageturner.www.controller.ajax.SearchBook
+	뷰		: 없음(모달에 띄워줄 예정)
 --------------------------------------------------------
 23. 게시글 삭제 처리 요청
 	요청내용:/post/postDelProc.cls
