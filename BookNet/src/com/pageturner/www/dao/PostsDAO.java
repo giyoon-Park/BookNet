@@ -50,7 +50,7 @@ public class PostsDAO {
 				vo.setPostDate(rs.getDate("postdate"));
 				vo.setPostTime(rs.getTime("postdate"));
 				vo.setPdate();
-				vo.setEmotion(rs.getString("emotion"));
+//				vo.setEmotion(rs.getString("emotion"));
 				vo.setLargeimg(rs.getString("largeimg"));
 				vo.setGname(rs.getString("gname"));
 				vo.setHash(rs.getString("hash"));
