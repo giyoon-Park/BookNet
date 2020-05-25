@@ -170,7 +170,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 		<div id="contents-wrap">
 			<div class="contents">
 				<!-- 이곳에 본문내용을 넣어주세요! -->
-				<!-- 모든 검색 결과 창 -->
+				<!-- 책 검색 결과 창 -->
 				<div style="line-height: 1; text-align: center; height:100%; padding: 0px 10px; margin: 0px auto;border: 1px solid black; border-top-width:0px; border-bottom-width: 0px;">
 					<!-- 검색값-->
 					<div style="width: 100%; height: 204px;">
@@ -276,7 +276,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
 									</span>
 							</div>
-				<!-- /모든 검색 결과 창 -->
+				<!-- /책 검색 결과 창 -->
 				</div>
 			</div>
 		</div>

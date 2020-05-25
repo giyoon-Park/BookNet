@@ -170,6 +170,38 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 		<div id="contents-wrap">
 			<div class="contents">
 				<!-- 이곳에 본문내용을 넣어주세요! -->
+					<!-- 해시태그 검색 결과 창 -->
+				<div style="line-height: 1; text-align: center; height:100%; padding: 0px 10px; margin: 0px auto;border: 1px solid black; border-top-width:0px; border-bottom-width: 0px;">
+					<!-- 검색값-->
+					<div style="width: 100%; height: 204px;">
+						<!-- 이미지 -->
+						<div style="float: left; width: 300px; height:100%; margin:0px auto; font-size: 14px;">
+							<div style="position: relative;top:25%;left:30%;width:100px;height:100px;border: 1px solid red;border-radius: 50%;padding: 0px;">
+								<img src="https://img.icons8.com/dusk/64/000000/homer-simpson.png" style="position: relative;top: 10px;">
+							</div>
+						</div>
+						<!-- 검색어, 해시태그 -->
+						<div style=" height: 204px;float: right;width: 578px;">
+							<div style="height:100px; text-align: left;">#해시태그</div>
+						</div>
+					</div>
+					<!-- 검색아이디 -->
+					<div style="width: 100%; height: 100px;">
+								<span style="color: #666; font-size: 14px; float: left; padding-top: 40px;"class="box">
+									검색 해시태그
+								</span>
+						</div>
+					<!-- 검색 해시태그 -->
+					<!-- 수정해야 되는 부분
+					 -->
+					<c:forEach var="hash" items="${hash}" begin=0>
+							<div style="font-size: 27px; background-color:#666; margin-bottom:30px;" class="boxwrap">
+									<span style="border: solid 4px red ;/*border: solid 4px transparent ;*/"class="box">
+										<a href="#">#해시태그입니다</a>
+									</span>
+							</div>
+					</c:forEach>
+				<!-- /해시태그 검색 결과 창 -->
 			</div>
 		</div>
 		<!-- 헤더부분 -->
