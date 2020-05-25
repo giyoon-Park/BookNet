@@ -12,7 +12,6 @@ public class MemberVO {
 	private String id, pw, name, nickname, birthdate, gen, mail, tel, interest, describe, isshow, sdate, yy, mm, dd, intershow, birthshow, genshow;
 	private Date mdate;
 	private Time mtime;
-	
 	public int getMno() {
 		return mno;
 	}
