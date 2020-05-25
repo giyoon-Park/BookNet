@@ -1,5 +1,11 @@
 package com.pageturner.www.dao;
 
+/**
+ * 회원관련 db처리 전담함수들
+ * @author 이명환
+ * @since 2020.05.25
+ * 
+ */
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;

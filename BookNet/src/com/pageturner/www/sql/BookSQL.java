@@ -1,7 +1,8 @@
 package com.pageturner.www.sql;
 /**
- * 우리 SQL
- * @author 2조
+ * 회원정보, 게시글 관련 SQL
+ * @author 이명환
+ * @since 2020.05.25
  *
  */
 public class BookSQL {
