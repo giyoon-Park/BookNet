@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.pageturner.www.controller.PageController;
 import com.pageturner.www.dao.MemberDAO;
-import com.pageturner.www.vo.memberVO;
+import com.pageturner.www.vo.MemberVO;
 
 public class JoinProc implements PageController {
 
@@ -29,7 +29,7 @@ public class JoinProc implements PageController {
 		String interest = req.getParameter("interest");
 		String describe = req.getParameter("describe");
 		
-		memberVO mVO = new memberVO();
+		MemberVO mVO = new MemberVO();
 		mVO.setId(id);
 		mVO.setPw(pw);
 		mVO.setName(name);

@@ -7,7 +7,7 @@ import java.sql.Date;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 
-public class memberVO {
+public class MemberVO {
 	private int mno;
 	private String id, pw, name, nickname, birthdate, gen, mail, tel, interest, describe, isshow, sdate, yy, mm, dd, intershow, birthshow, genshow;
 	private Date mdate;

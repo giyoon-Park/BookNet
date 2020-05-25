@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 import com.pageturner.www.DB.WebDBCP;
 import com.pageturner.www.sql.BookSQL;
-import com.pageturner.www.vo.memberVO;
+import com.pageturner.www.vo.MemberVO;
 
 public class MemberDAO {
 	WebDBCP db;
@@ -24,7 +24,7 @@ public class MemberDAO {
 	}
 
 	// 회원가입
-	public int addUser(memberVO mVO) {
+	public int addUser(MemberVO mVO) {
 		int cnt = 0;
 		con = db.getCon();
 		String sql = bSQL.getSQL(bSQL.ADD_USER);
