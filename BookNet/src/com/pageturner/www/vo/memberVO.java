@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 
 public class memberVO {
 	private int mno;
-	private String id, pw, name, nickname, birthdate, gen, mail, tel, interest, describe, isshow, sdate, yy, mm, dd;
+	private String id, pw, name, nickname, birthdate, gen, mail, tel, interest, describe, isshow, sdate, yy, mm, dd, intershow, birthshow, genshow;
 	private Date mdate;
 	private Time mtime;
 	
@@ -123,6 +123,24 @@ public class memberVO {
 	}
 	public void setMtime(Time mtime) {
 		this.mtime = mtime;
+	}
+	public String getIntershow() {
+		return intershow;
+	}
+	public void setIntershow(String intershow) {
+		this.intershow = intershow;
+	}
+	public String getBirthshow() {
+		return birthshow;
+	}
+	public void setBirthshow(String birthshow) {
+		this.birthshow = birthshow;
+	}
+	public String getGenshow() {
+		return genshow;
+	}
+	public void setGenshow(String genshow) {
+		this.genshow = genshow;
 	}
 	
 }
