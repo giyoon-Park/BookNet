@@ -270,7 +270,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
                <!-- /Join -->
             </div>
             <!-- /Login, Join button -->
-         </div>
+         </div> 
          <!-- /div area -->
       </div>
       <!-- /Footer Link -->
