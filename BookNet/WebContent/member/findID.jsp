@@ -37,16 +37,16 @@
 			}
 			$('#frm').submit();
 		});
+		
+		$('#mailUtil').click(function(){
+			$('#frm').attr('action', '/BookNet/member/mail.cls');
+			$('#frm').submit();
+		});
 	});
 </script>
 </head>
 <body>
 	<form id="frm" method="post" action="">
-		<input type="hidden" name="id">
-		<input type="hidden" name="name">
-		<input type="hidden" name="mail">
-		<input type="hidden" name="cert_no">
-	</form>
 	<div class="w3-content" style="max-width: 600px;" id="loginWin">
 		<span class="w3-half w3-red w3-button w3-padding w3-center w3-margin-top" id="btn1">아이디찾기</span>
 		<span class="w3-half w3-blue w3-button w3-padding w3-center w3-margin-top" id="btn2">비밀번호찾기</span>
@@ -62,7 +62,7 @@
 			<label for="mail" class="w3-col m2 w3-right-align w3-padding-16">이메일 : </label>
 			<div class="w3-col m10 w3-padding">
 				<input type="text" class="w3-col m8 w3-input w3-border" id="mail" name="mail">
-				<span class="w3-col m3 w3-card" style="height: 40px; margin-left: 32px;">인증번호받기</span>
+				<span class="w3-col m3 w3-card w3-button" style="height: 40px; margin-left: 32px;" id="mailUtil">인증번호받기</span>
 			</div>
 			<label for="cert_no" class="w3-col m2 w3-right-align w3-padding-16">인증번호 : </label>
 			<div class="w3-col m10 w3-padding">
@@ -73,5 +73,6 @@
 			</div>
 		</div>
 	</div>
+	</form>
 </body>
 </html>
