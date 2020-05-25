@@ -23,7 +23,6 @@ public class InterParkAPI {
 		this(SEARCH, "java");
 	}
 	public InterParkAPI(int code, String keyword) {
-		keyword = keyword.replaceAll(" ", "%20");	// 뛰어쓰기를 브라우저가 인식할 수 있는 단어로 바꾼다.
 		String str = null;
 		String json = null;
 		String address = null;
@@ -112,16 +111,9 @@ public class InterParkAPI {
 			list.add(bVO);
 		}
 		
-		System.out.println(json);
-		
 		for(int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i).getTitle());
 		}
 		
 		return list;
 	}
-	
-//	public static void main(String[] args) {
-//		InterParkAPI iapi = new InterParkAPI(SEARCH, "너의");
-//	}
 }

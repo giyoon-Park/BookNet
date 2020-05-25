@@ -1,5 +1,10 @@
 package com.pageturner.www.vo;
-
+/**
+ * 	이 클래스는 도서 정보를 저장할 VO 클래스이다.
+ * @author	박기윤
+ * @since	2020.05.25
+ *
+ */
 public class BookVO {
 	private String title, saleStatus, cvrsUrl, cvrlUrl, publisher, author, translator, link, isbn;
 	private int categoryId;
