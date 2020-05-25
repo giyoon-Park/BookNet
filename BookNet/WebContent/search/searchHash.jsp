@@ -230,7 +230,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 		 							<div class="wrt-body">
 		 								<p style="height: 40px; line-height: 40px;">책 제목</p>
 	 									<textarea class="-a-t"></textarea>
-	 								</div>
+	 								</div> 
 	 							</div>
 	 							<div class="wrt-last">
 	 								<input type="text" placeholder="hashTags" class="hash-input" id=""/>

@@ -70,7 +70,7 @@ $(function(){
    $('#lbtn2').click(function(){
       $(location).attr('href','/BookNet/member/login.cls');
    })
-   $('#jbtn').click(function(){
+   $('#jbtn').click(function(){ 
       $(location).attr('href','/BookNet/member/join.cls');
    })
    $('#jbtn2').click(function(){

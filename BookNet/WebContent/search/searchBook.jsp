@@ -350,7 +350,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
  								<div id="" class="s-modal-content">
  									<span class="close w-x-btn" id="s-close_butt">x</span>
  									<div class="-s-rst">
- 										<b>검색 결과</b>
+ 										<b>검색 결과</b> 
  									</div>
  									<%-- <c:forEach var="rstBook" items="${}"> --%>
  									<div style="width: 100%; height: 80px; line-height: 80px; margin: 0 auto; margin-bottom: 20px; border: solid 1px black;">

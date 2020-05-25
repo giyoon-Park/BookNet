@@ -50,7 +50,7 @@
 		function() {
 			$('#more_butt').click(function() { //modal에서 알림페이지로 이동 
 				$(location).attr('href', '/BookNet/fixed/activity.cls');
-			});
+			}); 
 
 			$('#aBtn').click(function() { //modal 열기
 				$('#actModal').css('display', 'block');

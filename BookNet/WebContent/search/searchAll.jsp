@@ -407,7 +407,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 	 							</div>
 							</div>
  							<!-- 도서검색 결과 모달창 -->
- 							<div class="w3-modal" id="-s-b-modal">
+ 							<div class="w3-modal" id="-s-b-modal"> 
  								<div id="" class="s-modal-content">
  									<span class="close w-x-btn" id="s-close_butt">x</span>
  									<div class="-s-rst">
