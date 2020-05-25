@@ -1,5 +1,10 @@
 package com.pageturner.www.controller.ajax;
-
+/**
+ * 이 클래스는 게시글 작성시 도서검색에 대한 비동기처리를 위한 클래스입니다.
+ * @author leeseulkim
+ * @since 25th May 2020
+ * 
+ */
 import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;

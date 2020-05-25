@@ -16,21 +16,22 @@
 </style>	
 <script type="text/javascript">
 	$(document).ready(function() {
-		  	// footerUp
-			var hei = $('#footer-wrap').css("height");
-			$("#footer-wrap").mouseenter(function(){
-				if($('#footer-wrap').css("height") == "100px"){
-					$('#footer-wrap').css("transition","all 0.6s");
-					$('#footer-wrap').css("background-color","#F7B3D2");
-					$('#footer-wrap').css("color","#FFF");
-					$('#footer-wrap').css("height","200px");
-					
-				} else if($('#footer-wrap').css("height") == hei){
-					$('#footer-wrap').css("transition","all 0.6s");
-					$('#footer-wrap').css("background-color","#F7B3D2");
-					$('#footer-wrap').css("color","#FFF");
-					$('#footer-wrap').css("height","200px");
-				}
+		
+	  	// footerUp
+		var hei = $('#footer-wrap').css("height");
+		$("#footer-wrap").mouseenter(function(){
+			if($('#footer-wrap').css("height") == "100px"){
+				$('#footer-wrap').css("transition","all 0.6s");
+				$('#footer-wrap').css("background-color","#F7B3D2");
+				$('#footer-wrap').css("color","#FFF");
+				$('#footer-wrap').css("height","200px");
+				
+			} else if($('#footer-wrap').css("height") == hei){
+				$('#footer-wrap').css("transition","all 0.6s");
+				$('#footer-wrap').css("background-color","#F7B3D2");
+				$('#footer-wrap').css("color","#FFF");
+				$('#footer-wrap').css("height","200px");
+			}
 		 	$("#footer-wrap").mouseleave(function(){
 		 		if($('#footer-wrap').css("height") == "200px"){
 		 			$('#footer-wrap').css("height", "100px");
@@ -83,6 +84,8 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 <!-- 파라미터로 넘길 데이터값 -->
 <form method="POST" id="frm">
 	<input type="hidden" id="bno" name="bno"> <!-- 글 작성할때 넘겨줄 책 번호 -->
+	<input type="hidden" id="eno" name="eno"> <!-- 글 작성할때 넘겨줄 감정번호 -->
+	<input type="hidden" id="body" name="body"> <!-- 글 작성할때 넘겨줄 게시글 본문 -->
 </form>
 	<div>
 		<!-- 본문부분 -->
@@ -155,7 +158,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 				<div class="logobox">
 					<div style="box-sizing: border-box; font-size: 30px; text-align: center;">
 						<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
-						<a href="/BookNet/main/mem_main.cls" style="color: #120E0A;"><b>PageTurner</b></a>
+						<a href="/BookNet/main/main.cls" style="color: #120E0A;"><b>PageTurner</b></a>
 					</div>
 				</div>
 				<div class="searchbox">
@@ -201,13 +204,13 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 									<input type="button" id="book-search" value="검색" style="float: left; width: 40px; height: 40px; line-height: 40px; margin-left: 10px;"/>
 									<!-- 감정 셀렉트 -->
 									<div class="w-e-sel">
-										<select name="emotion">
+										<select name="emotion" id="selEmo">
 											<option value="">감정을 선택해주세요X)</option>
-											<option value="fear">덜덜;무서워욧!</option>
-											<option value="anxiety">ㅠ_ㅠ불안해요..</option>
-											<option value="excited">very exciting!</option>
-											<option value="joy">행복해요X)</option>
-											<option value="nostalgia">그리워요;ㅁ;</option>
+											<option value="2">덜덜;무서워욧!</option>
+											<option value="3">ㅠ_ㅠ불안해요..</option>
+											<option value="4">very exciting!</option>
+											<option value="1">행복해요X)</option>
+											<option value="5">그리워요;ㅁ;</option>
 										</select>
 									</div>
 	 							</div>
@@ -217,11 +220,11 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 									</div>
 		 							<div class="wrt-body">
 		 								<p style="height: 80px; line-height: 80px; margin-bottom: 30px; font-size: 25px;" id="sel-wrt-b-ttl"></p>
-	 									<textarea class="-a-t"></textarea>
+	 									<textarea class="-a-t" id="postBody"></textarea>
 	 								</div>
 	 							</div>
 	 							<div class="wrt-last">
-	 								<input type="text" placeholder="hashTags" class="hash-input" id=""/>
+	 								<input type="text" placeholder="hashTags" class="hash-input" id="hash-input"/>
 	 								<input type="button" value="글 등록" class="p-submit" id="p-submit"/>
 	 							</div>
 							</div>

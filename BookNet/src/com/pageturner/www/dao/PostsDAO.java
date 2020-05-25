@@ -2,7 +2,7 @@ package com.pageturner.www.dao;
 /**
  * 이 클래스는 게시글관련한 데이터베이스 작업을 위한 클래스입니다.
  * @author leeseulkim
- *
+ * 
  */
 
 import java.sql.*;
@@ -85,6 +85,8 @@ public class PostsDAO {
 		try {
 			//질의명령 완성
 			pstmt.setString(1, searchWord);
+			pstmt.setString(2, searchWord);
+			pstmt.setString(3, searchWord);
 			
 			System.out.println(sql);
 			//질의명령 보내기 
@@ -94,10 +96,13 @@ public class PostsDAO {
 			while(rs.next()) {
 				PostsVO vo = new PostsVO();
 				//뽑은 데이터를 vo 클래스에 담기 
+				vo.setBno(rs.getInt("bno"));
+				vo.setGname(rs.getString("gname"));
 				vo.setBname(rs.getString("bname"));
 				vo.setWriter(rs.getString("writer"));
 				vo.setTrans(rs.getString("trans"));
 				vo.setLargeimg(rs.getString("largeimg"));
+				vo.setPublish(rs.getString("publish"));
 				
 				//리스트에 담기
 				list.add(vo);
@@ -113,4 +118,31 @@ public class PostsDAO {
 		return list;
 	}
 	
+	//작성한 게시글을 데이터베이스에 보내줄 처리 전담함수
+	public int addPost(String id, int bno, String body, int eno) {
+		int cnt = 0;
+		
+		con = db.getCon();
+		String sql = bSQL.getSQL(bSQL.ADD_POSTS);
+		pstmt = db.getPSTMT(con, sql);
+		
+		try {
+			//질의명령 완성 
+			pstmt.setString(1, id);
+			pstmt.setInt(2, bno);
+			pstmt.setString(3, body);
+			pstmt.setInt(4, eno);
+			
+			//질의명령 실어서 보내기 
+			cnt = pstmt.executeUpdate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		
+		return cnt;
+	}
 }

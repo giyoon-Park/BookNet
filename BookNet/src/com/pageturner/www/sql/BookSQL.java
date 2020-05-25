@@ -12,6 +12,7 @@ public class BookSQL {
 	public final int SEL_ALL_POST_MEM = 2002; //로그인 회원 메인화면에 보여줄 게시글 질의명령
 	
 	public final int POST_SEARCH_BOOK = 3001; //게시글 작성시 도서검색을 위한 질의명령
+	public final int ADD_POSTS = 3002; //게시글 작성을 위한 질의명령
 	
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();
@@ -69,6 +70,14 @@ public class BookSQL {
 			buff.append("	AND bname LIKE ? ");
 			buff.append("    OR writer LIKE ? ");
 			buff.append("    OR publish LIKE ?");
+			break;
+		case ADD_POSTS:
+			buff.append("INSERT INTO ");
+			buff.append("    poststab(pno, mno, bno, postcont, eno) ");
+			buff.append("VALUES( ");
+			buff.append("    (SELECT MAX(pno)+1 FROM poststab), ");
+			buff.append("    (SELECT mno FROM membertab WHERE id = ?), ?, ");
+			buff.append("    ?, ?)");
 			break;
 		}
 		
