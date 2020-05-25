@@ -71,6 +71,7 @@ display: none; /*Chrome, Safari, Opera*/
 		width: 205px; 
 	}
 </style>
+<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
 <script>
 $(function(){
    $('#lbtn').click(function(){
@@ -137,6 +138,13 @@ $(function(){
 					  // display 속성을 none으로 바꾼다. : 감춘다
 					  $(this).hide();
 					});
+					
+				// login_alert	
+				$('#searchinput').keyup(function(e){
+					if(e.keyCode==13){
+						swal ( "Oops" ,  "Please use after login!" ,  "error" );
+					}
+				})
 })
 </script>
 <script>
@@ -176,6 +184,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 </script>
 </head>
 <body onload="printClock()"/>
+
    <div>
       <!-- 본문부분 -->
       <div id="contents-wrap">
