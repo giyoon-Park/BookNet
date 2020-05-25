@@ -96,8 +96,33 @@ $(document).ready(function(){
 	$(document).on('click', '#p-submit', function(){
 		//이미 도서번호는 input name=bno 에 담겨져 있다.
 		//select로 선택된 감정을 변수에 대입하기 
-		var emo = $('#selEmo').val(); 
-		alert(emo);
+		var emo = $('#selEmo').val();
+		var body = $('#postBody').val();
+		var htag = $('#hash-input').val();
+		var hArr = htag.split(' ');
+		$('#eno').val(emo);
+		$('#body').val(body);
+		$('#htags').val(hArr);
+//		alert(len);
+		
+		if(!emo){
+			$('#selEmo').focus();
+			return
+		}
+		if(!body){
+			$('#postBody').focus();
+			return
+		}
+		
+		//데이터 넘기기
+		$('#frm').attr('action','/BookNet/post/postWriteProc.cls');
+		$('#frm').submit();
 	});
+	
+//	$(document).on('keyup', '#hash-input', function(){ //해시태그 작성시
+//		if(keyCode == 32){
+//			//스페이스바 입력시 #으로 대체해준다.
+//		}
+//	});
 	
 });
