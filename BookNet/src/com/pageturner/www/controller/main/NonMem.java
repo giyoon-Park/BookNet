@@ -1,6 +1,9 @@
 package com.pageturner.www.controller.main;
 /**
- * 로그인한 회원에게 보여주는 메인화면입니다. 
+ * 비회원에게 보여지는 메인 페이지 경로 입니다.
+ * @author 서동혁
+ * @version v.0.1.0
+ * @since 2020.05.25
  */
 import javax.servlet.http.*;
 import java.util.*;

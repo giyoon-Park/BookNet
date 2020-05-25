@@ -1,3 +1,9 @@
+<%--
+	이 페이지는 모든 검색 결과를 보여주는 페이지 입니다.
+  @author 서동혁
+  @version v.0.1.0
+  @since 2020.05.25
+ --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -46,21 +52,22 @@
 	.boxwrap{
 		display: table;
 		width: 100%;
-		background-color: #f3f3f3;
+		 height: 100px;
 		table-layout: fixed;
+
 	}
 	
 	.boxwrap .box{
-
 		display: table-cell;
 		vertical-align: middle;
-		text-align: center;
-		padding: 20px;
+		text-align: left;
+		border: solid 4px transparent ;
 	}
 	.box{
 	overflow: auto;
 	text-overflow: ellipsis;
 	}
+	
 }
 </style>	
 <script type="text/javascript">
@@ -134,9 +141,6 @@
 				  // display 속성을 none으로 바꾼다. : 감춘다
 				  $(this).hide();
 				});
-			
-			// enter code login()함수 추가하기
-			//$(".searchinput").keyup(function(e){if(e.keyCode == 13)  login(); });
 
 });
 </script>
@@ -184,110 +188,153 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 			<div class="contents">
 				<!-- 이곳에 본문내용을 넣어주세요! -->
 				<!-- 모든 검색 결과 창 -->
-				<div style="line-height: 1; text-align: center; height:100%; margin: 0px auto; border:10px dotted  black; ">
+				<div style="line-height: 1; text-align: center; height:100%; padding: 0px 10px; margin: 0px auto;border: 1px solid black; border-top-width:0px; border-bottom-width: 0px;">
 					<!-- 검색값-->
 					<div style="width: 100%; height: 204px;">
 						<!-- 이미지 -->
-						<div style="float: left; width: 300px; height:100%; border:1px solid red; margin:0px auto; font-size: 14px;">
+						<div style="float: left; width: 300px; height:100%; margin:0px auto; font-size: 14px;">
 							<div style="position: relative;top:25%;left:30%;width:100px;height:100px;border: 1px solid red;border-radius: 50%;padding: 0px;">
 								<img src="https://img.icons8.com/dusk/64/000000/homer-simpson.png" style="position: relative;top: 10px;">
 							</div>
 						</div>
 						<!-- 검색어, 해시태그 -->
-						<div style=" height: 204px;float: right;width: 580px; border: 1px solid blue;">
-							<div style="height:100px;border:1px solid red;">검색어</div>
-							<table style="height: 102px;border: 1px solid yellow; font-size: 14px; " class="boxwrap">
+						<div style=" height: 204px;float: right;width: 578px;">
+							<div style="height:100px; text-align: left;">검색어</div>
+								<span style="color: #666; font-size: 14px; float: left; padding-top: 40px;"class="box">
+									관련 해시태그 
+								</span>
+							<table style="font-size: 14px;  height: 50px; display: flex; " class="boxwrap">
 								<tr>
-									<td style="height:100px; border: 1px solid red;"class="box">
-										#해쉬태그
-									</td>
-									<td style="height:100px; border: 1px solid red;"class="box">
-										#해쉬태그1241241241241
-									</td>
-									<td style="height:100px; border: 1px solid red;"class="box">
-										#해쉬태그
-									</td>
-									<td style="height:100px; border: 1px solid red; "class="box">
-										#해쉬태그
-									</td>
-									<td style="height:100px; border: 1px solid red;  "class="box">
-										#해쉬태그
+									<td style=""class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">#해시태그1</a>
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">#해시태그1</a>
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">#해시태그1</a>
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">#해시태그1</a>
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">#해시태그1</a>
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">#해시태그1</a>
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">#해시태그1</a>
 									</td>
 								</tr>
 							</table>
 						</div>
 					</div>
 					<!-- 검색아이디 -->
-					<div style="float: left; width: 300px; border:1px solid red;">아이디</div>
-					<div style=" height: 203px;float: right;width: 580px; border: 1px solid blue;">
-							<table style="height: 102px;border: 1px solid yellow; font-size: 14px; " class="boxwrap">
+					<div style="width: 100%; height: 204px;">
+								<span style="color: #666; font-size: 14px; float: left; padding-top: 40px;"class="box">
+									검색 아이디
+								</span>
+							<table style="font-size: 14px;  height: 50px; display: flex; " class="boxwrap">
 								<tr>
-									<td style="height:100px; border: 1px solid red;"class="box">
-										@아이디
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">이미지</a>
 									</td>
-									<td style="height:100px; border: 1px solid red;"class="box">
-										@아이디@아이디@아이디@아이디
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">이미지</a>
 									</td>
-									<td style="height:100px; border: 1px solid red;"class="box">
-										@아이디
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">이미지</a>
 									</td>
-									<td style="height:100px; border: 1px solid red; "class="box">
-										@아이디
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">이미지</a>
 									</td>
-									<td style="height:100px; border: 1px solid red;  "class="box">
-										@아이디
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">이미지</a>
+									</td>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">이미지</a>
+									</td>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">이미지</a>
+									</td>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">이미지</a>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">이미지</a>
+									</td>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">이미지</a>
+									</td>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">이미지</a>
+									</td>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">이미지</a>
+									</td>
+								</tr>
+								<tr>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">@아이디</a>
+									</td>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">@아이디</a>
+									</td>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">@아이디</a>
+									</td>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">@아이디</a>
+									</td>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">@아이디</a>
+									</td>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">@아이디</a>
+									</td>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">@아이디</a>
+									</td>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">@아이디</a>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">@아이디</a>
+									</td>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">@아이디</a>
+									</td>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">@아이디</a>
+									</td>
+									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">@아이디</a>
 									</td>
 								</tr>
 							</table>
-					</div>
+						</div>
 					<!-- 검색책 -->
-					<div style="float: left; width: 300px; border:1px solid red;">책<br>책</div>
-					<div style=" height: 202px;float: right;width: 580px; border: 1px solid blue;">
-							<table style="height: 102px;border: 1px solid yellow; font-size: 14px; " class="boxwrap">
-								<tr>
-									<td style="height:100px; border: 1px solid red;"class="box">
-										안녕 난 책이름 이야
-									</td>
-									<td style="height:100px; border: 1px solid red;"class="box">
-											안녕 난 책이름 이야2
-									</td>
-									<td style="height:100px; border: 1px solid red;"class="box">
-											안녕 난 책이름 이야223
-									</td>
-									<td style="height:100px; border: 1px solid red; "class="box">
-											안녕 난 책이름 이야4
-									</td>
-									<td style="height:100px; border: 1px solid red;  "class="box">
-											안녕 난 책이름 이야55
-									</td>
-								</tr>
-							</table>
-					</div>
-					<!-- 검색 해쉬태그 -->
-					<div style="float: left; width: 300px; border:1px solid red;">해쉬태그</div>
-					<div style=" height: 200px;float: right;width: 580px; border: 1px solid blue;">
-							<table style="height: 102px;border: 1px solid yellow; font-size: 14px; " class="boxwrap">
-								<tr>
-									<td style="height:100px; border: 1px solid red;"class="box">
-										#안녕 난 해쉬태그야
-									</td>
-									<td style="height:100px; border: 1px solid red;"class="box">
-										#안녕 난 해쉬태그야
-									</td>
-									<td style="height:100px; border: 1px solid red;"class="box">
-										#안녕 난 해쉬태그야
-									</td>
-									<td style="height:100px; border: 1px solid red; "class="box">
-										#안녕 난 해쉬태그야
-									</td>
-									<td style="height:100px; border: 1px solid red;  "class="box">
-										#안녕 난 해쉬태그야
-									</td>
-								</tr>
-							</table>
-					</div>
-				</div>
+					<div style="width: 100%; height: 204px;">
+								<span style="color: #666; font-size: 14px; float: left; padding-top: 40px;"class="box">
+									검색 책이름
+								</span>
+							<div style="font-size: 14px;" class="boxwrap">
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px; ">이미지이미지이미지이미지이미지이미지이미지이미지이미지이미지이미지</a>
+									</span>
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px;">이미지이미지이미지이미지이미지이미지이미지이미지이미지이미지이미지</a>
+									</span>
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px;">이미지이미지이미지이미지이미지이미지이미지이미지이미지이미지이미지</a>
+									</span>
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px;">이미지이미지이미지이미지이미지이미지이미지이미지이미지이미지이미지</a>
+									</span>
+							</div>
+							<div style="font-size: 14px; display: flex;" class="boxwrap">
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
+									</span>
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
+									</span>
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
+									</span>
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
+									</span>
+							</div>
 				<!-- /모든 검색 결과 창 -->
+				</div>
 			</div>
 		</div>
 		<!-- 헤더부분 -->
@@ -301,7 +348,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 					</div>
 				</div>
 				<div class="searchbox">
-					<input id="searchinput" class="searchinput" type="text" placeholder="search"  ><!-- onkeyup="enterkey();" -->
+					<input id="searchinput" class="searchinput" type="text" placeholder="search"  >
 					<span id="searchclear">X</span>
 				</div>
 				<div class="iconsbox">

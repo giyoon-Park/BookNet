@@ -1,3 +1,9 @@
+<%--
+	이 페이지는 비회원에게 보여지는 게시물 메인페이지 | 로그인, 가입하기 유도 페이지 입니다.
+  @author 서동혁
+  @version v.0.1.0
+  @since 2020.05.25
+ --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,7 +13,7 @@
 <title>비회원 메인페이지</title>
 <link rel="stylesheet" href="/BookNet/css/nonmem.css">
 <link rel="stylesheet" href="/BookNet/css/proj_fixed.css">
-<script type="text/javascript" src="/BookNet/seo/js/jquery-3.5.0.min.js"></script>
+<script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
 <style>
 *{
     overflow-y: none;
@@ -24,6 +30,22 @@ display: none; /*Chrome, Safari, Opera*/
 	color:black;
 	 font-weight: 400;
 }
+	input[type=text]:-ms-clear{
+    display: none;
+    }
+    #searchclear {
+	position: relative;
+    left: 135px;
+    top: -52px;
+    bottom: 0;
+    width: 10px;
+    /* height: 14px; */
+    /* margin: auto; */
+    font-size: 12px;
+    cursor: pointer;
+    color: #ccc;
+    background-color: #fff;
+	}
 </style>
 <style>
 	.w-x-btn {margin: 5px; width: 10px; height: 10px; line-height: 10px; font-size: 13px;}
@@ -52,16 +74,16 @@ display: none; /*Chrome, Safari, Opera*/
 <script>
 $(function(){
    $('#lbtn').click(function(){
-      $(location).attr('href','/clsProj/member/login.cls');
+      $(location).attr('href','/BookNet/member/login.cls');
    })
    $('#lbtn2').click(function(){
-      $(location).attr('href','/clsProj/member/login.cls');
+      $(location).attr('href','/BookNet/member/login.cls');
    })
    $('#jbtn').click(function(){
-      $(location).attr('href','/clsProj/member/join.cls');
+      $(location).attr('href','/BookNet/member/join.cls');
    })
    $('#jbtn2').click(function(){
-      $(location).attr('href','/clsProj/member/join.cls');
+      $(location).attr('href','/BookNet/member/join.cls');
    })
    $('.dCJp8').click(function(){
       $('.closeing').remove();
@@ -100,6 +122,21 @@ $(function(){
 			 		}
 				});
 			});
+				// search clear
+				var $ipt = $('#searchinput'),
+				    $clearIpt = $('#searchclear');
+						// keyup시 x표시
+					$ipt.keyup(function(){
+					  $("#searchclear").toggle(Boolean($(this).val()));
+					});
+						
+						
+					$clearIpt.toggle(Boolean($ipt.val()));
+					$clearIpt.click(function(){
+					  $("#searchinput").val('').focus();
+					  // display 속성을 none으로 바꾼다. : 감춘다
+					  $(this).hide();
+					});
 })
 </script>
 <script>
@@ -167,16 +204,17 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
             <div class="logobox">
                		<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
                	 <div style="box-sizing: border-box; font-size: 30px; text-align: center;">
-              	 	<a href="/BookNet/main/mem_main.cls" id="logolink">PageTurner</a>
+              	 	<a href="/BookNet/main/non.cls" id="logolink">PageTurner</a>
               	 </div>
        		</div>
             <div class="searchbox">
-               <input class="searchinput" type="text" placeholder="search">
+               <input id="searchinput" class="searchinput" type="text" placeholder="search"  >
+               	<span id="searchclear">X</span>
             </div>
             <div class="iconsbox">
                <!-- 상단 로그인, 가입하기 버튼 -->
-               <a href="#" class="ft-log foot-box mg-whtie" id="lbtn">로그인</a>
-               <a href="#" class="ft-join joinc0l0" style="padding-left:15px;" id="jbtn">가입하기</a>
+               <a href="#" class="ft-log foot-box mg-whtie"  style="color: #fff;"id="lbtn">로그인</a>
+               <a href="#" class="ft-join joinc0l0" style="padding-left:15px; color:rgba(var(--d69,0,149,246),1);" id="jbtn">가입하기</a>
                <!-- /상단 로그인, 가입하기 버튼 -->
             </div>
          </div>
@@ -213,12 +251,12 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
             <div class="ft-btn">
                <!-- Login -->
                <div class="mt-12">
-                  <a href="#" class="ft-log foot-box mg-whtie" id="lbtn2">로그인</a>
+                  <a href="#" class="ft-log foot-box mg-whtie"style="color: #fff;" id="lbtn2">로그인</a>
                </div>
                <!-- /Login -->
                <!-- Join -->
                <div style="text-align:center; margin-top: 12px; padding: 0px 30px;">
-                  <a href="#" class="ft-join joinc0l0" id="jbtn2">가입하기</a>
+                  <a href="#" class="ft-join joinc0l0" style="color:rgba(var(--d69,0,149,246),1);"id="jbtn2">가입하기</a>
                </div>
                <!-- /Join -->
             </div>

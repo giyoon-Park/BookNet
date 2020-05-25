@@ -1,4 +1,9 @@
-
+/**
+ * 	이 CSS는 비회원 메인페이지에 적용되는 CSS입니다.
+ * @author 서동혁
+ * @version v.0.1.0
+ * @since 2020.05.25
+ */
 .logot{
 	color:black;
 	text-decoration: none;
