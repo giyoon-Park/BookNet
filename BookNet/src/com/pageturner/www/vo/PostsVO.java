@@ -12,10 +12,16 @@ import java.text.*;
 
 public class PostsVO {
 	private int pno, mno, eno, bno, linkno;
-	private String id, profile, bname, writer, trans, postcont, pdate, largeimg, gname, hash, publish;
+	private String id, profile, bname, writer, trans, postcont, pdate, largeimg, gname, hash, publish, ischeck;
 	private Date postDate;
 	private Time postTime;
 	
+	public String getIscheck() { //게시글내 좋아요 갯수처리시 필요 
+		return ischeck;
+	}
+	public void setIscheck(String ischeck) {
+		this.ischeck = ischeck;
+	}
 	public int getLinkno() {
 		return linkno;
 	}
