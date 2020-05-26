@@ -31,12 +31,8 @@ $(document).ready(function(){
 		$(this).css('background-position', '-208px -370px');
 	});
 	
-	$('#modi_post').click(function(){ //로그인한 회원이 자신의 게시물 변경 또는 삭제 
-		var pno = $(this).parents().attr('id');
-		
-		//수정,삭제 선택창 
-		$('#sel-e-d').css('display', 'block');
-//		alert(pno);
+	$('.modi_post').click(function(){ //게시물 상세보기 모달 
+		$('#detailPost').css('display','block');
 	});
 	
 	$('#wBtn').click(function(){ //글쓰기 modal 열기 

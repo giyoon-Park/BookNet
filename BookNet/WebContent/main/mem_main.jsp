@@ -134,23 +134,14 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 									<a style="box-sizing: border-box; font-size: 18px;">${data.postcont}</a>
 								</div>
 							</div>
-							<div class="wrtInfo" id="${data.pno}">
-								<div class="etcdiv" style="text-align: left; font-size: 13px;">
-									<!-- 게시글 해시태그 부분 -->
-									${data.hash}
-								</div>
-								<c:if test="${SID eq data.id}">
-									<span class="modifdiv" id="modi_post"></span>
-								</c:if>
-								<!-- 게시글 삭제/수정 Modal -->
-								<!-- <div id="sel-e-d" class="modal" role="none">
-									<div class="w-modal-content">
-										<span class="close w-x-btn" id="">x</span>		
-										<p>some text...</p>	
-									</div> -->
-								</div>
+							<div class="wrtInfo"id="${data.pno}">
+								<div class="etcdiv" style="text-align: left; font-size: 13px;">${data.hash}</div>
+								<span class="modifdiv modi_post"></span>
 							</div>
 						</article>
+						<!-- 게시물 상세보는 모달 -->
+						<div id="detailPost" class="modal" role="none">
+						</div>
 					</c:forEach>
 				</div>
 				<!-- 우측 정보 부분 : 고정페이지로 들어갈 것-->
@@ -292,6 +283,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 					<h3 style="position:absolute; top:40px; left: 1135px; display: flex;">만든이</h3><br><h4 style="position:absolute; top:35px; left: 1202px; display: flex; font-size: 10pt;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:55px; left: 1202px; display: flex; font-size:10pt;">서 동혁 | 우 현우 |</h4>
 			    <small>
 			    <p style="position:absolute; top:120px; left: 800px; display: flex;">Copyright © 2020 BookNet.co.,Ltd. All rights reserved.</p>
+			    <a href="#"  style="position:absolute; top:139px; left: 1037px; display: flex;"><address style="font-size:12px; color:#fff;">@인플루언서 신청 ., @ Apply for Influencer</address></a>
 			    <address style="position:absolute; top:140px; left: 800px; display: flex;">Contact increpas for more information. </address>
 			    </small>
 			    <img src="https://img.icons8.com/dusk/64/000000/finn.png" style="position:absolute; top:100px; left: 1497px; display: flex; width:64px; height: 64px;"/>

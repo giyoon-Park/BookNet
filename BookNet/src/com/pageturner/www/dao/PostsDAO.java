@@ -69,6 +69,47 @@ public class PostsDAO {
 		return list;
 	}
 	
+	//로그인한 회원이 보는 메인화면 
+	public ArrayList<PostsVO> getAllList(String id){
+		ArrayList<PostsVO> list = new ArrayList<PostsVO>();
+		
+		con = db.getCon();
+		String sql = bSQL.getSQL(bSQL.SEL_ALL_POST_MEM);
+		pstmt = db.getPSTMT(con, sql);
+		
+		try {
+			pstmt.setString(1, id);
+			pstmt.setString(2, id);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				PostsVO vo = new PostsVO();
+				
+				vo.setPno(rs.getInt("pno"));
+				vo.setMno(rs.getInt("mno"));
+				vo.setBname(rs.getString("bname"));
+				vo.setHash(rs.getString("hash"));
+				vo.setId(rs.getString("id"));
+				vo.setPostcont(rs.getString("postcont"));
+				vo.setPostDate(rs.getDate("postdate"));
+				vo.setPostTime(rs.getTime("postdate"));
+				vo.setPdate();
+				vo.setGname(rs.getString("gname"));
+				vo.setLargeimg(rs.getString("largeimg"));
+				
+				list.add(vo);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		return list;
+	}
+	
 	//게시글작성시 도서검색결과를 보여줄 데이터베이스 전담 처리함수
 	public ArrayList<PostsVO> getSearchRst(String word){
 		ArrayList<PostsVO> list = new ArrayList<PostsVO>();
