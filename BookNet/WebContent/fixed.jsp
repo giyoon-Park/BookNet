@@ -50,7 +50,7 @@
 		function() {
 			$('#more_butt').click(function() { //modal에서 알림페이지로 이동 
 				$(location).attr('href', '/BookNet/fixed/activity.cls');
-			}); 
+			});
 
 			$('#aBtn').click(function() { //modal 열기
 				$('#actModal').css('display', 'block');
@@ -77,9 +77,8 @@
 			});
 			// footerUp
 			var hei = $('#footer-wrap').css("height"); 
-   			// 올리기
 			 $("#footer-wrap").mouseenter(function(){
-					if($('#footer-wrap').css("height") == "112.266px"){
+					if($('#footer-wrap').css("height") == "86.438px"){
 						$('#footer-wrap').css("transition","all 0.6s");
 						$('#footer-wrap').css("background-color","#F7B3D2");
 						$('#footer-wrap').css("color","#FFF");
@@ -91,11 +90,9 @@
 						$('#footer-wrap').css("color","#FFF");
 						$('#footer-wrap').css("height","186.438px");
 					}
-					
-			// 내리기
 			 	$("#footer-wrap").mouseleave(function(){
 			 		if($('#footer-wrap').css("height") == "186.438px"){
-			 			$('#footer-wrap').css("height", "112.266px");
+			 			$('#footer-wrap').css("height", "86.438px");
 						$('#footer-wrap').css("background-color","#F3F0F7");
 						$('#footer-wrap').css("color","#FFF");
 						$('#footer-wrap').css("transition","all 0.6s");

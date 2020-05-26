@@ -2,6 +2,7 @@ package com.pageturner.www.dao;
 /**
  * 이 클래스는 게시글관련한 데이터베이스 작업을 위한 클래스입니다.
  * @author leeseulkim
+ * @since 26th May 2020
  * 
  */
 
@@ -161,6 +162,27 @@ public class PostsDAO {
 			System.out.println(cnt);
 		} catch(Exception e) {
 			System.out.println("###");
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
+	}
+	
+	//게시글 삭제해줄 데이터베이스 처리 전담함수
+	public int delPosts(int pno) {
+		int cnt = 0;
+		
+		con = db.getCon();
+		String sql = bSQL.getSQL(bSQL.DEL_POSTS);
+		pstmt = db.getPSTMT(con, sql);
+		
+		try {
+			pstmt.setInt(1, pno);
+			
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			db.close(pstmt);
