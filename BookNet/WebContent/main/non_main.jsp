@@ -274,6 +274,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 					<h3 style="position:absolute; top:40px; left: 1135px; display: flex;font-family:Verdana,sans-serif;">만든이</h3><br><h4 style="position:absolute; top:35px; left: 1222px; display: flex; font-size: 10pt;font-family:Verdana,sans-serif;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:55px; left: 1222px; display: flex; font-size:10pt;font-family:Verdana,sans-serif;">서 동혁 | 우 현우 |</h4>
 			    <small>
 			    <p style="position:absolute; top:120px; left: 800px; display: flex;">Copyright © 2020 BookNet.co.,Ltd. All rights reserved.</p>
+			    <a href="#"  style="position:absolute; top:139px; left: 1037px; display: flex;"><address style="font-size:12px; color:#fff;">@인플루언서 신청 ., @ Apply for Influencer</address></a>
 			    <address style="position:absolute; top:140px; left: 800px; display: flex;">Contact increpas for more information. </address>
 			    </small>
 			    <img src="https://img.icons8.com/dusk/64/000000/finn.png" style="position:absolute; top:100px; left: 1497px; display: flex; width:64px; height: 64px;"/>
