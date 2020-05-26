@@ -10,9 +10,9 @@ import com.pageturner.www.vo.*;
 public class InterParkAPI {
 	private final String KEY = "756476FCE177C662B901F60050D436CDFFDF8BCC7C44966D95B67471225CF8EF"; //인터파크 API를 사용하기 위한 KEY값
 	public final static int SEARCH = 1001;
-	final static int RECOMMEND = 1002;
-	final static int NEWBOOK = 1003;
-	final static int BESTSELLER = 1004;
+	public final int RECOMMEND = 1002;
+	public final int NEWBOOK = 1003;
+	public final int BESTSELLER = 1004;
 	
 	String api;
 	String query;
@@ -34,9 +34,9 @@ public class InterParkAPI {
 			str = URLEncoder.encode(keyword, "UTF-8");
 			
 			if(query == "query") {
-				address = base + "query=" + str + "&output=json";
+				address = base + "query=" + str + "&output=json&maxResults=30";
 			} else {
-				address = base + "categoryId=100" + "&output=json";
+				address = base + "categoryId=100" + "&output=json&maxResults=30";
 			}
 			
 			json = webConnection(address);
