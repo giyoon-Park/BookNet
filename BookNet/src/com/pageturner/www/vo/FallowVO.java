@@ -11,7 +11,7 @@ import java.text.*;
 
 public class FallowVO {
 	private int fallow_no, fallower_no;
-	private String nickname, sname, sloc, faldate, ischeck;
+	private String id, sname, sloc, faldate, ischeck;
 	private Date fDate;
 	private Time fTime;
 
@@ -56,11 +56,11 @@ public class FallowVO {
 	public void setfTime(Time fTime) {
 		this.fTime = fTime;
 	}
-	public String getNickname() {
-		return nickname;
+	public String getId() {
+		return id;
 	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setId(String nickname) {
+		this.id = nickname;
 	}
 	public String getSname() {
 		return sname;

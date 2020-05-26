@@ -1,6 +1,7 @@
 package com.pageturner.www.dao;
 /**
- *	이 클래스는 mypage에서 db 작업을 수행할 DAO 클래스이다.
+ *	이 클래스는 mypage 및 하위페이지(팔로우페이지, 팔로워페이지), 알람페이지
+ *	에서 db 작업을 수행할 DAO 클래스이다.
  *	@author	박기윤
  *	@since 2020.05.25
  */
@@ -17,12 +18,16 @@ public class MyPageDAO {
 	PreparedStatement pstmt;
 	ResultSet rs;
 	MyPageSQL mpSQL;
+	AlarmSQL aSQL;
+	String id;
 	int mno;
 	
 	public MyPageDAO(String id) {
 		db = new WebDBCP();
 		mpSQL = new MyPageSQL();
+		this.id = id;
 		this.mno = getMno(id);
+		this.aSQL = new AlarmSQL();
 	}
 
 	// mypage에 공개한 회원정보를 db에서 불러오는 함수
@@ -182,7 +187,7 @@ public class MyPageDAO {
 			while(rs.next()) {
 				FallowVO fVO = new FallowVO();
 				fVO.setFallower_no(rs.getInt("mno"));
-				fVO.setNickname(rs.getString("nickname"));
+				fVO.setId(rs.getString("id"));
 				fVO.setSname(rs.getString("sname"));
 				fVO.setSloc(rs.getString("sloc"));
 				list.add(fVO);
@@ -209,7 +214,7 @@ public class MyPageDAO {
 			while(rs.next()) {
 				FallowVO fVO = new FallowVO();
 				fVO.setFallow_no(rs.getInt("mno"));
-				fVO.setNickname(rs.getString("nickname"));
+				fVO.setId(rs.getString("id"));
 				fVO.setSname(rs.getString("sname"));
 				fVO.setSloc(rs.getString("sloc"));
 				list.add(fVO);
@@ -264,5 +269,25 @@ public class MyPageDAO {
 			db.close(con);
 		}
 		return cnt;
+	}
+	
+	// 좋아요 알람 리스트를 불러오는 함수
+	public ArrayList getLikeAlarm() {
+		ArrayList list = new ArrayList();
+		con = db.getCon();
+		String sql = aSQL.getSQL(aSQL.SEL_LIKE);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add("L");
+				list.add(rs.getInt("pno"));
+				list.add(rs.getString("bname"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 }
