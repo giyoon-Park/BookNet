@@ -2,7 +2,7 @@ package com.pageturner.www.sql;
 /**
  * 회원정보, 게시글 관련 SQL
  * @author 이명환
- * @since 2020.05.25
+ * @since 2020.05.26
  *
  */
 public class BookSQL {
@@ -15,6 +15,7 @@ public class BookSQL {
 	public final int POST_SEARCH_BOOK = 3001; //게시글 작성시 도서검색을 위한 질의명령
 	public final int ADD_POSTS = 3002; //게시글 작성을 위한 질의명령
 	public final int PUT_TAGS = 3003; //게시글 작성시 작성한 해시태그를 위한 질의명령
+	public final int DEL_POSTS = 3004; //게시글 삭제하는 질의명령
 	
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();
@@ -87,6 +88,14 @@ public class BookSQL {
 			buff.append("VALUES( ");
 			buff.append("    (SELECT MAX(hno)+1 FROM hashtab), ");
 			buff.append("    (SELECT MAX(pno) FROM poststab), ? )");
+			break;
+		case DEL_POSTS:
+			buff.append("UPDATE ");
+			buff.append("    poststab ");
+			buff.append("SET ");
+			buff.append("    isshow = 'N' ");
+			buff.append("WHERE ");
+			buff.append("    pno = ? ");
 			break;
 		}
 		
