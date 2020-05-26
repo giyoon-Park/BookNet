@@ -6,8 +6,8 @@ package com.pageturner.www.sql;
  *
  */
 public class BookSQL {
-	public final int ADD_USER = 1001;
-	public final int SEL_LOGIN = 1002;
+	public final int ADD_USER = 1001; //회원가입 질의명령
+	public final int SEL_LOGIN = 1002; //로그인 질의명령
 	
 	public final int SEL_ALL_POST = 2001; //비로그인 회원 메인화면에 보여줄 게시글 질의명령 
 	public final int SEL_ALL_POST_MEM = 2002; //로그인 회원 메인화면에 보여줄 게시글 질의명령
@@ -16,6 +16,10 @@ public class BookSQL {
 	public final int ADD_POSTS = 3002; //게시글 작성을 위한 질의명령
 	public final int PUT_TAGS = 3003; //게시글 작성시 작성한 해시태그를 위한 질의명령
 	public final int DEL_POSTS = 3004; //게시글 삭제하는 질의명령
+	
+	public final int ADD_LIKE = 4001; //좋아요 질의명령
+	public final int CANCEL_LIKE = 4002; //좋아요 취소 질의명령
+	public final int RE_LIKE = 4003; //좋아요 취소했던 글에 다시 좋아요 질의명령
 	
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();
@@ -96,6 +100,33 @@ public class BookSQL {
 			buff.append("    isshow = 'N' ");
 			buff.append("WHERE ");
 			buff.append("    pno = ? ");
+			break;
+		case ADD_LIKE:
+			buff.append("insert into liketab(lk_no, pno, mno) "); 
+			buff.append("values( "); 
+			buff.append("    (select nvl(max(lk_no)+1, 4001) from liketab),  "); 
+			buff.append("    ?,  "); 
+			buff.append("    (select mno from membertab where id = ?) "); 
+			buff.append(") ");
+			break;
+		case CANCEL_LIKE:
+			buff.append("update "); 
+			buff.append("    liketab "); 
+			buff.append("set "); 
+			buff.append("    ischeck = 'N' "); 
+			buff.append("where "); 
+			buff.append("    pno = ? "); 
+			buff.append("    and mno = (select mno from membertab where id = ?) ");
+			break;
+		case RE_LIKE:
+			buff.append("update "); 
+			buff.append("    liketab "); 
+			buff.append("set "); 
+			buff.append("    ischeck = 'Y', "); 
+			buff.append("    lk_time = sysdate "); 
+			buff.append("where "); 
+			buff.append("    pno = ? "); 
+			buff.append("    and mno = (select mno from membertab where id = ?) ");
 			break;
 		}
 		
