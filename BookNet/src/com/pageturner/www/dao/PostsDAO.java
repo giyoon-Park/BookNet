@@ -1,7 +1,7 @@
 package com.pageturner.www.dao;
 
 /**
- * 이 클래스는 게시글관련한 데이터베이스 작업을 위한 클래스입니다.
+ * 이 클래스는 게시글과 관련한 데이터베이스 작업을 위한 클래스입니다.
  * @author leeseulkim
  * @since 26th May 2020
  * 
@@ -9,6 +9,7 @@ package com.pageturner.www.dao;
 
 import java.sql.*;
 import java.util.*;
+import org.json.simple.*;
 
 import com.pageturner.www.DB.*;
 import com.pageturner.www.vo.*;
@@ -21,11 +22,13 @@ public class PostsDAO {
 	PreparedStatement pstmt;
 	ResultSet rs;
 	BookSQL bSQL;
+	CommentSQL cSQL;
 	PostsVO vo;
 
 	public PostsDAO() {
 		db = new WebDBCP();
 		bSQL = new BookSQL();
+		cSQL = new CommentSQL();
 	}
 
 	// 비회원 메인페이지에 들어갈 모든 게시물에 대한 리스트 전담처리 함수
@@ -112,8 +115,8 @@ public class PostsDAO {
 	}
 
 	// 게시글작성시 도서검색결과를 보여줄 데이터베이스 전담 처리함수
-	public ArrayList<PostsVO> getSearchRst(String word) {
-		ArrayList<PostsVO> list = new ArrayList<PostsVO>();
+	public JSONArray getSearchRst(String word) {
+		JSONArray list = new JSONArray();
 
 		con = db.getCon();
 
@@ -295,5 +298,39 @@ public class PostsDAO {
 			db.close(con);
 		}
 		return cnt;
+	}
+	
+	//게시글 내에 달린 댓글리스트 처리 전담함수
+	public JSONArray showListRpl(int pno){
+		JSONArray list = new JSONArray();
+		
+		con = db.getCon();
+		String sql = cSQL.getSQL(cSQL.SHOW_RPL);
+		pstmt = db.getPSTMT(con, sql);
+		
+		try {
+			pstmt.setInt(1, pno);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				CommentVO vo = new CommentVO();
+				vo.setCno(rs.getInt("cno"));
+				vo.setPno(rs.getInt("pno"));
+				vo.setMno(rs.getInt("mno"));
+				vo.setCdate(rs.getDate("cdate"));
+				vo.setCtime(rs.getTime("cdate"));
+				vo.setSdate();
+				
+				list.add(vo);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		return list;
 	}
 }
