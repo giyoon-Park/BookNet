@@ -1,5 +1,10 @@
 package com.pageturner.www.controller.member;
 
+/**
+ * 메일인증번호 발송 처리
+ * @author	이명환
+ * @since	2020.05.26
+ */
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;

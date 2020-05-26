@@ -1,7 +1,5 @@
 package com.pageturner.www.util;
 
-import java.util.*;
-
 /**
  * 메일인증번호 발송
  * @author 이명환
@@ -13,6 +11,8 @@ import java.util.*;
  *	Google계정관리에서 '보안' 메뉴의 '보안 수준이 낮은 앱의 엑세스'를 '사용'으로
  *	설정한 후 클래스를 사용해주세요.
  */
+
+import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;

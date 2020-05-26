@@ -8,6 +8,11 @@ package com.pageturner.www.sql;
 public class BookSQL {
 	public final int ADD_USER = 1001; //회원가입 질의명령
 	public final int SEL_LOGIN = 1002; //로그인 질의명령
+	public final int FIND_ID = 1003; //아이디찾기 질의명령
+	public final int FIND_PW = 1004; //비밀번호찾기 질의명령
+	public final int SEL_USER = 1005; //회원정보조회 질의명령
+	public final int EDIT_USER = 1006; //회원정보수정 질의명령
+	public final int DEL_USER = 1007; //회원탈퇴 질의명령
 	
 	public final int SEL_ALL_POST = 2001; //비로그인 회원 메인화면에 보여줄 게시글 질의명령 
 	public final int SEL_ALL_POST_MEM = 2002; //로그인 회원 메인화면에 보여줄 게시글 질의명령
@@ -26,8 +31,8 @@ public class BookSQL {
 		
 		switch(code) {
 		case ADD_USER:
-			buff.append("insert into membertab(mno, id, pw, name, nickname, birthdate, gen, mail, tel, interest, describe) "); 
-			buff.append("values( "); 
+			buff.append("INSERT INTO membertab(mno, id, pw, name, nickname, birthdate, gen, mail, tel, interest, describe) "); 
+			buff.append("VALUES( "); 
 			buff.append("    (select nvl(max(mno)+1, 1000) from membertab), "); 
 			buff.append("    ?, ?, ?, ?, TO_DATE(?,'yyMMdd') , ?, ?, ?, ?, ? "); 
 			buff.append(")");
@@ -41,6 +46,45 @@ public class BookSQL {
 			buff.append("    id = ? ");
 			buff.append("    AND pw = ?");
 			break;
+		case FIND_ID:
+			buff.append("SELECT id FROM membertab WHERE name = ? AND mail = ? ");
+			break;
+		case FIND_PW:
+			buff.append("SELECT pw FROM membertab WHERE id = ? AND name = ? AND mail = ? ");
+			break;
+		case SEL_USER:
+			buff.append("SELECT "); 
+			buff.append("    pw, mail, tel, interest, nickname, describe, intershow, birthshow, genshow "); 
+			buff.append("FROM "); 
+			buff.append("    membertab "); 
+			buff.append("WHERE "); 
+			buff.append("    id = ? ");
+			break;
+		case EDIT_USER:
+			buff.append("UPDATE "); 
+			buff.append("    membertab "); 
+			buff.append("SET "); 
+			buff.append("    pw = ?, "); 
+			buff.append("    mail = ?, "); 
+			buff.append("    tel = ?, "); 
+			buff.append("    interest = ?, "); 
+			buff.append("    nickname = ?, "); 
+			buff.append("    describe = ?, "); 
+			buff.append("    intershow = ?, "); 
+			buff.append("    birthshow = ?, "); 
+			buff.append("    genshow = ? "); 
+			buff.append("WHERE "); 
+			buff.append("    id = ? ");
+			break;
+		case DEL_USER:
+			buff.append("UPDATE "); 
+			buff.append("    membertab "); 
+			buff.append("SET "); 
+			buff.append("    isshow = 'N' "); 
+			buff.append("WHERE "); 
+			buff.append("    id = ? ");
+			break;
+			
 		case SEL_ALL_POST: //프로필 사진 가져올 수 있게 질의명령 수정해야함 
 			buff.append("SELECT ");
 			buff.append("    pt.pno, pt.mno, bname, ht.hash hash, id, postcont, postdate, emotion, gname, largeimg ");
@@ -97,6 +141,7 @@ public class BookSQL {
 			buff.append("ORDER BY ");
 			buff.append("    postdate DESC");
 			break;
+			
 		case POST_SEARCH_BOOK:
 			buff.append("SELECT ");
 			buff.append("    bno, bname, gname, writer, trans, largeimg, publish ");
@@ -132,6 +177,7 @@ public class BookSQL {
 			buff.append("WHERE ");
 			buff.append("    pno = ? ");
 			break;
+			
 		case ADD_LIKE:
 			buff.append("insert into liketab(lk_no, pno, mno) "); 
 			buff.append("values( "); 

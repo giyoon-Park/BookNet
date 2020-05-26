@@ -27,19 +27,39 @@
 			$('.idid').css('display', '');
 		});
 		
-		$('#confirm').click(function(){
-			var idcon = $('#id').val();
-			//alert(idcon);
-			if(idcon == '') {
-				$('#frm').attr('action','/BookNet/member/findIDProc.cls');
-			} else {
-				$('#frm').attr('action','/BookNet/member/findPWProc.cls');
-			}
-			$('#frm').submit();
-		});
 		
 		$('#mailUtil').click(function(){
 			$('#frm').attr('action', '/BookNet/member/mail.cls');
+			alert('인증번호가 발송되었습니다. 이메일을 확인해주세요.');
+			$('#frm').submit();
+		});
+		
+		$('#confirm').click(function(){
+			var id = $('#id').val();
+			var name = $('#name').val();
+			var cert_no = $('#cert_no').val();
+			if(idcon == '') {
+				if(name == '') {
+					alert('이름을 입력하세요');
+					return;
+				}
+				if(cert_no == '') {
+					alert('인증번호를 입력하세요');
+					return;
+				}
+				$('#frm').attr('action','/BookNet/member/findIDProc.cls');
+			} else {
+				if(name == '') {
+					alert('이름을 입력하세요');
+					return;
+				}
+				if(cert_no == '') {
+					alert('인증번호를 입력하세요');
+					return;
+				}
+				$('#frm').attr('action','/BookNet/member/findPWProc.cls');
+			}
+			
 			$('#frm').submit();
 		});
 	});
