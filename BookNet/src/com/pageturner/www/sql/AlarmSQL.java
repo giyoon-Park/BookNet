@@ -1,0 +1,60 @@
+package com.pageturner.www.sql;
+/**
+ *	이 클래스는 알람 내용을 꺼내오는데 필요한 질의명령을 기술한 클래스이다.
+ * @author	박기윤
+ * @since	2020.05.26
+ *
+ */
+public class AlarmSQL {
+	public final int SEL_LIKE = 1001;
+	public final int SEL_FAL = 1002;
+	public final int SEL_COMNT = 1003;
+	
+	public String getSQL(int code) {
+		StringBuffer buff = new StringBuffer();
+		switch(code) {
+		case SEL_LIKE:
+			buff.append("SELECT ");
+			buff.append("    pt.pno pno, bname, id, lk_time ");
+			buff.append("FROM ");
+			buff.append("    booktab bt, poststab pt, liketab lt, membertab mt ");
+			buff.append("WHERE ");
+			buff.append("    pt.pno = (SELECT pno FROM poststab, membertab ");
+			buff.append("			   WHERE poststab.mno = membertab.mno ");
+			buff.append("			   AND id = ?) ");
+			buff.append("    AND lt.pno = pt.pno ");
+			buff.append("    AND bt.bno = pt.bno ");
+			buff.append("    AND lt.mno = mt.mno ");
+			buff.append("    AND lt.ischeck = 'Y' ");
+			buff.append("    AND pt.isshow = 'Y' ");
+			buff.append("    AND mt.isshow = 'Y' ");
+			break;
+		case SEL_FAL:
+			buff.append("SELECT ");
+			buff.append("    id, fal_time ");
+			buff.append("FROM ");
+			buff.append("    fallowtab, membertab ");
+			buff.append("WHERE ");
+			buff.append("    fallow_no = (SELECT mno FROM membertab WHERE id = ?) ");
+			buff.append("    AND fallower_no = mno ");
+			buff.append("    AND ischeck = 'Y' ");
+			buff.append("    AND isshow = 'Y' ");
+			break;
+		case SEL_COMNT:
+			buff.append("SELECT ");
+			buff.append("    pt.pno pno, bname, id, cdate ");
+			buff.append("FROM ");
+			buff.append("    poststab pt, booktab bt, commenttab ct, membertab mt ");
+			buff.append("WHERE ");
+			buff.append("    pt.mno = (SELECT mno FROM membertab WHERE id = ?) ");
+			buff.append("    AND pt.bno = bt.bno ");
+			buff.append("    AND pt.pno = ct.pno ");
+			buff.append("    AND ct.mno = mt.mno ");
+			buff.append("    AND ct.isshow = 'Y' ");
+			buff.append("    AND pt.isshow = 'Y' ");
+			buff.append("    AND mt.isshow = 'Y' ");
+			break;
+		}
+		return buff.toString();
+	}
+}

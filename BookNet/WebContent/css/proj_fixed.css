@@ -200,7 +200,7 @@
 	float: left;
 	width: 100px;
 	height: 30px;
-	line-height: 30px;
+	line-height: 35px;
 	font-size: 16px;
 }
 
@@ -208,7 +208,7 @@
 	float: left;
 	width: 100px;
 	height: 30px;
-	line-height: 30px;
+	line-height: 35px;
 	font-size: 12px;
 }
 
@@ -224,7 +224,7 @@
 .postCont {
 	margin-top: 10px;
 	width: 100%;
-	height: 270px;
+	height: 277px;
 	border-top: solid 1px black;
 	border-bottom: solid 1px black;
 	line-height: 270px;
@@ -261,12 +261,30 @@
 }
 
 .etcdiv {
-	width: 100%;
-	height: 40px;
-	line-height: 40px;
+	float: left;
+	width: 300px;
+	height: 50px;
+	line-height: 50px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+
+.modifdiv {
+	float: left;
+	margin: auto auto;
+	margin-top: 7px;
+	margin-left: 40px;
+	height: 25px;
+	width: 25px;
+	background-position: -50px -394px;
+	background-image:
+		url(https://www.instagram.com/static/bundles/es6/sprite_glyphs_c14ffe44a4f6.png/c14ffe44a4f6.png);
+}
+
+.modifdiv:hover { /* img 마우스 오버시*/
+	cursor: pointer;
+	transform: scale(1.1);
 }
 
 .book-pic {
@@ -278,6 +296,7 @@
 
 .genre-name {
 	float: left;
+	margin-top: 5px;
 	width: 160px;
 	height: 25px;
 	line-height: 25px;
@@ -313,7 +332,7 @@
 }
 
 a {
-	color: black;
+	color: rgb(0, 0, 0);
 	text-decoration: none;
 }
 
@@ -323,9 +342,9 @@ a:visited {
 
 .w-x-btn {
 	margin: 5px;
-	width: 10px;
-	height: 10px;
-	line-height: 10px;
+	width: 5px;
+	height: 5px;
+	line-height: 5px;
 	font-size: 13px;
 }
 
@@ -347,34 +366,34 @@ a:visited {
 
 .wrt-div {
 	width: 100%;
-    height: 280px;
-    line-height: 220px;
-    margin-top: 25px;
+	height: 280px;
+	line-height: 220px;
+	margin-top: 25px;
 }
 
 .wrt-b-img {
 	float: left;
-    width: 195px;
-    text-align: center;
-    border: solid 1px white;
+	width: 195px;
+	text-align: center;
+	border: solid 1px white;
 }
 
 .wrt-body {
 	float: left;
-    width: 440px;
-    height: 225px;
-    line-height: 255px;
-    padding: 10px;
-    margin-left: 15px;
-    text-align: center;
+	width: 440px;
+	height: 225px;
+	line-height: 255px;
+	padding: 10px;
+	margin-left: 15px;
+	text-align: center;
 }
 
 .-a-t {
 	float: left;
-    width: 425px;
-    height: 150px;
-    line-height: 1;
-    resize: none;
+	width: 425px;
+	height: 150px;
+	line-height: 1;
+	resize: none;
 }
 
 .wrt-last {
@@ -410,8 +429,8 @@ a:visited {
 
 .w100perh300 {
 	width: 100%;
-	height: 300px;
-	line-height: 300px;
+	height: 350px;
+	line-height: 350px;
 	margin: 10px auto;
 }
 
@@ -430,4 +449,103 @@ a:visited {
 	margin-left: 30px;
 	margin-top: 30px;
 	font-size: 20px;
+}
+
+.w100-pt10 {
+	width: 100%;
+	padding-top: 10px;
+	height: 60px;
+}
+
+.w100-h290 {
+	width: 100%;
+	height: 290px; margin-top : 50px;
+	padding: 10px;
+	margin-top: 50px;
+}
+
+.genre-pad {
+	float: left;
+	width: 300px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 12px;
+	text-align: left;
+	padding-left: 20px;
+}
+
+.detail-body {
+	float: left;
+	width: 350px;
+	height: 190px;
+	line-height: 25px;
+	margin: 25px auto;
+	padding: 15px;
+	text-align: left;
+}
+
+.w100-h35 {
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+}
+
+.w100-h95 {
+	width: 100%;
+	height: 110px;
+	border-bottom: 1px solid Black;
+}
+
+.hidcommt {
+	width: 100%;
+	height: 50px;
+	margin-top: 20px;
+	z-index: 4;
+}
+
+.comwrter {
+	float: left;
+	width: 100px;
+	height: 50px;
+	line-height: 50px;
+	/* padding: 5px; */
+	text-align: center;
+	font-size: 13px;
+	border-right: 1px solid black;
+}
+
+.combody {
+	width: 400px;
+	height: 50px;
+	font-size: 13px;
+	float: left;
+	width: 400px;
+	height: 50px;
+	font-size: 13px;
+	/* resize: none; */
+	margin-left: 20px;
+	border: 1px solid black;
+}
+
+.listcomt {
+	width: 100%;
+	height: 30px;
+	padding-left: 10px;
+	border-bottom: 1px solid black;
+}
+
+.comsubbtn {
+	width: 50px;
+	height: 30px;
+	margin-top: 8px;
+	float: left;
+	margin-left: 10px;
+}
+
+.h30-m10 {
+	float: left; 
+	height: 30px;
+	line-height: 30px;
+	font-size: 13px;
+	margin-left: 10px;
 }

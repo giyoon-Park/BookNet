@@ -12,25 +12,25 @@
 	컨트롤러:com.pageturner.www.controller.member.LoginProc
 	뷰		:redirect(/main/mem.cls or /member/login.cls)
 --------------------------------------------------------
-7. 아이디 찾기 페이지 요청
+7. 아이디 찾기 페이지 요청	#이명환
 	요청내용:/member/findID.cls
 	파라미터:none
 	컨트롤러:com.pageturner.controller.member.FindID
 	뷰		:/member/findID.jsp
 --------------------------------------------------------
-8. 아이디 찾기 처리 요청
+8. 아이디 찾기 처리 요청	#이명환
 	요청내용:/member/findIDProc.cls
 	파라미터:name, mail
 	컨트롤러:com.pageturner.controller.member.FindIDProc
 	뷰		:redirect(/member/login.cls)
 --------------------------------------------------------
-9. 비밀번호 찾기 페이지 요청
+9. 비밀번호 찾기 페이지 요청#이명환(사용하지 않고 있음)
 	요청내용:/member/findPW.cls
 	파라미터:none
 	컨트롤러:com.pageturner.controller.member.FindPW
 	뷰		:/member/findPW.jsp
 --------------------------------------------------------
-10. 비밀번호 찾기 처리 요청
+10. 비밀번호 찾기 처리 요청	#이명환
 	요청내용:/member/findPWProc.cls
 	파라미터:id, name, mail
 	컨트롤러:com.pageturner.controller.member.FindPWProc
@@ -166,7 +166,7 @@
 12. 회원정보 수정 처리 요청
 	요청내용:/member/editMemInfoProc.cls
 	파라미터:pw, mail, tel, interest, nickname, describe, intershow, birthshow, genshow, ori_name
-	컨트롤러:com.pageturner.controller.member.EditMemInfo
+	컨트롤러:com.pageturner.controller.member.EditMemInfoProc
 	뷰		:redirect(/mypage/mypage.cls)
 --------------------------------------------------------
 26. 회원 탈퇴 처리 요청

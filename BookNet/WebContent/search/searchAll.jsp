@@ -103,15 +103,15 @@
 			});
 			// footerUp
 			var hei = $('#footer-wrap').css("height"); 
+				 var wei = 0;
    			// 올리기
 			 $("#footer-wrap").mouseenter(function(){
-					if($('#footer-wrap').css("height") == "112.266px"){
+					if($('#footer-wrap').css("height") == hei){
 						$('#footer-wrap').css("transition","all 0.6s");
 						$('#footer-wrap').css("background-color","#F7B3D2");
 						$('#footer-wrap').css("color","#FFF");
 						$('#footer-wrap').css("height","186.438px");
-						
-					} else if($('#footer-wrap').css("height") == hei){
+					} else if($('#footer-wrap').css("height") == wei){
 						$('#footer-wrap').css("transition","all 0.6s");
 						$('#footer-wrap').css("background-color","#F7B3D2");
 						$('#footer-wrap').css("color","#FFF");
@@ -120,8 +120,9 @@
 					
 			// 내리기
 			 	$("#footer-wrap").mouseleave(function(){
-			 		if($('#footer-wrap').css("height") == "186.438px"){
-			 			$('#footer-wrap').css("height", "112.266px");
+			 		 wei = $('#footer-wrap').css("height");
+			 		if($('#footer-wrap').css("height") == wei){
+			 			$('#footer-wrap').css("height", hei);
 						$('#footer-wrap').css("background-color","#F3F0F7");
 						$('#footer-wrap').css("color","#FFF");
 						$('#footer-wrap').css("transition","all 0.6s");
@@ -189,22 +190,22 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 	<div>
 		<!-- 본문부분 -->
 		<div id="contents-wrap">
-			<div class="contents">
+			<div class="contents" style="width: 1002px;">
 				<!-- 이곳에 본문내용을 넣어주세요! -->
 				<!-- 모든 검색 결과 창 -->
-				<div style="line-height: 1; text-align: center; height:100%; padding: 0px 10px; margin: 0px auto;border: 1px solid black; border-top-width:0px; border-bottom-width: 0px;">
+				<div style="line-height: 1; text-align: center; height:100%; padding: 0px 10px; margin: 0px auto; border-top-width:0px; border-bottom-width: 0px;">
 					<!-- 검색값-->
 					<div style="width: 100%; height: 204px;">
 						<!-- 이미지 -->
-						<div style="float: left; width: 300px; height:100%; margin:0px auto; font-size: 14px;">
+						<div style="float: left; width: 370px; height:100%; margin:0px auto; font-size: 14px;">
 							<div style="position: relative;top:25%;left:30%;width:100px;height:100px;border: 1px solid red;border-radius: 50%;padding: 0px;">
 								<img src="https://img.icons8.com/dusk/64/000000/homer-simpson.png" style="position: relative;top: 10px;">
 							</div>
 						</div>
 						<!-- 검색어, 해시태그 -->
-						<div style=" height: 204px;float: right;width: 578px;">
-							<div style="height:100px; text-align: left;">검색어</div>
-								<span style="color: #666; font-size: 14px; float: left; padding-top: 40px;"class="box">
+					<div style=" height: 204px;float: right;width: 610px; position:relative; top:30px;">
+						<div style="height:100px; text-align: left;">검색어</div><!-- keyword -->
+								<span style="color: #666; font-size: 14px; float: left; padding-top: 40px; padding-bottom:5px;"class="box">
 									관련 해시태그 
 								</span>
 							<table style="font-size: 14px;  height: 50px; display: flex; " class="boxwrap">
@@ -224,10 +225,10 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 					</div>
 					<!-- 검색아이디 -->
 					<div style="width: 100%; height: 204px;">
-								<span style="color: #666; font-size: 14px; float: left; padding-top: 40px;"class="box">
-									검색 아이디
+								<span style="color: #666; font-size: 14px; float: left; padding-top: 40px;padding-bottom: 10px;"class="box">
+									검색된 아이디
 								</span>
-							<table style="font-size: 14px;  height: 50px; display: flex; " class="boxwrap">
+							<table style="font-size: 14px;  height: 50px; " class="boxwrap">
 								<tr>
 									<td style="width: 70px; height: 70px; border: 1px solid black;"class="box">
 										<a href="#" style="text-decoration: unset; color: #F7B3D2;">이미지</a>
@@ -307,23 +308,23 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 					<!-- 검색책 -->
 					<div style="width: 100%; height: 204px;">
 								<span style="color: #666; font-size: 14px; float: left; padding-top: 40px;"class="box">
-									검색 책이름
+									검색된 책이름
 								</span>
 							<div style="font-size: 14px;" class="boxwrap">
 									<span style="border: solid 4px transparent ;"class="box">
-										<img src="#" style="text-decoration: unset; color: #F7B3D2;border:1px solid black; width: 209px; height: 239px; ">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px; ">
 									</span>
 									<span style="border: solid 4px transparent ;"class="box">
-										<img src="#" style="text-decoration: unset; color: #F7B3D2;border:1px solid black; width: 209px; height: 239px; ">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px; ">
 									</span>
 									<span style="border: solid 4px transparent ;"class="box">
-										<img src="#" style="text-decoration: unset; color: #F7B3D2;border:1px solid black; width: 209px; height: 239px; ">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px; ">
 									</span>
 									<span style="border: solid 4px transparent ;"class="box">
-										<img src="#" style="text-decoration: unset; color: #F7B3D2;border:1px solid black; width: 209px; height: 239px; ">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px; ">
 									</span>
 							</div>
-							<div style="font-size: 14px; display: flex;" class="boxwrap">
+							<div style="font-size: 14px; display: flex; margin-bottom:10px;" class="boxwrap">
 									<span style="border: solid 4px transparent ;"class="box">
 										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
 									</span>
@@ -337,6 +338,211 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
 									</span>
 							</div>
+							<div style="font-size: 14px;" class="boxwrap">
+									<span style="border: solid 4px transparent ;"class="box">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px; ">
+									</span>
+									<span style="border: solid 4px transparent ;"class="box">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px; ">
+									</span>
+									<span style="border: solid 4px transparent ;"class="box">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px; ">
+									</span>
+									<span style="border: solid 4px transparent ;"class="box">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px; ">
+									</span>
+							</div>
+							<div style="font-size: 14px; display: flex; margin-bottom:10px;" class="boxwrap">
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
+									</span>
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
+									</span>
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
+									</span>
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
+									</span>
+							</div>
+							<!-- 검색 해시태그 포함 게시물 -->
+							<div style="width: 100%; height: 204px;">
+										<span style="color: #666; font-size: 14px; float: left; padding-top: 40px; display:block; text-align: left; width:100%;padding-bottom: 10px;"class="box">
+											검색된 해시태그가 포함된 게시물
+										</span>
+										<!-- 여기부터 게시글  -->
+									<article class="eachPost" style="margin: 30px; display: inline-block;" id="이곳은게시물번호가들어갈자리">
+										<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
+										<div class="wrtInfo"><div class="wrtProf">
+											<img src="https://img.icons8.com/cotton/64/000000/apple--v1.png"/>
+										</div>
+										<div class="wrter" id="">
+											<b>작성자아이디</b>
+										</div>
+										<div class="like-butt" id="">
+											<span style="font-size: 12px; line-height: 0px;" class="comt-img">
+											</span>
+										</div>
+										<div class="like-butt" id="" style="display: flex;">
+											<span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn">
+											</span>
+										</div>
+										</div>
+											<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
+											<div class="postCont" style="text-align: center; font-size: 16px;">
+												<!-- 도서사진, 도서이름, 게시글본문 -->
+												<div class="book-pic">
+												<!-- 도서 사진 들어갈 부분 -->
+												</div>
+												<div class="book-name">
+													<!-- 도서명 들어갈 부분 -->
+												</div>
+												<div class="post-body">
+													<!-- 게시글 부분 -->
+												</div>
+											</div>
+										<div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div>
+									</article>
+									<!-- /게시글  -->
+										<!-- 여기부터 게시글  -->
+									<article class="eachPost" style="margin: 30px; display: inline-block;" id="이곳은게시물번호가들어갈자리">
+										<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
+										<div class="wrtInfo"><div class="wrtProf">
+											<img src="https://img.icons8.com/cotton/64/000000/apple--v1.png"/>
+										</div>
+										<div class="wrter" id="">
+											<b>작성자아이디</b>
+										</div>
+										<div class="like-butt" id="">
+											<span style="font-size: 12px; line-height: 0px;" class="comt-img">
+											</span>
+										</div>
+										<div class="like-butt" id="" style="display: flex;">
+											<span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn">
+											</span>
+										</div>
+										</div>
+											<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
+											<div class="postCont" style="text-align: center; font-size: 16px;">
+												<!-- 도서사진, 도서이름, 게시글본문 -->
+												<div class="book-pic">
+												<!-- 도서 사진 들어갈 부분 -->
+												</div>
+												<div class="book-name">
+													<!-- 도서명 들어갈 부분 -->
+												</div>
+												<div class="post-body">
+													<!-- 게시글 부분 -->
+												</div>
+											</div>
+										<div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div>
+									</article>
+									<!-- /게시글  -->
+										<!-- 여기부터 게시글  -->
+									<article class="eachPost" style="margin: 30px; display: inline-block;" id="이곳은게시물번호가들어갈자리">
+										<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
+										<div class="wrtInfo"><div class="wrtProf">
+											<img src="https://img.icons8.com/cotton/64/000000/apple--v1.png"/>
+										</div>
+										<div class="wrter" id="">
+											<b>작성자아이디</b>
+										</div>
+										<div class="like-butt" id="">
+											<span style="font-size: 12px; line-height: 0px;" class="comt-img">
+											</span>
+										</div>
+										<div class="like-butt" id="" style="display: flex;">
+											<span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn">
+											</span>
+										</div>
+										</div>
+											<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
+											<div class="postCont" style="text-align: center; font-size: 16px;">
+												<!-- 도서사진, 도서이름, 게시글본문 -->
+												<div class="book-pic">
+												<!-- 도서 사진 들어갈 부분 -->
+												</div>
+												<div class="book-name">
+													<!-- 도서명 들어갈 부분 -->
+												</div>
+												<div class="post-body">
+													<!-- 게시글 부분 -->
+												</div>
+											</div>
+										<div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div>
+									</article>
+									<!-- /게시글  -->
+										<!-- 여기부터 게시글  -->
+									<article class="eachPost" style="margin: 30px; display: inline-block;" id="이곳은게시물번호가들어갈자리">
+										<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
+										<div class="wrtInfo"><div class="wrtProf">
+											<img src="https://img.icons8.com/cotton/64/000000/apple--v1.png"/>
+										</div>
+										<div class="wrter" id="">
+											<b>작성자아이디</b>
+										</div>
+										<div class="like-butt" id="">
+											<span style="font-size: 12px; line-height: 0px;" class="comt-img">
+											</span>
+										</div>
+										<div class="like-butt" id="" style="display: flex;">
+											<span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn">
+											</span>
+										</div>
+										</div>
+											<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
+											<div class="postCont" style="text-align: center; font-size: 16px;">
+												<!-- 도서사진, 도서이름, 게시글본문 -->
+												<div class="book-pic">
+												<!-- 도서 사진 들어갈 부분 -->
+												</div>
+												<div class="book-name">
+													<!-- 도서명 들어갈 부분 -->
+												</div>
+												<div class="post-body">
+													<!-- 게시글 부분 -->
+												</div>
+											</div>
+										<div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div>
+									</article>
+									<!-- /게시글  -->
+										<!-- 여기부터 게시글  -->
+									<article class="eachPost" style="margin: 30px; display: inline-block;" id="이곳은게시물번호가들어갈자리">
+										<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
+										<div class="wrtInfo"><div class="wrtProf">
+											<img src="https://img.icons8.com/cotton/64/000000/apple--v1.png"/>
+										</div>
+										<div class="wrter" id="">
+											<b>작성자아이디</b>
+										</div>
+										<div class="like-butt" id="">
+											<span style="font-size: 12px; line-height: 0px;" class="comt-img">
+											</span>
+										</div>
+										<div class="like-butt" id="" style="display: flex;">
+											<span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn">
+											</span>
+										</div>
+										</div>
+											<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
+											<div class="postCont" style="text-align: center; font-size: 16px;">
+												<!-- 도서사진, 도서이름, 게시글본문 -->
+												<div class="book-pic">
+												<!-- 도서 사진 들어갈 부분 -->
+												</div>
+												<div class="book-name">
+													<!-- 도서명 들어갈 부분 -->
+												</div>
+												<div class="post-body">
+													<!-- 게시글 부분 -->
+												</div>
+											</div>
+										<div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div>
+									</article>
+									<!-- /게시글  -->
+								</div>
+						</div>
 				<!-- /모든 검색 결과 창 -->
 				</div>
 			</div>
@@ -439,6 +645,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 					<h3 style="font-size:18.72px; position:absolute; top:40px; left: 1135px; display: flex;font-family:Verdana,sans-serif;">만든이</h3><br><h4 style="position:absolute; top:35px; left: 1222px; display: flex; font-size: 10pt;font-family:Verdana,sans-serif;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:55px; left: 1222px; display: flex; font-size:10pt;font-family:Verdana,sans-serif;">서 동혁 | 우 현우 |</h4>
 			    <small>
 			    <p style="position:absolute; top:120px; left: 800px; display: flex;">Copyright © 2020 BookNet.co.,Ltd. All rights reserved.</p>
+			    <a href="#"  style="position:absolute; top:139px; left: 1037px; display: flex;"><address style="font-size:12px; color:#fff;">@인플루언서 신청 ., @ Apply for Influencer</address></a>
 			    <address style="position:absolute; top:140px; left: 800px; display: flex;">Contact increpas for more information. </address>
 			    </small>
 			    <img src="https://img.icons8.com/dusk/64/000000/finn.png" style="position:absolute; top:100px; left: 1497px; display: flex; width:64px; height: 64px;"/>

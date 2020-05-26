@@ -32,7 +32,7 @@
 	border: 1px solid #888;
 	border-radius: 6px;
 	width: 700px;
-	z-index: 2;
+	z-index: 2; 
 }
 
 .s-modal-content {
@@ -47,11 +47,20 @@
 	z-index: 3;
 }
 
+.p-modal-content {
+	background-color: #fefefe;
+    width: 600px;
+    margin: 70px auto;
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 3;
+}
+
 /* Close Button */
 .close {
 	color: #aaa;
 	float: right;
-	font-size: 50px;
+	font-size: px;
 	font-weight: bold;
 }
 .close:hover,

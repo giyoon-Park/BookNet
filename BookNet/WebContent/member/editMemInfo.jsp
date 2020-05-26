@@ -5,41 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<meta name="format-detection" content="telephone=no">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-	<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
-	<meta http-equiv="Cache-Control" content="post-check=0, pre-check=0">
-	<meta http-equiv="Pragma" content="No-Cache">
-
 	<title>프로필 수정</title>
 
-	<script type="text/javascript" src="./프로필 수정_files/jquery.min.js.다운로드"></script>
 	<link rel="stylesheet" type="text/css" href="/BookNet/css/help_member.css">
-	<link href="https://nid.naver.com/favicon_1024.png" rel="apple-touch-icon-precomposed" sizes="1024x1024">
-	<script type="text/javascript" src="./프로필 수정_files/clickcr.js.다운로드"></script>
-	<script type="text/javascript" src="./프로필 수정_files/lcs_nclicks.js.다운로드"></script>
-	<script type="text/javascript" src="./프로필 수정_files/commonUtil.js.다운로드"></script>
-	<script type="text/javascript" src="./프로필 수정_files/lua.js.다운로드"></script>
+	<script type="text/javascript" src="../js/jquery-3.5.0.min.js"></script>
 	<script type="text/javascript">
-		var gnb_option = {
-			gnb_service : "nid",
-			gnb_template : "gnb_utf8",
-			gnb_logout : encodeURIComponent("https://nid.naver.com/user2/help/myInfo.nhn?menu=home"),
-			gnb_brightness : 1,
-			gnb_one_naver : 1,
-			gnb_item_hide_option : 0
-		}
-
-		lcs_do();
-
-		function gnbClose(){
-			$('#wrap').click(function(e){
-				if( !$('#gnb').has(e.target).length ){
-					gnbAllLayerClose();
-				}
-			});
-		}
+	
 		//120919 win8 이슈 대응 : capslock 자동설정해제
 		document.msCapsLockWarningOff = true;
 		function setContainerHeight(height) {}
@@ -372,13 +343,6 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
 
 <body onclick="clearDocs();gnbClose();" id="mainBody">
 <div id="wrap">
-	<!-- 스킵네비게이션 : 웹접근성대응-->
-	<div id="u_skip">
-<!-- [D] 주메뉴가 존재하는 페이지에 적용 -->
-<a href="https://nid.naver.com/user2/help/naverProfile.nhn?m=viewModifyProfile&amp;token_help=3bjObALRnLxxaTw1#lnb" onclick="document.getElementById(&#39;lnb_area&#39;).tabIndex=-1;document.getElementById(&#39;lnb_area&#39;).focus();return false;"><span>주메뉴로 바로가기</span></a>
-<a href="https://nid.naver.com/user2/help/naverProfile.nhn?m=viewModifyProfile&amp;token_help=3bjObALRnLxxaTw1#content" onclick="document.getElementById(&#39;content&#39;).tabIndex=-1;document.getElementById(&#39;content&#39;).focus();return false;"><span>본문으로 바로가기</span></a>
-	</div>
-	<!-- //스킵네비게이션 -->
 
 	<div id="container" style="height: 695px;">
 		<!-- CONTENTS -->
@@ -401,12 +365,40 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                 <tbody>
                 <tr>
                     <th scope="row">
-                        <div class="thcell"><label for="inpNickname">별명</label></div>
+                        <div class="thcell"><label for="inpNickname">현재 비밀번호</label></div>
                     </th>
                     <td>
                         <div class="tdcell">
                             <p class="contxt_webctrl nickname">
-                                <input type="text" name="nickname" id="inpNickname" value="이명환" style="width:254px" onclick="clickcr(this,&#39;prf.nick&#39;,&#39;&#39;,&#39;&#39;,event);">
+                                <input type="text" name="nickname" id="inpNickname" value="" style="width:254px" >
+                                <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
+                                <input type="text" style="display: none;">
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <div class="thcell"><label for="inpNickname">새 비밀번호</label></div>
+                    </th>
+                    <td>
+                        <div class="tdcell">
+                            <p class="contxt_webctrl nickname">
+                                <input type="text" name="nickname" id="inpNickname" value="" style="width:254px" >
+                                <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
+                                <input type="text" style="display: none;">
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <div class="thcell"><label for="inpNickname">새 비밀번호 확인</label></div>
+                    </th>
+                    <td>
+                        <div class="tdcell">
+                            <p class="contxt_webctrl nickname">
+                                <input type="text" name="nickname" id="inpNickname" value="" style="width:254px" >
                                 <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
                                 <input type="text" style="display: none;">
                             </p>
@@ -425,149 +417,110 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                             </div>
                             <div class="btn_area_btm">
                                 <span class="btn_file">
-                                    <label for="inputImage" class="btn_model"><b id="btnChangeProfile" class="btn2" onclick="clickcr(this,&#39;prf.upimg&#39;,&#39;&#39;,&#39;&#39;,event);">사진변경</b></label>
+                                    <label for="inputImage" class="btn_model"><b id="btnChangeProfile" class="btn2" >사진변경</b></label>
                                     <input type="file" id="inputImage" name="profileImage" accept="image/*">
                                 </span>
-                                <a href="javascript:;" class="btn_model"><b id="btnAvatar" class="btn2" onclick="clickcr(this,&#39;prf.upavt&#39;,&#39;&#39;,&#39;&#39;,event);">캐릭터 만들기</b></a>
-                                <div id="coach_tooltip" class="coach_tooltip" style="display: none;">
-                                    <span class="tooltip_img" aria-hidden="true"></span>
-                                    <a href="https://nid.naver.com/user2/help/naverProfile.nhn?m=viewModifyProfile&amp;token_help=3bjObALRnLxxaTw1#" class="txt_tooltip" onclick="clickcr(this,&#39;prf.avtind&#39;,&#39;&#39;,&#39;&#39;,event);"><span class="txt">
-								<em>캐릭터</em>를 만들어 <em>프로필</em> 이미지로 등록해 보세요.
-							</span></a>
-                                    <button type="button" class="btn_tooltip_close_area" aria-label="닫기" onclick="closeToolTip();clickcr(this,&#39;prf.avtindx&#39;,&#39;&#39;,&#39;&#39;,event);"><span class="btn_tooltip_close"></span></button>
-                                </div>
-                                <a href="javascript:;" class="btn_model"><b id="btnDelete" class="btn2 btn_disable" onclick="clickcr(this,&#39;prf.delimg&#39;,&#39;&#39;,&#39;&#39;,event);">삭제</b></a>
+                                <a href="javascript:;" class="btn_model"><b id="btnDelete" class="btn2 btn_disable" >삭제</b></a>
                             </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <div class="thcell"><label for="inpNickname">닉네임</label></div>
+                    </th>
+                    <td>
+                        <div class="tdcell">
+                            <p class="contxt_webctrl nickname">
+                                <input type="text" name="nickname" id="inpNickname" value="" style="width:254px" >
+                                <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
+                                <input type="text" style="display: none;">
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <div class="thcell"><label for="inpNickname">관심분야</label></div>
+                    </th>
+                    <td>
+                        <div class="tdcell">
+                            <p class="contxt_webctrl nickname">
+                                <input type="text" name="nickname" id="inpNickname" value="" style="width:254px" >
+                                <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
+                                <input type="text" style="display: none;">
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <div class="thcell"><label for="inpNickname">간단소개</label></div>
+                    </th>
+                    <td>
+                        <div class="tdcell">
+                            <p class="contxt_webctrl nickname">
+                                <input type="text" name="nickname" id="inpNickname" value="" style="width:254px">
+                                <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
+                                <input type="text" style="display: none;">
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <div class="thcell"><label for="inpNickname">정보공개설정</label></div>
+                    </th>
+                    <td>
+                        <div class="tdcell">
+                            <p class="contxt_webctrl nickname">
+                            	<input type="radio" id="inter_Y" name="intershow">
+                            	<input type="radio" id="inter_M" name="intershow">
+                                <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
+                                <input type="text" style="display: none;">
+                            </p>
                         </div>
                     </td>
                 </tr>
                 </tbody>
             </table>
             <div class="btn_wrap">
-                <a href="javascript:;" class="btn_model"><b id="btnConfirm" class="btn2 txt_disable" onclick="clickcr(this,&#39;prf.apply&#39;,&#39;&#39;,&#39;&#39;,event);">적용</b></a>
+                <a href="javascript:;" class="btn_model"><b id="btnConfirm" class="btn2 txt_disable" >적용</b></a>
                 <a href="javascript:;" class="btn_model"><b id="btnCancel" class="btn2" onclick="clickcr(this,&#39;prf.cancel&#39;,&#39;&#39;,&#39;&#39;,event);">취소</b></a>
             </div>
         </fieldset>
     </form>
-<div class="resize-triggers"><div class="expand-trigger"><div style="width: 955px; height: 599px;"></div></div><div class="contract-trigger"></div></div></div>
+    <fieldset style="margin-top: 30px;">
+    	<table border="0" class="tbl_model">
+    		<tbody>
+                <tr>
+                    <th scope="row">
+                        <div class="thcell"><label for="inpNickname">회원탈퇴</label></div>
+                    </th>
+                    <td>
+                        <div class="tdcell">
+                            <p class="contxt_webctrl nickname">
+                            	<button style="display: inline-block; border: 2px solid gray;">회원탈퇴하시겠습니까?</button>
+                                <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
+                                <input type="text" style="display: none;">
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+    		</tbody>
+    	</table>
+    </fieldset>
+</div>
 
-<!--[D] 캐릭터만들기 딤드처리 -->
-<div class="dim_layer"></div>
-
-<script type="text/javascript" src="./프로필 수정_files/base64.js.다운로드"></script>
-<script type="text/javascript" src="./프로필 수정_files/jquery.form.min.js.다운로드"></script>
-<script type="text/javascript" src="./프로필 수정_files/commonUtil.js(1).다운로드"></script>
-<script type="text/javascript" src="./프로필 수정_files/profileChange.js.다운로드"></script>
-<script type="text/javascript" src="./프로필 수정_files/avatarUtils.js.다운로드"></script>
 <script type="text/javascript">
-    //nClicks 전역변수
-    var nsc = "my.profile"+ "";
-    var ccsrv = "cc.naver.com";
 
-    $(document).ready(function() {
-        var profileInfo = {
-            isNicknameChanged : false,
-            nickname : "이명환",
-            defaultImageUrl : "https://static.nid.naver.com/images/web/user/default.png",
-            imageUrl : "",
-            token : "3bjObALRnLxxaTw1",
-            id : "myeongwhan",
-            lang : "ko_KR",
-            deleteYn : "N",
-            originImageUrl : "",
-            originNickname : "이명환"
-        };
-
-        var message = {
-            maxUploadSizeErrMessage : "최대 파일 업로드 사이즈는 10MB입니다.",
-            overTimeReturnErrMessage : "유효 시간이 초과 되었습니다. 다시 시도해 주세요.",
-            temporaryAccessErrMessage : "일시적인 오류입니다. 잠시 후 다시 시도해 주세요.",
-            confirm : "프로필 변경 사항을 적용하시겠습니까?"
-        };
-
-        var url = {
-            removeTempImageUrl : "/user2/api/naverProfile.nhn?m=removeTempImageUrl",
-            checkImageAndSaveTmep : "/user2/api/naverProfile.nhn?m=checkImageAndSaveTempForUser",
-            changeProfile : "/user2/api/naverProfile.nhn?m=changeProfileForUser",
-            returnUrl : "L3VzZXIyL2hlbHAvbXlJbmZvLm5obj9sYW5nPWtvX0tS"
-        };
-
-        profile.init(profileInfo, message, url);
-        profile.run();
-    });
-
-
-    if(!isSupportedBrowser()) {
-        $("#coach_tooltip").hide();
-        $("#btnAvatar").hide();
-    }
-    if(isOverDueDate()) {
-        $("#coach_tooltip").hide();
-        $("#btnAvatar").removeClass("coach_mark");
-    }
-
-    $(".txt_tooltip").on("click" ,function() {
-        $("#coach_tooltip").hide();
-    });
-
-    if(getCookie("coach_tooltip") === "ok") {
-        $("#coach_tooltip").hide();
-        $("#btnAvatar").removeClass("coach_mark");
-    } else {
-        setCookie("coach_tooltip", "ok", 30, "");
-    }
-
-    // 아바타 팝업 띄움
-    function showAvatarWindow() {
-        var avatarUrl = "http://avatar.nid.naver.com?lang=ko_KR&key=3bjObALRnLxxaTw1&url=viewModifyProfile&mode=1";
-        childWindow = window.open(avatarUrl, "avatar_popup", "width=490px, height=675px, resizeable=false");
-        childWindowCheck = setInterval(function () {
-            if (childWindow.closed) {
-                clearInterval(childWindowCheck);
-                $(".dim_layer").hide();
-            }
-        }, 1000);
-        $(".dim_layer").show();
-    }
-
-    window.onbeforeunload = function(e) {
-        if(profile.isNotAllowedToShowExitPopup()) {
-            return;
-        }
-        if(profile.currentState === profile.state.notChanged) {
-            return;
-        }
-
-        var message = "",
-                e = e || window.event;
-
-        if (e) {
-            e.returnValue = message;
-        }
-
-        return message;
-    }
-
-    // IE 호환성 지원관련
-    $("a").click(function(event) {
-        // 상단 버튼과 구별
-        var isProfileBtnClicked = $(event.currentTarget).hasClass("btn_model")
-                                || $(event.currentTarget).hasClass("txt_tooltip");
-        if(isProfileBtnClicked) {
-            event.preventDefault();
-        }
-    });
 </script>
 	</div>
 
 </div>
 
 <script type="text/javascript">
-	getGNB();
 
-	window.onresize = function() {
-		setContainerHeight(document.getElementById('content').clientHeight);
-	}
 </script>
 
 

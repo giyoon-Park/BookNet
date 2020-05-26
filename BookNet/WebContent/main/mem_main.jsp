@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%> 
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html style="background-color: #F3F0F7">
@@ -16,11 +16,11 @@
 </style>	
 <script type="text/javascript">
 	$(document).ready(function() {
+		
 		// footerUp
 		var hei = $('#footer-wrap').css("height"); 
-			// 올리기
 		 $("#footer-wrap").mouseenter(function(){
-				if($('#footer-wrap').css("height") == "112.266px"){
+				if($('#footer-wrap').css("height") == "86.438px"){
 					$('#footer-wrap').css("transition","all 0.6s");
 					$('#footer-wrap').css("background-color","#F7B3D2");
 					$('#footer-wrap').css("color","#FFF");
@@ -32,11 +32,9 @@
 					$('#footer-wrap').css("color","#FFF");
 					$('#footer-wrap').css("height","186.438px");
 				}
-				
-		// 내리기
 		 	$("#footer-wrap").mouseleave(function(){
 		 		if($('#footer-wrap').css("height") == "186.438px"){
-		 			$('#footer-wrap').css("height", "112.266px");
+		 			$('#footer-wrap').css("height", "86.438px");
 					$('#footer-wrap').css("background-color","#F3F0F7");
 					$('#footer-wrap').css("color","#FFF");
 					$('#footer-wrap').css("transition","all 0.6s");
@@ -89,7 +87,6 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 	<input type="hidden" id="eno" name="eno"> <!-- 글 작성할때 넘겨줄 감정번호 -->
 	<input type="hidden" id="body" name="body"> <!-- 글 작성할때 넘겨줄 게시글 본문 -->
 	<input type="hidden" id="tags" name="tags"> <!-- 글 작성할때 넘겨줄 해시태그 -->
-	<
 </form>
 	<div>
 		<!-- 본문부분 -->
@@ -98,7 +95,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 				<!-- 좌측 게시글 부분 -->
 				<div class="posts_area">
 					<c:forEach var="data" items="${LIST}">
-						<article class="eachPost" id="${data.pno}">
+						<article class="eachPost"><!-- id="${data.pno}" -->
 							<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
 							<div class="wrtInfo">
 								<div class="wrtProf">
@@ -110,11 +107,8 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 								<div class="time" id="">
 									${data.pdate}
 								</div>
-								<div class="like-butt" id="">
-									<span style="font-size: 12px; line-height: 0px;" class="comt-img"></span>
-								</div>
 								<div class="like-butt" id="" style="display: flex;'">
-									<span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span>
+									<span style="font-size: 12px; line-height: 0px;" class="like-img likebtn" id=""></span>
 								</div>
 							</div>
 							<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
@@ -137,9 +131,65 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 									<a style="box-sizing: border-box; font-size: 18px;">${data.postcont}</a>
 								</div>
 							</div>
-							<div class="etcdiv" style="text-align: left; font-size: 13px;">
-								<!-- 게시글 해시태그 부분 -->
-								${data.hash}
+							<div class="wrtInfo">
+								<div class="etcdiv" style="text-align: left; font-size: 13px;">${data.hash}</div>
+								<span class="modifdiv modi_post" id="${data.pno}"></span>
+							</div>
+							<!-- 게시물 상세보는 모달 -->
+							<div class="modal detailPost ${data.pno}" role="none">
+								<div class="p-modal-content" style="height: 540px;">
+									<span class="close w-x-btn" id="d-close_butt">x</span>
+									<div class="w100-pt10">
+										<div class="wrtProf" style="width: 45px; height: 45px;">
+											<img src="">
+										</div>
+										<div class="wrter" style="line-height: 40px;" id="">
+											<a href="" style="font-size: 18px;"><b>${data.id}</b></a>
+										</div>
+										<div class="time" style="line-height: 40px;" id="">${data.pdate}</div>
+										<div class="like-butt" id="">
+											<span style="font-size: 12px; line-height: 0px;" class="comt-img comtbtn"></span>
+										</div>
+										<div class="like-butt" id="" style="display: flex;'">
+											<span style="font-size: 12px; line-height: 0px;" class="like-img likebtn" id=""></span>
+										</div>
+										<div class="w100-h290">
+											<div class="book-pic">
+												<!-- 도서 사진 들어갈 부분 -->
+												<img src="${data.largeimg}" style="float: left; box-sizing: border-box;" />
+											</div>
+											<div class="genre-pad">${data.gname}</div>
+											<div class="genre-pad" style="font-size: 25px; line-height: 25px;"><b>${data.bname}</b></div>
+											<div class="detail-body">
+												<!-- 게시글 부분 -->
+												<a style="box-sizing: border-box; font-size: 15px;">${data.postcont}</a>
+											</div>
+										</div>
+										<div class="w100-h35">
+											<div style="margin-left: 20px; text-align: left; font-size: 12px;">${data.hash}</div>
+										</div>
+										<div class="w100-h95">
+											<!-- 댓글 리스트 뽑아오기 -->
+											<%-- <c:forEach val="comm" begin="1" end="4"> --%>
+												<div class="listcomt" id="댓글번호">
+													<div style="float: left; width: 30px; height: 30px; border: 1px dashed black">
+														<img src="" style="box-sizing: border-box;"/>
+													</div>
+													<div class="h30-m10" style="width: 60px;">댓글작성자</div>
+													<div class="h30-m10" style="width: 80px;">댓글시간</div>
+													<div class="h30-m10" style="width: 350px;">댓글 내용</div>
+												</div>
+											<%-- </c:forEach> --%>
+										</div>
+										<div class="wrtcomt hidcommt" style="display: none;" id="">
+											<div class="comwrter">
+												<a>${SID}</a>
+											</div>
+											<input type="text" class="combody" placeholder="댓글을 입력하세요." />
+											<input type="button" class="comsubbtn" value="등록"/>
+										</div>
+									</div>
+								</div>
 							</div>
 						</article>
 					</c:forEach>
@@ -276,13 +326,14 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 				</div>
 			</div>
 		</div>
-<!-- 풋터부분 -->
-			<footer id="footer-wrap" style="padding:10px; height: 86.45px; color: #FFF;">		
-					<h3 style="position:absolute; top:40px; left: 255px; display: flex;font-family:Verdana,sans-serif;">Company</h3><br><h4 style="position:absolute;  top:35px; left: 380px; display: flex; font-size: 10pt;font-family:Verdana,sans-serif;">Increpas</h4><br><h4 style="position:absolute; top:55px; left: 380px; display: flex; font-size:10pt;font-family:Verdana,sans-serif;">서울특별시 관악구 신림동 시흥대로 552</h4>
-					<h3 style="position:absolute; top:40px; left: 735px; display: flex;font-family:Verdana,sans-serif;">Project_Team</h3><br><h4 style="position:absolute; top:35px; left: 910px; display: flex; font-size: 10pt;font-family:Verdana,sans-serif;">BookNet KOR</h4><br><h4 style="position:absolute; top:55px; left: 910px; display: flex; font-size:10pt;font-family:Verdana,sans-serif;">PageTurner</h4>
-					<h3 style="position:absolute; top:40px; left: 1135px; display: flex;font-family:Verdana,sans-serif;">만든이</h3><br><h4 style="position:absolute; top:35px; left: 1222px; display: flex; font-size: 10pt;font-family:Verdana,sans-serif;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:55px; left: 1222px; display: flex; font-size:10pt;font-family:Verdana,sans-serif;">서 동혁 | 우 현우 |</h4>
+     		<!-- 풋터부분 -->
+		<footer id="footer-wrap" style="padding:10px; height: 86.45px; color: #FFF;">		
+					<h3 style="position:absolute; top:40px; left: 260px; display: flex;">Company</h3><br><h4 style="position:absolute;  top:35px; left: 360px; display: flex; font-size: 10pt;">Increpas</h4><br><h4 style="position:absolute; top:55px; left: 360px; display: flex; font-size:10pt;">서울특별시 관악구 신림동 시흥대로 552</h4>
+					<h3 style="position:absolute; top:40px; left: 760px; display: flex;">Project_Team</h3><br><h4 style="position:absolute; top:35px; left: 890px; display: flex; font-size: 10pt;">BookNet KOR</h4><br><h4 style="position:absolute; top:55px; left: 890px; display: flex; font-size:10pt;">PageTurner</h4>
+					<h3 style="position:absolute; top:40px; left: 1135px; display: flex;">만든이</h3><br><h4 style="position:absolute; top:35px; left: 1202px; display: flex; font-size: 10pt;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:55px; left: 1202px; display: flex; font-size:10pt;">서 동혁 | 우 현우 |</h4>
 			    <small>
 			    <p style="position:absolute; top:120px; left: 800px; display: flex;">Copyright © 2020 BookNet.co.,Ltd. All rights reserved.</p>
+			    <a href="#"  style="position:absolute; top:139px; left: 1037px; display: flex;"><address style="font-size:12px; color:#fff;">@인플루언서 신청 ., @ Apply for Influencer</address></a>
 			    <address style="position:absolute; top:140px; left: 800px; display: flex;">Contact increpas for more information. </address>
 			    </small>
 			    <img src="https://img.icons8.com/dusk/64/000000/finn.png" style="position:absolute; top:100px; left: 1497px; display: flex; width:64px; height: 64px;"/>

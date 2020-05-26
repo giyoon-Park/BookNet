@@ -49,6 +49,19 @@
     color: #ccc;
     background-color: #fff;
 	}
+	
+	.boxwrap{
+		display: table;
+		table-layout: fixed;
+	}
+	
+	.boxwrap .box{
+		display: table-cell;
+	}
+	.box{
+	overflow: auto;
+	text-overflow: ellipsis;
+	}
 }
 </style>	
 <script type="text/javascript">
@@ -83,15 +96,15 @@
 			});
 			// footerUp
 			var hei = $('#footer-wrap').css("height"); 
+			var wei = 0;
    			// 올리기
 			 $("#footer-wrap").mouseenter(function(){
-					if($('#footer-wrap').css("height") == "112.266px"){
+					if($('#footer-wrap').css("height") == hei){
 						$('#footer-wrap').css("transition","all 0.6s");
 						$('#footer-wrap').css("background-color","#F7B3D2");
 						$('#footer-wrap').css("color","#FFF");
 						$('#footer-wrap').css("height","186.438px");
-						
-					} else if($('#footer-wrap').css("height") == hei){
+					} else if($('#footer-wrap').css("height") == wei){
 						$('#footer-wrap').css("transition","all 0.6s");
 						$('#footer-wrap').css("background-color","#F7B3D2");
 						$('#footer-wrap').css("color","#FFF");
@@ -100,8 +113,9 @@
 					
 			// 내리기
 			 	$("#footer-wrap").mouseleave(function(){
-			 		if($('#footer-wrap').css("height") == "186.438px"){
-			 			$('#footer-wrap').css("height", "112.266px");
+			 		 wei = $('#footer-wrap').css("height");
+			 		if($('#footer-wrap').css("height") == wei){
+			 			$('#footer-wrap').css("height", hei);
 						$('#footer-wrap').css("background-color","#F3F0F7");
 						$('#footer-wrap').css("color","#FFF");
 						$('#footer-wrap').css("transition","all 0.6s");
@@ -168,73 +182,45 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 	<div>
 		<!-- 본문부분 -->
 		<div id="contents-wrap">
-			<div class="contents">
+			<div class="contents" style="width: 1002px;">
 				<!-- 이곳에 본문내용을 넣어주세요! -->
 				<!-- 책 검색 결과 창 -->
-				<div style="line-height: 1; text-align: center; height:100%; padding: 0px 10px; margin: 0px auto;border: 1px solid black; border-top-width:0px; border-bottom-width: 0px;">
+				<div style="line-height: 1; text-align: center; height:100%; padding: 0px 10px; margin: 0px auto; border-top-width:0px; border-bottom-width: 0px;">
 					<!-- 검색값-->
 					<div style="width: 100%; height: 204px;">
 						<!-- 이미지 -->
-						<div style="float: left; width: 300px; height:100%; margin:0px auto; font-size: 14px;">
+						<div style="float: left; width: 370px; height:100%; margin:0px auto; font-size: 14px;">
 							<div style="position: relative;top:25%;left:30%;width:100px;height:100px;border: 1px solid red;border-radius: 50%;padding: 0px;">
 								<img src="https://img.icons8.com/dusk/64/000000/homer-simpson.png" style="position: relative;top: 10px;">
 							</div>
 						</div>
 						<!-- 검색어, 해시태그 -->
-						<div style=" height: 204px;float: right;width: 578px;">
+						<div style=" height: 204px;float: right;width: 610px; position:relative; top:30px;">
 							<div style="height:100px; text-align: left;">#책 이름</div>
 						</div>
 					</div>
 					<!-- 검색아이디 -->
 					<div style="width: 100%; height: 204px;">
-								<span style="color: #666; font-size: 14px; float: left; padding-top: 40px;"class="box">
-									검색 책 이름
+								<span style="color: #666; font-size: 14px; float: left; padding-top: 40px;  padding-bottom:40px;"class="box">
+									검색된 책 이름
 								</span>
-						</div>
+						
 					<!-- 검색책 -->
-							<div style="font-size: 0px;" class="boxwrap">
-									<span style="border: solid 4px transparent ;"class="box">
-										<img src="#" style="text-decoration: unset; color: #F7B3D2;border:1px solid black; width: 209px; height: 239px; ">
+							<div style="" class="boxwrap">
+									<span style="border-left: solid 18px transparent ;border-bottom: solid 20px transparent ; width: 238px;"class="box">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px; ">
 									</span>
-									<span style="border: solid 4px transparent ;"class="box">
-										<img src="#" style="text-decoration: unset; color: #F7B3D2;border:1px solid black; width: 209px; height: 239px; ">
+									<span style="border-left: solid 21px transparent ; width: 238px;"class="box">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px; ">
 									</span>
-									<span style="border: solid 4px transparent ;"class="box">
-										<img src="#" style="text-decoration: unset; color: #F7B3D2;border:1px solid black; width: 209px; height: 239px; ">
+									<span style="border-left: solid 35px transparent ; width: 238px;"class="box">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2;width: 209px; height: 239px; ">
 									</span>
-									<span style="border: solid 4px transparent ;"class="box">
-										<img src="#" style="text-decoration: unset; color: #F7B3D2;border:1px solid black; width: 209px; height: 239px; ">
-									</span>
-							</div>
-							<div style="font-size: 14px; display: flex;" class="boxwrap">
-									<span style="border: solid 4px transparent ;"class="box">
-										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
-									</span>
-									<span style="border: solid 4px transparent ;"class="box">
-										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
-									</span>
-									<span style="border: solid 4px transparent ;"class="box">
-										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
-									</span>
-									<span style="border: solid 4px transparent ;"class="box">
-										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
+									<span style="border-left: solid 40px transparent ; width: 238px;"class="box">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px; ">
 									</span>
 							</div>
-							<div style="font-size: 0px;" class="boxwrap">
-									<span style="border: solid 4px transparent ;"class="box">
-										<img src="#" style="text-decoration: unset; color: #F7B3D2;border:1px solid black; width: 209px; height: 239px; ">
-									</span>
-									<span style="border: solid 4px transparent ;"class="box">
-										<img src="#" style="text-decoration: unset; color: #F7B3D2;border:1px solid black; width: 209px; height: 239px; ">
-									</span>
-									<span style="border: solid 4px transparent ;"class="box">
-										<img src="#" style="text-decoration: unset; color: #F7B3D2;border:1px solid black; width: 209px; height: 239px; ">
-									</span>
-									<span style="border: solid 4px transparent ;"class="box">
-										<img src="#" style="text-decoration: unset; color: #F7B3D2;border:1px solid black; width: 209px; height: 239px; ">
-									</span>
-							</div>
-							<div style="font-size: 14px; display: flex;" class="boxwrap">
+							<div style="font-size: 14px; display: flex; margin-bottom:10px;" class="boxwrap">
 									<span style="border: solid 4px transparent ;"class="box">
 										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
 									</span>
@@ -248,34 +234,64 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
 									</span>
 							</div>
-							<div style="font-size: 0px;" class="boxwrap">
-									<span style="border: solid 4px transparent ;"class="box">
-										<img src="#" style="text-decoration: unset; color: #F7B3D2;border:1px solid black; width: 209px; height: 239px; ">
+							<div style="" class="boxwrap">
+									<span style="border-left: solid 18px transparent ;border-bottom: solid 20px transparent ; width: 238px;"class="box">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px; ">
 									</span>
-									<span style="border: solid 4px transparent ;"class="box">
-										<img src="#" style="text-decoration: unset; color: #F7B3D2;border:1px solid black; width: 209px; height: 239px; ">
+									<span style="border-left: solid 21px transparent ; width: 238px;"class="box">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px; ">
 									</span>
-									<span style="border: solid 4px transparent ;"class="box">
-										<img src="#" style="text-decoration: unset; color: #F7B3D2;border:1px solid black; width: 209px; height: 239px; ">
+									<span style="border-left: solid 35px transparent ; width: 238px;"class="box">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2;width: 209px; height: 239px; ">
 									</span>
-									<span style="border: solid 4px transparent ;"class="box">
-										<img src="#" style="text-decoration: unset; color: #F7B3D2;border:1px solid black; width: 209px; height: 239px; ">
-									</span>
-							</div>
-							<div style="font-size: 14px; display: flex;" class="boxwrap">
-									<span style="border: solid 4px transparent ;"class="box">
-										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
-									</span>
-									<span style="border: solid 4px transparent ;"class="box">
-										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
-									</span>
-									<span style="border: solid 4px transparent ;"class="box">
-										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
-									</span>
-									<span style="border: solid 4px transparent ;"class="box">
-										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
+									<span style="border-left: solid 40px transparent ; width: 238px;"class="box">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px; ">
 									</span>
 							</div>
+							<div style="font-size: 14px; display: flex; margin-bottom:10px;" class="boxwrap">
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
+									</span>
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
+									</span>
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
+									</span>
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
+									</span>
+							</div>
+							<div style="" class="boxwrap">
+									<span style="border-left: solid 18px transparent ;border-bottom: solid 20px transparent ; width: 238px;"class="box">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px; ">
+									</span>
+									<span style="border-left: solid 21px transparent ; width: 238px;"class="box">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px; ">
+									</span>
+									<span style="border-left: solid 35px transparent ; width: 238px;"class="box">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2;width: 209px; height: 239px; ">
+									</span>
+									<span style="border-left: solid 40px transparent ; width: 238px;"class="box">
+										<img src="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px; ">
+									</span>
+							</div>
+							<div style="font-size: 14px; display: flex; margin-bottom:10px;" class="boxwrap">
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
+									</span>
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
+									</span>
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
+									</span>
+									<span style="border: solid 4px transparent ;"class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2;">책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름책이름</a>
+									</span>
+							</div>
+							<!-- 아래는 검색된 책이름닫기 div -->
+						</div>
 				<!-- /책 검색 결과 창 -->
 				</div>
 			</div>
@@ -378,6 +394,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 					<h3 style="font-size:18.72px; position:absolute; top:40px; left: 1135px; display: flex;font-family:Verdana,sans-serif;">만든이</h3><br><h4 style="position:absolute; top:35px; left: 1222px; display: flex; font-size: 10pt;font-family:Verdana,sans-serif;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:55px; left: 1222px; display: flex; font-size:10pt;font-family:Verdana,sans-serif;">서 동혁 | 우 현우 |</h4>
 			    <small>
 			    <p style="position:absolute; top:120px; left: 800px; display: flex;">Copyright © 2020 BookNet.co.,Ltd. All rights reserved.</p>
+			    <a href="#"  style="position:absolute; top:139px; left: 1037px; display: flex;"><address style="font-size:12px; color:#fff;">@인플루언서 신청 ., @ Apply for Influencer</address></a>
 			    <address style="position:absolute; top:140px; left: 800px; display: flex;">Contact increpas for more information. </address>
 			    </small>
 			    <img src="https://img.icons8.com/dusk/64/000000/finn.png" style="position:absolute; top:100px; left: 1497px; display: flex; width:64px; height: 64px;"/>

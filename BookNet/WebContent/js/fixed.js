@@ -27,8 +27,22 @@ $(document).ready(function(){
 		$('#actModal').css('display', 'none');
 	});
 	
-	$('#likebtn').click(function(){ //like 버튼 클릭시 빨강하트로 변경 
+	$('.likebtn').click(function(){ //like 버튼 클릭시 빨강하트로 변경 
 		$(this).css('background-position', '-208px -370px');
+	});
+	
+	$('.comtbtn').click(function(){ //댓글버튼 클릭시 댓글 달 수 있는 창 보여주기 
+		$('.wrtcomt').css('display', '');
+		$('.p-modal-content').css('height','590px');
+	});
+	
+	$('.modi_post').click(function(){ //게시물 상세보기 모달 
+		var id = $(this).attr('id');
+		$('.'+id).css('display', 'block');
+	});
+	
+	$('#d-close_butt').click(function(){ //게시물 상세보기 닫기 
+		$('.detailPost').css('display', 'none');
 	});
 	
 	$('#wBtn').click(function(){ //글쓰기 modal 열기 
