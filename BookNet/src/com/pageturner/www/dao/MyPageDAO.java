@@ -7,6 +7,7 @@ package com.pageturner.www.dao;
  */
 import java.sql.*;
 import java.util.*;
+import java.text.*;
 import com.pageturner.www.vo.*;
 import com.pageturner.www.DB.*;
 import com.pageturner.www.sql.*;
@@ -21,6 +22,7 @@ public class MyPageDAO {
 	AlarmSQL aSQL;
 	String id;
 	int mno;
+	SimpleDateFormat form;
 	
 	public MyPageDAO(String id) {
 		db = new WebDBCP();
@@ -28,6 +30,7 @@ public class MyPageDAO {
 		this.id = id;
 		this.mno = getMno(id);
 		this.aSQL = new AlarmSQL();
+		this.form = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	}
 
 	// mypage에 공개한 회원정보를 db에서 불러오는 함수
@@ -282,11 +285,67 @@ public class MyPageDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				list.add("L");
+				list.add(form.format(rs.getDate("lk_time")));
 				list.add(rs.getInt("pno"));
 				list.add(rs.getString("bname"));
+				list.add(rs.getString("id"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		return list;
+	}
+	
+	// 댓글 알람 리스트를 불러오는 함수
+	public ArrayList getComnt() {
+		ArrayList list = new ArrayList();
+		con = db.getCon();
+		String sql = aSQL.getSQL(aSQL.SEL_COMNT);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add("C");
+				list.add(form.format(rs.getDate("cdate")));
+				list.add(rs.getInt("pno"));
+				list.add(rs.getString("bname"));
+				list.add(rs.getString("id"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		return list;
+	}
+	
+	// 팔로우 알람 리스트를 불러오는 함수
+	public ArrayList getFal() {
+		ArrayList list = new ArrayList();
+		con = db.getCon();
+		String sql = aSQL.getSQL(aSQL.SEL_FAL);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add("F");
+				list.add(form.format(rs.getDate("fal_time")));
+				list.add(rs.getString("id"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
 		}
 		return list;
 	}
