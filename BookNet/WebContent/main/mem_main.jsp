@@ -95,7 +95,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 				<!-- 좌측 게시글 부분 -->
 				<div class="posts_area">
 					<c:forEach var="data" items="${LIST}">
-						<article class="eachPost" id="${data.pno}">
+						<article class="eachPost"><!-- id="${data.pno}" -->
 							<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
 							<div class="wrtInfo">
 								<div class="wrtProf">
@@ -107,11 +107,8 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 								<div class="time" id="">
 									${data.pdate}
 								</div>
-								<div class="like-butt" id="">
-									<span style="font-size: 12px; line-height: 0px;" class="comt-img"></span>
-								</div>
 								<div class="like-butt" id="" style="display: flex;'">
-									<span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span>
+									<span style="font-size: 12px; line-height: 0px;" class="like-img likebtn" id=""></span>
 								</div>
 							</div>
 							<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
@@ -134,14 +131,67 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 									<a style="box-sizing: border-box; font-size: 18px;">${data.postcont}</a>
 								</div>
 							</div>
-							<div class="wrtInfo"id="${data.pno}">
+							<div class="wrtInfo">
 								<div class="etcdiv" style="text-align: left; font-size: 13px;">${data.hash}</div>
-								<span class="modifdiv modi_post"></span>
+								<span class="modifdiv modi_post" id="${data.pno}"></span>
+							</div>
+							<!-- 게시물 상세보는 모달 -->
+							<div class="modal detailPost ${data.pno}" role="none">
+								<div class="p-modal-content" style="height: 540px;">
+									<span class="close w-x-btn" id="d-close_butt">x</span>
+									<div class="w100-pt10">
+										<div class="wrtProf" style="width: 45px; height: 45px;">
+											<img src="">
+										</div>
+										<div class="wrter" style="line-height: 40px;" id="">
+											<a href="" style="font-size: 18px;"><b>${data.id}</b></a>
+										</div>
+										<div class="time" style="line-height: 40px;" id="">${data.pdate}</div>
+										<div class="like-butt" id="">
+											<span style="font-size: 12px; line-height: 0px;" class="comt-img comtbtn"></span>
+										</div>
+										<div class="like-butt" id="" style="display: flex;'">
+											<span style="font-size: 12px; line-height: 0px;" class="like-img likebtn" id=""></span>
+										</div>
+										<div class="w100-h290">
+											<div class="book-pic">
+												<!-- 도서 사진 들어갈 부분 -->
+												<img src="${data.largeimg}" style="float: left; box-sizing: border-box;" />
+											</div>
+											<div class="genre-pad">${data.gname}</div>
+											<div class="genre-pad" style="font-size: 25px; line-height: 25px;"><b>${data.bname}</b></div>
+											<div class="detail-body">
+												<!-- 게시글 부분 -->
+												<a style="box-sizing: border-box; font-size: 15px;">${data.postcont}</a>
+											</div>
+										</div>
+										<div class="w100-h35">
+											<div style="margin-left: 20px; text-align: left; font-size: 12px;">${data.hash}</div>
+										</div>
+										<div class="w100-h95">
+											<!-- 댓글 리스트 뽑아오기 -->
+											<%-- <c:forEach val="comm" begin="1" end="4"> --%>
+												<div class="listcomt" id="댓글번호">
+													<div style="float: left; width: 30px; height: 30px; border: 1px dashed black">
+														<img src="" style="box-sizing: border-box;"/>
+													</div>
+													<div class="h30-m10" style="width: 60px;">댓글작성자</div>
+													<div class="h30-m10" style="width: 80px;">댓글시간</div>
+													<div class="h30-m10" style="width: 350px;">댓글 내용</div>
+												</div>
+											<%-- </c:forEach> --%>
+										</div>
+										<div class="wrtcomt hidcommt" style="display: none;" id="">
+											<div class="comwrter">
+												<a>${SID}</a>
+											</div>
+											<input type="text" class="combody" placeholder="댓글을 입력하세요." />
+											<input type="button" class="comsubbtn" value="등록"/>
+										</div>
+									</div>
+								</div>
 							</div>
 						</article>
-						<!-- 게시물 상세보는 모달 -->
-						<div id="detailPost" class="modal" role="none">
-						</div>
 					</c:forEach>
 				</div>
 				<!-- 우측 정보 부분 : 고정페이지로 들어갈 것-->
