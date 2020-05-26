@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="/BookNet/css/nonmem.css">
 <link rel="stylesheet" href="/BookNet/css/proj_fixed.css">
 <script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
+<script type="text/javascript" src="/BookNet/js/fixed.js"></script>
 <style>
 
 *{
@@ -79,7 +80,7 @@ $(function(){
    $('.dCJp8').click(function(){
       $('.closeing').remove();
    })
-   // 스크롤 함수
+  /*  // 스크롤 함수
   $(document).scroll(function() {
     var maxHeight = $(document).height();
     var currentScroll = $(window).scrollTop() + $(window).height();
@@ -87,35 +88,36 @@ $(function(){
        $('.posts_area').append('<article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><img src="https://img.icons8.com/nolan/64/apple-seed.png" style=" width: 49px;height: 49px; position: relative ; right: 215px; bottom: 19px;"/><div class="wrtProf"></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --><button class="Bbtn">버튼</button></div></article>');
     }
     
-  })
-  	// footerUp
-			var hei = $('#footer-wrap').css("height"); 
-   			// 올리기
-			 $("#footer-wrap").mouseenter(function(){
-					if($('#footer-wrap').css("height") == "112.266px"){
-						$('#footer-wrap').css("transition","all 0.6s");
-						$('#footer-wrap').css("background-color","#F7B3D2");
-						$('#footer-wrap').css("color","#FFF");
-						$('#footer-wrap').css("height","186.438px");
-						
-					} else if($('#footer-wrap').css("height") == hei){
-						$('#footer-wrap').css("transition","all 0.6s");
-						$('#footer-wrap').css("background-color","#F7B3D2");
-						$('#footer-wrap').css("color","#FFF");
-						$('#footer-wrap').css("height","186.438px");
-					}
-					
-			// 내리기
-			 	$("#footer-wrap").mouseleave(function(){
-			 		if($('#footer-wrap').css("height") == "186.438px"){
-			 			$('#footer-wrap').css("height", "112.266px");
-						$('#footer-wrap').css("background-color","#F3F0F7");
-						$('#footer-wrap').css("color","#FFF");
-						$('#footer-wrap').css("transition","all 0.6s");
-						$('#footer-wrap').css("overflow","hidden");
-			 		}
-				});
-			});
+  }) */
+	// footerUp
+	var hei = $('#footer-wrap').css("height"); 
+	var wei = 0;
+		// 올리기
+	 $("#footer-wrap").mouseenter(function(){
+			if($('#footer-wrap').css("height") == hei){
+				$('#footer-wrap').css("transition","all 0.6s");
+				$('#footer-wrap').css("background-color","#F7B3D2");
+				$('#footer-wrap').css("color","#FFF");
+				$('#footer-wrap').css("height","186.438px");
+			} else if($('#footer-wrap').css("height") == wei){
+				$('#footer-wrap').css("transition","all 0.6s");
+				$('#footer-wrap').css("background-color","#F7B3D2");
+				$('#footer-wrap').css("color","#FFF");
+				$('#footer-wrap').css("height","186.438px");
+			}
+			
+	// 내리기
+	 	$("#footer-wrap").mouseleave(function(){
+	 		 wei = $('#footer-wrap').css("height");
+	 		if($('#footer-wrap').css("height") == wei){
+	 			$('#footer-wrap').css("height", hei);
+				$('#footer-wrap').css("background-color","#F3F0F7");
+				$('#footer-wrap').css("color","#FFF");
+				$('#footer-wrap').css("transition","all 0.6s");
+				$('#footer-wrap').css("overflow","hidden");
+	 		}
+		});
+	});
 				// search clear
 				var $ipt = $('#searchinput'),
 				    $clearIpt = $('#searchclear');
@@ -179,27 +181,73 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 <body onload="printClock()"/>
 
    <div>
-      <!-- 본문부분 -->
-      <div id="contents-wrap">
-         <div class="contents">
-            <!-- 좌측 게시글 부분 -->
-            <div class="posts_area">
-               <article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><img src="https://img.icons8.com/nolan/64/apple-seed.png" style=" width: 49px;height: 49px; position: relative ; right: 215px; bottom: 19px;" /><div class="wrtProf"></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div></article>
-               <article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><img src="https://img.icons8.com/nolan/64/apple-seed.png" style=" width: 49px;height: 49px; position: relative ; right: 215px; bottom: 19px;"/><div class="wrtProf"></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div></article>
-               <article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><img src="https://img.icons8.com/nolan/64/apple-seed.png" style=" width: 49px;height: 49px; position: relative ; right: 215px; bottom: 19px;"/><div class="wrtProf"></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div></article>
-            </div>   
-            <!-- 우측 정보 부분 : 고정페이지로 들어갈 것-->
-            <div class="info_area">
-               <div style="width: 100%; height: 200px; margin-top: 15px; border: solid 1px white;">
-                  <a></a>
-               </div>
-               <div style="width: 100%; height: 200px; margin-top: 15px; border: solid 1px white;">
-                  <a></a>
-               </div>
-            </div>
-            <!-- 우측 정보 끝! -->
-         </div>
-      </div>
+    <!-- 본문부분 -->
+		<div id="contents-wrap">
+			<div class="contents">
+				<!-- 좌측 게시글 부분 -->
+				<div class="posts_area">
+					<c:forEach var="data" items="${LIST}">
+						<article class="eachPost" id="${data.pno}">
+							<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
+							<div class="wrtInfo">
+								<div class="wrtProf">
+									<img src="">
+								</div>
+								<div class="wrter" id="">
+									<a href=""><b>${data.id}</b></a>
+								</div>
+								<div class="time" id="">
+									${data.pdate}
+								</div>
+								<div class="like-butt" id="">
+									<span style="font-size: 12px; line-height: 0px;" class="comt-img"></span>
+								</div>
+								<div class="like-butt" id="" style="display: flex;'">
+									<span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span>
+								</div>
+							</div>
+							<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
+							<div class="postCont" style="text-align: center; font-size: 16px;">
+								<!-- 도서사진, 도서이름, 게시글본문 -->
+								<div class="book-pic">
+									<!-- 도서 사진 들어갈 부분 -->
+									<img src="${data.largeimg}" style="width: 90%; height: auto;" />
+								</div>
+								<div class="genre-name" style="font-size: 12px; text-align: left;">
+									<!-- 도서장르 들어갈 부분 -->
+									${data.gname}
+								</div>
+								<div class="book-name">
+									<!-- 도서명 들어갈 부분 -->
+									<b>${data.bname}</b>
+								</div>
+								<div class="post-body">
+									<!-- 게시글 부분 -->
+									<a style="box-sizing: border-box; font-size: 18px;">${data.postcont}</a>
+								</div>
+							</div>
+							<div class="wrtInfo"id="${data.pno}">
+								<div class="etcdiv" style="text-align: left; font-size: 13px;">${data.hash}</div>
+								<span class="modifdiv modi_post"></span>
+							</div>
+						</article>
+						<!-- 게시물 상세보는 모달 -->
+						<div id="detailPost" class="modal" role="none">
+						</div>
+					</c:forEach>
+				</div>
+				<!-- 우측 정보 부분 : 고정페이지로 들어갈 것-->
+				<div class="info_area">
+					<div style="width: 100%; height: 200px; margin-top: 15px; border: solid 1px white;">
+						<a></a>
+					</div>
+					<div style="width: 100%; height: 200px; margin-top: 15px; border: solid 1px white;">
+						<a></a>
+					</div>
+				</div>
+				<!-- 우측 정보 끝! -->
+			</div>
+		</div>
       <!-- 헤더부분 -->
       <div id="header-wrap">
          <div class="header">

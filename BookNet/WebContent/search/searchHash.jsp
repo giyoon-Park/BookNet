@@ -49,6 +49,24 @@
     color: #ccc;
     background-color: #fff;
 	}
+		.boxwrap{
+		display: table;
+		width: 100%;
+		 height: 100px;
+		table-layout: fixed;
+
+	}
+	
+	.boxwrap .box{
+		display: table-cell;
+		vertical-align: middle;
+		text-align: left;
+		border: solid 4px transparent ;
+	}
+	.box{
+	overflow: auto;
+	text-overflow: ellipsis;
+	}
 }
 </style>	
 <script type="text/javascript">
@@ -83,15 +101,15 @@
 			});
 			// footerUp
 			var hei = $('#footer-wrap').css("height"); 
+			var wei = 0;
    			// 올리기
 			 $("#footer-wrap").mouseenter(function(){
-					if($('#footer-wrap').css("height") == "112.266px"){
+					if($('#footer-wrap').css("height") == hei){
 						$('#footer-wrap').css("transition","all 0.6s");
 						$('#footer-wrap').css("background-color","#F7B3D2");
 						$('#footer-wrap').css("color","#FFF");
 						$('#footer-wrap').css("height","186.438px");
-						
-					} else if($('#footer-wrap').css("height") == hei){
+					} else if($('#footer-wrap').css("height") == wei){
 						$('#footer-wrap').css("transition","all 0.6s");
 						$('#footer-wrap').css("background-color","#F7B3D2");
 						$('#footer-wrap').css("color","#FFF");
@@ -100,8 +118,9 @@
 					
 			// 내리기
 			 	$("#footer-wrap").mouseleave(function(){
-			 		if($('#footer-wrap').css("height") == "186.438px"){
-			 			$('#footer-wrap').css("height", "112.266px");
+			 		 wei = $('#footer-wrap').css("height");
+			 		if($('#footer-wrap').css("height") == wei){
+			 			$('#footer-wrap').css("height", hei);
 						$('#footer-wrap').css("background-color","#F3F0F7");
 						$('#footer-wrap').css("color","#FFF");
 						$('#footer-wrap').css("transition","all 0.6s");
@@ -109,7 +128,6 @@
 			 		}
 				});
 			});
-			
 			// search clear
 			var $ipt = $('#searchinput'),
 			    $clearIpt = $('#searchclear');
@@ -168,40 +186,200 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 	<div>
 		<!-- 본문부분 -->
 		<div id="contents-wrap">
-			<div class="contents">
+			<div class="contents" style="width: 1002px;">
 				<!-- 이곳에 본문내용을 넣어주세요! -->
 					<!-- 해시태그 검색 결과 창 -->
-				<div style="line-height: 1; text-align: center; height:100%; padding: 0px 10px; margin: 0px auto;border: 1px solid black; border-top-width:0px; border-bottom-width: 0px;">
+				<div style="line-height: 1; text-align: center; height:100%; padding: 0px 10px; margin: 0px auto; border-top-width:0px; border-bottom-width: 0px;">
 					<!-- 검색값-->
 					<div style="width: 100%; height: 204px;">
 						<!-- 이미지 -->
-						<div style="float: left; width: 300px; height:100%; margin:0px auto; font-size: 14px;">
+						<div style="float: left; width: 370px; height:100%; margin:0px auto; font-size: 14px;">
 							<div style="position: relative;top:25%;left:30%;width:100px;height:100px;border: 1px solid red;border-radius: 50%;padding: 0px;">
 								<img src="https://img.icons8.com/dusk/64/000000/homer-simpson.png" style="position: relative;top: 10px;">
 							</div>
 						</div>
 						<!-- 검색어, 해시태그 -->
-						<div style=" height: 204px;float: right;width: 578px;">
+						<div style=" height: 204px;float: right;width: 610px; position:relative; top:30px;">
 							<div style="height:100px; text-align: left;">#해시태그</div>
 						</div>
-					</div>
-					<!-- 검색아이디 -->
-					<div style="width: 100%; height: 100px;">
-								<span style="color: #666; font-size: 14px; float: left; padding-top: 40px;"class="box">
-									검색 해시태그
-								</span>
+						<!-- 검색 해시태그 포함 게시물 -->
+							<div style="width: 100%; height: 204px;">
+										<span style=" padding-bottom:40px; color: #666; font-size: 14px; float: left; padding-top: 40px; display:block; text-align: left; width:100%;"class="box">
+											검색된 해시태그가 포함된 게시물
+										</span>
+										<!-- 여기부터 게시글  -->
+									<article class="eachPost" style="margin: 30px; display: inline-block;" id="이곳은게시물번호가들어갈자리">
+										<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
+										<div class="wrtInfo"><div class="wrtProf">
+											<img src="https://img.icons8.com/cotton/64/000000/apple--v1.png"/>
+										</div>
+										<div class="wrter" id="">
+											<b>작성자아이디</b>
+										</div>
+										<div class="like-butt" id="">
+											<span style="font-size: 12px; line-height: 0px;" class="comt-img">
+											</span>
+										</div>
+										<div class="like-butt" id="" style="display: flex;">
+											<span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn">
+											</span>
+										</div>
+										</div>
+											<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
+											<div class="postCont" style="text-align: center; font-size: 16px;">
+												<!-- 도서사진, 도서이름, 게시글본문 -->
+												<div class="book-pic">
+												<!-- 도서 사진 들어갈 부분 -->
+												</div>
+												<div class="book-name">
+													<!-- 도서명 들어갈 부분 -->
+												</div>
+												<div class="post-body">
+													<!-- 게시글 부분 -->
+												</div>
+											</div>
+										<div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div>
+									</article>
+									<!-- /게시글  -->
+										<!-- 여기부터 게시글  -->
+									<article class="eachPost" style="margin: 30px; display: inline-block;" id="이곳은게시물번호가들어갈자리">
+										<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
+										<div class="wrtInfo"><div class="wrtProf">
+											<img src="https://img.icons8.com/cotton/64/000000/apple--v1.png"/>
+										</div>
+										<div class="wrter" id="">
+											<b>작성자아이디</b>
+										</div>
+										<div class="like-butt" id="">
+											<span style="font-size: 12px; line-height: 0px;" class="comt-img">
+											</span>
+										</div>
+										<div class="like-butt" id="" style="display: flex;">
+											<span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn">
+											</span>
+										</div>
+										</div>
+											<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
+											<div class="postCont" style="text-align: center; font-size: 16px;">
+												<!-- 도서사진, 도서이름, 게시글본문 -->
+												<div class="book-pic">
+												<!-- 도서 사진 들어갈 부분 -->
+												</div>
+												<div class="book-name">
+													<!-- 도서명 들어갈 부분 -->
+												</div>
+												<div class="post-body">
+													<!-- 게시글 부분 -->
+												</div>
+											</div>
+										<div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div>
+									</article>
+									<!-- /게시글  -->
+										<!-- 여기부터 게시글  -->
+									<article class="eachPost" style="margin: 30px; display: inline-block;" id="이곳은게시물번호가들어갈자리">
+										<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
+										<div class="wrtInfo"><div class="wrtProf">
+											<img src="https://img.icons8.com/cotton/64/000000/apple--v1.png"/>
+										</div>
+										<div class="wrter" id="">
+											<b>작성자아이디</b>
+										</div>
+										<div class="like-butt" id="">
+											<span style="font-size: 12px; line-height: 0px;" class="comt-img">
+											</span>
+										</div>
+										<div class="like-butt" id="" style="display: flex;">
+											<span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn">
+											</span>
+										</div>
+										</div>
+											<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
+											<div class="postCont" style="text-align: center; font-size: 16px;">
+												<!-- 도서사진, 도서이름, 게시글본문 -->
+												<div class="book-pic">
+												<!-- 도서 사진 들어갈 부분 -->
+												</div>
+												<div class="book-name">
+													<!-- 도서명 들어갈 부분 -->
+												</div>
+												<div class="post-body">
+													<!-- 게시글 부분 -->
+												</div>
+											</div>
+										<div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div>
+									</article>
+									<!-- /게시글  -->
+										<!-- 여기부터 게시글  -->
+									<article class="eachPost" style="margin: 30px; display: inline-block;" id="이곳은게시물번호가들어갈자리">
+										<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
+										<div class="wrtInfo"><div class="wrtProf">
+											<img src="https://img.icons8.com/cotton/64/000000/apple--v1.png"/>
+										</div>
+										<div class="wrter" id="">
+											<b>작성자아이디</b>
+										</div>
+										<div class="like-butt" id="">
+											<span style="font-size: 12px; line-height: 0px;" class="comt-img">
+											</span>
+										</div>
+										<div class="like-butt" id="" style="display: flex;">
+											<span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn">
+											</span>
+										</div>
+										</div>
+											<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
+											<div class="postCont" style="text-align: center; font-size: 16px;">
+												<!-- 도서사진, 도서이름, 게시글본문 -->
+												<div class="book-pic">
+												<!-- 도서 사진 들어갈 부분 -->
+												</div>
+												<div class="book-name">
+													<!-- 도서명 들어갈 부분 -->
+												</div>
+												<div class="post-body">
+													<!-- 게시글 부분 -->
+												</div>
+											</div>
+										<div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div>
+									</article>
+									<!-- /게시글  -->
+										<!-- 여기부터 게시글  -->
+									<article class="eachPost" style="margin: 30px; display: inline-block;" id="이곳은게시물번호가들어갈자리">
+										<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
+										<div class="wrtInfo"><div class="wrtProf">
+											<img src="https://img.icons8.com/cotton/64/000000/apple--v1.png"/>
+										</div>
+										<div class="wrter" id="">
+											<b>작성자아이디</b>
+										</div>
+										<div class="like-butt" id="">
+											<span style="font-size: 12px; line-height: 0px;" class="comt-img">
+											</span>
+										</div>
+										<div class="like-butt" id="" style="display: flex;">
+											<span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn">
+											</span>
+										</div>
+										</div>
+											<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
+											<div class="postCont" style="text-align: center; font-size: 16px;">
+												<!-- 도서사진, 도서이름, 게시글본문 -->
+												<div class="book-pic">
+												<!-- 도서 사진 들어갈 부분 -->
+												</div>
+												<div class="book-name">
+													<!-- 도서명 들어갈 부분 -->
+												</div>
+												<div class="post-body">
+													<!-- 게시글 부분 -->
+												</div>
+											</div>
+										<div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --></div>
+									</article>
+								</div>
+									<!-- /게시글  -->
 						</div>
-					<!-- 검색 해시태그 -->
-					<!-- 수정해야 되는 부분
-					 -->
-					<c:forEach var="hash" items="${hash}" begin=0>
-							<div style="font-size: 27px; background-color:#666; margin-bottom:30px;" class="boxwrap">
-									<span style="border: solid 4px red ;/*border: solid 4px transparent ;*/"class="box">
-										<a href="#">#해시태그입니다</a>
-									</span>
-							</div>
-					</c:forEach>
-				<!-- /해시태그 검색 결과 창 -->
+				</div>
 			</div>
 		</div>
 		<!-- 헤더부분 -->

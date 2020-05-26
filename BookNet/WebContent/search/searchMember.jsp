@@ -100,15 +100,15 @@
 			});
 			// footerUp
 			var hei = $('#footer-wrap').css("height"); 
+			var wei = 0;
    			// 올리기
 			 $("#footer-wrap").mouseenter(function(){
-					if($('#footer-wrap').css("height") == "112.266px"){
+					if($('#footer-wrap').css("height") == hei){
 						$('#footer-wrap').css("transition","all 0.6s");
 						$('#footer-wrap').css("background-color","#F7B3D2");
 						$('#footer-wrap').css("color","#FFF");
 						$('#footer-wrap').css("height","186.438px");
-						
-					} else if($('#footer-wrap').css("height") == hei){
+					} else if($('#footer-wrap').css("height") == wei){
 						$('#footer-wrap').css("transition","all 0.6s");
 						$('#footer-wrap').css("background-color","#F7B3D2");
 						$('#footer-wrap').css("color","#FFF");
@@ -117,8 +117,9 @@
 					
 			// 내리기
 			 	$("#footer-wrap").mouseleave(function(){
-			 		if($('#footer-wrap').css("height") == "186.438px"){
-			 			$('#footer-wrap').css("height", "112.266px");
+			 		 wei = $('#footer-wrap').css("height");
+			 		if($('#footer-wrap').css("height") == wei){
+			 			$('#footer-wrap').css("height", hei);
 						$('#footer-wrap').css("background-color","#F3F0F7");
 						$('#footer-wrap').css("color","#FFF");
 						$('#footer-wrap').css("transition","all 0.6s");
@@ -185,10 +186,10 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 	<div>
 		<!-- 본문부분 -->
 		<div id="contents-wrap">
-			<div class="contents">
+			<div class="contents" style="width: 1002px;">
 				<!-- 이곳에 본문내용을 넣어주세요! -->
 				<!-- 회원 검색 결과 창 -->
-				<div style="line-height: 1; text-align: center; height:100%; padding: 0px 10px; margin: 0px auto;border: 1px solid black; border-top-width:0px; border-bottom-width: 0px;">
+				<div style="line-height: 1; text-align: center; height:100%; padding: 0px 10px; margin: 0px auto; border-top-width:0px; border-bottom-width: 0px;">
 					<!-- 검색값-->
 					<div style="width: 100%; height: 204px;">
 						<!-- 이미지 -->
@@ -198,16 +199,15 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 							</div>
 						</div>
 						<!-- 검색어, 해시태그 -->
-						<div style=" height: 204px;float: right;width: 578px;">
+						<div style=" height: 204px;float: right;width: 610px; position:relative; top:30px;">
 							<div style="height:100px; text-align: left;">@아이디</div>
 						</div>
 					</div>
 					<!-- 검색아이디 -->
 					<div style="width: 100%; height: 204px;">
-								<span style="color: #666; font-size: 14px; float: left; padding-top: 40px;"class="box">
-									검색 회원
+								<span style="color: #666; font-size: 14px; float: left; padding-top: 40px; padding-bottom:40px;"class="box">
+									검색된 회원
 								</span>
-						</div>
 					<!-- 검색책 -->
 							<div style="font-size: 0px; background-color:#666;" class="boxwrap">
 									<span style="border: solid 4px red ;/*border: solid 4px transparent ;*/ width:auto; height:239px;"class="box">
@@ -265,6 +265,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 										<img src="#">
 									</span>
 							</div>
+						</div>
 				<!-- /회원 검색 결과 창 -->
 				</div>
 			</div>
