@@ -61,10 +61,13 @@ display: none; /*Chrome, Safari, Opera*/
 		hegiht: 157.5px;
 		width: 205px; 
 	}
+		.swal-overlay {  background-color: rgba(43, 165, 137, 0.45);
+}
 </style>
-<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" > </script>
+<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
 <script>
 $(function(){
+	 
    $('#lbtn').click(function(){
       $(location).attr('href','/BookNet/member/login.cls');
    })
@@ -137,13 +140,18 @@ $(function(){
 				// login_alert	
 				$('#searchinput').keyup(function(e){
 					if(e.keyCode==13){
-						swal ( "Oops" ,  "Please use after login!" ,  "error" );
+						swal ({ text:"Oops" , title:"Please use after login!" ,  icon:"error" });
+					/* 	swal({
+							  title:  "Please use after login!" , icon: "success", buttons:["12314", "Do it!"],
+							}); */
+							
 					}
 				})
 }) 
 </script>
 <script>
 // 시계만들기
+
 function printClock() {
   var clock = document.getElementById("clock");            // 출력할 장소 선택
   var currentDate = new Date();                                     // 현재시간
@@ -176,11 +184,13 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 	  }
 	  return zero + num;
 }
+
 </script>
 </head>
 <body onload="printClock()"/>
 
    <div>
+   
     <!-- 본문부분 -->
 		<div id="contents-wrap">
 			<div class="contents">
@@ -315,6 +325,9 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
          <!-- /div area -->
       </div>
       <!-- /Footer Link -->
+      
+ 
+
 	<!-- 풋터부분 -->
 			<footer id="footer-wrap" style="padding:10px; height: 86.45px; color: #FFF;">		
 					<h3 style="position:absolute; top:40px; left: 255px; display: flex;font-family:Verdana,sans-serif;">Company</h3><br><h4 style="position:absolute;  top:35px; left: 380px; display: flex; font-size: 10pt;font-family:Verdana,sans-serif;">Increpas</h4><br><h4 style="position:absolute; top:55px; left: 380px; display: flex; font-size:10pt;font-family:Verdana,sans-serif;">서울특별시 관악구 신림동 시흥대로 552</h4>

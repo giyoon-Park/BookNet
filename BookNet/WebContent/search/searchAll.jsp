@@ -205,7 +205,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 						<!-- 검색어, 해시태그 -->
 					<div style=" height: 204px;float: right;width: 610px; position:relative; top:30px;">
 						<div style="height:100px; text-align: left;">검색어</div><!-- keyword -->
-								<span style="color: #666; font-size: 14px; float: left; padding-top: 40px; padding-bottom:40px;"class="box">
+								<span style="color: #666; font-size: 14px; float: left; padding-top: 40px; padding-bottom:5px;"class="box">
 									관련 해시태그 
 								</span>
 							<table style="font-size: 14px;  height: 50px; display: flex; " class="boxwrap">
@@ -225,7 +225,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 					</div>
 					<!-- 검색아이디 -->
 					<div style="width: 100%; height: 204px;">
-								<span style="color: #666; font-size: 14px; float: left; padding-top: 40px;"class="box">
+								<span style="color: #666; font-size: 14px; float: left; padding-top: 40px;padding-bottom: 10px;"class="box">
 									검색된 아이디
 								</span>
 							<table style="font-size: 14px;  height: 50px; " class="boxwrap">
@@ -368,7 +368,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 							</div>
 							<!-- 검색 해시태그 포함 게시물 -->
 							<div style="width: 100%; height: 204px;">
-										<span style="color: #666; font-size: 14px; float: left; padding-top: 40px; display:block; text-align: left; width:100%;"class="box">
+										<span style="color: #666; font-size: 14px; float: left; padding-top: 40px; display:block; text-align: left; width:100%;padding-bottom: 10px;"class="box">
 											검색된 해시태그가 포함된 게시물
 										</span>
 										<!-- 여기부터 게시글  -->
