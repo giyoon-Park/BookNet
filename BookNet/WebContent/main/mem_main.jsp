@@ -118,8 +118,8 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 										<span style="font-size: 12px; line-height: 0px;" class="e-d-img edbtn" id=""></span>
 									</div>
 								</c:if>
-								<div class="like-butt" id="" style="display: flex;'">
-									<span style="font-size: 12px; line-height: 0px;" class="like-img likebtn" id=""></span>
+								<div class="like-butt" id="${data.pno}" style="display: flex;'">
+									<span style="font-size: 12px; line-height: 0px;" class="like-img likebtn" id="like${data.pno}"></span>
 								</div>
 							</div>
 							<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->

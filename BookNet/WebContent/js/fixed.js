@@ -44,10 +44,25 @@ $(document).ready(function(){
 	
 	$('.likebtn').click(function(){ //like 버튼 클릭시 빨강하트로 변경 
 		$(this).css('background-position', '-208px -370px');
+		var pno = $(this).parents().attr('id');
+		alert(pno);
 		
 		//비동기처리 
 		$.ajax({
 			url: '/BookNet/ajax/clickLikeBtn.cls',
+			type: 'POST',
+			dataType: 'json',
+			data: {
+				'pno': pno
+			},
+			success: function(data){
+				if(data.cnt == 1){
+					//cnt 값이 1이면 디비에 저장 완료 
+				}
+			},
+			error: function(){
+				alert("###통신에러###");
+			}
 		});
 	});
 	
