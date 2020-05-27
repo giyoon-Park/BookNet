@@ -15,6 +15,14 @@
 		document.msCapsLockWarningOff = true;
 		function setContainerHeight(height) {}
 		function clearDocs(){}
+		
+		$(function(){
+			$('#inputImage').change(function(e){
+				var img = URL.createObjectURL(e.target.files[0]);
+				$('#imgThumb').attr('src', img);
+			});
+		});
+		
 	</script>
 	<meta name="decorator" content="USER_PROFILE">
 <style id="gnb_style" type="text/css">@charset "UTF-8";
@@ -365,12 +373,12 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                 <tbody>
                 <tr>
                     <th scope="row">
-                        <div class="thcell"><label for="inpNickname">현재 비밀번호</label></div>
+                        <div class="thcell"><label for="pw">현재 비밀번호</label></div>
                     </th>
                     <td>
                         <div class="tdcell">
                             <p class="contxt_webctrl nickname">
-                                <input type="text" name="nickname" id="inpNickname" value="" style="width:254px" >
+                                <input type="password" name="pw" id="pw" value="" style="width:254px" >
                                 <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
                                 <input type="text" style="display: none;">
                             </p>
@@ -379,12 +387,12 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                 </tr>
                 <tr>
                     <th scope="row">
-                        <div class="thcell"><label for="inpNickname">새 비밀번호</label></div>
+                        <div class="thcell"><label for="newpw">새 비밀번호</label></div>
                     </th>
                     <td>
                         <div class="tdcell">
                             <p class="contxt_webctrl nickname">
-                                <input type="text" name="nickname" id="inpNickname" value="" style="width:254px" >
+                                <input type="password" name="newpw" id="newpw" value="" style="width:254px" >
                                 <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
                                 <input type="text" style="display: none;">
                             </p>
@@ -393,12 +401,12 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                 </tr>
                 <tr>
                     <th scope="row">
-                        <div class="thcell"><label for="inpNickname">새 비밀번호 확인</label></div>
+                        <div class="thcell"><label for="newpwck">새 비밀번호 확인</label></div>
                     </th>
                     <td>
                         <div class="tdcell">
                             <p class="contxt_webctrl nickname">
-                                <input type="text" name="nickname" id="inpNickname" value="" style="width:254px" >
+                                <input type="password" name="newpwck" id="newpwck" value="" style="width:254px" >
                                 <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
                                 <input type="text" style="display: none;">
                             </p>
@@ -412,8 +420,7 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                     <td>
                         <div class="tdcell">
                             <div class="profile_photo">
-                                <img id="imgThumb" src="./프로필 수정_files/default.png" width="100" height="100">
-                                <span class="mask"></span>
+                                <img id="imgThumb" src="" width="100" height="100">
                             </div>
                             <div class="btn_area_btm">
                                 <span class="btn_file">
@@ -427,12 +434,12 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                 </tr>
                 <tr>
                     <th scope="row">
-                        <div class="thcell"><label for="inpNickname">닉네임</label></div>
+                        <div class="thcell"><label for="nickname">닉네임</label></div>
                     </th>
                     <td>
                         <div class="tdcell">
                             <p class="contxt_webctrl nickname">
-                                <input type="text" name="nickname" id="inpNickname" value="" style="width:254px" >
+                                <input type="text" name="nickname" id="nickname" value="${data.nickname }" style="width:254px" >
                                 <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
                                 <input type="text" style="display: none;">
                             </p>
@@ -441,12 +448,12 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                 </tr>
                 <tr>
                     <th scope="row">
-                        <div class="thcell"><label for="inpNickname">관심분야</label></div>
+                        <div class="thcell"><label for="interest">관심분야</label></div>
                     </th>
                     <td>
                         <div class="tdcell">
                             <p class="contxt_webctrl nickname">
-                                <input type="text" name="nickname" id="inpNickname" value="" style="width:254px" >
+                                <input type="text" name="interest" id="interest" value="${data.interest }" style="width:254px" >
                                 <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
                                 <input type="text" style="display: none;">
                             </p>
@@ -455,12 +462,12 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                 </tr>
                 <tr>
                     <th scope="row">
-                        <div class="thcell"><label for="inpNickname">간단소개</label></div>
+                        <div class="thcell"><label for="describe">간단소개</label></div>
                     </th>
                     <td>
                         <div class="tdcell">
                             <p class="contxt_webctrl nickname">
-                                <input type="text" name="nickname" id="inpNickname" value="" style="width:254px">
+                                <input type="text" name="describe" id="describe" value="${data.describe }" style="width:254px">
                                 <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
                                 <input type="text" style="display: none;">
                             </p>
@@ -469,7 +476,7 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                 </tr>
                 <tr>
                     <th scope="row">
-                        <div class="thcell"><label for="inpNickname">정보공개설정</label></div>
+                        <div class="thcell"><label>정보공개설정</label></div>
                     </th>
                     <td>
                         <div class="tdcell">
@@ -485,7 +492,7 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                 </tbody>
             </table>
             <div class="btn_wrap">
-                <a href="javascript:;" class="btn_model"><b id="btnConfirm" class="btn2 txt_disable" >적용</b></a>
+                <a href="javascript:;" class="btn_model"><b id="btnConfirm" class="btn2" >적용</b></a>
                 <a href="javascript:;" class="btn_model"><b id="btnCancel" class="btn2" onclick="clickcr(this,&#39;prf.cancel&#39;,&#39;&#39;,&#39;&#39;,event);">취소</b></a>
             </div>
         </fieldset>

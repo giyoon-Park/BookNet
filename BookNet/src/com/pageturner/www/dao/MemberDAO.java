@@ -1,5 +1,6 @@
 package com.pageturner.www.dao;
 
+import java.io.File;
 /**
  * 회원관련 db처리 전담함수들
  * @author 이명환
@@ -12,10 +13,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
+import com.oreilly.servlet.MultipartRequest;
 import com.pageturner.www.DB.WebDBCP;
 import com.pageturner.www.sql.BookSQL;
 import com.pageturner.www.vo.MemberVO;
+import com.pageturner.www.vo.ProfileVO;
 
 public class MemberDAO {
 	WebDBCP db;
@@ -204,6 +208,61 @@ public class MemberDAO {
 		}
 		
 		return cnt;
+	}
+	
+	// 게시판 파일 정보 등록 전담처리 함수
+	public boolean addImgInfo(ProfileVO pVO) {
+		boolean bool = false;
+		int cnt = 0;	// 업로드된(multiPartRequest) 파일 개수
+		int result = 0;	// db에 추가된 행 수
+		
+		con = db.getCon();
+		String sql = bSQL.getSQL(bSQL.ADD_PROFILE);
+		
+		// 데이터 만들고
+		MultipartRequest multi = pVO.getMulti();
+		
+		Enumeration en = multi.getFileNames();
+		while(en.hasMoreElements()) {
+			pstmt = db.getPSTMT(con, sql);
+			// 업로드된 파일의 키(name)값을 알아내고
+			String key = (String) en.nextElement();
+			// 해당 키값을 가지고 있는 파일 이름을 알아낸다
+			String ori_name = multi.getOriginalFileName(key);
+//			System.out.println("key : " + key);
+//			System.out.println("ori_name : " + ori_name);
+			if(ori_name == null || ori_name.length() == 0) {
+				// 이 경우는 파일을 선택하지 않은 경우이므로 다음 회차로 진행한다
+					
+				continue;
+			}
+				
+			String save_name = multi.getFilesystemName(key);
+			File file = multi.getFile(key);
+			long len = file.length();
+			try {
+				// 질의명령 완성하고
+				pstmt.setString(1, pVO.getId());
+				pstmt.setString(2, ori_name);
+				pstmt.setString(3, save_name);
+				pstmt.setLong(4, len);
+				
+				cnt++;
+				// 보내고 결과받고
+				result += pstmt.executeUpdate();
+			} catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				db.close(pstmt);
+			}
+		}
+		
+		db.close(con);
+		if(cnt == result) {
+			bool = true;
+		}
+		
+		return bool;
 	}
 	
 	// 회원탈퇴처리
