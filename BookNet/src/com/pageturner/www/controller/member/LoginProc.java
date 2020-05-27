@@ -1,10 +1,14 @@
 package com.pageturner.www.controller.member;
-
+/**
+ * 이 클래스는 로그인 처리를 위한 클래스
+ * @author 우현우
+ * @since 2020-05-27
+ */
 import javax.servlet.http.*;
 
 import com.pageturner.www.controller.*;
 import com.pageturner.www.dao.*;
-
+import com.pageturner.www.sql.*;
 public class LoginProc implements PageController {
 
 	@Override
@@ -12,26 +16,22 @@ public class LoginProc implements PageController {
 		String view = "/BookNet/main/main.cls";
 		req.setAttribute("isRedirect", true);
 		
-		//jsp로부터 넘어온 파라미터값 받기 
-		String id = req.getParameter("id");
-		String pw = req.getParameter("pw");
-		System.out.println(id + " " + pw);
+		//파라미터 가져오기
+		String sid = req.getParameter("id");
+		String spw = req.getParameter("pw");
+		
 		//데이터베이스 처리하기
 		MemberDAO mDAO = new MemberDAO();
+		int cnt = mDAO.execLogin(sid, spw);
 		
-		//반환값 리턴받을 변수 선언
-		int cnt = mDAO.execLogin(id, pw);
-		
+		//로그인 처리 유무
 		if(cnt == 1) {
-			//로그인처리 성공!
 			HttpSession session = req.getSession();
-			session.setAttribute("SID", id);
-			req.setAttribute("isRedirect", true);
-		} else {
-			//로그인 실패!
+			session.setAttribute("SID", spw);
+		}else {
+			//로그인 실패
 			view = "/BookNet/member/login.cls";
 		}
-		
 		return view;	
 	}
 
