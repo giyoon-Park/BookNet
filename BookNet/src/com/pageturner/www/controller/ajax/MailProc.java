@@ -1,6 +1,5 @@
 package com.pageturner.www.controller.ajax;
 
-import java.io.PrintWriter;
 /**
  * 메일인증번호 발송 처리
  * @author	이명환

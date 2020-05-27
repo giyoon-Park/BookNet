@@ -70,7 +70,6 @@ public class MemberDAO {
 		con = db.getCon();
 		String sql = bSQL.getSQL(bSQL.SEL_LOGIN);
 		pstmt = db.getPSTMT(con, sql);
-		System.out.println(sql);
 		try {
 			// 질의명령 완성해주기
 			pstmt.setString(1, id);
