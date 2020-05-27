@@ -135,8 +135,8 @@ $(document).ready(function(){
 		
 		//입력한 검색어를 변수에 저장한다.
 		var book = $('#findBook').val();
-		
-		//더미데이터용으로 현재 우리 디비에 있는 책 테이블에서 검색을 하도록 한다.
+
+		//interparkAPI 검색 요청 
 		$.ajax({ 
 			url : '/BookNet/ajax/searchBook.cls',
 			type : 'POST',
@@ -146,6 +146,7 @@ $(document).ready(function(){
 			},
 //			tranditional: true,
 			success : function(obj){
+				var data = obj[0].title;
 				var len = obj.length;
 				alert(len);
 				for(var i = 0; i < len; i++){

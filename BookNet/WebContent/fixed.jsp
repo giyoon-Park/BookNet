@@ -161,6 +161,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 		<div id="contents-wrap">
 			<div class="contents">
 				<!-- 이곳에 본문내용을 넣어주세요! -->
+				<jsp:include page="/SAMPLE/mainLayout.jsp" />
 			</div>
 		</div>
 		<!-- 헤더부분 -->
