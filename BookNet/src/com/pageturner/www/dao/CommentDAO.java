@@ -89,4 +89,28 @@ public class CommentDAO {
 		
 		return cnt;
 	}
+	
+	//게시글 삭제 전담처리함수
+	public int delPost(int pno) {
+		int cnt = 0;
+		
+		con = db.getCon();
+		String sql = cSQL.getSQL(cSQL.DEL_POST);
+		pstmt = db.getPSTMT(con, sql);
+		System.out.println(sql);
+		
+		try {
+			pstmt.setInt(1, pno);
+			
+			cnt = pstmt.executeUpdate();
+			System.out.println(cnt);
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		
+		return cnt;
+	}
 }

@@ -15,6 +15,11 @@
 <link rel="stylesheet" href="/BookNet/css/w3.css">
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
 <script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
+<<<<<<< HEAD
+=======
+<style>
+</style>	
+>>>>>>> refs/remotes/origin/branch
 <script type="text/javascript">
 	$(document).ready(
 		function() {
@@ -70,23 +75,35 @@
 									<!-- 나에게 새로운 알람을 준 회원의 아이디 + 알람의 내용 -->
 									<c:if test="${alarm.type eq 'C'}">
 										<div class="ala_cont" style="font-size: 16px;" id="${alarm.pno}">
+<<<<<<< HEAD
 											<div>
 												<a href="" id="${alarm.id}">${alarm.id}</a>님이 <a href="" id="${alarm.bname}">${alarm.bname}</a> 게시글에 댓글을 달았습니다.
 											</div>
+=======
+											<a href="" id="id" id="${alarm.id}">${alarm.id}</a>님이 <a href="" id="${alarm.bname}">${alarm.bname}</a> 게시글에 댓글을 달았습니다.
+>>>>>>> refs/remotes/origin/branch
 										</div>
 									</c:if>
 									<c:if test="${alarm.type eq 'F'}">
 										<div class="ala_cont" style="font-size: 16px;" id="${alarm.pno}">
+<<<<<<< HEAD
 											<div>
 												<a href="" id="${alarm.id}">${alarm.id}</a>님이 팔로우하였습니다.
 											</div>
+=======
+											<a href="" id="id" id="${alarm.id}">${alarm.id}</a>님이 팔로우하였습니다.
+>>>>>>> refs/remotes/origin/branch
 										</div>
 									</c:if>
 									<c:if test="${alarm.type eq 'L'}">
 										<div class="ala_cont" style="font-size: 16px;" id="${alarm.pno}">
+<<<<<<< HEAD
 											<div>
 												<a href="" id="${alarm.id}">${alarm.id}</a>님이 <a href="" id="${alarm.bname}">${alarm.bname}</a> 게시글에 좋아요를 눌렀습니다.
 											</div>
+=======
+											<a href="" id="id" id="${alarm.id}">${alarm.id}</a>님이 <a href="" id="${alarm.bname}">${alarm.bname}</a> 게시글에 좋아요를 눌렀습니다.
+>>>>>>> refs/remotes/origin/branch
 										</div>
 									</c:if>
 								</div>

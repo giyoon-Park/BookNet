@@ -14,11 +14,16 @@ import com.google.gson.*;
 import org.json.simple.*;
 import com.pageturner.www.controller.*;
 import com.pageturner.www.dao.*;
+import com.pageturner.www.util.*;
 import com.pageturner.www.vo.*;
 
 public class SearchBook implements PageController {
 	
-//	InterParkAPI api;
+	InterParkAPI api;
+	
+	public SearchBook() {
+		api = new InterParkAPI();
+	}
 	
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
@@ -30,11 +35,11 @@ public class SearchBook implements PageController {
 		resp.setCharacterEncoding("UTF-8");
 		
 		//디비작업해서 결과받기 
-		PostsDAO dao = new PostsDAO();
-		JSONArray list = dao.getSearchRst(word);
+		api = new InterParkAPI(api.SEARCH, word);
+		JSONArray item = api.item;
 		
 		Gson gson = new GsonBuilder().create();
-		String gstr = gson.toJson(list);
+		String gstr = gson.toJson(item);
 		System.out.println(gstr);
 		
 		return gstr;

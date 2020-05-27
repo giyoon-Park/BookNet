@@ -89,8 +89,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 	<input type="hidden" id="tags" name="tags"> <!-- 글 작성할때 넘겨줄 해시태그 -->
 </form>
 <form method="POST" id="frm2">
-	<input type="hidden" id="upno" name="upno"><!-- 댓글작성시 넘겨줄 원게시글번호 -->
-	<input type="hidden" id="cbody" name="cbody"><!-- 댓글작성시 넘겨줄 댓글내용 -->
+	<input type="hidden" id="pno" name="pno"> <!-- 게시글 삭제시 넘겨줄 게시글 번호 -->
 </form>
 	<div>
 		<!-- 본문부분 -->
@@ -111,9 +110,11 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 								<div class="time" id="time${data.pno}">
 									${data.pdate}
 								</div>
-								<div class="like-butt" id="" style="display: flex;'">
-									<span style="font-size: 12px; line-height: 0px;" class="e-d-img edit-delete-btn" id=""></span>
-								</div>
+								<c:if test="${SID eq data.id}">
+									<div class="like-butt" id="${data.pno}" style="display: flex;'">
+										<span style="font-size: 12px; line-height: 0px;" class="e-d-img edbtn" id=""></span>
+									</div>
+								</c:if>
 								<div class="like-butt" id="" style="display: flex;'">
 									<span style="font-size: 12px; line-height: 0px;" class="like-img likebtn" id=""></span>
 								</div>
@@ -144,6 +145,20 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 							</div>
 						</article>
 					</c:forEach>
+					<!-- 게시물 수정 삭제 선택 띄워주는 모달 -->
+					<div class="modal edit-del-modal" role="none">
+						<div class="e-modal-content" style="margin: 100px auto;" id="">
+							<div class="w100-pt10" style="height: 40px; border-top: 1px solid black; border-bottom: 1px solid black;">
+								<a id="e-btn" style="font-size: 15px; position: absolute; line-height: 1;">수 정</a>
+							</div>
+							<div class="w100-pt10" style="height: 40px;">
+								<a id="d-btn" style="font-size: 15px; position: absolute; line-height: 1;">삭 제</a>
+							</div>
+							<div class="w100-pt10" style="height: 40px; border-top: 1px solid black; border-bottom: 1px solid black;">
+								<a id="c-btn" style="font-size: 15px; position: absolute; line-height: 1;">취 소</a>
+							</div>
+						</div>
+					</div>
 					<!-- 게시물 상세보는 모달 -->
 					<div class="modal detailPost" role="none">
 						<div class="p-modal-content" id="" style="height: 540px;">
@@ -283,7 +298,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 							<!-- 도서검색 결과 모달창 -->
  							<div class="w3-modal" id="-s-b-modal">
  								<div id="" class="s-modal-content">
- 									<span class="close w-x-btn" id="s-close_butt">x</span>
+ 									<span class="close w-x-btn" style="position: fixed;" id="s-close_butt">x</span>
  									<div class="-s-rst" id="rst-cont">
  										<b>검색 결과</b>
  									</div>

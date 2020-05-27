@@ -4,6 +4,8 @@ public class CommentSQL {
 	public final int SHOW_RPL = 1001; //게시글에 달린 댓글 리스트를 보여주는 질의명령
 	public final int ADD_RPL = 1002; //게시글에 댓글 달아주는 질의명령 
 	
+	public final int DEL_POST = 2001; //게시글 삭제해주는 질의명령 
+	
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();
 		
@@ -31,6 +33,14 @@ public class CommentSQL {
 			buff.append("    FROM ");
 			buff.append("        commenttab), ?, ?, ");
 			buff.append("		(SELECT mno FROM membertab WHERE id = ?))");
+			break;
+		case DEL_POST:
+			buff.append("UPDATE  ");
+			buff.append("    poststab ");
+			buff.append("SET ");
+			buff.append("    isshow = 'N' ");
+			buff.append("WHERE ");
+			buff.append("    pno = ?");
 			break;
 		}
 		

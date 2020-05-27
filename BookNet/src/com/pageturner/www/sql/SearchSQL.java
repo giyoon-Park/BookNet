@@ -13,7 +13,7 @@ public class SearchSQL {
 		StringBuffer buff = new StringBuffer();
 		switch(code) {
 		case SEL_ALL_SRC:
-			buff.append("SELECT ");
+		 	buff.append("SELECT ");
 			buff.append("     bname ,  MAX(hash) hash, writer , trans , gname , name , id , nickname , publish , postcont, prof.save_loc profile  ");
 			buff.append("FROM ");
 			buff.append("    booktab b, genretab g ");

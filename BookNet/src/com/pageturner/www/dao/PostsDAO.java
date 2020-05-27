@@ -22,11 +22,13 @@ public class PostsDAO {
 	PreparedStatement pstmt;
 	ResultSet rs;
 	BookSQL bSQL;
+	CommentSQL cSQL;
 	PostsVO vo;
 
 	public PostsDAO() {
 		db = new WebDBCP();
 		bSQL = new BookSQL();
+		cSQL = new CommentSQL();
 	}
 
 	// 비회원 메인페이지에 들어갈 모든 게시물에 대한 리스트 전담처리 함수
@@ -214,11 +216,11 @@ public class PostsDAO {
 	}
 
 	// 게시글 삭제해줄 데이터베이스 처리 전담함수
-	public int delPosts(int pno) {
+	public int delPost(int pno) {
 		int cnt = 0;
 
 		con = db.getCon();
-		String sql = bSQL.getSQL(bSQL.DEL_POSTS);
+		String sql = cSQL.getSQL(cSQL.DEL_POST);
 		pstmt = db.getPSTMT(con, sql);
 
 		try {

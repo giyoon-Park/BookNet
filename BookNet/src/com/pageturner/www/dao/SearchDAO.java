@@ -44,9 +44,9 @@ public class SearchDAO {
 			pstmt.setString(7, keyword);
 			pstmt.setString(8, keyword);
 			pstmt.setString(9, keyword);
-
 			//질의명령 꺼내고 내보내기
 			rs = pstmt.executeQuery();
+			System.out.println(rs);
 			// 한칸 내려서 반복해서 뽑고
 			while (rs.next()) {
 				SearchVO vo = new SearchVO();
@@ -65,6 +65,7 @@ public class SearchDAO {
 
 				// 한줄씩 vo에 담기
 				list.add(vo);
+				System.out.println(list);
 			}
 		} catch (Exception e) {
 			System.out.println("DAO 오류");

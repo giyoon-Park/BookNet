@@ -18,7 +18,7 @@
 <style>
 
 *{
-    overflow-y: none;
+    overflow-y: none; 
    -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
 }*::-webkit-scrollbar {

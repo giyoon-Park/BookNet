@@ -225,3 +225,48 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebe9f9', end
 .bdcolor{
 	color: green;
 }
+
+*{
+    overflow-y: none;
+   -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}*::-webkit-scrollbar {
+display: none; /*Chrome, Safari, Opera*/
+}
+
+#logolink{
+	text-decoration: none;
+	color:black;
+	 font-weight: 400;
+}#logolink:active{
+	color:black;
+	 font-weight: 400;
+}
+	input[type=text]:-ms-clear{
+    display: none;
+    }
+    #searchclear {
+	position: relative;
+    left: 135px;
+    top: -52px;
+    bottom: 0;
+    width: 10px;
+    /* height: 14px; */
+    /* margin: auto; */
+    font-size: 12px;
+    cursor: pointer;
+    color: #ccc;
+    background-color: #fff;
+}
+	/* transition css */
+	.eachPost{
+		overflow: hidden;
+	}
+	.eachPostTran{
+		position: relative;
+		right: 205px;
+		hegiht: 157.5px;
+		width: 205px; 
+	}
+		.swal-overlay {  background-color: rgba(43, 165, 137, 0.45);
+} 

@@ -36,11 +36,6 @@
 					alert('인증번호가 발송되었습니다. 이메일을 확인해주세요.');
 					cert = obj.tno;
 					
-					
-					alert(obj.tno);
-					alert(cert);
-					alert(cert.length);
-					alert(cert.length + '전전전');
 				},
 				error: function(){
 					alert('통신에러');
@@ -54,6 +49,7 @@
 			var pw = $('#pw').val();
 			var pswd2 = $('#pswd2').val();
 			var name = $('#name').val();
+			var nickname = $('#nickname').val();
 			var yy = $('#yy').val();
 			var mm = $('#mm').val();
 			var dd = $('#dd').val();
@@ -84,6 +80,9 @@
 				alert('이름을 입력해주세요');
 				$('#name').focus();
 				return;
+			}
+			if(nickname = ''){
+				$('#nickname').val('-');
 			}
 			if(yy == ''){
 				alert('생년월일을 입력해주세요');
