@@ -54,6 +54,7 @@
 			var pw = $('#pw').val();
 			var pswd2 = $('#pswd2').val();
 			var name = $('#name').val();
+			var nickname = $('#nickname').val();
 			var yy = $('#yy').val();
 			var mm = $('#mm').val();
 			var dd = $('#dd').val();
@@ -84,6 +85,9 @@
 				alert('이름을 입력해주세요');
 				$('#name').focus();
 				return;
+			}
+			if(nickname = ''){
+				$('#nickname').val('-');
 			}
 			if(yy == ''){
 				alert('생년월일을 입력해주세요');
