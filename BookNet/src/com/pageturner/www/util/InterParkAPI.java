@@ -1,5 +1,9 @@
 package com.pageturner.www.util;
-
+/**
+ *	이 클래스는 인터파크에서 도서정보를 받아와서 json으로 파싱, 리스트로 반환하는 클래스이다.
+ *	@author	박기윤
+ *	@since	2020.05.27
+ */
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -13,11 +17,12 @@ public class InterParkAPI {
 	public final int RECOMMEND = 1002;
 	public final int NEWBOOK = 1003;
 	public final int BESTSELLER = 1004;
+	public JSONArray item;
+	public JSONObject obj;
+	public ArrayList<BookVO> list;
 	
 	String api;
 	String query;
-	JSONArray item;
-	ArrayList<BookVO> list;
 	
 	public InterParkAPI() {
 		this(SEARCH, "java");
@@ -90,7 +95,7 @@ public class InterParkAPI {
 		ArrayList<BookVO> list = new ArrayList<BookVO>();
 		
 		JSONParser parser = new JSONParser();
-		JSONObject obj = (JSONObject)parser.parse(json);
+		obj = (JSONObject)parser.parse(json);
 		
 		this.item = (JSONArray)obj.get("item");
 		

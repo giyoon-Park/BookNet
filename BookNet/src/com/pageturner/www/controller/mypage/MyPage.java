@@ -9,6 +9,7 @@ import java.util.*;
 import com.pageturner.www.controller.*;
 import com.pageturner.www.dao.*;
 import com.pageturner.www.vo.*;
+import com.pageturner.www.util.*;
 
 public class MyPage implements PageController {
 
@@ -20,26 +21,53 @@ public class MyPage implements PageController {
 		String id = (String)session.getAttribute("SID");
 		String pid = (String)req.getAttribute("id");
 		MyPageDAO mpDAO;
-		
+		Alarm alarm;
+
 		if(pid == null) {
 			mpDAO = new MyPageDAO(id);
+			alarm = new Alarm(id);
 		} else {
 			mpDAO = new MyPageDAO(pid);
+			alarm = new Alarm(pid);
 		}
 
 		MemberVO mInfo = mpDAO.getMemInfo();
+		PostsSortByTime sorter = new PostsSortByTime();
 		int cntPosts = mpDAO.cntPosts();
 		int cntFallow = mpDAO.cntFallow();
 		int cntFallower = mpDAO.cntFallower();
-		ArrayList<PostsVO> postList = mpDAO.getPosts();
-		ArrayList<PostsVO> likeList = mpDAO.getLikedPosts();
-		
+		ArrayList<PostsVO> postFullList = sorter.sortByTime(mpDAO.getPosts());
+		ArrayList<PostsVO> likeFullList = sorter.sortByTime(mpDAO.getLikedPosts());
+		ArrayList<AlarmVO> alarmFullList = alarm.alarmList;
+
+		ArrayList<PostsVO> postList = new ArrayList<PostsVO>();
+		ArrayList<PostsVO> likeList = new ArrayList<PostsVO>();
+		ArrayList<AlarmVO> alarmList = new ArrayList<AlarmVO>();
+		for (int i = 0; i < 5; i++) {
+			postList.add(postFullList.get(i));
+			if (!postFullList.isEmpty()) {
+				postList.add(postFullList.get(i));
+			}
+			if (!likeFullList.isEmpty()) {
+				likeList.add(likeFullList.get(i));
+			}
+			if (!alarmFullList.isEmpty()) {
+				alarmList.add(alarmFullList.get(i));
+			}
+		}
+
 		req.setAttribute("INFO", mInfo);
 		req.setAttribute("CNTPOST", cntPosts);
 		req.setAttribute("CNTFALLOW", cntFallow);
 		req.setAttribute("CNTFALLOWER", cntFallower);
 		req.setAttribute("LIKE", likeList);
-		
+
+		if(pid == null) {
+			req.setAttribute("ALARM", alarmList);
+		} else {
+			req.setAttribute("POST", postList);
+		}
+
 		return view;
 	}
 }
