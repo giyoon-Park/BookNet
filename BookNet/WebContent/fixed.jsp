@@ -13,16 +13,6 @@
 <script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
 <script type="text/javascript" src="/BookNet/js/fixed.js"></script>
 <style>
-	.w-x-btn {margin: 5px; width: 10px; height: 10px; line-height: 10px; font-size: 13px;}
-	.w-b-input {text-align: left; width: 100%; height: 40px; line-height: 40px;}
-	.wrt-div {width: 100%; height: 220px; line-height: 220px; margin-top: 25px;}
-	.wrt-b-img {float: left; width: 180px; margin: 0 15px; border: dashed 1px blue; text-align: center;}
-	.wrt-body {float: left; width: 440px; height: 225px; line-height: 255px; padding: 10px; text-align: center;}
-	.-a-t {float: left; width: 425px; height: 150px; line-height: 150px; margin-top: 13px;}
-	.wrt-last {width: 100%; height: 50px; line-height: 50px; padding-top: 10px; margin-top: 10px;}
-	.hash-input {float: left; width: 500px; height: 40px; line-height: 40px;}
-	.p-submit {float: right; width: 130px; height: 40px; line-height: 40px;}
-	.-s-rst {width: 100%; padding: 10px 30px; height: 55px; line-height: 15px; text-align: center; font-size: 30px;}
 	
 	/*input tag안에 x표 사라지게 한다고 한다..*/
 	input[type=text]:-ms-clear{
@@ -49,7 +39,7 @@
 	$(document).ready(
 		function() {
 			$('#more_butt').click(function() { //modal에서 알림페이지로 이동 
-				$(location).attr('href', '/BookNet/fixed/activity.cls');
+				$(location).attr('href', '/BookNet/alarm/alarmPage.cls');
 			});
 
 			$('#aBtn').click(function() { //modal 열기
@@ -171,7 +161,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 					<div
 						style="box-sizing: border-box; font-size: 30px; text-align: center;">
 						<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
-						<a href="/BookNet/main/mem_main.cls">PageTurner</a>
+						<a href="/BookNet/main/main.cls">PageTurner</a>
 					</div>
 				</div>
 				<div class="searchbox">

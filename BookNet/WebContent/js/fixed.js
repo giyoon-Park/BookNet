@@ -37,6 +37,24 @@ $(document).ready(function(){
 	
 	$('.edbtn').click(function(){ //수정삭제를 보여주는 아이콘클릭시 수정과 삭제를 선택하게 하는 모달 
 		$('.edit-del-modal').css('display', 'block');
+		//frm2에 값을 전달해주어야함. 
+		var pno = $(this).parents().attr('id');
+		alert(pno);
+		$('#pno').val(pno); 
+	});
+	
+	$('#e-btn').click(function(){ //수정 버튼을 눌렀을 때 처리이벤트 
+		
+	});
+	
+	$('#d-btn').click(function(){ //삭제 버튼을 눌렀을 때 처리이벤트 
+		$('#frm2').attr('action', '/BookNet/post/postDelProc.cls')
+		$('#frm2').submit();
+	});
+	
+	$('#c-btn').click(function(){ //취소 버튼을 눌렀을 때 처리이벤트 
+		//수정삭제 모달 닫아주어야한다.
+		$('.edit-del-modal').css('display', 'none');
 	});
 	
 	$('.comtbtn').click(function(){ //댓글버튼 클릭시 댓글 달 수 있는 창 보여주기 

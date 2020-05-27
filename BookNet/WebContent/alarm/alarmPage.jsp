@@ -12,15 +12,6 @@
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
 <script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
 <style>
-	.w-x-btn {margin: 5px; width: 10px; height: 10px; line-height: 10px; font-size: 13px;}
-	.w-b-input {text-align: left; width: 100%; height: 40px; line-height: 40px;}
-	.wrt-div {width: 100%; height: 220px; line-height: 220px; margin-top: 25px;}
-	.wrt-b-img {float: left; width: 180px; margin: 0 15px; border: dashed 1px blue; text-align: center;}
-	.wrt-body {float: left; width: 440px; height: 225px; line-height: 255px; padding: 10px; text-align: center;}
-	.-a-t {float: left; width: 425px; height: 150px; line-height: 150px; margin-top: 13px;}
-	.wrt-last {width: 100%; height: 50px; line-height: 50px; padding-top: 10px; margin-top: 10px;}
-	.hash-input {float: left; width: 500px; height: 40px; line-height: 40px;}
-	.p-submit {float: right; width: 130px; height: 40px; line-height: 40px;}
 </style>	
 <script type="text/javascript">
 	$(document).ready(
@@ -66,7 +57,7 @@
 			<div class="contents">
 				<!-- 본문부분 -->
 				<div id="contents-wrap">
-					<div style="width: 600px; margin: 15px auto; text-align: center;">
+					<div style="width: 900px; margin: 15px auto; text-align: center;">
 						<!-- 알림 반복시켜줘야함. -->
 						<c:forEach var="alarm" items="${LIST}">
 							<div class="div_activity new-act">
@@ -77,17 +68,17 @@
 									<!-- 나에게 새로운 알람을 준 회원의 아이디 + 알람의 내용 -->
 									<c:if test="${alarm.type eq 'C'}">
 										<div class="ala_cont" style="font-size: 16px;" id="${alarm.pno}">
-											<a name="id" id="${alarm.id}">${alarm.id}</a>님이 <a id="${alarm.bname}">${alarm.bname}</a> 게시글에 댓글을 달았습니다.
+											<a href="" id="id" id="${alarm.id}">${alarm.id}</a>님이 <a href="" id="${alarm.bname}">${alarm.bname}</a> 게시글에 댓글을 달았습니다.
 										</div>
 									</c:if>
 									<c:if test="${alarm.type eq 'F'}">
 										<div class="ala_cont" style="font-size: 16px;" id="${alarm.pno}">
-											<a name="id" id="${alarm.id}">${alarm.id}</a>님이 팔로우하였습니다.
+											<a href="" id="id" id="${alarm.id}">${alarm.id}</a>님이 팔로우하였습니다.
 										</div>
 									</c:if>
 									<c:if test="${alarm.type eq 'L'}">
 										<div class="ala_cont" style="font-size: 16px;" id="${alarm.pno}">
-											<a name="id" id="${alarm.id}">${alarm.id}</a>님이 <a id="${alarm.bname}">${alarm.bname}</a> 게시글에 좋아요를 눌렀습니다.
+											<a href="" id="id" id="${alarm.id}">${alarm.id}</a>님이 <a href="" id="${alarm.bname}">${alarm.bname}</a> 게시글에 좋아요를 눌렀습니다.
 										</div>
 									</c:if>
 								</div>
@@ -104,7 +95,7 @@
 					<div
 						style="box-sizing: border-box; font-size: 30px; text-align: center;">
 						<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
-						<a href="/BookNet/main/mem.cls">PageTurner</a>
+						<a href="/BookNet/main/main.cls">PageTurner</a>
 					</div>
 				</div>
 				<div class="searchbox">
@@ -169,7 +160,7 @@
 				</div>
 			</div>
 		</div>
-		<!— 풋터부분 —>
+		<!-- 풋터부분 -->
 		<div id="footer-wrap">
 			<div class="footer" style="text-align: center;">footer</div>
 		</div>
