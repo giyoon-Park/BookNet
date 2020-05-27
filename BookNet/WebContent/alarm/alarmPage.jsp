@@ -68,19 +68,31 @@
 				<div id="contents-wrap">
 					<div style="width: 600px; margin: 15px auto; text-align: center;">
 						<!-- 알림 반복시켜줘야함. -->
-						<%-- <c:forEach begin="1" end="10"> --%>
+						<c:forEach var="alarm" items="${LIST}">
 							<div class="div_activity new-act">
 								<div class="prof_div">
 									<!-- 프로필 사진 -->
 								</div>
 								<div class="div_act">
 									<!-- 나에게 새로운 알람을 준 회원의 아이디 + 알람의 내용 -->
-									<div class="ala_cont" style="font-size: 16px;">
-										김수진님이 팔로우하였습니다.
-									</div>
+									<c:if test="${alarm.type eq 'C'}">
+										<div class="ala_cont" style="font-size: 16px;" id="${alarm.pno}">
+											<a name="id" id="${alarm.id}">${alarm.id}</a>님이 <a id="${alarm.bname}">${alarm.bname}</a> 게시글에 댓글을 달았습니다.
+										</div>
+									</c:if>
+									<c:if test="${alarm.type eq 'F'}">
+										<div class="ala_cont" style="font-size: 16px;" id="${alarm.pno}">
+											<a name="id" id="${alarm.id}">${alarm.id}</a>님이 팔로우하였습니다.
+										</div>
+									</c:if>
+									<c:if test="${alarm.type eq 'L'}">
+										<div class="ala_cont" style="font-size: 16px;" id="${alarm.pno}">
+											<a name="id" id="${alarm.id}">${alarm.id}</a>님이 <a id="${alarm.bname}">${alarm.bname}</a> 게시글에 좋아요를 눌렀습니다.
+										</div>
+									</c:if>
 								</div>
 							</div>
-						<%-- </c:forEach> --%>
+						</c:forEach>
 					</div>
 				</div>
 			</div>

@@ -15,7 +15,7 @@ public class AlarmSQL {
 		switch(code) {
 		case SEL_LIKE:
 			buff.append("SELECT ");
-			buff.append("    pt.pno pno, bname, id, lk_time ");
+			buff.append("    pt.pno pno, bname, mt.id, lk_time ");
 			buff.append("FROM ");
 			buff.append("    booktab bt, poststab pt, liketab lt, membertab mt ");
 			buff.append("WHERE ");
@@ -28,6 +28,7 @@ public class AlarmSQL {
 			buff.append("    AND lt.ischeck = 'Y' ");
 			buff.append("    AND pt.isshow = 'Y' ");
 			buff.append("    AND mt.isshow = 'Y' ");
+			buff.append("	 AND NOT mt.id = ? ");
 			break;
 		case SEL_FAL:
 			buff.append("SELECT ");
@@ -42,7 +43,7 @@ public class AlarmSQL {
 			break;
 		case SEL_COMNT:
 			buff.append("SELECT ");
-			buff.append("    pt.pno pno, bname, id, cdate ");
+			buff.append("    pt.pno pno, bname, mt.id, cdate ");
 			buff.append("FROM ");
 			buff.append("    poststab pt, booktab bt, commenttab ct, membertab mt ");
 			buff.append("WHERE ");
@@ -53,6 +54,7 @@ public class AlarmSQL {
 			buff.append("    AND ct.isshow = 'Y' ");
 			buff.append("    AND pt.isshow = 'Y' ");
 			buff.append("    AND mt.isshow = 'Y' ");
+			buff.append("	 AND NOT mt.id = ? ");
 			break;
 		}
 		return buff.toString();
