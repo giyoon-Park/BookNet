@@ -1,5 +1,9 @@
 package com.pageturner.www.vo;
-
+/**
+ *	이 클래스는 알람 내용을 저장할 VO 클래스이다.
+ *	@author	박기윤
+ *	@since	2020.05.27
+ */
 import java.sql.*;
 import java.text.*;
 

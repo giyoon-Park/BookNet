@@ -1,5 +1,9 @@
 package com.pageturner.www.util;
-
+/**
+ *	이 클래스는 게시글을 시간순으로 정렬해주는 클래스이다.
+ *	@author	박기윤
+ *	@since	2020.05.27
+ */
 import java.util.*;
 import com.pageturner.www.vo.*;
 import java.text.*;
