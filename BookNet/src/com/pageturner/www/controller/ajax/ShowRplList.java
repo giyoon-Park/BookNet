@@ -32,12 +32,15 @@ public class ShowRplList implements PageController {
 		} catch(Exception e) {
 			System.out.println("Integer.parseInt 오류!");
 		}
-		PostsDAO dao = new PostsDAO();
+		
+		resp.setCharacterEncoding("UTF-8");
+		
+		CommentDAO dao = new CommentDAO();
 		JSONArray list = dao.showListRpl(pno);
 		
 		Gson gson = new GsonBuilder().create();
 		String gstr = gson.toJson(list);
-		
+		System.out.println(gstr);
 		return gstr;
 	}
 

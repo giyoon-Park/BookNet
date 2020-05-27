@@ -22,13 +22,11 @@ public class PostsDAO {
 	PreparedStatement pstmt;
 	ResultSet rs;
 	BookSQL bSQL;
-	CommentSQL cSQL;
 	PostsVO vo;
 
 	public PostsDAO() {
 		db = new WebDBCP();
 		bSQL = new BookSQL();
-		cSQL = new CommentSQL();
 	}
 
 	// 비회원 메인페이지에 들어갈 모든 게시물에 대한 리스트 전담처리 함수
@@ -298,39 +296,5 @@ public class PostsDAO {
 			db.close(con);
 		}
 		return cnt;
-	}
-	
-	//게시글 내에 달린 댓글리스트 처리 전담함수
-	public JSONArray showListRpl(int pno){
-		JSONArray list = new JSONArray();
-		
-		con = db.getCon();
-		String sql = cSQL.getSQL(cSQL.SHOW_RPL);
-		pstmt = db.getPSTMT(con, sql);
-		
-		try {
-			pstmt.setInt(1, pno);
-			
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				CommentVO vo = new CommentVO();
-				vo.setCno(rs.getInt("cno"));
-				vo.setPno(rs.getInt("pno"));
-				vo.setMno(rs.getInt("mno"));
-				vo.setCdate(rs.getDate("cdate"));
-				vo.setCtime(rs.getTime("cdate"));
-				vo.setSdate();
-				
-				list.add(vo);
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			db.close(rs);
-			db.close(pstmt);
-			db.close(con);
-		}
-		return list;
 	}
 }

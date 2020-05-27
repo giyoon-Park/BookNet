@@ -37,8 +37,84 @@ $(document).ready(function(){
 	});
 	
 	$('.modi_post').click(function(){ //게시물 상세보기 모달 
-		var id = $(this).attr('id');
-		$('.'+id).css('display', 'block');
+		var pno = $(this).attr('id'); //게시글번호
+		var sid = $('#'+'id'+pno).text(); //작성자 아이디
+		var stime = $('#'+'time'+pno).html(); //작성시간 
+		var simg = $('#'+'img'+pno).attr('src'); //선택도서 사진
+		var sgen = $('#'+'genre'+pno).text(); //선택도서 장르 
+		var bname = $('#'+'bname'+pno).text(); //선택도서 제목
+		var pbody = $('#'+'pbody'+pno).text(); //본문 
+		var htags = $('#'+'hash'+pno).text(); //해시태그 
+		$('.p-modal-content').attr('id', pno);
+		$('b.wrter').html(sid);
+		$('#time').html(stime);
+		$('#bimg').attr('src', simg);
+		$('#genre-pad').html(sgen);
+		$('b#genre-name').html(bname);
+		$('#p-body').html(pbody);
+		$('#gethash').html(htags);
+//		alert(sgen);
+		$.ajax({
+			url: '/BookNet/ajax/showRplList.cls',
+			type: 'POST',
+			dataType: 'json',
+			data: {
+				'pno': pno
+			},
+			success: function(obj){
+				var len = obj.length;
+				alert(obj[0].comnt);
+//				alert(len);
+				for(var i = 0; i < len; i++){
+					$('.w100-h95').attr('id', obj[i].cno);
+					var str = $('.w100-h95').attr('id');
+					$('#'+str).append('<div style="float: left; width: 30px; height: 30px; margin-left: 10px; border: 1px dashed black;">' +
+										'<img src="" style="box-sizing: border-box;"/>' +
+										'</div>' +
+										'<div class="h30-m10" style="width: 60px;">' + obj[i].id + '</div>' +
+										'<div class="h30-m10" style="width: 150px;">' + obj[i].sdate + '</div>' +
+										'<div class="h30-m10" style="width: 280px;">' + obj[i].comnt + '</div>');
+//					$('#content').append(item[i].title + '<br>');						
+					$('.detailPost').css('display', 'block');
+				}
+			},
+			error: function(){
+				alert("실패!");
+			}
+		});
+	});
+	
+	$('.comsubbtn').click(function(){ //댓글 등록하기 
+		var pno = $('.p-modal-content').attr('id');
+		var cbody = $('.combody').val();
+		
+		$.ajax({
+			url: '/BookNet/ajax/addRplProc.cls',
+			type: 'POST',
+			dataType: 'json',
+			data: {
+				'cbody': cbody,
+				'pno': pno
+			},
+			success: function(data){
+				if(data.cnt != 1){
+					alert('댓글등록에 실패하였습니다.');
+				}
+				
+				$('.combody').val('');
+//				$('.w100-h95').append('<div style="float: left; width: 30px; height: 30px; border: 1px dashed black">' +
+//						'<img src="" style="box-sizing: border-box;"/>' +
+//						'</div>' +
+//						'<div class="h30-m10" style="width: 60px;">'+ ${SID} +'</div>' +
+//						'<div class="h30-m10" style="width: 80px;">'+  +'</div>' +
+//						'<div class="h30-m10" style="width: 350px;">댓글 내용</div>');
+				
+			},
+			error: function(){
+//				console.log('code: ' + request.status + '\n message: ' + request.responseText + '\n error: ' + error);
+				alert("###통신에러###");
+			}
+		});
 	});
 	
 	$('#d-close_butt').click(function(){ //게시물 상세보기 닫기 
@@ -69,24 +145,35 @@ $(document).ready(function(){
 				'searchWord' : book
 			},
 //			tranditional: true,
-			success : function(data){
-				$('.rstbook').attr('id', data.bno);
-				$('#b-image').attr('src', data.largeimg);
-				$('#b-genre').html('<b>' + data.gname + '</b');
-				$('#b-title').html('<b>' + data.bname + '</b>');
-				$('#b-author').html('<b>' + data.writer + '</b>');
-				if(data.trans == 'null'){ //옮긴이가 null 값이면 출력해주지않아도 됨.
-					$('#notrans').css('display', 'none');
-				}else {
-					$('#b-trans').html('<b>' + data.trans + '</b>');
+			success : function(obj){
+				var len = obj.length;
+				alert(len);
+				for(var i = 0; i < len; i++){
+					$('.rstPage').append('<div class="w100perh300 rstbook" id="">' +
+							'<div class="-s-b-img">' +
+								'<img id="b-image"/>' +
+							'</div>' +
+							'<div class="-s-b-info">' +
+								'<div style="float: left; margin-right: 15px;">도서장르 : </div>' + 
+								'<div style="float: left;"id="b-genre"></div>' +
+							'</div>' +
+							'<div class="-s-b-info">' +
+								'<div style="float: left; margin-right: 15px;">도서명 : </div>' + 
+								'<div style="float: left;"id="b-title"></div>' +
+							'</div>' +
+							'<div class="-s-b-info">' +
+								'<div style="float: left; margin-right: 15px;">저 자 : </div>' + 
+								'<div style="float: left;"id="b-author"></div>' +
+							'</div>' +
+							'<div class="-s-b-info" id="notrans">' +
+								'<div style="float: left; margin-right: 15px;">옮긴이 : </div>' + 
+								'<div style="float: left;"id="b-author"></div>' +
+							'</div>' +
+							'<div class="-s-b-submit">' +
+								'<input type="button" value="책 등록" id="sel-b-submit"/>' +
+							'</div>' +
+						'</div>');
 				}
-//				alert(data.bname);
-//				$.each(data, function(index, item){
-//					var result = '';
-//					result += index + ' : ' + item;
-//					console.log(result);
-//					alert(result);
-//				})
 			},
 			error : function(){
 				alert("통신에러!");
