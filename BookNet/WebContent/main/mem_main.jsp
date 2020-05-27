@@ -42,6 +42,13 @@
 		 		}
 			});
 		});
+		 
+         $('#searchinput').keyup(function(e){
+             if(e.keyCode==13){
+                $('#frm').attr('action','/BookNet/search/searchAll.cls');
+                $('#frm').submit();
+             }
+          })
 	});
 </script>
 <script>
@@ -283,7 +290,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 							<!-- 도서검색 결과 모달창 -->
  							<div class="w3-modal" id="-s-b-modal">
  								<div id="" class="s-modal-content">
- 									<span class="close w-x-btn" id="s-close_butt">x</span>
+ 									<span class="close w-x-btn" style="position: fixed;" id="s-close_butt">x</span>
  									<div class="-s-rst" id="rst-cont">
  										<b>검색 결과</b>
  									</div>

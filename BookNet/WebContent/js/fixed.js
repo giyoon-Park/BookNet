@@ -26,6 +26,10 @@ $(document).ready(function(){
 	$('#a-close_butt').click(function() { //modal 닫기버튼 
 		$('#actModal').css('display', 'none');
 	});
+
+	$('#s-close_butt').click(function() { //modal 닫기버튼 
+		$('#-s-b-modal').css('display', 'none');
+	});
 	
 	$('.likebtn').click(function(){ //like 버튼 클릭시 빨강하트로 변경 
 		$(this).css('background-position', '-208px -370px');
@@ -53,7 +57,7 @@ $(document).ready(function(){
 		$('b#genre-name').html(bname);
 		$('#p-body').html(pbody);
 		$('#gethash').html(htags);
-		alert(sgen);
+//		alert(sgen);
 		$.ajax({
 			url: '/BookNet/ajax/showRplList.cls',
 			type: 'POST',
@@ -149,14 +153,14 @@ $(document).ready(function(){
 			},
 //			tranditional: true,
 			success : function(obj){
-				var item = obj[0].title;
-				alert(item);
+//				var item = obj[0].title;
+//				alert(item);
 				var len = obj.length;
-				alert(len);
+//				alert(len);
 				for(var i = 0; i < len; i++){
 					$('.rstPage').append('<div class="w100perh300 rstbook" id="">' +
 							'<div class="-s-b-img">' +
-								'<img src="' + obj[i].coverLargeUrl + '"id="b-image"/>' +
+								'<img style="width: 150px; height: auto; margin-top: 20px;" src="' + obj[i].coverLargeUrl + '"id="b-image"/>' +
 							'</div>' +
 							'<div class="-s-b-info">' +
 								'<div style="float: left; margin-right: 15px; font-size: 15px;"><b>도서장르</b> : </div>' + 
