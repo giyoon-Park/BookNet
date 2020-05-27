@@ -21,6 +21,25 @@
 				var img = URL.createObjectURL(e.target.files[0]);
 				$('#imgThumb').attr('src', img);
 			});
+			
+			$('#btnConfirm').click(function(){
+				$('#profileForm').attr('action', '/BookNet/member/editMemInfoProc.cls');
+				$('#profileForm').submit();
+			});
+			
+			$('#btnCancel').click(function(){
+				alert('마이페이지로 돌아갑니다.');
+				$(location).attr('href', '/BookNet/mypage/mypage.cls');
+			});
+			
+			$('#delete').click(function(){
+				var result = confirm("정말로 회원탈퇴하시겠습니까?");
+				if(result){
+					$(location).attr('href', '/BookNet/member/dropOut.cls');
+				} else {
+					return;
+				}
+			});
 		});
 		
 	</script>
@@ -359,7 +378,7 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
         <h2>프로필 수정</h2>
         <p class="contxt">PageTurner에 등록한 내 정보를 수정하실 수 있습니다.</p>
     </div>
-    <form id="profileForm" method="post" enctype="multipart/form-data">
+    <form id="profileForm" method="post" action="" enctype="multipart/form-data">
         <input type="hidden" id="helpToken" name="token_help" value="3bjObALRnLxxaTw1">
         <input type="hidden" id="deleteYn" name="deleteYn" value="N">
         <input type="hidden" id="ieLessThan9Yn" name="ieLessThan9Yn" value="N">
@@ -507,7 +526,7 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                     <td>
                         <div class="tdcell">
                             <p class="contxt_webctrl nickname">
-                            	<button style="display: inline-block; border: 2px solid gray;">회원탈퇴하시겠습니까?</button>
+                            	<button style="display: inline-block; border: 2px solid gray;" id="delete">회원탈퇴하시겠습니까?</button>
                                 <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
                                 <input type="text" style="display: none;">
                             </p>

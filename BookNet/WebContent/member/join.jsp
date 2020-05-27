@@ -36,11 +36,6 @@
 					alert('인증번호가 발송되었습니다. 이메일을 확인해주세요.');
 					cert = obj.tno;
 					
-					
-					alert(obj.tno);
-					alert(cert);
-					alert(cert.length);
-					alert(cert.length + '전전전');
 				},
 				error: function(){
 					alert('통신에러');
