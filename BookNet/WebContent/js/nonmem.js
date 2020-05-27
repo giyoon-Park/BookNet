@@ -21,18 +21,23 @@ $(function(){
    $('.dCJp8').click(function(){
       $('.closeing').remove();
    })
-  /*  // 스크롤 함수
-  $(document).scroll(function() {
-    var maxHeight = $(document).height();
-    var currentScroll = $(window).scrollTop() + $(window).height();
-    if (maxHeight <= currentScroll + 100) {
-       $('.posts_area').append('<article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><img src="https://img.icons8.com/nolan/64/apple-seed.png" style=" width: 49px;height: 49px; position: relative ; right: 215px; bottom: 19px;"/><div class="wrtProf"></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --><button class="Bbtn">버튼</button></div></article>');
-    }
-    
-  }) */
+   // login_alert	
+   $('.searchinput').keyup(function(e){
+	   if(e.keyCode==13){
+		   swal ({ text:"Oops" , title:"Please use after login!" ,  icon:"error" });
+		   /* 	swal({
+					  title:  "Please use after login!" , icon: "success", buttons:["12314", "Do it!"],
+					}); */
+		   
+	   }
+   })
+   //게시물 클릭시 로그인 유도
+   $('.eachPost').click(function(e){
+		   swal ({ text:"Oops" , title:"Please use after login!" ,  icon:"error" });
+   })
 	
 		// search clear
-		var $ipt = $('#searchinput'), $clearIpt = $('#searchclear');
+		var $ipt = $('.searchinput'), $clearIpt = $('.searchclear');
 		// keyup시 x표시
 		$ipt.keyup(function() {
 			$("#searchclear").toggle(Boolean($(this).val()));
@@ -44,14 +49,4 @@ $(function(){
 			$(this).hide();
 		});
 
-				// login_alert	
-				$('#searchinput').keyup(function(e){
-					if(e.keyCode==13){
-						swal ({ text:"Oops" , title:"Please use after login!" ,  icon:"error" });
-					/* 	swal({
-							  title:  "Please use after login!" , icon: "success", buttons:["12314", "Do it!"],
-							}); */
-
-					}
-				})
 })

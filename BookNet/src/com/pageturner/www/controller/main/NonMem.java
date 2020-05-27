@@ -22,7 +22,7 @@ public class NonMem implements PageController {
 		
 		//더미용으로 비회원과 같이 모든 게시글을 보여주도록 했습니다.
 		//더미 작업 이후에는 꼭 매개변수에 세션에 저장된 id 값을 넣어주어야합니다.
-		
+		sid="jinro";
 		//데이터베이스 작업하고 결과받기 
 		PostsDAO dao = new PostsDAO();
 		ArrayList<PostsVO> list = dao.getAllList(sid);
