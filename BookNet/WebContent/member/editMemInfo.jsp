@@ -512,7 +512,7 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
             </table>
             <div class="btn_wrap">
                 <a href="javascript:;" class="btn_model"><b id="btnConfirm" class="btn2" >적용</b></a>
-                <a href="javascript:;" class="btn_model"><b id="btnCancel" class="btn2" onclick="clickcr(this,&#39;prf.cancel&#39;,&#39;&#39;,&#39;&#39;,event);">취소</b></a>
+                <a href="javascript:;" class="btn_model"><b id="btnCancel" class="btn2" >취소</b></a>
             </div>
         </fieldset>
     </form>

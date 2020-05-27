@@ -31,7 +31,7 @@ public class EditMemInfo implements PageController {
 		MemberDAO mDAO = new MemberDAO();
 		ArrayList<MemberVO> list = mDAO.selUser(sid);
 		
-		req.setAttribute("LIST", list);
+		req.setAttribute("data", list);
 		return view;
 	}
 
