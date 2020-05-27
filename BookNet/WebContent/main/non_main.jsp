@@ -19,8 +19,8 @@
 <link rel="stylesheet" href="/BookNet/css/non_search.css">
 <script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
 <script type="text/javascript" src="/BookNet/js/fixed.js"></script>
-<script type="text/javascript" src="/BookNet/js/footer.js"></script>
 <script type="text/javascript" src="/BookNet/js/clock.js"></script>
+<script type="text/javascript" src="/BookNet/js/footer.js"></script>
 <script type="text/javascript" src="/BookNet/js/nonmem.js"></script>
 <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
 </head>

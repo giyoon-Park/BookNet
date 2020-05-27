@@ -11,7 +11,6 @@
 <head>
 <meta charset="UTF-8">
 <title>모든 검색 결과 페이지</title>
-<link rel="stylesheet" href="/BookNet/css/nonmem.css">
 <link rel="stylesheet" href="/BookNet/css/proj_fixed.css">
 <link rel="stylesheet" href="/BookNet/css/modal.css">
 <link rel="stylesheet" href="/BookNet/css/w3.css">
@@ -39,7 +38,7 @@
 						<div
 							style="float: left; width: 370px; height: 100%; margin: 0px auto; font-size: 14px;">
 							<div
-								style="position: relative; top: 25%; left: 30%; width: 100px; height: 100px; border: 1px solid red; border-radius: 50%; padding: 0px;">
+								style="position: relative; top: 25%; left: 30%; width: 100px; height: 100px; border-radius: 50%; padding: 0px;">
 								<img
 									src="https://img.icons8.com/dusk/64/000000/homer-simpson.png"
 									style="position: relative; top: 10px;">
@@ -83,7 +82,7 @@
 									class="boxwrap">
 							<c:forEach var="data" items="${LIST}">
 									<span style="border: solid 4px transparent;" class="box">
-										<a href="#"
+										<a href="${data.simg}"
 										style="text-decoration: unset; color: #F7B3D2; width: 70px; height: 70px;">${data.id}</a>
 									</span>
 							</c:forEach>
@@ -97,7 +96,7 @@
 								<div style="font-size: 14px;" class="boxwrap">
 							<c:forEach var="data" items="${LIST}">
 									<span style="border: solid 4px transparent;" class="box">
-										<img src="#"
+										<img src="${data.simg}"
 										style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px;">
 									</span>
 							</c:forEach>
@@ -116,17 +115,17 @@
 									style="color: #666; font-size: 14px; float: left; padding-top: 40px; display: block; text-align: left; width: 100%; padding-bottom: 10px;"
 									class="box"> 검색된 해시태그가 포함된 게시물 </span>
 								<!-- 여기부터 게시글  -->
-								<c:forEach var="data" items="${LIST}">
+								<c:forEach var="post" items="${LIST}">
 								<article class="eachPost"
 									style="margin: 30px; display: inline-block;"
 									id="이곳은게시물번호가들어갈자리">
 									<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
 									<div class="wrtInfo">
 											<div class="wrtProf">
-												<img src="${data.profile }" />
+												<img src="${post.profile }" />
 											</div>
 											<div class="wrter" id="">
-												<b>${data.id}</b>
+												<b>${post.id}</b>
 											</div>
 										<div class="like-butt" id="">
 											<span style="font-size: 12px; line-height: 0px;"
@@ -143,12 +142,15 @@
 										<!-- 도서사진, 도서이름, 게시글본문 -->
 										<div class="book-pic">
 											<!-- 도서 사진 들어갈 부분 -->
+											${post.simg}
 										</div>
 										<div class="book-name">
 											<!-- 도서명 들어갈 부분 -->
+											${post.bname}
 										</div>
 										<div class="post-body">
 											<!-- 게시글 부분 -->
+											${post.postcont}
 										</div>
 									</div>
 									<div class="etcdiv"
@@ -173,7 +175,7 @@
 					<div
 						style="box-sizing: border-box; font-size: 30px; text-align: center;">
 						<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
-						<a href="/BookNet/main/mem_main.cls">PageTurner</a>
+						<a href="/BookNet/main/main.cls"><b>PageTurner</b></a>
 					</div>
 				</div>
 				<div class="searchbox">
@@ -185,8 +187,7 @@
 					<!-- 알람표시아이콘 -->
 					<div class="span_icons">
 						<button type="button" class="butt" id="aBtn">
-							<img class="iconimg" id=""
-								src="/BookNet/img/iconmonstr-bell-7-240.png">
+							<img class="iconimg" id="" src="/BookNet/img/iconmonstr-bell-7-240.png">
 						</button>
 						<!-- The Modal -->
 						<div id="actModal" class="modal" role="none">
@@ -196,8 +197,7 @@
 									<span class="close w-x-btn" id="a-close_butt">x</span>
 									<!-- onclick="document.getElementById('actModal').style.display='none'" -->
 									<p>Some Text....</p>
-									<div
-										style="width: 100%; height: 30px; line-height: 30px; background-color: rgba(0, 0, 0, 0.4);">
+									<div style="width: 100%; height: 30px; line-height: 30px; background-color: rgba(0, 0, 0, 0.4);">
 										<!-- <input type="button" value="MORE" id="more_butt" style="width: 100%; box-sizing: border-box;"/> -->
 										<div style="width: 100%; text-align: center" id="more_butt">MORE</div>
 									</div>
@@ -205,64 +205,64 @@
 							</div>
 						</div>
 					</div>
-					<div class="span_icons">
-						<img class="iconimg" id=""
-							src="/BookNet/img/iconmonstr-compass-4-240.png">
-					</div>
-					<div class="span_icons" id="">
+					<div class="span_icons"> 
+						<img class="iconimg" id="" src="/BookNet/img/iconmonstr-compass-4-240.png">
+					</div> 
+					<div class="span_icons" id=""> 
 						<button type="button" class="butt" id="wBtn">
-							<img class="iconimg" id=""
-								src="/BookNet/img/iconmonstr-pen-15-240.png">
+							<img class="iconimg" id="" src="/BookNet/img/iconmonstr-pen-15-240.png">
 						</button>
 						<!-- The Modal -->
 						<div id="writeModal" class="w3-modal">
 							<div id="" class="w-modal-content">
 								<span class="close w-x-btn" id="w-close_butt">x</span>
-								<!-- onclick="document.getElementById('actModal').style.display='none'" -->
+									<!-- onclick="document.getElementById('actModal').style.display='none'" -->
 								<!-- 도서검색 -->
 								<div class="w-b-input">
-									<input type="search" id="findBook" placeholder="도서검색" /> <input
-										type="button" id="book-search" value="검색" style="width: 40px;" />
-								</div>
-								<div class="wrt-div">
-									<div class="wrt-b-img">책!</div>
-									<div class="wrt-body">
-										<p style="height: 40px; line-height: 40px;">책 제목</p>
-										<textarea class="-a-t"></textarea>
+									<input type="search" id="findBook" placeholder="도서검색" style="float: left; width: 190px; height: 40px; line-height: 40px;"/>
+									<input type="button" id="book-search" value="검색" style="float: left; width: 40px; height: 40px; line-height: 40px; margin-left: 10px;"/>
+									<!-- 감정 셀렉트 -->
+									<div class="w-e-sel">
+										<select name="emotion" id="selEmo">
+											<option value="">감정을 선택해주세요X)</option>
+											<option value="2">덜덜;무서워욧!</option>
+											<option value="3">ㅠ_ㅠ불안해요..</option>
+											<option value="4">very exciting!</option>
+											<option value="1">행복해요X)</option>
+											<option value="5">그리워요;ㅁ;</option>
+										</select>
 									</div>
-								</div>
-								<div class="wrt-last">
-									<input type="text" placeholder="hashTags" class="hash-input"
-										id="" /> <input type="button" value="글 등록" class="p-submit"
-										id="p-submit" />
-								</div>
+	 							</div>
+	 							<div class="wrt-div">
+									<div class="wrt-b-img">
+										<img id="sel-wrt-b-img"/>
+									</div>
+		 							<div class="wrt-body">
+		 								<p style="height: 80px; line-height: 80px; margin-bottom: 30px; font-size: 25px;" id="sel-wrt-b-ttl"></p>
+	 									<textarea class="-a-t" id="postBody"></textarea>
+	 								</div>
+	 							</div>
+	 							<div class="wrt-last">
+	 								<input type="text" placeholder="hashTags" class="hash-input" id="hash-input"/>
+	 								<input type="button" value="글 등록" class="p-submit" id="p-submit"/>
+	 							</div>
 							</div>
 							<!-- 도서검색 결과 모달창 -->
-							<div class="w3-modal" id="-s-b-modal">
-								<div id="" class="s-modal-content">
-									<span class="close w-x-btn" id="s-close_butt">x</span>
-									<div class="-s-rst">
-										<b>검색 결과</b>
-									</div>
-									<%-- <c:forEach var="rstBook" items="${}"> --%>
-									<div
-										style="width: 100%; height: 80px; line-height: 80px; margin: 0 auto; margin-bottom: 20px; border: solid 1px black;">
-										<!-- 검색 결과의 수만큼 이 div가 생성되어야한다. -->
-										<div style="width: 100%; height: 20px; line-height: 20px;"
-											id="b-title"></div>
-									</div>
-									<%-- </c:forEach> --%>
-									<div class="p-submit">
-										<input type="button" value="책 등록" class="p-submit"
-											id="-s-b-submit" />
-									</div>
-								</div>
-							</div>
+ 							<div class="w3-modal" id="-s-b-modal">
+ 								<div id="" class="s-modal-content">
+ 									<span class="close w-x-btn" style="position: fixed;" id="s-close_butt">x</span>
+ 									<div class="-s-rst" id="rst-cont">
+ 										<b>검색 결과</b>
+ 									</div>
+ 									<div class="rstPage">
+ 										<!-- 검색결과 리스트 -->
+	 								</div>
+ 								</div>
+ 							</div>
 						</div>
-					</div>
-					<div class="span_icons">
-						<img class="iconimg" id=""
-							src="/BookNet/img/iconmonstr-user-19-240.png">
+					</div> 
+					<div class="span_icons"> 
+						<img class="iconimg" id="" src="/BookNet/img/iconmonstr-user-19-240.png">
 					</div>
 				</div>
 			</div>

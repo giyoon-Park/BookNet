@@ -96,7 +96,8 @@ public class BookSQL {
 			
 		case SEL_ALL_POST: //프로필 사진 가져올 수 있게 질의명령 수정해야함 
 			buff.append("SELECT ");
-			buff.append("    pt.pno, pt.mno, bname, ht.hash hash, id, postcont, postdate, emotion, gname, largeimg ");
+			buff.append("    DISTINCT pt.pno, pt.mno, bname, ht.hash hash, m.id, postcont, postdate, emotion, gname, largeimg, ");
+			buff.append("    cnt ");
 			buff.append("FROM ");
 			buff.append("    poststab pt, membertab m, ");
 			buff.append("    (SELECT ");
@@ -107,16 +108,26 @@ public class BookSQL {
 			buff.append("    WHERE ");
 			buff.append("       p.pno = h.pno ");
 			buff.append("    GROUP BY ");
-			buff.append("        h.pno) ht, emotiontab e, genretab g, booktab b ");
+			buff.append("        h.pno) ht,  ");
+			buff.append("    (SELECT ");
+			buff.append("        COUNT(*) cnt, p.pno, p.mno ");
+			buff.append("    FROM ");
+			buff.append("        liketab l, poststab p ");
+			buff.append("    WHERE ");
+			buff.append("        l.pno = p.pno ");
+			buff.append("    GROUP BY ");
+			buff.append("        p.pno, p.mno) lc, ");
+			buff.append("    emotiontab e, genretab g, booktab b, fallowtab f ");
 			buff.append("WHERE ");
 			buff.append("    pt.pno = ht.pno (+) ");
 			buff.append("    AND pt.isshow = 'Y' ");
-			buff.append("    AND pt.mno = m.mno ");
 			buff.append("    AND pt.eno = e.eno ");
 			buff.append("    AND b.genre = g.genre ");
 			buff.append("    AND pt.bno = b.bno ");
+			buff.append("    AND lc.pno = pt.pno ");
+			buff.append("    AND m.mno = lc.mno ");
 			buff.append("ORDER BY ");
-			buff.append("	postdate DESC ");
+			buff.append("    postdate, cnt DESC ");
 			break;
 		case SEL_ALL_POST_MEM: //로그인한 회원이 보는 메인페이지 :: 
 			buff.append("SELECT ");
