@@ -33,6 +33,7 @@ public class SearchAll implements PageController {
 		// 데이터베이스 작업
 		ArrayList<SearchVO> list = sDAO.getAllList(keyword);
 		// 뷰에 데이터 심고
+		System.out.println(key);
 		req.setAttribute("LIST", list);
 		req.setAttribute("KEYWORD", key);
 		return view;

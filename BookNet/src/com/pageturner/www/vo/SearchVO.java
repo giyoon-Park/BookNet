@@ -1,6 +1,6 @@
 package com.pageturner.www.vo;
 /**
- * 이 클래스는 검색결과를 담을 VO이다.
+ * 이 클래스는 검색결과를 담을 VO이다. 
  * @author 서동혁
  * @version v.0.1.0
  * @since 2020.05.27
