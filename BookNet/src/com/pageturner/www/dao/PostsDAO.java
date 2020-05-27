@@ -180,7 +180,7 @@ public class PostsDAO {
 
 			// 질의명령 실어서 보내기
 			cnt = pstmt.executeUpdate();
-
+			System.out.println(cnt);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

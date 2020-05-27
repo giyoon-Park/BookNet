@@ -122,6 +122,13 @@
 	파라미터	: 검색어
 	컨트롤러	: com.pageturner.www.controller.ajax.SearchBook
 	뷰		: 없음(모달에 띄워줄 예정)
+	
+(+) 게시글 좋아요 처리 요청
+	요청내용	: /ajax/clickLikeBtn.cls
+	파라미터	: pno, mno
+	컨트롤러	: com.pageturner.www.controller.ajax.ClickLikeBtn
+	뷰		: 없음
+	
 --------------------------------------------------------
 23. 게시글 삭제 처리 요청
 	요청내용:/post/postDelProc.cls

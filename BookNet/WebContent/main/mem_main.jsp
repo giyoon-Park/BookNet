@@ -91,6 +91,9 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 <form method="POST" id="frm2">
 	<input type="hidden" id="pno" name="pno"> <!-- 게시글 삭제시 넘겨줄 게시글 번호 -->
 </form>
+<form method="POST" id="frm3">
+	<input type="hidden" id="searchinput" name="searchinput"> <!-- 검색시 넘겨줄 키워드 값 -->
+</form>
 	<div>
 		<!-- 본문부분 -->
 		<div id="contents-wrap">

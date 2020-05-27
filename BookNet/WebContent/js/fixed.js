@@ -15,6 +15,17 @@ $(document).ready(function(){
 		
 	});
 	
+	// 엔터검색
+	$('.searchinput').keyup(function(e) {
+		if (e.keyCode == 13) {
+			var key = $('.searchinput').val();
+//			alert(key);
+			$('#searchinput').val(key);
+			$('#frm3').attr('action', '/BookNet/search/searchAll.cls');
+			$('#frm3').submit();
+		}
+	});
+	
 	$('#more_butt').click(function() { //modal에서 알림페이지로 이동 
 		$(location).attr('href', '/BookNet/alarm/alarmPage.cls');
 	});
@@ -33,6 +44,11 @@ $(document).ready(function(){
 	
 	$('.likebtn').click(function(){ //like 버튼 클릭시 빨강하트로 변경 
 		$(this).css('background-position', '-208px -370px');
+		
+		//비동기처리 
+		$.ajax({
+			url: '/BookNet/ajax/clickLikeBtn.cls',
+		});
 	});
 	
 	$('.edbtn').click(function(){ //수정삭제를 보여주는 아이콘클릭시 수정과 삭제를 선택하게 하는 모달 
