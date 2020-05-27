@@ -59,7 +59,6 @@ public class PostsDAO {
 				vo.setLargeimg(rs.getString("largeimg"));
 				vo.setGname(rs.getString("gname"));
 				vo.setHash(rs.getString("hash"));
-
 				// 담은 데이터(vo 클래스)를 리스트에 담기
 				list.add(vo);
 			}

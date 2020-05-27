@@ -7,7 +7,7 @@ package com.pageturner.www.vo;
  *
  */
 public class SearchVO {
-	private String bname, hash, writer, trans, gname, name, id, nickname, publish, postcont, profile;
+	private String bname, hash, writer, trans, gname, name, id, nickname, publish, postcont, profile, simg;
 
 	public String getBname() {
 		return bname;
@@ -98,5 +98,14 @@ public class SearchVO {
 	public void setProfile(String profile) {
 		this.profile = profile;
 	}
+
+	public String getSimg() {
+		return simg;
+	}
+
+	public void setSimg(String simg) {
+		this.simg = simg;
+	}
+	
 
 }

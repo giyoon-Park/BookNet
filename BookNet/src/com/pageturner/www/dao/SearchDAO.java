@@ -1,4 +1,11 @@
 package com.pageturner.www.dao;
+/**
+ * 이 페이지는 검색페이지를 위한 문서입니다
+ * @author 서동혁
+ * @version v.0.1.0
+ * @since 2020.05.28
+ * 
+ */
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -62,10 +69,10 @@ public class SearchDAO {
 				vo.setPostcont(rs.getString("postcont"));
 				vo.setPostcont(); // 본문내용 \r\n는 <br>로 교체
 				vo.setProfile(rs.getString("profile"));
+				vo.setSimg(rs.getString("simg"));
 
 				// 한줄씩 vo에 담기
 				list.add(vo);
-				System.out.println(list);
 			}
 		} catch (Exception e) {
 			System.out.println("DAO 오류");
