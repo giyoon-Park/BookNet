@@ -175,13 +175,10 @@ $(document).ready(function(){
 				'searchWord' : book
 			},
 //			tranditional: true,
-			success : function(obj){
-//				var item = obj[0].title;
-//				alert(item);
+			success : function(obj){ //SearchBook.java 에서 gstr json 문서가 들어오게 된다.
 				var len = obj.length;
-//				alert(len);
 				for(var i = 0; i < len; i++){
-					$('.rstPage').append('<div class="w100perh300 rstbook" id="">' +
+					$('.rstPage').append('<div class="w100perh300 rstbook" id="' + obj[i].bno + '">' +
 							'<div class="-s-b-img">' +
 								'<img style="width: 150px; height: auto; margin-top: 20px;" src="' + obj[i].coverLargeUrl + '"id="b-image"/>' +
 							'</div>' +
@@ -213,11 +210,11 @@ $(document).ready(function(){
 		});
 	});
 	
-	$('#sel-b-submit').click(function(){ 
+	$('#sel-b-submit').click(function(){ //검색된 도서 중 맞는 결과를 선택해주는 클릭이벤트 
 		var selno = $('.rstbook').attr('id'); //도서번호 
 		var selimg = $('#b-image').attr('src'); //도서 이미지
 		var selttl = $('#b-title').text(); //도서 제목 
-//		alert(selttl); 
+		alert(selttl); 
 		$('#-s-b-modal').css('display', 'none');
 		
 		//값 셋팅 
@@ -252,9 +249,14 @@ $(document).ready(function(){
 		$('#frm').submit();
 	});
 	
+//	var tagfunc = function(){
+//		var str = $('#hash-input').val();
+//	};
+//	
 //	$(document).on('keyup', '#hash-input', function(){ //해시태그 작성시
 //		if(keyCode == 32){
 //			//스페이스바 입력시 #으로 대체해준다.
+//			var str = $('#hash-input')
 //		}
 //	});
 	
