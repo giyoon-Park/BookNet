@@ -27,7 +27,7 @@ public class LoginProc implements PageController {
 		//로그인 처리 유무
 		if(cnt == 1) {
 			HttpSession session = req.getSession();
-			session.setAttribute("SID", spw);
+			session.setAttribute("SID", sid); 
 		}else {
 			//로그인 실패
 			view = "/BookNet/member/login.cls";
