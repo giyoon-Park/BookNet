@@ -5,7 +5,7 @@
 	이 페이지는 모든 검색 결과를 보여주는 페이지 입니다.
   @author 서동혁
   @version v.0.1.0
-  @since 2020.05.25
+  @since 2020.05.27
  --%>
 <html style="background-color: #F3F0F7">
 <head>
@@ -18,6 +18,7 @@
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
 <script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
 <script type="text/javascript" src="/BookNet/js/fixed.js"></script>
+
 <style>
 .w-x-btn {
 	margin: 5px;
