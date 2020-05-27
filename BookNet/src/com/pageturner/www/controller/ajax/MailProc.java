@@ -1,4 +1,4 @@
-package com.pageturner.www.controller.member;
+package com.pageturner.www.controller.ajax;
 
 /**
  * 메일인증번호 발송 처리
@@ -44,6 +44,8 @@ public class MailProc implements PageController {
 //      System.out.println(AuthenticationKey);
 		
         mUtil.getSend(req.getParameter("mail"), cout);
+        
+//      req.setAttribute("cout", cout);
 		
 		return view;
 	}

@@ -15,6 +15,10 @@
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$('#cert').click(function(){
+			
+		});
+		
 		$('#btnJoin').click(function(){
 			$('#join_form').submit();
 		});
@@ -169,6 +173,12 @@
                         <span class="ps_box int_email box_right_space">
 							<input type="text" id="mail" name="mail" placeholder="선택입력" aria-label="선택입력" class="int" maxlength="100">
 						</span>
+                        <div class="btn_area">
+                    		<button type="button" id="cert" class="btn_type btn_primary"><span>메일로 인증번호 받기</span></button>
+                		</div>
+                        <span class="ps_box int_email box_right_space">
+							<input type="text" id="cert_no" name="cert_no" placeholder="인증번호" aria-label="인증번호" class="int" maxlength="50">
+						</span>
                     </div>
                     <span class="error_next_box" id="emailMsg" style="display:none" aria-live="assertive"></span>
                 </div>
@@ -181,10 +191,6 @@
                         <select id="nationNo" name="nationNo" class="sel" aria-label="전화번호 입력">
                                         <option value="233">
                                             가나 +233
-                                        </option>
-                                        <option value="241">
-                                            가봉 +241
-                                        </option>
                                         <option value="592">
                                             가이아나 +592
                                         </option>
@@ -824,20 +830,13 @@
                         </select>
                     </div>
                     <div class="int_mobile_area">
-						<span class="ps_box int_mobile">
-							<input type="tel" id="tel" name="tel" placeholder="전화번호 입115757175력" aria-label="전화번호 입력" class="int" maxlength="16">
+						<span class="ps_box int_mobile" style="width: 460px;">
+							<input type="tel" id="tel" name="tel" placeholder="전화번호 입력('-' 포함하여 입력해주세요)" aria-label="전화번호 입력" class="int" maxlength="16">
 							<label for="phoneNo" class="lbl"></label>
 						</span>
-                        <a href="https://nid.naver.com/user2/V2Join.nhn?token_sjoin=CrMVbMuUqJxRkOD4&amp;chk_all=on&amp;termsService=on&amp;termsPrivacy=on&amp;termsLocation=Y&amp;termsEmail=Y#" class="btn_verify btn_primary" id="btnSend" role="button">
+                        <!-- <a href="https://nid.naver.com/user2/V2Join.nhn?token_sjoin=CrMVbMuUqJxRkOD4&amp;chk_all=on&amp;termsService=on&amp;termsPrivacy=on&amp;termsLocation=Y&amp;termsEmail=Y#" class="btn_verify btn_primary" id="btnSend" role="button">
                             <span class="">누르지마세요!</span>
-                        </a>
-                    </div>
-                    <div class="ps_box_disable box_right_space" id="authNoBox">
-                        <input type="tel" id="authNo" name="authNo" placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요" aria-describedby="wa_verify" class="int" disabled="" maxlength="4">
-                        <label id="wa_verify" for="authNo" class="lbl">
-                            <span class="wa_blind">인증받은 후 인증번호를 입력해야 합니다.</span>
-                            <span class="input_code" id="authNoCode" style="display:none;"></span>
-                        </label>
+                        </a> -->
                     </div>
 
                     <span class="error_next_box" id="phoneNoMsg" style="display:none" aria-live="assertive"></span>

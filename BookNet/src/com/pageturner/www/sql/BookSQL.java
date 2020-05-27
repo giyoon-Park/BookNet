@@ -12,7 +12,8 @@ public class BookSQL {
 	public final int FIND_PW = 1004; //비밀번호찾기 질의명령
 	public final int SEL_USER = 1005; //회원정보조회 질의명령
 	public final int EDIT_USER = 1006; //회원정보수정 질의명령
-	public final int DEL_USER = 1007; //회원탈퇴 질의명령
+	public final int ADD_PROFILE = 1007; //프사 등록 질의명령
+	public final int DEL_USER = 1008; //회원탈퇴 질의명령
 	
 	public final int SEL_ALL_POST = 2001; //비로그인 회원 메인화면에 보여줄 게시글 질의명령 
 	public final int SEL_ALL_POST_MEM = 2002; //로그인 회원 메인화면에 보여줄 게시글 질의명령
@@ -75,6 +76,14 @@ public class BookSQL {
 			buff.append("    genshow = ? "); 
 			buff.append("WHERE "); 
 			buff.append("    id = ? ");
+			break;
+		case ADD_PROFILE:
+			buff.append("INSERT INTO profilepictab(pf_pt_no, mno, ori_name, save_name, save_loc) "); 
+			buff.append("VALUES( "); 
+			buff.append("    (select nvl(max(pf_pt_no)+1, 1) from profilepictab), "); 
+			buff.append("    (select mno from membertab where id = ?), "); 
+			buff.append("    ?, ?, ? "); 
+			buff.append(") ");
 			break;
 		case DEL_USER:
 			buff.append("UPDATE "); 

@@ -145,6 +145,12 @@
 =========================================================
 #이명환
 
+(+)메일인증번호 발송 처리요청
+	요청내용:/ajax/mailProc.cls
+	파라미터:mail
+	컨트롤러:com.pageturner.www.controller.ajax.MailProc
+	뷰		:현재페이지(ajax)
+
 5. 회원가입 페이지 요청
 	요청내용:/member/join.cls
 	파라미터:none
