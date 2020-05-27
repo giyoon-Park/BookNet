@@ -35,13 +35,16 @@ public class UploadBookSQL {
 			buff.append("INSERT INTO ");
 			buff.append("    publishtab(publish_no, publish) ");
 			buff.append("VALUES( ");
-			buff.append("    (SELECT NVL(MAX(publish_no) + 1, 1) FROM publishtab), ?) ");
+			buff.append("    (SELECT NVL(MAX(publish_no) + 1, 1) FROM publishtab), ? ");
+			buff.append(") ");
 			break;
 		case INS_BOOK:
 			buff.append("INSERT INTO ");
 			buff.append("    booktab(bno, bname, genre, writer, trans, smallimg, largeimg, isbn, publish_no) ");
 			buff.append("VALUES( ");
-			buff.append("    (SELECT NVL(MAX(bno) + 1, 1) FROM booktab), ?, ?, ?, ?, ?, ?, ?, ?) ");
+			buff.append("    (SELECT NVL(MAX(bno) + 1, 1) FROM booktab), ?, ?, ?, ?, ?, ?, ?, ");
+			buff.append("	 (SELECT publish_no FROM publishtab WHERE publish = ?) ");
+			buff.append(") ");
 			break;
 		}
 		return buff.toString();

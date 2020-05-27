@@ -297,6 +297,7 @@ public class MyPageDAO {
 				aVO.setPno(rs.getInt("pno"));
 				aVO.setBname(rs.getString("bname"));
 				aVO.setId(rs.getString("id"));
+				aVO.setSave_loc(rs.getString("save_loc"));
 				list.add(aVO);
 			}
 		} catch (Exception e) {
@@ -328,6 +329,7 @@ public class MyPageDAO {
 				aVO.setPno(rs.getInt("pno"));
 				aVO.setBname(rs.getString("bname"));
 				aVO.setId(rs.getString("id"));
+				aVO.setSave_loc(rs.getString("save_loc"));
 				list.add(aVO);
 			}
 		} catch (Exception e) {
@@ -356,6 +358,7 @@ public class MyPageDAO {
 				aVO.setTime(rs.getTime("fal_time"));
 				aVO.setExtime();
 				aVO.setId(rs.getString("id"));
+				aVO.setSave_loc("save_loc");
 				list.add(aVO);
 			}
 		} catch (Exception e) {

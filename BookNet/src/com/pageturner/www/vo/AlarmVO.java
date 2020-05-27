@@ -8,11 +8,17 @@ import java.sql.*;
 import java.text.*;
 
 public class AlarmVO {
-	private String type, extime, bname, id;
+	private String type, extime, bname, id, save_loc;
 	private int pno;
 	private Date date;
 	private Time time;
 	
+	public String getSave_loc() {
+		return save_loc;
+	}
+	public void setSave_loc(String save_loc) {
+		this.save_loc = save_loc;
+	}
 	public String getType() {
 		return type;
 	}
