@@ -55,9 +55,8 @@
 								<table style="font-size: 14px; height: 50px; display: flex;"
 									class="boxwrap">
 									<tr>
-									<c:forEach var="data" items="${LIST}">
-										<td style="" class="box"><a href="#"
-											style="text-decoration: unset; color: #F7B3D2;">${data.hash}</a>
+									<c:forEach var="data" items="${LIST}" begin="0" end="5">
+										<td style="" class="box"><a href="#" style="text-decoration: unset; color: #F7B3D2;">${data.hash}</a>
 										</td>
 									</c:forEach>
 									</tr>
@@ -73,7 +72,7 @@
 								<div style="font-size: 14px;" class="boxwrap">
 							<c:forEach var="data" items="${LIST}">
 									<span style="border: solid 4px transparent;" class="box">
-										<img src="${data.profile}"
+										<!-- ${data.profile} --><img src="https://img.icons8.com/dusk/64/000000/no-camera.png" 
 										style="text-decoration: unset; color: #F7B3D2; width: 70px; height: 70px;">
 									</span>
 							</c:forEach>
@@ -94,7 +93,7 @@
 									style="color: #666; font-size: 14px; float: left; padding-top: 40px; padding-bottom: 10px;"
 									class="box"> 검색된 책이름 </span>
 								<div style="font-size: 14px;" class="boxwrap">
-							<c:forEach var="data" items="${LIST}">
+							<c:forEach var="data" items="${LIST}" begin="0" end="4">
 									<span style="border: solid 4px transparent;" class="box">
 										<img src="${data.simg}"
 										style="text-decoration: unset; color: #F7B3D2; width: 200px; height: 239px;">
@@ -103,7 +102,23 @@
 								</div>
 								<div style="font-size: 14px; margin-bottom: 10px;"
 									class="boxwrap">
-								<c:forEach var="data" items="${LIST}">
+								<c:forEach var="data" items="${LIST}" begin="0" end="4">
+									<span style="border: solid 4px transparent;" class="box">
+										<a href="#" style="text-decoration: unset; color: #F7B3D2; width: 200px; height: 239px;">${data.bname}</a>
+									</span>
+								</c:forEach>
+								</div>
+								<div style="font-size: 14px;" class="boxwrap">
+							<c:forEach var="data" items="${LIST}" begin="5" end="9">
+									<span style="border: solid 4px transparent;" class="box">
+										<img src="${data.simg}"
+										style="text-decoration: unset; color: #F7B3D2; width: 200px; height: 239px;">
+									</span>
+							</c:forEach>
+								</div>
+								<div style="font-size: 14px; margin-bottom: 10px;"
+									class="boxwrap">
+								<c:forEach var="data" items="${LIST}" begin="5" end="9">
 									<span style="border: solid 4px transparent;" class="box">
 										<a href="#" style="text-decoration: unset; color: #F7B3D2; width: 200px; height: 239px;">${data.bname}</a>
 									</span>
@@ -154,13 +169,15 @@
 											${post.postcont}
 										</div>
 									</div>
-									<div class="etcdiv"
-										style="text-align: center; font-size: 16px;">
-										${data.hash}
+									<div class="etcdiv" style="text-align: center; font-size: 16px;">
 										<!-- 게시글 해시태그 부분 -->
+										${post.hash}
 									</div>
 								</article>
 								</c:forEach>
+								<div style="display: inline-block; width:100%; height:200px; text-align:center; ">
+									<b>-End-</b>
+								</div>
 								<!-- /게시글  -->
 							</div>
 						</div>
