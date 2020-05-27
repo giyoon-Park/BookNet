@@ -13,11 +13,10 @@ public class InterParkAPI {
 	public final int RECOMMEND = 1002;
 	public final int NEWBOOK = 1003;
 	public final int BESTSELLER = 1004;
-	public JSONArray item;
-	public JSONObject obj;
 	
 	String api;
 	String query;
+	JSONArray item;
 	ArrayList<BookVO> list;
 	
 	public InterParkAPI() {
@@ -91,7 +90,7 @@ public class InterParkAPI {
 		ArrayList<BookVO> list = new ArrayList<BookVO>();
 		
 		JSONParser parser = new JSONParser();
-		obj = (JSONObject)parser.parse(json);
+		JSONObject obj = (JSONObject)parser.parse(json);
 		
 		this.item = (JSONArray)obj.get("item");
 		

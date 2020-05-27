@@ -15,8 +15,6 @@
 <link rel="stylesheet" href="/BookNet/css/proj_fixed.css">
 <script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
 <script type="text/javascript" src="/BookNet/js/fixed.js"></script>
-<script type="text/javascript" src="/BookNet/js/nonmem.js"></script>
-<script type="text/javascript" src="/BookNet/js/clock.js"></script>
 <style>
 
 *{

@@ -16,6 +16,8 @@
 </style>
 <script type="text/javascript">
 	$(function(){
+		var cert = '';
+		
 		$('#btn1').click(function(){
 			$('#f_write').css('display', '');
 			$('.idid').css('display', 'none');
@@ -29,14 +31,29 @@
 		
 		
 		$('#mailUtil').click(function(){
+			$('#frm').attr('action', '/BookNet/ajax/mail.cls');
+			var mail = $('#mail').val();
+			if(mail == ''){
+				alert('이메일을 입력해주세요');
+				return
+			}
+			
 			$.ajax({
-				url: '/BookNet/ajax/mailProc.cls',
+				url: '/BookNet/ajax/mail.cls',
 				type: 'post',
-				datatype: 'json',
+				dataType: 'json',
+				data:{
+					'mail': mail
+				},
 				success: function(obj){
-					$('#frm').attr('action', '/BookNet/member/mail.cls');
 					alert('인증번호가 발송되었습니다. 이메일을 확인해주세요.');
-					$('#frm').submit();
+					cert = obj.tno;
+					
+					
+					alert(obj.tno);
+					alert(cert);
+					alert(cert.length);
+					alert(cert.length + '전전전');
 				},
 				error: function(){
 					alert('통신에러');
@@ -48,14 +65,34 @@
 		$('#confirm').click(function(){
 			var id = $('#id').val();
 			var name = $('#name').val();
+			var mail = $('#mail').val();
 			var cert_no = $('#cert_no').val();
-			if(idcon == '') {
+			
+			if(id == '') {
 				if(name == '') {
 					alert('이름을 입력하세요');
 					return;
 				}
+				if(mail == '') {
+					alert('이메일을 입력하세요');
+					return;
+				}
 				if(cert_no == '') {
+					alert(cert_no);
+					alert(cert);
 					alert('인증번호를 입력하세요');
+					return;
+				}
+				if(cert == cert_no) {
+					alert(cert);
+					alert(cert_no);
+					alert('*****************');
+				}else {
+					alert(cert);
+					alert(cert_no);
+					alert("#mail val : " + cert.length);
+					alert("#input val : " + cert_no.length);
+					alert('인증번호가 일치하지 않습니다');
 					return;
 				}
 				$('#frm').attr('action','/BookNet/member/findIDProc.cls');
@@ -64,8 +101,17 @@
 					alert('이름을 입력하세요');
 					return;
 				}
+				if(mail == '') {
+					alert('이메일을 입력하세요');
+					return;
+				}
 				if(cert_no == '') {
 					alert('인증번호를 입력하세요');
+					return;
+				}
+				
+				if(cert != cert_no) {
+					alert('인증번호가 일치하지 않습니다');
 					return;
 				}
 				$('#frm').attr('action','/BookNet/member/findPWProc.cls');
@@ -79,8 +125,6 @@
 <body>
 	<form id="frm" method="post" action="">
 		
-		<input type="hidden" id="cert_no" name="cert_no" value="">
-	
 		<div class="w3-content" style="max-width: 600px;" id="loginWin">
 			<span class="w3-half w3-red w3-button w3-padding w3-center w3-margin-top" id="btn1">아이디찾기</span>
 			<span class="w3-half w3-blue w3-button w3-padding w3-center w3-margin-top" id="btn2">비밀번호찾기</span>
@@ -103,7 +147,7 @@
 					<input type="text" class="w3-col w3-input w3-border" id="cert_no" name="cert_no">
 				</div>
 				<div class="w3-col w3-margin-top">
-					<h3 class="w3-padding w3-blue w3-center w3-card-4 w3-round-large" id="confirm">확인</h3>
+					<div class="w3-padding w3-blue w3-center w3-card-4 w3-round-large w3-button" id="confirm">확인</div>
 				</div>
 			</div>
 		</div>

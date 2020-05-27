@@ -26,10 +26,6 @@ $(document).ready(function(){
 	$('#a-close_butt').click(function() { //modal 닫기버튼 
 		$('#actModal').css('display', 'none');
 	});
-
-	$('#s-close_butt').click(function() { //modal 닫기버튼 
-		$('#-s-b-modal').css('display', 'none');
-	});
 	
 	$('.likebtn').click(function(){ //like 버튼 클릭시 빨강하트로 변경 
 		$(this).css('background-position', '-208px -370px');
@@ -67,21 +63,18 @@ $(document).ready(function(){
 			},
 			success: function(obj){
 				var len = obj.length;
-//				alert(obj[0].comnt);
+				alert(obj[0].comnt);
 //				alert(len);
-				if(len != 0){
-					for(var i = 0; i < len; i++){
-						$('.w100-h95').attr('id', obj[i].cno);
-						var str = $('.w100-h95').attr('id');
-						$('#'+str).append('<div style="float: left; width: 30px; height: 30px; margin-left: 10px; border: 1px dashed black;">' +
-											'<img src="" style="box-sizing: border-box;"/>' +
-											'</div>' +
-											'<div class="h30-m10" style="width: 60px;">' + obj[i].id + '</div>' +
-											'<div class="h30-m10" style="width: 150px;">' + obj[i].sdate + '</div>' +
-											'<div class="h30-m10" style="width: 280px;">' + obj[i].comnt + '</div>');
-						$('.detailPost').css('display', 'block');
-					}
-				} else{
+				for(var i = 0; i < len; i++){
+					$('.w100-h95').attr('id', obj[i].cno);
+					var str = $('.w100-h95').attr('id');
+					$('#'+str).append('<div style="float: left; width: 30px; height: 30px; margin-left: 10px; border: 1px dashed black;">' +
+										'<img src="" style="box-sizing: border-box;"/>' +
+										'</div>' +
+										'<div class="h30-m10" style="width: 60px;">' + obj[i].id + '</div>' +
+										'<div class="h30-m10" style="width: 150px;">' + obj[i].sdate + '</div>' +
+										'<div class="h30-m10" style="width: 280px;">' + obj[i].comnt + '</div>');
+//					$('#content').append(item[i].title + '<br>');						
 					$('.detailPost').css('display', 'block');
 				}
 			},
@@ -96,7 +89,7 @@ $(document).ready(function(){
 		var cbody = $('.combody').val();
 		
 		$.ajax({
-			url: '/BookNet/post/addRplProc.cls',
+			url: '/BookNet/ajax/addRplProc.cls',
 			type: 'POST',
 			dataType: 'json',
 			data: {
@@ -109,12 +102,12 @@ $(document).ready(function(){
 				}
 				
 				$('.combody').val('');
-				$('.w100-h95').append('<div style="float: left; width: 30px; height: 30px; margin-left: 10px; border: 1px dashed black;">' +
-						'<img src="" style="box-sizing: border-box;"/>' +
-						'</div>' +
-						'<div class="h30-m10" style="width: 60px;">'+ data.id +'</div>' +
-						'<div class="h30-m10" style="width: 150px;">'+  data.date +'</div>' +
-						'<div class="h30-m10" style="width: 280px;">' + data.body + '</div>');
+//				$('.w100-h95').append('<div style="float: left; width: 30px; height: 30px; border: 1px dashed black">' +
+//						'<img src="" style="box-sizing: border-box;"/>' +
+//						'</div>' +
+//						'<div class="h30-m10" style="width: 60px;">'+ ${SID} +'</div>' +
+//						'<div class="h30-m10" style="width: 80px;">'+  +'</div>' +
+//						'<div class="h30-m10" style="width: 350px;">댓글 내용</div>');
 				
 			},
 			error: function(){
@@ -142,8 +135,8 @@ $(document).ready(function(){
 		
 		//입력한 검색어를 변수에 저장한다.
 		var book = $('#findBook').val();
-		
-		//InterParkAPI 
+
+		//interparkAPI 검색 요청 
 		$.ajax({ 
 			url : '/BookNet/ajax/searchBook.cls',
 			type : 'POST',
@@ -153,30 +146,29 @@ $(document).ready(function(){
 			},
 //			tranditional: true,
 			success : function(obj){
-//				var item = obj[0].title;
-//				alert(item);
+				var data = obj[0].title;
 				var len = obj.length;
-//				alert(len);
+				alert(len);
 				for(var i = 0; i < len; i++){
 					$('.rstPage').append('<div class="w100perh300 rstbook" id="">' +
 							'<div class="-s-b-img">' +
-								'<img style="width: 150px; height: auto; margin-top: 20px;" src="' + obj[i].coverLargeUrl + '"id="b-image"/>' +
+								'<img id="b-image"/>' +
 							'</div>' +
 							'<div class="-s-b-info">' +
-								'<div style="float: left; margin-right: 15px; font-size: 15px;"><b>도서장르</b> : </div>' + 
-								'<div style="float: left; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="b-genre">' + obj[i].categoryName + '</div>' +
+								'<div style="float: left; margin-right: 15px;">도서장르 : </div>' + 
+								'<div style="float: left;"id="b-genre"></div>' +
 							'</div>' +
 							'<div class="-s-b-info">' +
-								'<div style="float: left; margin-right: 15px; font-size: 15px;"><b>도서명</b> : </div>' + 
-								'<div style="float: left; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="b-title">' + obj[i].title + '</div>' +
+								'<div style="float: left; margin-right: 15px;">도서명 : </div>' + 
+								'<div style="float: left;"id="b-title"></div>' +
 							'</div>' +
 							'<div class="-s-b-info">' +
-								'<div style="float: left; margin-right: 15px; font-size: 15px;"><b>저 자</b> : </div>' + 
-								'<div style="float: left; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="b-author">' + obj[i].author + '</div>' +
+								'<div style="float: left; margin-right: 15px;">저 자 : </div>' + 
+								'<div style="float: left;"id="b-author"></div>' +
 							'</div>' +
 							'<div class="-s-b-info" id="notrans">' +
-								'<div style="float: left; margin-right: 15px; font-size: 15px;"><b>옮긴이</b> : </div>' + 
-								'<div style="float: left; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="b-author">' + obj[i].translator + '</div>' +
+								'<div style="float: left; margin-right: 15px;">옮긴이 : </div>' + 
+								'<div style="float: left;"id="b-author"></div>' +
 							'</div>' +
 							'<div class="-s-b-submit">' +
 								'<input type="button" value="책 등록" id="sel-b-submit"/>' +

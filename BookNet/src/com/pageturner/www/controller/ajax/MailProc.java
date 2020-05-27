@@ -1,5 +1,6 @@
 package com.pageturner.www.controller.ajax;
 
+import java.io.PrintWriter;
 /**
  * 메일인증번호 발송 처리
  * @author	이명환
@@ -17,7 +18,10 @@ public class MailProc implements PageController {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
-		String view = "/member/findID.jsp";
+//		String view = "/member/findID.jsp";
+		req.setAttribute("isRedirect", null);
+		String str = "";
+		
 		MailUtil mUtil = new MailUtil("myeongwhan@gmail.com", "wnals106!");
 		
 		//인증 번호 생성기
@@ -44,10 +48,12 @@ public class MailProc implements PageController {
 //      System.out.println(AuthenticationKey);
 		
         mUtil.getSend(req.getParameter("mail"), cout);
-        
-//      req.setAttribute("cout", cout);
 		
-		return view;
+        str = "{\"tno\": \"" + cout + "\"}";
+        
+//        str = "12345";
+        
+		return str;
 	}
 
 }

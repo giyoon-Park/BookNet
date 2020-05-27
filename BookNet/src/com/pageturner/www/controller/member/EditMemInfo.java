@@ -1,5 +1,11 @@
 package com.pageturner.www.controller.member;
 
+/**
+ * 정보수정페이지 요청
+ * @author	이명환
+ * @since	2020.05.27
+ * 
+ */
 import java.util.ArrayList;
 
 /**
