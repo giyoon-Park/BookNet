@@ -16,8 +16,9 @@ public class InterParkAPI {
 	
 	String api;
 	String query;
-	JSONArray item;
-	ArrayList<BookVO> list;
+	public JSONObject obj;
+	public JSONArray item;
+	public ArrayList<BookVO> list;
 	
 	public InterParkAPI() {
 		this(SEARCH, "java");
@@ -87,10 +88,10 @@ public class InterParkAPI {
 	
 	// json object에서 item(검색결과물)의 정보들을 담는다.
 	public ArrayList<BookVO> parsingBookInfo(String json) throws Exception{
-		ArrayList<BookVO> list = new ArrayList<BookVO>();
+		this.list = new ArrayList<BookVO>();
 		
 		JSONParser parser = new JSONParser();
-		JSONObject obj = (JSONObject)parser.parse(json);
+		this.obj = (JSONObject)parser.parse(json);
 		
 		this.item = (JSONArray)obj.get("item");
 		
