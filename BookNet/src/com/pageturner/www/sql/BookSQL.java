@@ -132,7 +132,7 @@ public class BookSQL {
 		case SEL_ALL_POST_MEM: //로그인한 회원이 보는 메인페이지 :: 
 			buff.append("SELECT ");
 			buff.append("    DISTINCT pt.pno, pt.mno, bname, ht.hash hash, m.id, postcont, postdate, emotion, gname, largeimg, ");
-			buff.append("    cnt ");
+			buff.append("    cnt , lc.ischeck ");
 			buff.append("FROM ");
 			buff.append("    poststab pt, membertab m, ");
 			buff.append("    (SELECT ");
@@ -149,16 +149,16 @@ public class BookSQL {
 			buff.append("    FROM ");
 			buff.append("        membertab m, fallowtab ");
 			buff.append("    WHERE ");
-			buff.append("        m.mno = (SELECT mno FROM membertab WHERE id = 'SDH') ");
-			buff.append("        OR (fallower_no = (SELECT mno FROM membertab WHERE id = 'SDH') AND m.mno = fallow_no)) mp, ");
+			buff.append("        m.mno = (SELECT mno FROM membertab WHERE id = ? ) ");
+			buff.append("        OR (fallower_no = (SELECT mno FROM membertab WHERE id = ? ) AND m.mno = fallow_no)) mp, ");
 			buff.append("    (SELECT ");
-			buff.append("        COUNT(*) cnt, p.pno, p.mno ");
+			buff.append("        COUNT(*) cnt, p.pno, p.mno, l.ischeck ");
 			buff.append("    FROM ");
 			buff.append("        liketab l, poststab p ");
 			buff.append("    WHERE ");
 			buff.append("        l.pno = p.pno ");
 			buff.append("    GROUP BY ");
-			buff.append("        p.pno, p.mno) lc, ");
+			buff.append("        p.pno, p.mno, l.ischeck) lc, ");
 			buff.append("    emotiontab e, genretab g, booktab b, fallowtab f ");
 			buff.append("WHERE ");
 			buff.append("    pt.pno = ht.pno (+) ");
