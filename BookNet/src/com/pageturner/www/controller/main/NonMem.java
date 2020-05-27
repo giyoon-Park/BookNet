@@ -17,7 +17,7 @@ public class NonMem implements PageController {
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
 		String view = "/main/non_main.jsp";
-		//메인화면에 게시글 보여주기 
+		//메인화면에 게시글 보여주기  
 		
 		//더미용으로 비회원과 같이 모든 게시글을 보여주도록 했습니다.
 		//더미 작업 이후에는 꼭 매개변수에 세션에 저장된 id 값을 넣어주어야합니다.

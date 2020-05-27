@@ -8,7 +8,7 @@ $(function(){
 // footerUp
 	var hei = $('#footer-wrap').css("height"); 
 	var wei = 0;
-		// 올리기
+		// 올리기 
 	 $("#footer-wrap").mouseenter(function(){
 			if($('#footer-wrap').css("height") == hei){
 				$('#footer-wrap').css("transition","all 0.6s");

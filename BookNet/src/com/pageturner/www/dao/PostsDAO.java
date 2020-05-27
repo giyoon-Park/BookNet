@@ -49,13 +49,15 @@ public class PostsDAO {
 
 				// 데이터 담기
 				vo.setPno(rs.getInt("pno"));
+				vo.setMno(rs.getInt("mno"));
+				vo.setCnt(rs.getInt("cnt"));
 				vo.setId(rs.getString("id"));
 				vo.setBname(rs.getString("bname"));
 				vo.setPostcont(rs.getString("postcont"));
 				vo.setPostDate(rs.getDate("postdate"));
 				vo.setPostTime(rs.getTime("postdate"));
 				vo.setPdate();
-//				vo.setEmotion(rs.getString("emotion"));
+				vo.setEmotion(rs.getString("emotion"));
 				vo.setLargeimg(rs.getString("largeimg"));
 				vo.setGname(rs.getString("gname"));
 				vo.setHash(rs.getString("hash"));

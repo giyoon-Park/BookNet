@@ -50,7 +50,7 @@
 								</div>
 								<div class="wrter" id="id${data.pno}">
 									<a href=""><b id="">${data.id}</b></a>
-								</div>
+								</div> 
 								<div class="time" id="time${data.pno}">
 									${data.pdate}
 								</div>

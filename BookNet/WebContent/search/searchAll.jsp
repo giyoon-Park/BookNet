@@ -97,7 +97,7 @@
 							<c:forEach var="data" items="${LIST}">
 									<span style="border: solid 4px transparent;" class="box">
 										<img src="${data.simg}"
-										style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px;">
+										style="text-decoration: unset; color: #F7B3D2; width: 200px; height: 239px;">
 									</span>
 							</c:forEach>
 								</div>
@@ -105,7 +105,7 @@
 									class="boxwrap">
 								<c:forEach var="data" items="${LIST}">
 									<span style="border: solid 4px transparent;" class="box">
-										<a href="#" style="text-decoration: unset; color: #F7B3D2; width: 209px; height: 239px;">${data.bname}</a>
+										<a href="#" style="text-decoration: unset; color: #F7B3D2; width: 200px; height: 239px;">${data.bname}</a>
 									</span>
 								</c:forEach>
 								</div>
@@ -142,7 +142,8 @@
 										<!-- 도서사진, 도서이름, 게시글본문 -->
 										<div class="book-pic">
 											<!-- 도서 사진 들어갈 부분 -->
-											${post.simg}
+											<img src="${post.simg}"
+										style="text-decoration: unset; color: #F7B3D2; width: 200px; height: 239px;">
 										</div>
 										<div class="book-name">
 											<!-- 도서명 들어갈 부분 -->

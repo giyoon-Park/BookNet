@@ -11,11 +11,17 @@ import java.sql.*;
 import java.text.*;
 
 public class PostsVO {
-	private int pno, mno, eno, bno, linkno;
-	private String id, profile, bname, writer, trans, postcont, pdate, largeimg, gname, hash, publish, ischeck;
+	private int pno, mno, eno, bno, linkno, cnt;
+	private String id, profile, bname, writer, trans, postcont, pdate, largeimg, gname, hash, publish, ischeck, emotion;
 	private Date postDate;
 	private Time postTime;
 	
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	public String getIscheck() { //게시글내 좋아요 갯수처리시 필요 
 		return ischeck;
 	}
@@ -45,6 +51,12 @@ public class PostsVO {
 	}
 	public void setEno(int eno) {
 		this.eno = eno;
+	}
+	public String getEmotion() {
+		return emotion;
+	}
+	public void setEmotion(String emotion) {
+		this.emotion = emotion;
 	}
 	public int getBno() {
 		return bno;

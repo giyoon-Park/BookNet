@@ -4,7 +4,7 @@
 	@version v.0.1.0
 	@since 2020.05.28
 */
-
+ 
 $(document).ready(function() {
 	// search clear
 	var $ipt = $('#searchinput'), $clearIpt = $('#searchclear');

@@ -7,7 +7,7 @@
 
 /*input tag안에 x표 사라지게 한다고 한다..*/
 input[type=text]:-ms-clear {
-	display: none;
+	display: none; 
 }
 
 /* 다른 해상도에서 실험 해봐야함.*/

@@ -4,7 +4,7 @@
  * @version v.0.1.0
  * @since 2020.05.27
  */
-$(function(){
+$(function(){ 
 
    $('#lbtn').click(function(){
       $(location).attr('href','/BookNet/member/login.cls');

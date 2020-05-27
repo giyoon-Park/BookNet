@@ -5,7 +5,7 @@
  * @since 2020.05.27
  */
 
-// 시계만들기
+// 시계만들기 
 function printClock() {
   var clock = document.getElementById("clock");            // 출력할 장소 선택
   var currentDate = new Date();                                     // 현재시간
