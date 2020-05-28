@@ -36,13 +36,14 @@ public class AlarmSQL {
 			buff.append("SELECT ");
 			buff.append("    id, fal_time, save_loc ");
 			buff.append("FROM ");
-			buff.append("    fallowtab, membertab mt, profilepictab ppt ");
+			buff.append("    fallowtab ft, membertab mt, profilepictab ppt ");
 			buff.append("WHERE ");
-			buff.append("    fallow_no = (SELECT mno FROM membertab WHERE id = ?) ");
-			buff.append("    AND fallower_no = mno ");
+			buff.append("    fallow_no = (SELECT mno FROM membertab WHERE id = ? ) ");
+			buff.append("    AND fallower_no = mt.mno ");
 			buff.append("    AND mt.mno = ppt.mno ");
 			buff.append("    AND ischeck = 'Y' ");
-			buff.append("    AND isshow = 'Y' ");
+			buff.append("    AND mt.isshow = 'Y' ");
+			buff.append("    AND ppt.isshow = 'Y' ");
 			break;
 		case SEL_COMNT:
 			buff.append("SELECT ");

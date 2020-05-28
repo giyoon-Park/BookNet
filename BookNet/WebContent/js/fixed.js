@@ -40,12 +40,17 @@ $(document).ready(function(){
 
 	$('#s-close_butt').click(function() { //modal 닫기버튼 
 		$('#-s-b-modal').css('display', 'none');
+		$('.rstPage').html('');
+	});
+	
+	$('#myBtn').click(function(){
+		$(location).attr('href', '/BookNet/mypage/mypage.cls');
 	});
 	
 	$('.likebtn').click(function(){ //like 버튼 클릭시 빨강하트로 변경 
 		$(this).css('background-position', '-208px -370px');
 		var pno = $(this).parents().attr('id');
-		alert(pno);
+//		alert(pno);
 		
 		//비동기처리 
 		$.ajax({
@@ -70,7 +75,7 @@ $(document).ready(function(){
 		$('.edit-del-modal').css('display', 'block');
 		//frm2에 값을 전달해주어야함. 
 		var pno = $(this).parents().attr('id');
-		alert(pno);
+//		alert(pno);
 		$('#pno').val(pno); 
 	});
 	
@@ -190,6 +195,10 @@ $(document).ready(function(){
 		$('#writeModal').css('display', 'none');
 	});
 	
+	$('#changeInfo').click(function(){ //정보수정페이지로 이동 
+		$(location).attr('href', '/BookNet/member/editMemInfo.cls');
+	});
+	
 	//글작성 도서검색 ajax 처리 구문
 	$('#book-search').click(function(){ //글쓰기 모달에서 읽은 도서 검색 클릭시 처리해주는 함수 
 		$('#-s-b-modal').css('display', 'block');
@@ -208,26 +217,52 @@ $(document).ready(function(){
 //			tranditional: true,
 			success : function(obj){ //SearchBook.java 에서 gstr json 문서가 들어오게 된다.
 				var len = obj.length;
+//				alert(len);
+//				alert(obj[0].bname);
 				for(var i = 0; i < len; i++){
+//					$('.rstPage').append('<div class="w100perh300 rstbook" id="' + obj[i].bno + '">' +
+//							'<div class="-s-b-img">' +
+//							'<img style="width: 150px; height: auto; margin-top: 20px;" src="' + obj[i].l + '"id="b-image"/>' +
+//							'</div>' +
+//							'<div class="-s-b-info">' +
+//							'<div style="float: left; margin-right: 15px; font-size: 15px;"><b>도서장르</b> : </div>' + 
+//							'<div style="float: left; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="b-genre">' + obj[i].categoryName + '</div>' +
+//							'</div>' +
+//							'<div class="-s-b-info">' +
+//							'<div style="float: left; margin-right: 15px; font-size: 15px;"><b>도서명</b> : </div>' + 
+//							'<div style="float: left; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="b-title">' + obj[i].title + '</div>' +
+//							'</div>' +
+//							'<div class="-s-b-info">' +
+//							'<div style="float: left; margin-right: 15px; font-size: 15px;"><b>저 자</b> : </div>' + 
+//							'<div style="float: left; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="b-author">' + obj[i].author + '</div>' +
+//							'</div>' +
+//							'<div class="-s-b-info" id="notrans">' +
+//							'<div style="float: left; margin-right: 15px; font-size: 15px;"><b>옮긴이</b> : </div>' + 
+//							'<div style="float: left; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="b-author">' + obj[i].translator + '</div>' +
+//							'</div>' +
+//							'<div class="-s-b-submit">' +
+//							'<input type="button" value="책 등록" id="sel-b-submit"/>' +
+//							'</div>' +
+//					'</div>');
 					$('.rstPage').append('<div class="w100perh300 rstbook" id="' + obj[i].bno + '">' +
 							'<div class="-s-b-img">' +
-								'<img style="width: 150px; height: auto; margin-top: 20px;" src="' + obj[i].coverLargeUrl + '"id="b-image"/>' +
+								'<img style="width: 150px; height: auto; margin-top: 20px;" src="' + obj[i].largeimg + '"id="b-image"/>' +
 							'</div>' +
 							'<div class="-s-b-info">' +
 								'<div style="float: left; margin-right: 15px; font-size: 15px;"><b>도서장르</b> : </div>' + 
-								'<div style="float: left; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="b-genre">' + obj[i].categoryName + '</div>' +
+								'<div style="float: left; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="b-genre">' + obj[i].gname + '</div>' +
 							'</div>' +
 							'<div class="-s-b-info">' +
 								'<div style="float: left; margin-right: 15px; font-size: 15px;"><b>도서명</b> : </div>' + 
-								'<div style="float: left; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="b-title">' + obj[i].title + '</div>' +
+								'<div style="float: left; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="b-title">' + obj[i].bname + '</div>' +
 							'</div>' +
 							'<div class="-s-b-info">' +
 								'<div style="float: left; margin-right: 15px; font-size: 15px;"><b>저 자</b> : </div>' + 
-								'<div style="float: left; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="b-author">' + obj[i].author + '</div>' +
+								'<div style="float: left; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="b-author">' + obj[i].writer + '</div>' +
 							'</div>' +
 							'<div class="-s-b-info" id="notrans">' +
 								'<div style="float: left; margin-right: 15px; font-size: 15px;"><b>옮긴이</b> : </div>' + 
-								'<div style="float: left; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="b-author">' + obj[i].translator + '</div>' +
+								'<div style="float: left; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" id="b-author">' + obj[i].trans + '</div>' +
 							'</div>' +
 							'<div class="-s-b-submit">' +
 								'<input type="button" value="책 등록" id="sel-b-submit"/>' +
@@ -243,6 +278,7 @@ $(document).ready(function(){
 	
 	$('#sel-b-submit').click(function(){ //검색된 도서 중 맞는 결과를 선택해주는 클릭이벤트 
 		var selno = $('.rstbook').attr('id'); //도서번호 
+		alert(selno);
 		var selimg = $('#b-image').attr('src'); //도서 이미지
 		var selttl = $('#b-title').text(); //도서 제목 
 		alert(selttl); 

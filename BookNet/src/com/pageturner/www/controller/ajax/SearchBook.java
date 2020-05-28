@@ -34,15 +34,18 @@ public class SearchBook implements PageController {
 		//응답문서 인코딩 설정
 		resp.setCharacterEncoding("UTF-8");
 		
+		PostsDAO dao = new PostsDAO();
+		JSONArray list = dao.getSearchRst(word);
+		
 		//디비작업해서 결과받기 >> 나온 검색 결과는 db에 저장시켜준다. 
-		api = new InterParkAPI(api.SEARCH, word);
-		JSONArray item = api.item;
+//		api = new InterParkAPI(api.SEARCH, word);
+//		JSONArray item = api.item;
 		
 		//db에 저장시켜줄 클래스 호출 >> 이렇게 되면 이미 검색된 책 정보는 db에 저장이 되어있을 것이다.
-		UploadBookData upBook = new UploadBookData(api.list);
+//		UploadBookData upBook = new UploadBookData(api.list);
 		
 		Gson gson = new GsonBuilder().create();
-		String gstr = gson.toJson(item);
+		String gstr = gson.toJson(list);
 		System.out.println(gstr);
 		
 		return gstr;

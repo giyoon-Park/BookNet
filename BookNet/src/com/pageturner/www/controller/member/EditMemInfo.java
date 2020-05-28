@@ -25,7 +25,7 @@ public class EditMemInfo implements PageController {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
-		String view = "/member/editMemInfo.jsp";
+		String view = "/member/fixed_editMemInfo.jsp";
 		String sid = (String) req.getSession().getAttribute("SID");
 		
 		MemberDAO mDAO = new MemberDAO();

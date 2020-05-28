@@ -48,6 +48,7 @@ public class MyPageDAO {
 		try {
 			pstmt.setInt(1, mno);
 			rs = pstmt.executeQuery();
+			rs.next();
 			mVO.setNickname(rs.getString("nickname"));
 			mVO.setDescribe(rs.getString("describe"));
 			if(rs.getString("intershow") == "Y") {

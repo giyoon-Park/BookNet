@@ -133,7 +133,7 @@
 <body>
 <!-- header -->
 <div id="header" class="join_membership" role="banner">
-    <h1><a href="http://www.naver.com/" class="h_logo">로고</a></h1>
+    <h1><a href="/BookNet/main/non.cls" style="width: 100%; height: auto; margin: 0 auto; color: rgb(19, 16, 13); font-size: 50px;">PageTurner</a></h1>
 </div>
 <!-- // header -->
 

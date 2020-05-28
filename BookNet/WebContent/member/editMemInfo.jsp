@@ -369,14 +369,14 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
 #gnb.gnb_one_flat .gnb_login_li .gnb_btn_login .gnb_txt {color: #777;}</style><style type="text/css">@keyframes resizeanim { from { opacity: 0; } to { opacity: 0; } } .resize-triggers { animation: 1ms resizeanim; visibility: hidden; opacity: 0; } .resize-triggers, .resize-triggers > div, .contract-trigger:before { content: " "; display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; overflow: hidden; } .resize-triggers > div { background: #eee; overflow: auto; } .contract-trigger:before { width: 200%; height: 200%; }</style><script src="./프로필 수정_files/clickcrD.js.다운로드" id="gnb_clickcrD" charset="utf-8"></script></head>
 
 <body onclick="clearDocs();gnbClose();" id="mainBody">
-<div id="wrap">
+<div id="wrap" style="z-index: 0;">
 
 	<div id="container" style="height: 695px;">
 		<!-- CONTENTS -->
 		<div id="content" style="background-color: #fff;">
     <div class="c_header">
         <h2>프로필 수정</h2>
-        <p class="contxt">PageTurner에 등록한 내 정보를 수정하실 수 있습니다.</p>
+        <p class="contxt" style="font-size: 30px;">PageTurner에 등록한 내 정보를 수정하실 수 있습니다.</p>
     </div>
     <form id="profileForm" method="post" action="" enctype="multipart/form-data">
         <input type="hidden" id="helpToken" name="token_help" value="3bjObALRnLxxaTw1">

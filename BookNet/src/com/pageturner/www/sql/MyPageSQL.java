@@ -28,7 +28,7 @@ public class MyPageSQL {
 			buff.append("    gen, birthdate, interest, nickname, describe, ");
 			buff.append("    intershow, birthshow, genshow, isinflu, save_name, save_loc ");
 			buff.append("FROM ");
-			buff.append("    member mt, profilepictab pt ");
+			buff.append("    membertab mt, profilepictab pt ");
 			buff.append("WHERE ");
 			buff.append("    mt.mno = pt.mno ");
 			buff.append("    AND mt.mno = ? ");
@@ -63,7 +63,7 @@ public class MyPageSQL {
 			buff.append("    AND bt.publish_no = pbt.publish_no ");
 			buff.append("    AND pt.isshow = 'Y' ");
 			buff.append("    AND mt.isshow = 'Y' ");
-			buff.append("	 AND pno BETWEEN (SELECT MAX(pno) - 5 FROM poststab) ");
+			buff.append("	 AND lt.pno BETWEEN (SELECT MAX(pno) - 5 FROM poststab) ");
 			buff.append("		AND (SELECT MAX(pno) FROM poststab) ");
 			buff.append("ORDER BY ");
 			buff.append("	 postdate DESC ");
@@ -92,7 +92,7 @@ public class MyPageSQL {
 			buff.append("    AND lt.ischeck = 'Y' ");
 			buff.append("    AND pt.isshow = 'Y' ");
 			buff.append("    AND mt.isshow = 'Y' ");
-			buff.append("	 AND pno BETWEEN (SELECT MAX(pno) - 5 FROM poststab) ");
+			buff.append("	 AND lt.pno BETWEEN (SELECT MAX(pno) - 5 FROM poststab) ");
 			buff.append("		AND (SELECT MAX(pno) FROM poststab) ");
 			buff.append("ORDER BY ");
 			buff.append("	 postdate DESC ");

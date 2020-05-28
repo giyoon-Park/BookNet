@@ -5,7 +5,7 @@
 <html style="background-color:#F3F0F7">
 <head>
 <meta charset="UTF-8">
-<title>고정페이지 틀</title>
+<title>마이페이지</title>
 <link rel="stylesheet" href="/BookNet/css/proj_fixed.css">
 <link rel="stylesheet" href="/BookNet/css/modal.css">
 <link rel="stylesheet" href="/BookNet/css/w3.css">
@@ -13,16 +13,6 @@
 <script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
 <script type="text/javascript" src="/BookNet/js/fixed.js"></script>
 <style>
-	.w-x-btn {margin: 5px; width: 10px; height: 10px; line-height: 10px; font-size: 13px;}
-	.w-b-input {text-align: left; width: 100%; height: 40px; line-height: 40px;}
-	.wrt-div {width: 100%; height: 220px; line-height: 220px; margin-top: 25px;}
-	.wrt-b-img {float: left; width: 180px; margin: 0 15px; border: dashed 1px blue; text-align: center;}
-	.wrt-body {float: left; width: 440px; height: 225px; line-height: 255px; padding: 10px; text-align: center;}
-	.-a-t {float: left; width: 425px; height: 150px; line-height: 150px; margin-top: 13px;}
-	.wrt-last {width: 100%; height: 50px; line-height: 50px; padding-top: 10px; margin-top: 10px;}
-	.hash-input {float: left; width: 500px; height: 40px; line-height: 40px;}
-	.p-submit {float: right; width: 130px; height: 40px; line-height: 40px;}
-	.-s-rst {width: 100%; padding: 10px 30px; height: 55px; line-height: 15px; text-align: center; font-size: 30px;}
 	
 	/*input tag안에 x표 사라지게 한다고 한다..*/
 	input[type=text]:-ms-clear{
@@ -48,33 +38,6 @@
 <script type="text/javascript">
 	$(document).ready(
 		function() {
-			$('#more_butt').click(function() { //modal에서 알림페이지로 이동 
-				$(location).attr('href', '/BookNet/fixed/activity.cls');
-			});
-
-			$('#aBtn').click(function() { //modal 열기
-				$('#actModal').css('display', 'block');
-			});
-
-			$('#a-close_butt').click(function() { //modal 닫기버튼 
-				$('#actModal').css('display', 'none');
-			});
-			
-			$('#likebtn').click(function(){ //like 버튼 클릭시 빨강하트로 변경 
-				$(this).css('background-position', '-208px -370px');
-			});
-			
-			$('#wBtn').click(function(){ //글쓰기 modal 열기 
-				$('#writeModal').css('display', 'block');
-			});
-			
-			$('#w-close_butt').click(function(){ //글쓰기 모달 닫기 
-				$('#writeModal').css('display', 'none');
-			});
-			
-			$('#s-close_butt').click(function(){ //도서검색 모달 닫기 
-				$('#-s-b-modal').css('display', 'none');
-			});
 		  	// footerUp
 			var hei = $('#footer-wrap').css("height");
 			$("#footer-wrap").mouseenter(function(){
@@ -155,6 +118,8 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 </script>
 </head>
 <body onload="printClock()"/>
+
+<div class="content">
 <div data-aid="stylesContainer">
 		<style type="text/css" data-styleid="pc1">
 .pc1[data-state~="fixedPosition"] {
@@ -616,7 +581,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 	position: relative;
 }
 </style>
-														<div id="comp-kahy8rpjinlineContent-gridContainer" data-mesh-internal="true">
+														<div id="comp-kahy8rpjinlineContent-gridContainer" style="height: 380px;" data-mesh-internal="true">
 															<img src="${INFO.save_loc}" />
 														</div>
 													</div>
@@ -685,11 +650,11 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 																</div>
 																<div data-packed="true" style="width: 250px;"
 																	class="txtNew" id="comp-kahzrwoa">
-																	<h2 style="text-align: center;">팔로우 <a href="">${CNTFALLOW}</a></h2>
+																	<h2 style="text-align: center;"><a href="">팔로우 ${CNTFALLOW}</a></h2>
 																</div>
 																<div data-packed="true" style="width: 250px;"
 																	class="txtNew" id="comp-kahzsngs">
-																	<h2 style="text-align: center;">팔로워 <a href="">${CNTFALLOWER}</a></h2>
+																	<h2 style="text-align: center;"><a href="">팔로워 ${CNTFALLOWER}</a></h2>
 																</div>
 															</div>
 														</div>
@@ -795,6 +760,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 																				<div data-packed="true" style="width: 250px;" class="txtNew" id="comp-kahzedrx">
 																					<h2>공개한 개인정보</h2>
 																				</div>
+																				<button style="width: 200px; height: 30px; font-size: 13px; line-height: 30px;" id="changeInfo">정보수정하기</button>
 																			</div>
 																	</div>
 																</div>
@@ -908,8 +874,8 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 	}
 	</style>
 																					<div data-is-absolute-layout="false" style="top:; bottom:; left:; right:; position:" class="style-kai3vrh4" id="comp-kai3uids">
-																						<div id="comp-kai3uidsbg" class="style-kai3vrh4bg">
-																						</div>
+																						<!-- <div id="comp-kai3uidsbg" class="style-kai3vrh4bg">
+																						</div> -->
 																						<div class="style-kai3vrh4inlineContent"
 																							id="comp-kai3uidsinlineContent">
 																							<style id="comp-kai3uids-mesh-styles">
@@ -1257,6 +1223,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>
 </html>

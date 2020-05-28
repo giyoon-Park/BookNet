@@ -15,7 +15,7 @@ public class MyPage implements PageController {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
-		String view = "/mypage/mypage.jsp";
+		String view = "/mypage/fixed_mypage.jsp";
 		
 		HttpSession session = req.getSession();
 		String id = (String)session.getAttribute("SID");
@@ -43,29 +43,28 @@ public class MyPage implements PageController {
 		ArrayList<PostsVO> postList = new ArrayList<PostsVO>();
 		ArrayList<PostsVO> likeList = new ArrayList<PostsVO>();
 		ArrayList<AlarmVO> alarmList = new ArrayList<AlarmVO>();
-		for (int i = 0; i < 5; i++) {
-			postList.add(postFullList.get(i));
-			if (!postFullList.isEmpty()) {
-				postList.add(postFullList.get(i));
-			}
-			if (!likeFullList.isEmpty()) {
-				likeList.add(likeFullList.get(i));
-			}
-			if (!alarmFullList.isEmpty()) {
-				alarmList.add(alarmFullList.get(i));
-			}
-		}
+//		for (int i = 0; i < 5; i++) {
+//			if (!postFullList.isEmpty()) {
+//				postList.add(postFullList.get(i));
+//			}
+//			if (!likeFullList.isEmpty()) {
+//				likeList.add(likeFullList.get(i));
+//			}
+//			if (!alarmFullList.isEmpty()) {
+//				alarmList.add(alarmFullList.get(i));
+//			}
+//		}
 
 		req.setAttribute("INFO", mInfo);
 		req.setAttribute("CNTPOST", cntPosts);
 		req.setAttribute("CNTFALLOW", cntFallow);
 		req.setAttribute("CNTFALLOWER", cntFallower);
-		req.setAttribute("LIKE", likeList);
+		req.setAttribute("LIKE", likeFullList);
 
 		if(pid == null) {
-			req.setAttribute("ALARM", alarmList);
+			req.setAttribute("ALARM", alarmFullList);
 		} else {
-			req.setAttribute("POST", postList);
+			req.setAttribute("POST", postFullList);
 		}
 
 		return view;
