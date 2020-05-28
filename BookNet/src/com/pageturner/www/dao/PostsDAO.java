@@ -102,6 +102,7 @@ public class PostsDAO {
 				vo.setPdate();
 				vo.setGname(rs.getString("gname"));
 				vo.setLargeimg(rs.getString("largeimg"));
+				vo.setIscheck(rs.getString("ischeck"));
 
 				list.add(vo);
 			}
