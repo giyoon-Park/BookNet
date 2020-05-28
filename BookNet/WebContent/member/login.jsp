@@ -29,7 +29,6 @@
 			
 			$('#frm').attr('method', 'POST');
 			$('#frm').attr('action', '/BookNet/member/loginProc.cls');
-			$(location).attr('href', '/member/loginProc.cls')
 			$('#frm').submit();
 		});
 	});
