@@ -8,6 +8,7 @@ package com.pageturner.www.sql;
 public class MyPageSQL {
 	public final int SEL_MEM_INFO = 1001;
 	public final int SEL_MEM_MNO = 1002;
+	public final int SEL_MEM_ID = 1003;
 	
 	public final int SEL_POST_LIST = 2001;
 	public final int CNT_POST = 2002;
@@ -39,6 +40,14 @@ public class MyPageSQL {
 			buff.append("    membertab ");
 			buff.append("WHERE ");
 			buff.append("    id = ? ");
+			break;
+		case SEL_MEM_ID:
+			buff.append("SELECT ");
+			buff.append("    id ");
+			buff.append("FROM ");
+			buff.append("    membertab ");
+			buff.append("WHERE ");
+			buff.append("    mno = ? ");
 			break;
 		case SEL_POST_LIST:
 			buff.append("SELECT ");

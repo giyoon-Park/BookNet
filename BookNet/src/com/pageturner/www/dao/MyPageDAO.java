@@ -25,13 +25,15 @@ public class MyPageDAO {
 	SimpleDateFormat formD;
 	SimpleDateFormat formT;
 	
+	public MyPageDAO() {
+		db = new WebDBCP();
+		mpSQL = new MyPageSQL();
+	}
 	public MyPageDAO(String id) {
 		db = new WebDBCP();
 		mpSQL = new MyPageSQL();
 		this.id = id;
-		System.out.println(id);
 		this.mno = getMno(id);
-		System.out.println(mno);
 		this.aSQL = new AlarmSQL();
 		this.formD = new SimpleDateFormat("yyyy-MM-dd");
 		this.formT = new SimpleDateFormat("HH:mm:ss");
@@ -93,6 +95,27 @@ public class MyPageDAO {
 			db.close(con);
 		}
 		return idmno;
+	}
+	
+	// mno로 id를 찾는 함수
+	public String getId(int mno) {
+		String id = null;
+		con = db.getCon();
+		String sql = mpSQL.getSQL(mpSQL.SEL_MEM_ID);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, mno);
+			rs = pstmt.executeQuery();
+			rs.next();
+			id = rs.getString("id");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		return id;
 	}
 	
 	// 회원이 작성한 게시글중 최신글을 불러오는 함수
@@ -183,7 +206,7 @@ public class MyPageDAO {
 	}
 	
 	//팔로우 리스트를 불러오는 함수
-	public ArrayList<FallowVO> getFallowList() {
+	public ArrayList<FallowVO> getFallowList(int mno) {
 		ArrayList<FallowVO> list = new ArrayList<FallowVO>();
 		con = db.getCon();
 		String sql = mpSQL.getSQL(mpSQL.SEL_FALLOW_LIST);
@@ -210,7 +233,7 @@ public class MyPageDAO {
 	}
 	
 	//팔로워 리스트를 불러오는 함수
-	public ArrayList<FallowVO> getFallowerList() {
+	public ArrayList<FallowVO> getFallowerList(int mno) {
 		ArrayList<FallowVO> list = new ArrayList<FallowVO>();
 		con = db.getCon();
 		String sql = mpSQL.getSQL(mpSQL.SEL_FALLOWER_LIST);

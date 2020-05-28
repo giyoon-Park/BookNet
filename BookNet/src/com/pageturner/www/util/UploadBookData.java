@@ -16,10 +16,10 @@ public class UploadBookData {
 		for (int i = 0; i < list.size(); i++) {
 			String publish = list.get(i).getPublisher();
 			String isbn = list.get(i).getIsbn();
-			if(upDAO.ckPublish(publish) == 0) {
+			if(upDAO.ckPublish(publish) != 1) {
 				int cnt = upDAO.insertPublish(list.get(i));
 			}
-			if(upDAO.ckBook(isbn) == 0) {
+			if(upDAO.ckBook(isbn) != 1) {
 				int cnt = upDAO.insertBook(list.get(i));
 			}
 		}

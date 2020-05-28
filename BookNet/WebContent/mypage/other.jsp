@@ -155,124 +155,1108 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 </script>
 </head>
 <body onload="printClock()"/>
-<form method="POST" action="" id="frm">
-	<div>
-		<!-- 본문부분 -->
-		<div id="contents-wrap">
-			<div class="contents">
-				<!-- 이곳에 본문내용을 넣어주세요! -->
-			</div>
-		</div>
-		<!-- 헤더부분 -->
-		<div id="header-wrap">
-			<div class="header">
-				<div class="logobox">
-					<div
-						style="box-sizing: border-box; font-size: 30px; text-align: center;">
-						<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
-						<a href="/BookNet/main/mem_main.cls">PageTurner</a>
-					</div>
-				</div>
-				<div class="searchbox">
-					<input id="searchinput" class="searchinput" type="text" placeholder="search" >
-					<span id="searchclear">X</span>
-				</div>
-				<div class="iconsbox">
-					<!-- 알람표시아이콘 -->
-					<div class="span_icons">
-						<button type="button" class="butt" id="aBtn">
-							<img class="iconimg" id="" src="/BookNet/img/iconmonstr-bell-7-240.png">
-						</button>
-						<!-- The Modal -->
-						<div id="actModal" class="modal" role="none">
-							<!-- Modal Content -->
-							<div style="width: 900px; height: auto; margin: 0 auto;">
-								<div id="modal-content" class="a-modal-content">
-									<span class="close w-x-btn" id="a-close_butt">x</span>
-									<!-- onclick="document.getElementById('actModal').style.display='none'" -->
-									<p>Some Text....</p>
-									<div style="width: 100%; height: 30px; line-height: 30px; background-color: rgba(0, 0, 0, 0.4);">
-										<!-- <input type="button" value="MORE" id="more_butt" style="width: 100%; box-sizing: border-box;"/> -->
-										<div style="width: 100%; text-align: center" id="more_butt">MORE</div>
+<div data-aid="stylesContainer">
+		<style type="text/css" data-styleid="pc1">
+.pc1[data-state~="fixedPosition"] {
+	position: fixed !important;
+	left: auto !important;
+	z-index: 50;
+}
+
+.pc1[data-state~="fixedPosition"].pc1_footer {
+	top: auto;
+	bottom: 0;
+}
+
+.pc1bg {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.pc1[data-is-absolute-layout="true"]>.pc1centeredContent {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.pc1[data-is-absolute-layout="true"]>.pc1centeredContent>.pc1inlineContent
+	{
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+</style>
+		<style type="text/css" data-styleid="style-kahxfitn">
+.style-kahxfitnbg {
+	border: 0px solid rgba(0, 0, 0, 1);
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.style-kahxfitn[data-is-absolute-layout="true"]>.style-kahxfitninlineContent
+	{
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+</style>
+		<style type="text/css" data-styleid="txtNew">
+.txtNew {
+	word-wrap: break-word;
+	text-align: start;
+}
+
+.txtNew_override-left * {
+	text-align: left !important;
+}
+
+.txtNew_override-right * {
+	text-align: right !important;
+}
+
+.txtNew_override-center * {
+	text-align: center !important;
+}
+
+.txtNew_override-justify * {
+	text-align: justify !important;
+}
+
+.txtNew li {
+	font-style: inherit;
+	font-weight: inherit;
+	line-height: inherit;
+	letter-spacing: normal;
+}
+
+.txtNew ol, .txtNew ul {
+	padding-left: 1.3em;
+	padding-right: 0;
+	margin-left: 0.5em;
+	margin-right: 0;
+	line-height: normal;
+	letter-spacing: normal;
+}
+
+.txtNew ul {
+	list-style-type: disc;
+}
+
+.txtNew ol {
+	list-style-type: decimal;
+}
+
+.txtNew ul ul, .txtNew ol ul {
+	list-style-type: circle;
+}
+
+.txtNew ul ul ul, .txtNew ol ul ul {
+	list-style-type: square;
+}
+
+.txtNew ul ol ul, .txtNew ol ol ul {
+	list-style-type: square;
+}
+
+.txtNew ul[dir="rtl"], .txtNew ol[dir="rtl"] {
+	padding-left: 0;
+	padding-right: 1.3em;
+	margin-left: 0;
+	margin-right: 0.5em;
+}
+
+.txtNew ul[dir="rtl"] ul, .txtNew ul[dir="rtl"] ol, .txtNew ol[dir="rtl"] ul,
+	.txtNew ol[dir="rtl"] ol {
+	padding-left: 0;
+	padding-right: 1.3em;
+	margin-left: 0;
+	margin-right: 0.5em;
+}
+
+.txtNew p {
+	margin: 0;
+	line-height: normal;
+	letter-spacing: normal;
+}
+
+.txtNew h1 {
+	margin: 0;
+	line-height: normal;
+	letter-spacing: normal;
+}
+
+.txtNew h2 {
+	margin: 0;
+	line-height: normal;
+	letter-spacing: normal;
+}
+
+.txtNew h3 {
+	margin: 0;
+	line-height: normal;
+	letter-spacing: normal;
+}
+
+.txtNew h4 {
+	margin: 0;
+	line-height: normal;
+	letter-spacing: normal;
+}
+
+.txtNew h5 {
+	margin: 0;
+	line-height: normal;
+	letter-spacing: normal;
+}
+
+.txtNew h6 {
+	margin: 0;
+	line-height: normal;
+	letter-spacing: normal;
+}
+
+.txtNew a {
+	color: inherit;
+}
+</style>
+		<style type="text/css" data-styleid="style-kahydzlx">
+.style-kahydzlxbg {
+	border: 1px solid rgba(0, 0, 0, 1);
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.style-kahydzlx[data-is-absolute-layout="true"]>.style-kahydzlxinlineContent
+	{
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+</style>
+		<style type="text/css" data-styleid="style-kahykq29">
+.style-kahykq29bg {
+	border: 1px solid rgba(0, 0, 0, 1);
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 3px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.style-kahykq29[data-is-absolute-layout="true"]>.style-kahykq29inlineContent
+	{
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+</style>
+		<style type="text/css" data-styleid="style-kai5ngt3">
+.style-kai5ngt3bg {
+	border: 0px solid rgba(0, 0, 0, 1);
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.style-kai5ngt3[data-is-absolute-layout="true"]>.style-kai5ngt3inlineContent
+	{
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+</style>
+		<style type="text/css" data-styleid="c1">
+.c1bg {
+	border: 0px solid rgba(0, 0, 0, 1);
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.c1[data-is-absolute-layout="true"]>.c1inlineContent {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+</style>
+		<style type="text/css" data-styleid="style-kai3srj7">
+.style-kai3srj7bg {
+	border: 1px solid rgba(0, 0, 0, 1);
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.style-kai3srj7[data-is-absolute-layout="true"]>.style-kai3srj7inlineContent
+	{
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+</style>
+		<style type="text/css" data-styleid="style-kai3vrh4">
+.style-kai3vrh4bg {
+	border: 1px solid rgba(0, 0, 0, 1);
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.style-kai3vrh4[data-is-absolute-layout="true"]>.style-kai3vrh4inlineContent
+	{
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+</style>
+	</div>
+	<div class="noop visual-focus-on" style="position: relative">
+		<div id="SITE_ROOT" class="SITE_ROOT"
+			style="width: 100%; min-width: 900px; padding-bottom: 0; top: 50px"
+			aria-hidden="false">
+			<div id="masterPage" class="mesh-layout" data-mesh-layout="grid">
+				<div style="position: relative" id="PAGES_CONTAINERcenteredContent"
+					class="pc1centeredContent">
+
+					<div style="position: relative" id="PAGES_CONTAINERinlineContent"
+						class="pc1inlineContent">
+						<div style="width: 100%">
+							<div id="c1dmpinlineContent-gridWrapper"
+								data-mesh-internal="true">
+
+								<div data-is-absolute-layout="false"
+									style="top:; bottom:; left:; right:; position:"
+									class="style-kahxfitn" id="comp-kahxf92g">
+
+									<div class="style-kahxfitninlineContent"
+										id="comp-kahxf92ginlineContent">
+										<style id="comp-kahxf92g-mesh-styles">
+#comp-kahxf92ginlineContent {
+	height: auto;
+	width: 900px;
+	position: relative;
+}
+
+#comp-kahxf92ginlineContent-gridContainer {
+	position: static;
+	display: grid;
+	height: auto;
+	width: 100%;
+	min-height: auto;
+	grid-template-rows: min-content min-content min-content min-content
+		min-content min-content min-content min-content 1fr;
+	grid-template-columns: 100%;
+}
+
+#comp-kahxjzbw {
+	position: relative;
+	margin: 25px 0px 18px 0;
+	left: 358px;
+	grid-area: 1/1/2/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kahy8rpj {
+	position: relative;
+	margin: 0px 0px -99px 0;
+	left: 27px;
+	grid-area: 3/1/6/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kahzqprw {
+	position: relative;
+	margin: 0px 0px -36px 0;
+	left: 27px;
+	grid-area: 7/1/8/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kahykq0w {
+	position: relative;
+	margin: 0px 0px 22px 0;
+	left: 330px;
+	grid-area: 2/1/4/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kahztsue {
+	position: relative;
+	margin: 0px 0px 3px 0;
+	left: 330px;
+	grid-area: 4/1/5/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kahyq160 {
+	position: relative;
+	margin: 0px 0px -82px 0;
+	left: 330px;
+	grid-area: 6/1/7/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kai65t3p {
+	position: relative;
+	margin: 0px 0px 3px 0;
+	left: 330px;
+	grid-area: 8/1/9/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kai65t47 {
+	position: relative;
+	margin: 0px 0px 36px 0;
+	left: 330px;
+	grid-area: 9/1/10/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kahzhh7n {
+	position: relative;
+	margin: 0px 0px 14px 0;
+	left: 27px;
+	grid-area: 2/1/3/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kahxf92gcenteredContent {
+	position: relative;
+}
+</style>
+										<div id="comp-kahxf92ginlineContent-gridWrapper"
+											data-mesh-internal="true">
+											<div id="comp-kahxf92ginlineContent-gridContainer"
+												data-mesh-internal="true">
+												<div data-packed="true" style="width: 320px;" class="txtNew"
+													id="comp-kahxjzbw">
+													<h1 class="font_0" style="font-size: 75px;">
+														<span>My Page</span>
+													</h1>
+												</div>
+												<div data-is-absolute-layout="false"
+													style="top:; bottom:; left:; right:; position:"
+													class="style-kahydzlx" id="comp-kahy8rpj">
+													<div id="comp-kahy8rpjbg" class="style-kahydzlxbg"></div>
+													<div class="style-kahydzlxinlineContent"
+														id="comp-kahy8rpjinlineContent">
+														<style id="comp-kahy8rpj-mesh-styles">
+#comp-kahy8rpjinlineContent {
+	height: auto;
+	width: 276px;
+	position: relative;
+}
+
+#comp-kahy8rpjinlineContent-gridContainer {
+	position: static;
+	height: auto;
+	width: 100%;
+	min-height: 368px;
+}
+
+#comp-kahy8rpjcenteredContent {
+	position: relative;
+}
+</style>
+														<div id="comp-kahy8rpjinlineContent-gridContainer" data-mesh-internal="true">
+															<img src="${INFO.save_loc}" />
+														</div>
+													</div>
+												</div>
+												<div data-is-absolute-layout="false"
+													style="top:; bottom:; left:; right:; position:" class="c1"
+													id="comp-kahzqprw">
+													<div id="comp-kahzqprwbg" class="c1bg"></div>
+													<div class="c1inlineContent"
+														id="comp-kahzqprwinlineContent">
+														<style id="comp-kahzqprw-mesh-styles">
+#comp-kahzqprwinlineContent {
+	height: auto;
+	width: 276px;
+	position: relative;
+}
+
+#comp-kahzqprwinlineContent-gridContainer {
+	position: static;
+	display: grid;
+	height: auto;
+	width: 100%;
+	min-height: auto;
+	grid-template-rows: min-content min-content 1fr;
+	grid-template-columns: 100%;
+}
+
+#comp-kahzrcco {
+	position: relative;
+	margin: 16px 0px 18px 0;
+	left: 13px;
+	grid-area: 1/1/2/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kahzrwoa {
+	position: relative;
+	margin: 0px 0px 19px 0;
+	left: 13px;
+	grid-area: 2/1/3/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kahzsngs {
+	position: relative;
+	margin: 0px 0px 16px 0;
+	left: 13px;
+	grid-area: 3/1/4/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kahzqprwcenteredContent {
+	position: relative;
+}
+</style>
+														<div id="comp-kahzqprwinlineContent-gridWrapper"
+															data-mesh-internal="true">
+															<div id="comp-kahzqprwinlineContent-gridContainer"
+																data-mesh-internal="true">
+																<div data-packed="true" style="width: 250px;"
+																	class="txtNew" id="comp-kahzrcco">
+																	<h2 style="text-align: center;">게시글 <a href="">${CNTPOST}</a></h2>
+																</div>
+																<div data-packed="true" style="width: 250px;"
+																	class="txtNew" id="comp-kahzrwoa">
+																	<h2 style="text-align: center;">팔로우 <a href="">${CNTFALLOW}</a></h2>
+																</div>
+																<div data-packed="true" style="width: 250px;"
+																	class="txtNew" id="comp-kahzsngs">
+																	<h2 style="text-align: center;">팔로워 <a href="">${CNTFALLOWER}</a></h2>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div data-is-absolute-layout="false"
+													style="top:; bottom:; left:; right:; position:"
+													class="style-kahykq29" id="comp-kahykq0w">
+													<div id="comp-kahykq0wbg" class="style-kahykq29bg"></div>
+													<div class="style-kahykq29inlineContent"
+														id="comp-kahykq0winlineContent">
+														<style id="comp-kahykq0w-mesh-styles">
+#comp-kahykq0winlineContent {
+	height: auto;
+	width: 623px;
+	position: relative;
+}
+
+#comp-kahykq0winlineContent-gridContainer {
+	position: static;
+	display: grid;
+	height: auto;
+	width: 100%;
+	min-height: 258px;
+	grid-template-rows: 1fr;
+	grid-template-columns: 100%;
+}
+
+#comp-kahz353j {
+	position: relative;
+	margin: 6px 0px 10px 0;
+	left: 27px;
+	grid-area: 1/1/2/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kahykq0wcenteredContent {
+	position: relative;
+}
+</style>
+														<div id="comp-kahykq0winlineContent-gridWrapper"
+															data-mesh-internal="true">
+															<div id="comp-kahykq0winlineContent-gridContainer"
+																data-mesh-internal="true">
+																<div data-is-absolute-layout="false"
+																	style="top:; bottom:; left:; right:; position:"
+																	class="style-kai5ngt3" id="comp-kahz353j">
+																	<div id="comp-kahz353jbg" class="style-kai5ngt3bg"></div>
+																	<div class="style-kai5ngt3inlineContent"
+																		id="comp-kahz353jinlineContent">
+																		<style id="comp-kahz353j-mesh-styles">
+#comp-kahz353jinlineContent {
+	height: auto;
+	width: 568px;
+	position: relative;
+}
+
+#comp-kahz353jinlineContent-gridContainer {
+	position: static;
+	display: grid;
+	height: auto;
+	width: 100%;
+	min-height: auto;
+	grid-template-rows: min-content 1fr;
+	grid-template-columns: 100%;
+}
+
+#comp-kahzlc3l {
+	position: relative;
+	margin: 0px 0px 2px 0;
+	left: 0px;
+	grid-area: 1/1/2/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kahzedrx {
+	position: relative;
+	margin: 0px 0px 1px 0;
+	left: 0px;
+	grid-area: 2/1/3/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kahz353jcenteredContent {
+	position: relative;
+}
+</style>
+																			<div id="comp-kahz353jinlineContent-gridContainer" data-mesh-internal="true">
+																				<div data-packed="true" style="width: 105px;" class="txtNew" id="comp-kahzlc3l">
+																					<h4>Nickname</h4>
+																				</div>
+																				<div data-packed="true" style="width: 250px;" class="txtNew" id="comp-kahzedrx">
+																					<h2>${INFO.nickname}</h2>
+																				</div>
+																			</div>
+																			<div id="comp-kahz353jinlineContent-gridContainer" data-mesh-internal="true">
+																				<div data-packed="true" style="width: 105px;" class="txtNew" id="comp-kahzlc3l">
+																					<h4>공개한 개인정보</h4>
+																				</div>
+																				<div data-packed="true" style="width: 250px;" class="txtNew" id="comp-kahzedrx">
+																					<h2>공개한 개인정보</h2>
+																				</div>
+																			</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div data-packed="true" style="width: 276px;" class="txtNew"
+													id="comp-kahztsue">
+													<h3 class="font_4">좋아요 목록</h3>
+												</div>
+												<div data-is-absolute-layout="false"
+													style="top:; bottom:; left:; right:; position:"
+													class="style-kahykq29" id="comp-kahyq160">
+													<div id="comp-kahyq160bg" class="style-kahykq29bg"></div>
+													<div class="style-kahykq29inlineContent"
+														id="comp-kahyq160inlineContent">
+														<style id="comp-kahyq160-mesh-styles">
+#comp-kahyq160inlineContent {
+	height: auto;
+	width: 623px;
+	position: relative;
+}
+
+#comp-kahyq160inlineContent-gridContainer {
+	position: static;
+	display: grid;
+	height: auto;
+	width: 100%;
+	min-height: 203px;
+	grid-template-rows: 1fr;
+	grid-template-columns: 100%;
+}
+
+#comp-kai3qfqd {
+	position: relative;
+	margin: 18px 0px 10px 0;
+	left: 26px;
+	grid-area: 1/1/2/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kahyq160centeredContent {
+	position: relative;
+}
+</style>
+														<div id="comp-kahyq160inlineContent-gridWrapper"
+															data-mesh-internal="true">
+															<div id="comp-kahyq160inlineContent-gridContainer"
+																data-mesh-internal="true">
+																<div data-is-absolute-layout="false"
+																	style="top:; bottom:; left:; right:; position:"
+																	class="style-kai3srj7" id="comp-kai3qfqd">
+																	<c:forEach var="like" items="${LIKE}">
+																		<div class="style-kai3srj7inlineContent" id="comp-kai3qfqdinlineContent">
+																			<style id="comp-kai3qfqd-mesh-styles">
+	#comp-kai3qfqdinlineContent {
+		height: 95px;
+		width: 568px;
+		position: relative;
+	}
+	
+	#comp-kai3uids {
+		position: relative;
+		margin: 7px 0px -37px 0;
+		left: 6px;
+		grid-area: 1/1/2/2;
+		justify-self: start;
+		align-self: start;
+	}
+	
+	#comp-kai3za90 {
+		position: relative;
+		margin: 8px 0px 17px 0;
+		left: 75px;
+		grid-area: 1/1/2/2;
+		justify-self: start;
+		align-self: start;
+	}
+	
+	#comp-kai41mkt {
+		position: relative;
+		margin: 0px 0px 6px 0;
+		left: 75px;
+		grid-area: 2/1/3/2;
+		justify-self: start;
+		align-self: start;
+	}
+	
+	#comp-kai63k32 {
+		position: relative;
+		margin: 7px 0px 17px 0;
+		left: 531px;
+		grid-area: 1/1/2/2;
+		justify-self: start;
+		align-self: start;
+	}
+	
+	#comp-kai64s7p {
+		position: relative;
+		margin: 7px 0px 17px 0;
+		left: 500px;
+		grid-area: 1/1/2/2;
+		justify-self: start;
+		align-self: start;
+	}
+	
+	#comp-kai3qfqdcenteredContent {
+		position: relative;
+	}
+	</style>
+																					<div data-is-absolute-layout="false" style="top:; bottom:; left:; right:; position:" class="style-kai3vrh4" id="comp-kai3uids">
+																						<div id="comp-kai3uidsbg" class="style-kai3vrh4bg">
+																						</div>
+																						<div class="style-kai3vrh4inlineContent"
+																							id="comp-kai3uidsinlineContent">
+																							<style id="comp-kai3uids-mesh-styles">
+	#comp-kai3uidsinlineContent {
+		height: auto;
+		width: 60px;
+		position: relative;
+	}
+	
+	#comp-kai3uidsinlineContent-gridContainer {
+		position: static;
+		height: auto;
+		width: 100%;
+		min-height: 80px;
+	}
+	
+	#comp-kai3uidscenteredContent {
+		position: relative;
+	}
+	</style>
+																							<div id="comp-kai3uidsinlineContent-gridContainer" data-mesh-internal="true">
+																								<img src="${like.largeimg}" />
+																							</div>
+																						</div>
+																					</div>
+																					<div data-packed="true" style="width: 220px;"
+																						class="txtNew" id="comp-kai3za90">
+																						<h2 class="font_2" style="font-size: 21px;">
+																							<span><span style="font-size: 21px;"><span
+																									style="color: #292929;">${like.bname}</span></span></span>
+																						</h2>
+																					</div>
+																					<div data-packed="true" style="width: 481px;"
+																						class="txtNew" id="comp-kai41mkt">
+																						<p class="font_7">
+																							<span>${like.postcont}</span>
+																						</p>
+																					</div>
+																					<div data-is-absolute-layout="false"
+																						style="top:; bottom:; left:; right:; position:"
+																						class="style-kai3srj7" id="comp-kai63k32">
+																						<div id="comp-kai63k32bg" class="style-kai3srj7bg"></div>
+																						<div class="style-kai3srj7inlineContent"
+																							id="comp-kai63k32inlineContent">
+																							<style id="comp-kai63k32-mesh-styles">
+	#comp-kai63k32inlineContent {
+		height: 25px;
+		width: 25px;
+		position: relative;
+	}
+	
+	#comp-kai63k32inlineContent-gridContainer {
+		position: static;
+		height: auto;
+		width: 100%;
+		min-height: 25px;
+	}
+	
+	#comp-kai63k32centeredContent {
+		position: relative;
+	}
+	</style>
+																							<span style="display: inline-block;"
+																								id="comp-kai63k32inlineContent-gridContainer"
+																								data-mesh-internal="true"></span>
+																						</div>
+																					</div>
+																					<div data-is-absolute-layout="false"
+																						style="top:; bottom:; left:; right:; position:"
+																						class="style-kai3vrh4" id="comp-kai64s7p">
+																						<div id="comp-kai64s7pbg" class="style-kai3vrh4bg"></div>
+																						<div class="style-kai3vrh4inlineContent"
+																							id="comp-kai64s7pinlineContent">
+																							<style id="comp-kai64s7p-mesh-styles">
+	#comp-kai64s7pinlineContent {
+		height: 25px;
+		width: 25px;
+		position: relative;
+	}
+	
+	#comp-kai64s7pinlineContent-gridContainer {
+		position: static;
+		height: auto;
+		width: 100%;
+		min-height: 25px;
+	}
+	
+	#comp-kai64s7pcenteredContent {
+		position: relative;
+	}
+	</style>
+																							<span style="display: inline-block;"
+																								id="comp-kai64s7pinlineContent-gridContainer"
+																								data-mesh-internal="true"></span>
+																						</div>
+																					</div>
+																		</div>
+																	</c:forEach>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div data-packed="true" style="width: 276px;" class="txtNew"
+													id="comp-kai65t3p">
+													<h3 class="font_4">게시글 또는 알림</h3>
+												</div>
+												<div data-is-absolute-layout="false"
+													style="top:; bottom:; left:; right:; position:"
+													class="style-kahykq29" id="comp-kai65t47">
+													<div id="comp-kai65t47bg" class="style-kahykq29bg"></div>
+													<div class="style-kahykq29inlineContent"
+														id="comp-kai65t47inlineContent">
+														<style id="comp-kai65t47-mesh-styles">
+#comp-kai65t47inlineContent {
+	height: auto;
+	width: 623px;
+	position: relative;
+}
+
+#comp-kai65t47inlineContent-gridContainer {
+	position: static;
+	display: grid;
+	height: auto;
+	width: 100%;
+	min-height: 203px;
+	grid-template-rows: 1fr;
+	grid-template-columns: 100%;
+}
+
+#comp-kai65t6x {
+	position: relative;
+	margin: 18px 0px 10px 0;
+	left: 26px;
+	grid-area: 1/1/2/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kai65t47centeredContent {
+	position: relative;
+}
+</style>
+														<div id="comp-kai65t47inlineContent-gridWrapper"
+															data-mesh-internal="true">
+															<div id="comp-kai65t47inlineContent-gridContainer"
+																data-mesh-internal="true">
+																<div data-is-absolute-layout="false"
+																	style="top:; bottom:; left:; right:; position:"
+																	class="style-kai3vrh4" id="comp-kai65t6x">
+																	<div id="comp-kai65t6xbg" class="style-kai3vrh4bg"></div>
+																	<div class="style-kai3vrh4inlineContent"
+																		id="comp-kai65t6xinlineContent">
+																		<style id="comp-kai65t6x-mesh-styles">
+#comp-kai65t6xinlineContent {
+	height: 95px;
+	width: 568px;
+	position: relative;
+}
+
+#comp-kai65t6xinlineContent-gridContainer {
+	position: static;
+	display: grid;
+	height: auto;
+	width: 100%;
+	min-height: auto;
+	grid-template-rows: min-content 1fr;
+	grid-template-columns: 100%;
+}
+
+#comp-kai65t6y {
+	position: relative;
+	margin: 7px 0px -37px 0;
+	left: 6px;
+	grid-area: 1/1/2/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kai65t6z {
+	position: relative;
+	margin: 8px 0px 17px 0;
+	left: 75px;
+	grid-area: 1/1/2/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kai65t701 {
+	position: relative;
+	margin: 0px 0px 6px 0;
+	left: 75px;
+	grid-area: 2/1/3/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kai65t711 {
+	position: relative;
+	margin: 7px 0px 17px 0;
+	left: 531px;
+	grid-area: 1/1/2/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kai65t72 {
+	position: relative;
+	margin: 7px 0px 17px 0;
+	left: 500px;
+	grid-area: 1/1/2/2;
+	justify-self: start;
+	align-self: start;
+}
+
+#comp-kai65t6xcenteredContent {
+	position: relative;
+}
+</style>
+																		<div id="comp-kai65t6xinlineContent-gridWrapper"
+																			data-mesh-internal="true">
+																			<div id="comp-kai65t6xinlineContent-gridContainer"
+																				data-mesh-internal="true">
+																				<div data-is-absolute-layout="false"
+																					style="top:; bottom:; left:; right:; position:"
+																					class="style-kai3vrh4" id="comp-kai65t6y">
+																					<div id="comp-kai65t6ybg" class="style-kai3vrh4bg"></div>
+																					<div class="style-kai3vrh4inlineContent"
+																						id="comp-kai65t6yinlineContent">
+																						<style id="comp-kai65t6y-mesh-styles">
+#comp-kai65t6yinlineContent {
+	height: auto;
+	width: 60px;
+	position: relative;
+}
+
+#comp-kai65t6yinlineContent-gridContainer {
+	position: static;
+	height: auto;
+	width: 100%;
+	min-height: 80px;
+}
+
+#comp-kai65t6ycenteredContent {
+	position: relative;
+}
+</style>
+																						<div id="comp-kai65t6yinlineContent-gridContainer"
+																							data-mesh-internal="true"></div>
+																					</div>
+																				</div>
+																				<div data-packed="true" style="width: 220px;"
+																					class="txtNew" id="comp-kai65t6z">
+																					<h2 class="font_2" style="font-size: 21px;">
+																						<span><span style="font-size: 21px;"><span>제목</span></span></span>
+																					</h2>
+																				</div>
+																				<div data-packed="true" style="width: 481px;"
+																					class="txtNew" id="comp-kai65t701">
+																					<p class="font_7">
+																						<span>내용</span>
+																					</p>
+																				</div>
+																				<div data-is-absolute-layout="false"
+																					style="top:; bottom:; left:; right:; position:"
+																					class="style-kai3vrh4" id="comp-kai65t711">
+																					<div id="comp-kai65t711bg" class="style-kai3vrh4bg"></div>
+																					<div class="style-kai3vrh4inlineContent"
+																						id="comp-kai65t711inlineContent">
+																						<style id="comp-kai65t711-mesh-styles">
+#comp-kai65t711inlineContent {
+	height: 25px;
+	width: 25px;
+	position: relative;
+}
+
+#comp-kai65t711inlineContent-gridContainer {
+	position: static;
+	height: auto;
+	width: 100%;
+	min-height: 25px;
+}
+
+#comp-kai65t711centeredContent {
+	position: relative;
+}
+</style>
+																						<span style="display: inline-block;"
+																							id="comp-kai65t711inlineContent-gridContainer"
+																							data-mesh-internal="true"></span>
+																					</div>
+																				</div>
+																				<div data-is-absolute-layout="false"
+																					style="top:; bottom:; left:; right:; position:"
+																					class="style-kai3vrh4" id="comp-kai65t72">
+																					<div id="comp-kai65t72bg" class="style-kai3vrh4bg"></div>
+																					<div class="style-kai3vrh4inlineContent"
+																						id="comp-kai65t72inlineContent">
+																						<style id="comp-kai65t72-mesh-styles">
+#comp-kai65t72inlineContent {
+	height: 25px;
+	width: 25px;
+	position: relative;
+}
+
+#comp-kai65t72inlineContent-gridContainer {
+	position: static;
+	height: auto;
+	width: 100%;
+	min-height: 25px;
+}
+
+#comp-kai65t72centeredContent {
+	position: relative;
+}
+</style>
+																						<span style="display: inline-block;"
+																							id="comp-kai65t72inlineContent-gridContainer"
+																							data-mesh-internal="true"></span>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div data-packed="true" style="width: 276px;" class="txtNew"
+													id="comp-kahzhh7n">
+													<h1 class="font_4" style="text-align: center;">
+														<span>${INFO.id}</span>
+													</h1>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="span_icons"> 
-						<img class="iconimg" id="" src="/BookNet/img/iconmonstr-compass-4-240.png">
-					</div> 
-					<div class="span_icons" id=""> 
-						<button type="button" class="butt" id="wBtn">
-							<img class="iconimg" id="" src="/BookNet/img/iconmonstr-pen-15-240.png">
-						</button>
-						<!-- The Modal -->
-						<div id="writeModal" class="w3-modal">
-							<div id="" class="w-modal-content">
-								<span class="close w-x-btn" id="w-close_butt">x</span>
-									<!-- onclick="document.getElementById('actModal').style.display='none'" -->
-								<!-- 도서검색 -->
-								<div class="w-b-input">
-									<input type="search" id="findBook" placeholder="도서검색"/>
-									<input type="button" id="book-search" value="검색" style="width: 40px;"/>
-	 							</div>
-	 							<div class="wrt-div">
-									<div class="wrt-b-img">책!</div>
-		 							<div class="wrt-body">
-		 								<p style="height: 40px; line-height: 40px;">책 제목</p>
-	 									<textarea class="-a-t"></textarea>
-	 								</div>
-	 							</div>
-	 							<div class="wrt-last">
-	 								<input type="text" placeholder="hashTags" class="hash-input" id=""/>
-	 								<input type="button" value="글 등록" class="p-submit" id="p-submit"/>
-	 							</div>
-							</div>
- 							<!-- 도서검색 결과 모달창 -->
- 							<div class="w3-modal" id="-s-b-modal">
- 								<div id="" class="s-modal-content">
- 									<span class="close w-x-btn" id="s-close_butt">x</span>
- 									<div class="-s-rst">
- 										<b>검색 결과</b>
- 									</div>
- 									<%-- <c:forEach var="rstBook" items="${}"> --%>
- 									<div style="width: 100%; height: 80px; line-height: 80px; margin: 0 auto; margin-bottom: 20px; border: solid 1px black;">
- 										<!-- 검색 결과의 수만큼 이 div가 생성되어야한다. -->
- 										<div style="width: 100%; height: 20px; line-height: 20px;" id="b-title"></div>
- 									</div>
- 									<%-- </c:forEach> --%>
- 									<div class="p-submit">
-		 								<input type="button" value="책 등록" class="p-submit" id="-s-b-submit"/>
- 									</div>
- 								</div>
- 							</div>
-						</div>
-					</div> 
-					<div class="span_icons"> 
-						<img class="iconimg" id="" src="/BookNet/img/iconmonstr-user-19-240.png">
-					</div>
 				</div>
+
 			</div>
 		</div>
-		<!-- 풋터부분 -->
-		<footer id="footer-wrap" style="padding:10px; height: 100px; color: #FFF;">		
-			<h3 style="position:absolute; top:0px; left: 350px; display: flex;">Company</h3><br><h4 style="position:absolute;  top:30px; left: 352px; display: flex; font-size: 10pt;">Increpas</h4><br><h4 style="position:absolute; top:50px; left: 352px; display: flex; font-size:10pt;">서울특별시 관악구 신림동 시흥대로 552</h4>
-			<h3 style="position:absolute; top:0px; left: 800px; display: flex;">Project_Team</h3><br><h4 style="position:absolute; top:30px; left: 802px; display: flex; font-size: 10pt;">BookNet KOR</h4><br><h4 style="position:absolute; top:50px; left: 802px; display: flex; font-size:10pt;">PageTurner</h4>
-			<h3 style="position:absolute; top:0px; left: 1200px; display: flex;">만든이</h3><br><h4 style="position:absolute; top:30px; left: 1202px; display: flex; font-size: 10pt;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:50px; left: 1202px; display: flex; font-size:10pt;">서 동혁 | 우 현우 |</h4>
-		    <small>
-		    <p style="position:absolute; top:120px; left: 800px; display: flex;">Copyright © 2020 BookNet.co.,Ltd. All rights reserved.</p>
-		    <address style="position:absolute; top:140px; left: 800px; display: flex;">Contact increpas for more information. </address>
-		    </small>
-		    <img src="https://img.icons8.com/dusk/64/000000/finn.png" style="position:absolute; top:100px; left: 1497px; display: flex; width:64px; height: 64px;"/>
-		    <img src="https://img.icons8.com/dusk/64/000000/jake.png" style="position:absolute; top:100px; left: 1582px; display: flex; width:64px; height: 64px;"/>
-		    <img src="https://img.icons8.com/dusk/64/000000/stich.png" style="position:absolute; top:100px; left: 1667px; display: flex; width:64px; height: 64px;"/>
-		    <img src="https://img.icons8.com/dusk/64/000000/homer-simpson.png" style="position:absolute; top:100px; left: 1752px; display: flex; width:64px; height: 64px;"/>
-		    <img src="https://img.icons8.com/dusk/64/000000/futurama-zoidberg.png" style="position:absolute; top:100px; left: 1830px; display: flex; width:64px; height: 64px;"/>
-		    <div style="border:2px solid #fff; width: 400px; height:120px; line-height:65px; color:#fff;font-size:60px; text-align:center; position:absolute; top:50px; left: 1490px;" id="clock">
-			</div>
-		</footer>
 	</div>
-</form>
 </body>
 </html>
 </html>
