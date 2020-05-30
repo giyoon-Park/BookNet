@@ -31,10 +31,13 @@ public class UploadBookDAO {
 		pstmt = db.getPSTMT(con, sql);
 		try {
 			pstmt.setString(1, publish);
-			cnt = pstmt.executeUpdate();
+			rs = pstmt.executeQuery();
+			rs.next();
+			cnt = rs.getInt("cnt");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			db.close(rs);
 			db.close(pstmt);
 			db.close(con);
 		}
@@ -48,10 +51,13 @@ public class UploadBookDAO {
 		pstmt = db.getPSTMT(con, sql);
 		try {
 			pstmt.setString(1, isbn);
-			cnt = pstmt.executeUpdate();
+			rs = pstmt.executeQuery();
+			rs.next();
+			cnt = rs.getInt("cnt");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			db.close(rs);
 			db.close(pstmt);
 			db.close(con);
 		}
@@ -80,6 +86,7 @@ public class UploadBookDAO {
 		con = db.getCon();
 		String sql = upSQL.getSQL(upSQL.INS_BOOK);
 		pstmt = db.getPSTMT(con, sql);
+		
 		try {
 			pstmt.setString(1, bVO.getTitle());
 			pstmt.setInt(2, bVO.getCategoryId());
@@ -96,6 +103,7 @@ public class UploadBookDAO {
 			db.close(pstmt);
 			db.close(con);
 		}
+		
 		return cnt;
 	}
 }

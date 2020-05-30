@@ -10,6 +10,7 @@ import java.util.*;
 import org.json.simple.*;
 import org.json.simple.parser.*;
 import com.pageturner.www.vo.*;
+import com.pageturner.www.dao.*;
 
 public class InterParkAPI {
 	private final String KEY = "756476FCE177C662B901F60050D436CDFFDF8BCC7C44966D95B67471225CF8EF"; //인터파크 API를 사용하기 위한 KEY값
@@ -38,7 +39,7 @@ public class InterParkAPI {
 		try {
 			str = URLEncoder.encode(keyword, "UTF-8");
 			
-			if(query == "query") {
+			if(query.equals("query")) {
 				address = base + "query=" + str + "&output=json&maxResults=30";
 			} else {
 				address = base + "categoryId=100" + "&output=json&maxResults=30";
@@ -103,7 +104,6 @@ public class InterParkAPI {
 			BookVO bVO = new BookVO();
 			JSONObject tmp = (JSONObject)item.get(i);
 			String ctgr = (String)tmp.get("categoryId");
-			String isbn = (String)tmp.get("isbn");
 			bVO.setAuthor((String)tmp.get("author"));
 			bVO.setTitle((String)tmp.get("title"));
 			bVO.setCategoryId(Integer.parseInt(ctgr));

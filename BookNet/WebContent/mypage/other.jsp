@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="/BookNet/css/proj_fixed.css">
 <link rel="stylesheet" href="/BookNet/css/modal.css">
 <link rel="stylesheet" href="/BookNet/css/w3.css">
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" /> -->
 <script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
 <script type="text/javascript" src="/BookNet/js/fixed.js"></script>
 <style>
