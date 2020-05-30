@@ -69,7 +69,7 @@ public class SearchDAO {
 				vo.setPostcont(rs.getString("postcont"));
 				vo.setPostcont(); // 본문내용 \r\n는 <br>로 교체
 				vo.setProfile(rs.getString("profile"));
-				vo.setSimg(rs.getString("simg"));
+				vo.setLimg(rs.getString("limg"));
 
 				// 한줄씩 vo에 담기
 				list.add(vo);

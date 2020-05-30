@@ -14,7 +14,7 @@ public class SearchSQL {
 		switch(code) {
 		case SEL_ALL_SRC:
 		 	buff.append("SELECT ");
-			buff.append("     bname ,  MAX(hash) hash, writer , trans , gname , name , id , nickname , publish , postcont, prof.save_loc profile, smallimg simg  ");
+			buff.append("     bname ,  MAX(hash) hash, writer , trans , gname , name , id , nickname , publish , postcont, prof.save_loc profile, largeimg limg  ");
 			buff.append("FROM ");
 			buff.append("    booktab b, genretab g ");
 			buff.append("    , membertab m, publishtab pub, poststab p,    (SELECT ");
@@ -42,7 +42,7 @@ public class SearchSQL {
 			buff.append("    OR id LIKE ? ");
 			buff.append("    OR nickname LIKE ? ");
 			buff.append("    OR publish LIKE ?) ");
-			buff.append("Group By bname , writer , trans , gname , name , id , nickname , publish , postcont, prof.save_loc, smallimg ");
+			buff.append("Group By bname , writer , trans , gname , name , id , nickname , publish , postcont, prof.save_loc, largeimg ");
 			break;
 		}
 		return buff.toString();

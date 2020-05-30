@@ -102,7 +102,6 @@ public class PostsDAO {
 				vo.setPdate();
 				vo.setGname(rs.getString("gname"));
 				vo.setLargeimg(rs.getString("largeimg"));
-				vo.setIscheck(rs.getString("ischeck"));
 
 				list.add(vo);
 			}
@@ -150,7 +149,6 @@ public class PostsDAO {
 				vo.setWriter(rs.getString("writer"));
 				vo.setTrans(rs.getString("trans"));
 				vo.setLargeimg(rs.getString("largeimg"));
-				vo.setPublish(rs.getString("publish"));
 
 				// 리스트에 담기
 				list.add(vo);

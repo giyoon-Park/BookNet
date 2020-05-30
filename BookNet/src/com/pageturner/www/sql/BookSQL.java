@@ -175,15 +175,14 @@ public class BookSQL {
 			
 		case POST_SEARCH_BOOK:
 			buff.append("SELECT ");
-			buff.append("    bno, bname, gname, writer, trans, largeimg, publish ");
+			buff.append("    bno, bname, gname, writer, trans, largeimg ");
 			buff.append("FROM ");
-			buff.append("    booktab b, publishtab p, genretab g ");
+			buff.append("    booktab b, genretab g ");
 			buff.append("WHERE ");
-			buff.append("    b.publish_no = p.publish_no ");
-			buff.append("    AND b.genre = g.genre ");
-			buff.append("	AND bname LIKE ? ");
-			buff.append("    OR writer LIKE ? ");
-			buff.append("    OR publish LIKE ?");
+			buff.append("    b.genre = g.genre ");
+			buff.append("	 AND bname LIKE ?  ");
+			buff.append("    OR writer LIKE ?  ");
+			buff.append("    OR trans LIKE ?");
 			break;
 		case ADD_POSTS:
 			buff.append("INSERT INTO ");

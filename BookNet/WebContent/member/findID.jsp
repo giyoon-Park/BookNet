@@ -118,11 +118,18 @@
 </script>
 </head>
 <body>
+				<div class="logobox">
+					<div style="box-sizing: border-box; font-size: 30px; text-align: center;">
+						<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
+						<a href="/BookNet/main/non.cls" style="color: #120E0A;"><b>PageTurner</b></a>
+					</div>
+				</div>
+
 	<form id="frm" method="post" action="">
 		
-		<div class="w3-content" style="max-width: 600px;" id="loginWin">
-			<span class="w3-half w3-red w3-button w3-padding w3-center w3-margin-top" id="btn1">아이디찾기</span>
-			<span class="w3-half w3-blue w3-button w3-padding w3-center w3-margin-top" id="btn2">비밀번호찾기</span>
+		<div class="w3-content" style="max-width: 600px; margin-top: 100px;" id="loginWin">
+			<div class="w3-col w3-red w3-button w3-padding w3-center w3-margin-top" id="btn1">아이디찾기</div>
+			<div class="w3-col w3-blue w3-button w3-padding w3-center w3-margin-top" id="btn2">비밀번호찾기</div>
 			<div class="w3-col w3-padding w3-card-4 w3-round-large w3-border w3-margin-top" id="f_write" style="display: none;">
 				<label for="id" class="idid w3-col m2 w3-right-align w3-padding-16">아이디 : </label>
 				<div class="idid w3-col m10 w3-padding">
@@ -132,7 +139,7 @@
 				<div class="w3-col m10 w3-padding">
 					<input type="text" class="w3-col w3-input w3-border" id="name" name="name">
 				</div>
-				<label for="mail" class="w3-col m2 w3-right-align w3-padding-16">이메일 : </label>
+				<label for="mail" class="w3-col m2	 w3-right-align w3-padding-16">이메일 : </label>
 				<div class="w3-col m10 w3-padding">
 					<input type="text" class="w3-col m8 w3-input w3-border" id="mail" name="mail">
 					<span class="w3-col m3 w3-card w3-button" style="height: 40px; margin-left: 32px;" id="mailUtil">인증번호받기</span>

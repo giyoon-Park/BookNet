@@ -18,7 +18,6 @@
 <link rel="stylesheet" href="/BookNet/css/w3.css">
 <link rel="stylesheet" href="/BookNet/css/non_search.css">
 <script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
-<script type="text/javascript" src="/BookNet/js/fixed.js"></script>
 <script type="text/javascript" src="/BookNet/js/clock.js"></script>
 <script type="text/javascript" src="/BookNet/js/footer.js"></script>
 <script type="text/javascript" src="/BookNet/js/nonmem.js"></script>
@@ -60,7 +59,7 @@
 									</div>
 								</c:if>
 								<div class="like-butt" id="" style="display: flex;'">
-									<span style="font-size: 12px; line-height: 0px;" class="like-img likebtn" id=""></span>
+									<span style="font-size: 12px; line-height: 0px;" class="like-img likebtn" onclick=" id=""></span>
 								</div>
 							</div>
 							<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
@@ -111,7 +110,7 @@
 				<div class="logobox">
 					<div style="box-sizing: border-box; font-size: 30px; text-align: center;">
 						<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
-						<a href="/BookNet/main/main.cls" style="color: #120E0A;"><b>PageTurner</b></a>
+						<a href="/BookNet/main/non.cls" style="color: #120E0A;"><b>PageTurner</b></a>
 					</div>
 				</div>
 				<div class="searchbox">

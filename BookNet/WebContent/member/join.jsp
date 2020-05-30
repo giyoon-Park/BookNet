@@ -276,10 +276,10 @@
                     <div class="join_row join_email">
                         <h3 class="join_title"><label for="email">본인 확인 이메일</label></h3>
                         <span class="ps_box int_email box_right_space">
-							<input type="text" id="mail" name="mail" placeholder="선택입력" aria-label="선택입력" class="int" maxlength="100">
+							<input type="text" id="mail" name="mail" aria-label="선택입력" class="int" maxlength="100">
 						</span>
                         <div class="btn_area">
-                    		<button type="button" id="mailUtil" class="btn_type btn_primary"><span>메일로 인증번호 받기</span></button>
+                    		<button type="button" id="mailUtil" class="btn_type btn_primary" style="background-color: black;"><span>메일로 인증번호 받기</span></button>
                 		</div>
                         <span class="ps_box int_email box_right_space">
 							<input type="text" id="cert_no" name="cert_no" placeholder="인증번호" aria-label="인증번호" class="int" maxlength="50">
@@ -968,7 +968,7 @@
                 <!-- //간단소개 -->
 
                 <div class="btn_area">
-                    <button type="button" id="btnJoin" class="btn_type btn_primary"><span>가입하기</span></button>
+                    <button type="button" id="btnJoin" class="btn_type btn_primary" style="background-color: black;"><span>가입하기</span></button>
                 </div>
             </div>
         </div>
