@@ -140,6 +140,10 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 					<span id="searchclear">X</span>
 				</div>
 				<div class="iconsbox">
+					<div style="float: left; width:80px;"> 
+						<a href="/BookNet/member/logoutProc.cls">로그아웃</a>
+						<!-- <img class="iconimg" id="" src="/BookNet/img/iconmonstr-compass-4-240.png"> -->
+					</div> 
 					<!-- 알람표시아이콘 -->
 					<div class="span_icons">
 						<button type="button" class="butt" id="aBtn">
@@ -161,9 +165,6 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 							</div>
 						</div>
 					</div>
-					<div class="span_icons"> 
-						<img class="iconimg" id="" src="/BookNet/img/iconmonstr-compass-4-240.png">
-					</div> 
 					<div class="span_icons" id=""> 
 						<button type="button" class="butt" id="wBtn">
 							<img class="iconimg" id="" src="/BookNet/img/iconmonstr-pen-15-240.png">

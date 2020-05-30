@@ -36,6 +36,9 @@ $(function(){
 		   swal ({ text:"Oops" , title:"Please use after login!" ,  icon:"error" });
    })
 	
+   $('.likebtn').click(function(e){
+	   swal ({ text:"Oops" , title:"Please use after login!" ,  icon:"error" });
+   })
 		// search clear
 		var $ipt = $('.searchinput'), $clearIpt = $('.searchclear');
 		// keyup시 x표시

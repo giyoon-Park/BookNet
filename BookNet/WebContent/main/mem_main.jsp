@@ -107,12 +107,8 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 								<div class="wrtProf">
 									<img src="">
 								</div>
-								<div class="wrter" id="id${data.pno}">
-									<a href=""><b id="">${data.id}</b></a>
-								</div>
-								<div class="time" id="time${data.pno}">
-									${data.pdate}
-								</div>
+								<div class="wrter" id="id${data.pno}"><a href=""><b id="">${data.id}</b></a></div>
+								<div class="time" id="time${data.pno}">${data.pdate}</div>
 								<c:if test="${SID eq data.id}">
 									<div class="like-butt" id="${data.pno}" style="display: flex;'">
 										<span style="font-size: 12px; line-height: 0px;" class="e-d-img edbtn" id=""></span>
@@ -235,6 +231,10 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 					<input class="searchinput" type="text" placeholder="search">
 				</div>
 				<div class="iconsbox">
+					<div style="float: left; width:80px;"> 
+						<a href="/BookNet/member/logoutProc.cls">로그아웃</a>
+						<!-- <img class="iconimg" id="" src="/BookNet/img/iconmonstr-compass-4-240.png"> -->
+					</div> 
 					<!-- 알람표시아이콘 -->
 					<div class="span_icons">
 						<button type="button" class="butt" id="aBtn">
@@ -256,9 +256,6 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 							</div>
 						</div>
 					</div>
-					<div class="span_icons"> 
-						<img class="iconimg" id="" src="/BookNet/img/iconmonstr-compass-4-240.png">
-					</div> 
 					<div class="span_icons" id=""> 
 						<button type="button" class="butt" id="wBtn">
 							<img class="iconimg" id="" src="/BookNet/img/iconmonstr-pen-15-240.png">

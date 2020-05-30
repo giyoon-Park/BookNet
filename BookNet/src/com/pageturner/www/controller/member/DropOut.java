@@ -20,12 +20,14 @@ public class DropOut implements PageController {
 		
 		int cnt = 0;
 		MemberDAO mDAO = new MemberDAO();
-		cnt = mDAO.delUser(req.getParameter("id"));
+		cnt = mDAO.delUser((String)req.getSession().getAttribute("SID"));
 		
-		if(cnt != 1) {	// 에러페이지로 보내질 상황
-			view = "/main/error.cls";
-			return view;
-		}
+//		if(cnt != 1) {	// 에러페이지로 보내질 상황
+//			view = "/main/error.cls";
+//			return view;
+//		}
+		
+		req.getSession().removeAttribute("SID");
 		
 		return view;
 	}

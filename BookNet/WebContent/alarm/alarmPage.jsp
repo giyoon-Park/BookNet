@@ -98,6 +98,10 @@
 					<input class="searchinput" type="text" placeholder="search">
 				</div>
 				<div class="iconsbox">
+					<div style="float: left; width:80px;"> 
+						<a href="/BookNet/member/logoutProc.cls">로그아웃</a>
+						<!-- <img class="iconimg" id="" src="/BookNet/img/iconmonstr-compass-4-240.png"> -->
+					</div> 
 					<!-- 알람표시아이콘 -->
 					<div class="span_icons">
 						<button type="button" class="butt" id="aBtn">
@@ -119,9 +123,6 @@
 							</div>
 						</div>
 					</div>
-					<div class="span_icons"> 
-						<img class="iconimg" id="" src="/BookNet/img/iconmonstr-compass-4-240.png">
-					</div> 
 					<div class="span_icons" id=""> 
 						<button type="button" class="butt" id="wBtn">
 							<img class="iconimg" id="" src="/BookNet/img/iconmonstr-pen-15-240.png">
@@ -183,24 +184,6 @@
 				</div>
 			</div>
 		</div>
-     		<!-- 풋터부분 -->
-		<footer id="footer-wrap" style="padding:10px; height: 86.45px; color: #FFF;">		
-					<h3 style="position:absolute; top:40px; left: 260px; display: flex;">Company</h3><br><h4 style="position:absolute;  top:35px; left: 360px; display: flex; font-size: 10pt;">Increpas</h4><br><h4 style="position:absolute; top:55px; left: 360px; display: flex; font-size:10pt;">서울특별시 관악구 신림동 시흥대로 552</h4>
-					<h3 style="position:absolute; top:40px; left: 760px; display: flex;">Project_Team</h3><br><h4 style="position:absolute; top:35px; left: 890px; display: flex; font-size: 10pt;">BookNet KOR</h4><br><h4 style="position:absolute; top:55px; left: 890px; display: flex; font-size:10pt;">PageTurner</h4>
-					<h3 style="position:absolute; top:40px; left: 1135px; display: flex;">만든이</h3><br><h4 style="position:absolute; top:35px; left: 1202px; display: flex; font-size: 10pt;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:55px; left: 1202px; display: flex; font-size:10pt;">서 동혁 | 우 현우 |</h4>
-			    <small>
-			    <p style="position:absolute; top:120px; left: 800px; display: flex;">Copyright © 2020 BookNet.co.,Ltd. All rights reserved.</p>
-			    <a href="#"  style="position:absolute; top:139px; left: 1037px; display: flex;"><address style="font-size:12px; color:#fff;">@인플루언서 신청 ., @ Apply for Influencer</address></a>
-			    <address style="position:absolute; top:140px; left: 800px; display: flex;">Contact increpas for more information. </address>
-			    </small>
-			    <img src="https://img.icons8.com/dusk/64/000000/finn.png" style="position:absolute; top:100px; left: 1497px; display: flex; width:64px; height: 64px;"/>
-			    <img src="https://img.icons8.com/dusk/64/000000/jake.png" style="position:absolute; top:100px; left: 1582px; display: flex; width:64px; height: 64px;"/>
-			    <img src="https://img.icons8.com/dusk/64/000000/stich.png" style="position:absolute; top:100px; left: 1667px; display: flex; width:64px; height: 64px;"/>
-			    <img src="https://img.icons8.com/dusk/64/000000/homer-simpson.png" style="position:absolute; top:100px; left: 1752px; display: flex; width:64px; height: 64px;"/>
-			    <img src="https://img.icons8.com/dusk/64/000000/futurama-zoidberg.png" style="position:absolute; top:100px; left: 1830px; display: flex; width:64px; height: 64px;"/>
-			    <div style="/*border:2px solid #fff;*/ width: 400px; height:80px; line-height:65px; color:#fff;font-size:60px; text-align:center; position:absolute; top:10px; left: 1490px;" id="clock">
-				</div>  
-		</footer>
 	</div>
 </body>
 </html>
