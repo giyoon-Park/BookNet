@@ -116,9 +116,6 @@ public class InterParkAPI {
 			list.add(bVO);
 		}
 		
-		for(int i = 0; i < list.size(); i++) {
-		}
-		
 		return list;
 	}
 }
