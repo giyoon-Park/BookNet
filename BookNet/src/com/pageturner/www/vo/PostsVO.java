@@ -105,7 +105,7 @@ public class PostsVO {
 	}
 	public void setPdate() {
 		SimpleDateFormat form1 = new SimpleDateFormat("yy/MM/dd");
-		SimpleDateFormat form2 = new SimpleDateFormat("HH:mm");
+		SimpleDateFormat form2 = new SimpleDateFormat("HH:mm:ss");
 		String str = form1.format(postDate) + " " + form2.format(postTime);
 		this.pdate = str;
 	}

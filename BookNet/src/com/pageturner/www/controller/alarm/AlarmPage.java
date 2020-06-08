@@ -17,7 +17,6 @@ public class AlarmPage implements PageController {
 		String view = "/alarm/alarmPage.jsp";
 		HttpSession session = req.getSession();
 		String id = (String)session.getAttribute("SID");
-		System.out.println(id);
 		Alarm alarm = new Alarm(id);
 		ArrayList<AlarmVO> list = alarm.alarmList;
 		

@@ -28,7 +28,7 @@ public class InterParkAPI {
 	public InterParkAPI() {
 		this(SEARCH, "java");
 	}
-	public InterParkAPI(int code, String keyword) {
+	public<T> InterParkAPI(int code, T keyword) {
 		String str = null;
 		String json = null;
 		String address = null;
@@ -37,14 +37,15 @@ public class InterParkAPI {
 		String base = api + "?key=" + KEY + "&";
 		
 		try {
-			str = URLEncoder.encode(keyword, "UTF-8");
+			//if(keyword instanceof String)
+				//str = URLEncoder.encode((String)keyword, "UTF-8");
 			
 			if(query.equals("query")) {
-				address = base + "query=" + str + "&output=json&maxResults=30";
+				address = base + "query=" + keyword + "&output=json&maxResults=30";
 			} else {
-				address = base + "categoryId=100" + "&output=json&maxResults=30";
+				address = base + "categoryId=" + keyword + "&output=json&maxResults=30";
 			}
-			
+			URLEncoder.encode(address, "UTF-8");
 			json = webConnection(address);
 			this.list = parsingBookInfo(json);
 		} catch (Exception e) {

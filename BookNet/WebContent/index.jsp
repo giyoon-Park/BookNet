@@ -14,6 +14,6 @@
 </script>
 </head>
 <body>
-	<c:redirect url="/main/main.cls" />
+	<c:redirect url="/main/non.cls" />
 </body>
 </html>

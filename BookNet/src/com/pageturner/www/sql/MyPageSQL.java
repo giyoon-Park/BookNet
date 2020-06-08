@@ -92,8 +92,6 @@ public class MyPageSQL {
 			buff.append("    AND lt.ischeck = 'Y' ");
 			buff.append("    AND pt.isshow = 'Y' ");
 			buff.append("    AND mt.isshow = 'Y' ");
-			buff.append("	 AND lt.pno BETWEEN (SELECT MAX(pno) - 5 FROM poststab) ");
-			buff.append("		AND (SELECT MAX(pno) FROM poststab) ");
 			buff.append("ORDER BY ");
 			buff.append("	 postdate DESC ");
 			break;

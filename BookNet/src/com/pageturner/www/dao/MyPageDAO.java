@@ -33,10 +33,10 @@ public class MyPageDAO {
 		db = new WebDBCP();
 		mpSQL = new MyPageSQL();
 		this.id = id;
-		this.mno = getMno(id);
-		this.aSQL = new AlarmSQL();
-		this.formD = new SimpleDateFormat("yyyy-MM-dd");
-		this.formT = new SimpleDateFormat("HH:mm:ss");
+		mno = getMno(id);
+		aSQL = new AlarmSQL();
+		formD = new SimpleDateFormat("yyyy-MM-dd");
+		formT = new SimpleDateFormat("HH:mm:ss");
 	}
 
 	// mypage에 공개한 회원정보를 db에서 불러오는 함수

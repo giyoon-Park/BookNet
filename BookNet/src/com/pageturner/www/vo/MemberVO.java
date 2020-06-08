@@ -12,8 +12,8 @@ import java.text.SimpleDateFormat;
 public class MemberVO {
 	private int mno;
 	private String id, pw, name, nickname, birthdate, gen, mail, tel, interest, 
-					describe, isshow, sdate, yy, mm, dd, intershow, birthshow, genshow, isinflu,
-					ori_name, save_name, save_loc;
+					describe, isshow, sdate, yy, mm, dd, intershow, birthshow, genshow,
+					isinflu, ori_name, save_name, save_loc;
 	private Date mdate;
 	private Time mtime;
 	

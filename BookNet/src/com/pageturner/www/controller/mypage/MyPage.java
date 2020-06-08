@@ -15,20 +15,19 @@ public class MyPage implements PageController {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
-		String view = "/mypage/fixed_mypage.jsp";
+		String view = "/mypage/mypage.jsp";
 		
 		HttpSession session = req.getSession();
 		String id = (String)session.getAttribute("SID");
 		String pid = (String)req.getAttribute("id");
-		MyPageDAO mpDAO;
-		Alarm alarm;
+		MyPageDAO mpDAO = null;
+		Alarm alarm = null;
 
 		if(pid == null) {
 			mpDAO = new MyPageDAO(id);
 			alarm = new Alarm(id);
 		} else {
 			mpDAO = new MyPageDAO(pid);
-			alarm = new Alarm(pid);
 		}
 
 		MemberVO mInfo = mpDAO.getMemInfo();
@@ -36,35 +35,20 @@ public class MyPage implements PageController {
 		int cntPosts = mpDAO.cntPosts();
 		int cntFallow = mpDAO.cntFallow();
 		int cntFallower = mpDAO.cntFallower();
-		ArrayList<PostsVO> postFullList = sorter.sortByTime(mpDAO.getPosts());
-		ArrayList<PostsVO> likeFullList = sorter.sortByTime(mpDAO.getLikedPosts());
-		ArrayList<AlarmVO> alarmFullList = alarm.alarmList;
-
-		ArrayList<PostsVO> postList = new ArrayList<PostsVO>();
-		ArrayList<PostsVO> likeList = new ArrayList<PostsVO>();
-		ArrayList<AlarmVO> alarmList = new ArrayList<AlarmVO>();
-//		for (int i = 0; i < 5; i++) {
-//			if (!postFullList.isEmpty()) {
-//				postList.add(postFullList.get(i));
-//			}
-//			if (!likeFullList.isEmpty()) {
-//				likeList.add(likeFullList.get(i));
-//			}
-//			if (!alarmFullList.isEmpty()) {
-//				alarmList.add(alarmFullList.get(i));
-//			}
-//		}
+		ArrayList<PostsVO> postList = sorter.sortByTime(mpDAO.getPosts());
+		ArrayList<PostsVO> likeList = sorter.sortByTime(mpDAO.getLikedPosts());
+		ArrayList<AlarmVO> alarmList = alarm.alarmList;
 
 		req.setAttribute("INFO", mInfo);
 		req.setAttribute("CNTPOST", cntPosts);
 		req.setAttribute("CNTFALLOW", cntFallow);
 		req.setAttribute("CNTFALLOWER", cntFallower);
-		req.setAttribute("LIKE", likeFullList);
+		req.setAttribute("LIKE", likeList);
 
 		if(pid == null) {
-			req.setAttribute("ALARM", alarmFullList);
+			req.setAttribute("ALARM", alarmList);
 		} else {
-			req.setAttribute("POST", postFullList);
+			req.setAttribute("POST", postList);
 		}
 
 		return view;
