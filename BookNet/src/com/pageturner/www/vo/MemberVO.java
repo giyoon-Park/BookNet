@@ -13,7 +13,7 @@ public class MemberVO {
 	private int mno;
 	private String id, pw, name, nickname, birthdate, gen, mail, tel, interest, 
 					describe, isshow, sdate, yy, mm, dd, intershow, birthshow, genshow,
-					isinflu, ori_name, save_name, save_loc;
+					isinflu, ori_name, save_name, save_loc, ischeck;
 	private Date mdate;
 	private Time mtime;
 	
@@ -171,6 +171,12 @@ public class MemberVO {
 	}
 	public void setSave_loc(String save_loc) {
 		this.save_loc = save_loc;
+	}
+	public String getIscheck() {
+		return ischeck;
+	}
+	public void setIscheck(String ischeck) {
+		this.ischeck = ischeck;
 	}
 	
 }

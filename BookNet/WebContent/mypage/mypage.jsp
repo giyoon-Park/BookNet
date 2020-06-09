@@ -8,7 +8,33 @@
 <link rel="stylesheet" href="/BookNet/css/w3.css" />
 <script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
 <style>
+	.e-d-img {
+		margin: auto auto;
+		background-position: -50px -370px;
+		height: 25px;
+		width: 25px;
+		background-image:
+			url(https://www.instagram.com/static/bundles/es6/sprite_glyphs_c14ffe44a4f6.png/c14ffe44a4f6.png);
+	}
 
+	.e-d-img:hover { /* img 마우스 오버시*/
+		cursor: pointer;
+		transform: scale(1.1);
+	}
+
+	.like-img {
+		margin: auto auto;
+		background-position: -208px -370px;
+		height: 25px;
+		width: 25px;
+		background-image:
+			url(https://www.instagram.com/static/bundles/es6/sprite_glyphs_c14ffe44a4f6.png/c14ffe44a4f6.png);
+	}
+
+	.like-img:hover { /* img 마우스 오버시*/
+		cursor: pointer;
+		transform: scale(1.1);
+	}
 </style>
 <script type="text/javascript">
 
@@ -78,7 +104,7 @@
 						</div>
 						<div class="w3-border" style="height: 183px; border-radius: 5px; overflow: auto;">
 							<c:forEach begin="0" end="5" var="alarm" items="${ALARM}">
-								<div class="ala_cont w3-padding" id="${alarm.pno}">
+								<div class="w3-padding" id="${alarm.pno}">
 									<c:if test="${alarm.type eq 'C'}">
 										<div>
 											<h5>
@@ -107,6 +133,29 @@
 							</c:forEach>
 						</div>
 					</c:if>
+					<div style="margin-top: 25px; margin-bottom: 0px;">
+						<h2 style="margin-bottom: 0px;">
+							<a href="" >${INFO.id}가 좋아하는 글</a>
+						</h2>
+					</div>
+					<div class="w3-border" style="height: 183px; border-radius: 5px; overflow: auto;">
+						<c:forEach begin="1" end="5" var="like" items="${LIKE}">
+							<div class="w3-col w3-border" style="height: 64px;" id="${like.pno}">
+								<div class="w3-col m1 w3-border">
+									<img src="${like.smallimg}" />
+								</div>
+								<div class="w3-col m9">
+
+								</div>
+								<div class="w3-col m2 w3-right-align" style="margin-top: 0px;">
+									<span class="like-img"></span>
+									<c:if test="${like.id eq SID}">
+										<span class="e-d-img"></span>
+									</c:if>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
 				</div>
 			</div>
 		</div>

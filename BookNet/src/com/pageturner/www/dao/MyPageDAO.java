@@ -40,13 +40,14 @@ public class MyPageDAO {
 	}
 
 	// mypage에 공개한 회원정보를 db에서 불러오는 함수
-	public MemberVO getMemInfo() {
+	public MemberVO getMemInfo(String sid) {
 		MemberVO mVO = new MemberVO();
 		con = db.getCon();
 		String sql = mpSQL.getSQL(mpSQL.SEL_MEM_INFO);
 		pstmt = db.getPSTMT(con, sql);
 		try {
-			pstmt.setInt(1, mno);
+			pstmt.setString(1, sid);
+			pstmt.setInt(2, mno);
 			rs = pstmt.executeQuery();
 			rs.next();
 			mVO.setId(rs.getString("id"));
@@ -68,6 +69,7 @@ public class MyPageDAO {
 			}
 			mVO.setSave_name(rs.getString("save_name"));
 			mVO.setSave_loc(rs.getString("save_loc"));
+			mVO.setIscheck(rs.getString("ischeck"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

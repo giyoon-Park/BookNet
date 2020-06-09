@@ -21,7 +21,7 @@ public class MyPage implements PageController {
 		String id = (String)session.getAttribute("SID");
 		String pid = req.getParameter("id");
 		MyPageDAO mpDAO = null;
-		Alarm alarm = null;
+		ArrayList<AlarmVO> alarmList = null;
 		
 		if(id == null) {
 			view = "/BookNet/member/login.cls";
@@ -31,19 +31,18 @@ public class MyPage implements PageController {
 
 		if(pid == null) {
 			mpDAO = new MyPageDAO(id);
-			alarm = new Alarm(id);
+			Alarm alarm = new Alarm(id);
+			alarmList = alarm.alarmList;
 		} else {
 			mpDAO = new MyPageDAO(pid);
 		}
 
-		MemberVO mInfo = mpDAO.getMemInfo();
-		PostsSortByTime sorter = new PostsSortByTime();
+		MemberVO mInfo = mpDAO.getMemInfo(id);
 		int cntPosts = mpDAO.cntPosts();
 		int cntFallow = mpDAO.cntFallow();
 		int cntFallower = mpDAO.cntFallower();
-		ArrayList<PostsVO> postList = sorter.sortByTime(mpDAO.getPosts());
-		ArrayList<PostsVO> likeList = sorter.sortByTime(mpDAO.getLikedPosts());
-		ArrayList<AlarmVO> alarmList = alarm.alarmList;
+		ArrayList<PostsVO> postList = mpDAO.getPosts();
+		ArrayList<PostsVO> likeList = mpDAO.getLikedPosts();
 
 		req.setAttribute("INFO", mInfo);
 		req.setAttribute("CNTPOST", cntPosts);

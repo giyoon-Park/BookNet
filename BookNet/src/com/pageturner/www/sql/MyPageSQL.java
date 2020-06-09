@@ -28,12 +28,22 @@ public class MyPageSQL {
 		switch(code) {
 		case SEL_MEM_INFO:
 			buff.append("SELECT ");
-			buff.append("    id, gen, birthdate, interest, nickname, describe, ");
-			buff.append("    intershow, birthshow, genshow, isinflu, save_name, save_loc ");
+			buff.append("    id, gen, birthdate, interest, nickname, describe, intershow, ");
+			buff.append("    birthshow, genshow, isinflu, save_name, save_loc, ischeck ");
 			buff.append("FROM ");
-			buff.append("    membertab mt, profilepictab pt ");
+			buff.append("    membertab mt, profilepictab pt, ");
+			buff.append("    (SELECT ");
+			buff.append("        ischeck, fallow_no ");
+			buff.append("    FROM ");
+			buff.append("        fallowtab, membertab ");
+			buff.append("    WHERE ");
+			buff.append("        fallow_no = mno ");
+			buff.append("        AND fallower_no = ");
+			buff.append("            (SELECT mno FROM membertab WHERE id = ?) ");
+			buff.append("    ) ft ");
 			buff.append("WHERE ");
 			buff.append("    mt.mno = pt.mno ");
+			buff.append("    AND fallow_no(+) = mt.mno ");
 			buff.append("    AND mt.mno = ? ");
 			break;
 		case SEL_MEM_MNO:
@@ -54,16 +64,16 @@ public class MyPageSQL {
 			break;
 		case SEL_POST_LIST:
 			buff.append("SELECT ");
-			buff.append("    pt.pno, postcont, postdate, bname, writer, linkno, ");
-			buff.append("    publish, smallimg, id, ischeck ");
+			buff.append("    pt.pno, postcont, postdate, bname, linkno, ");
+			buff.append("                writer, publish, smallimg, id, ischeck ");
 			buff.append("FROM ");
-			buff.append("    liketab lt, poststab pt, booktab bt, publishtab pbt, membertab mt ");
-			buff.append("WHERE ");
-			buff.append("    pt.mno = ? ");
-			buff.append("    AND pt.mno = mt.mno ");
-			buff.append("    AND lt.pno = pt.pno ");
+			buff.append("    poststab pt, liketab lt, booktab bt, membertab mt, publishtab pbt ");
+			buff.append("where ");
+			buff.append("    pt.pno = lt.pno ");
 			buff.append("    AND pt.bno = bt.bno ");
 			buff.append("    AND bt.publish_no = pbt.publish_no ");
+			buff.append("    AND pt.mno = mt.mno ");
+			buff.append("    AND pt.mno = ? ");
 			buff.append("    AND pt.isshow = 'Y' ");
 			buff.append("    AND mt.isshow = 'Y' ");
 			buff.append("ORDER BY ");
@@ -80,16 +90,16 @@ public class MyPageSQL {
 			break;
 		case SEL_LIKE_LIST:
 			buff.append("SELECT ");
-			buff.append("    lt.pno, postcont, postdate, bname, writer, linkno, ");
-			buff.append("    publish, smallimg, id, ischeck ");
+			buff.append("    DISTINCT lt.pno, postcont, postdate, bname, linkno, ");
+			buff.append("                writer, publish, smallimg, id, ischeck ");
 			buff.append("FROM ");
-			buff.append("    liketab lt, poststab pt, booktab bt, publishtab pbt, membertab mt ");
-			buff.append("WHERE ");
-			buff.append("    lt.mno = ? ");
-			buff.append("    AND lt.mno = mt.mno ");
-			buff.append("    AND lt.pno = pt.pno ");
+			buff.append("    poststab pt, liketab lt, booktab bt, membertab mt, publishtab pbt ");
+			buff.append("where ");
+			buff.append("    pt.pno = lt.pno ");
 			buff.append("    AND pt.bno = bt.bno ");
 			buff.append("    AND bt.publish_no = pbt.publish_no ");
+			buff.append("    AND pt.mno = mt.mno ");
+			buff.append("    AND lt.mno = ? ");
 			buff.append("    AND lt.ischeck = 'Y' ");
 			buff.append("    AND pt.isshow = 'Y' ");
 			buff.append("    AND mt.isshow = 'Y' ");

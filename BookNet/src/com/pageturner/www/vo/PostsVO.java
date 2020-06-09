@@ -12,7 +12,8 @@ import java.text.*;
 
 public class PostsVO {
 	private int pno, mno, eno, bno, linkno, cnt;
-	private String id, profile, bname, writer, trans, postcont, pdate, largeimg, gname, hash, publish, ischeck, emotion;
+	private String id, profile, bname, writer, trans, postcont, pdate,
+					largeimg, gname, hash, publish, ischeck, emotion;
 	private Date postDate;
 	private Time postTime;
 	
