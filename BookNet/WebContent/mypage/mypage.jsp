@@ -44,25 +44,25 @@
 						<c:if test="${INFO.isinflu eq 'Y'}">
 							<img class="w3-col m1 w3-margin-top" style="width: 32px; height: 32px; margin-bottom: 0px;" src="https://img.icons8.com/windows/32/000000/instagram-check-mark.png" />
 						</c:if>
-						<h2 class="w3-col m9" style="margin-bottom: 0px;">${INFO.id} 프로필 </h2>
+						<h2 class="w3-col m9" style="margin-bottom: 0px;">${INFO.id} 프로필</h2>
 					</div>
 					<div class="w3-border" style="max-height: 243.2px; border-radius: 5px; overflow: auto; padding-left: 3px;">
-						<h5>닉네임</h5>
-						<h4>${INFO.nickname}</h4>
+						<h6 style="margin-bottom: 0px;">닉네임</h6>
+						<h2 style="margin-top: 0px; margin-left: 5px;">${INFO.nickname}</h2>
 						<c:if test="${INFO.genshow eq 'Y'}">
-							<h5>성별</h5>
-							<h4>${INFO.gen}</h4>
+							<h6 style="margin-bottom: 0px;">성별</h6>
+							<h2 style="margin-top: 0px; margin-left: 5px;">${INFO.gen}</h2>
 						</c:if>
 						<c:if test="${INFO.birthshow eq 'Y'}">
-							<h5>생일</h5>
-							<h4>${INFO.birthdate}</h4>
+							<h6 style="margin-bottom: 0px;">생일</h6>
+							<h2 style="margin-top: 0px; margin-left: 5px;">${INFO.birthdate}</h2>
 						</c:if>
 						<c:if test="${INFO.intershow eq 'Y'}">
-							<h5>관심분야</h5>
-							<h4>${INFO.interest}</h4>
+							<h6 style="margin-bottom: 0px;">관심분야</h6>
+							<h2 style="margin-top: 0px; margin-left: 5px;">${INFO.interest}</h2>
 						</c:if>
-						<h5>한줄 소개</h5>
-						<h4>${INFO.describe}</h4>
+						<h6 style="margin-bottom: 0px;">한줄 소개</h6>
+						<h2 style="margin-top: 0px; margin-left: 5px;">${INFO.describe}</h2>
 					</div>
 					<c:if test="${SID eq INFO.id}">
 						<div class="w3-col m10" style="margin: 0px;"><p></p></div>
@@ -72,11 +72,38 @@
 							</h6>
 						</div>
 						<div style="margin-top: 25px; margin-bottom: 0px;">
-							<h2 style="margin-bottom: 0px;">알람</h2>
+							<h2 style="margin-bottom: 0px;">
+								<a href="/BookNet/alarm/alarmPage.cls">알람</a>
+							</h2>
 						</div>
-						<div class="w3-border" style="height: 260px; border-radius: 5px; overflow: auto; padding-left: 3px;">
-							<c:forEach begin="0" end="4" items="${ALARM}">
-								
+						<div class="w3-border" style="height: 183px; border-radius: 5px; overflow: auto;">
+							<c:forEach begin="0" end="5" var="alarm" items="${ALARM}">
+								<div class="ala_cont w3-padding" id="${alarm.pno}">
+									<c:if test="${alarm.type eq 'C'}">
+										<div>
+											<h5>
+												<a href="/BookNet/mypage/mypage.cls?id=${alarm.id}" id="${alarm.id}">${alarm.id}</a>님이 <a href="" id="${alarm.bname}">${alarm.bname}</a> 게시글에 댓글을 달았습니다.
+											</h5>
+										</div>
+									</c:if>
+									<c:if test="${alarm.type eq 'L'}">
+										<div>
+											<h5>
+												<a href="/BookNet/mypage/mypage.cls?id=${alarm.id}" id="${alarm.id}">${alarm.id}</a>님이 <a href="" id="${alarm.bname}">${alarm.bname}</a> 게시글에 댓글을 달았습니다.
+											</h5>
+										</div>
+									</c:if>
+									<c:if test="${alarm.type eq 'F'}">
+										<div>
+											<h5>
+												<a href="/BookNet/mypage/mypage.cls?id=${alarm.id}" id="${alarm.id}">${alarm.id}</a>님이 <a href="" id="${alarm.bname}">${alarm.bname}</a> 게시글에 댓글을 달았습니다.
+											</h5>
+										</div>
+									</c:if>
+									<div style="text-align: right;">
+										${alarm.extime}
+									</div>
+								</div>
 							</c:forEach>
 						</div>
 					</c:if>

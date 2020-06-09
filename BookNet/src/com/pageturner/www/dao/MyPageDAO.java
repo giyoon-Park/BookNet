@@ -49,20 +49,21 @@ public class MyPageDAO {
 			pstmt.setInt(1, mno);
 			rs = pstmt.executeQuery();
 			rs.next();
+			mVO.setId(rs.getString("id"));
 			mVO.setNickname(rs.getString("nickname"));
 			mVO.setDescribe(rs.getString("describe"));
-			if(rs.getString("intershow") == "Y") {
+			if(rs.getString("intershow").equals("Y")) {
 				mVO.setInterest(rs.getString("interest"));
 			}
-			if(rs.getString("birthshow") == "Y") {
+			if(rs.getString("birthshow").equals("Y")) {
 				mVO.setMdate(rs.getDate("birthdate"));
 				mVO.setMtime(rs.getTime("birthdate"));
 				mVO.setBirthdate();
 			}
-			if(rs.getString("genshow") == "Y") {
+			if(rs.getString("genshow").equals("Y")) {
 				mVO.setGen(rs.getString("gen"));
 			}
-			if(rs.getString("isinflu") == "Y") {
+			if(rs.getString("isinflu").equals("Y")) {
 				mVO.setIsinflu(rs.getString("isinflu"));
 			}
 			mVO.setSave_name(rs.getString("save_name"));
@@ -393,5 +394,62 @@ public class MyPageDAO {
 			db.close(con);
 		}
 		return list;
+	}
+	
+	// 팔로우하기 함수
+	public int newFallow(String sid) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = mpSQL.getSQL(mpSQL.NEW_FAL);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, mno);
+			pstmt.setString(2, sid);
+			cnt = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
+	}
+	
+	// 언팔로우하기 함수
+	public int unFallow(String sid) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = mpSQL.getSQL(mpSQL.UN_FAL);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, mno);
+			pstmt.setString(2, sid);
+			cnt = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
+	}
+	
+	// 다시 팔로우하기 함수
+	public int reFallow(String sid) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = mpSQL.getSQL(mpSQL.RE_FAL);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, mno);
+			pstmt.setString(2, sid);
+			cnt = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
 	}
 }

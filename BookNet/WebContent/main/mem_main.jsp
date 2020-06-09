@@ -108,7 +108,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 									<img src="">
 								</div>
 								<div class="wrter" id="id${data.pno}"><a href=""><b id="">${data.id}</b></a></div>
-								<div class="time" id="time${data.pno}">${data.pdate}</div>
+								<div class="time" id="time${data.pno}">${data.postDate}</div>
 								<c:if test="${SID eq data.id}">
 									<div class="like-butt" id="${data.pno}" style="display: flex;'">
 										<span style="font-size: 12px; line-height: 0px;" class="e-d-img edbtn" id=""></span>

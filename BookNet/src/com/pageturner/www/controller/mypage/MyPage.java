@@ -19,9 +19,15 @@ public class MyPage implements PageController {
 		
 		HttpSession session = req.getSession();
 		String id = (String)session.getAttribute("SID");
-		String pid = (String)req.getAttribute("id");
+		String pid = req.getParameter("id");
 		MyPageDAO mpDAO = null;
 		Alarm alarm = null;
+		
+		if(id == null) {
+			view = "/BookNet/member/login.cls";
+			req.setAttribute("isRedirect", true);
+			return view;
+		}
 
 		if(pid == null) {
 			mpDAO = new MyPageDAO(id);

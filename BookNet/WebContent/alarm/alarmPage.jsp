@@ -61,17 +61,17 @@
 									<div class="ala_cont" style="font-size: 16px;" id="${alarm.pno}">
 										<c:if test="${alarm.type eq 'C'}">
 											<div>
-												<a href="" id="${alarm.id}">${alarm.id}</a>님이 <a href="" id="${alarm.bname}">${alarm.bname}</a> 게시글에 댓글을 달았습니다.
+												<a href="/BookNet/mypage/mypage.cls?id=${alarm.id}" id="${alarm.id}">${alarm.id}</a>님이 <a href="" id="${alarm.bname}">${alarm.bname}</a> 게시글에 댓글을 달았습니다.
 											</div>
 										</c:if>
 										<c:if test="${alarm.type eq 'L'}">
 											<div>
-												<a href="" id="${alarm.id}">${alarm.id}</a>님이 <a href="" id="${alarm.bname}">${alarm.bname}</a> 게시글에 좋아요를 눌렀습니다.
+												<a href="/BookNet/mypage/mypage.cls?id=${alarm.id}" id="${alarm.id}">${alarm.id}</a>님이 <a href="" id="${alarm.bname}">${alarm.bname}</a> 게시글에 좋아요를 눌렀습니다.
 											</div>
 										</c:if>
 										<c:if test="${alarm.type eq 'F'}">
 											<div>
-												<a href="" id="${alarm.id}">${alarm.id}</a>님이 팔로우하였습니다.
+												<a href="/BookNet/mypage/mypage.cls?id=${alarm.id}" id="${alarm.id}">${alarm.id}</a>님이 팔로우하였습니다.
 											</div>
 										</c:if>
 										<div style="text-align: right;">

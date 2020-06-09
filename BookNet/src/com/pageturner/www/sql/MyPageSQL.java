@@ -19,13 +19,16 @@ public class MyPageSQL {
 	public final int SEL_FALLOWER_LIST = 4002;
 	public final int CNT_FALLOW = 4003;
 	public final int CNT_FALLOWER = 4004;
+	public final int NEW_FAL = 4005;
+	public final int UN_FAL = 4006;
+	public final int RE_FAL = 4007;
 	
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();
 		switch(code) {
 		case SEL_MEM_INFO:
 			buff.append("SELECT ");
-			buff.append("    gen, birthdate, interest, nickname, describe, ");
+			buff.append("    id, gen, birthdate, interest, nickname, describe, ");
 			buff.append("    intershow, birthshow, genshow, isinflu, save_name, save_loc ");
 			buff.append("FROM ");
 			buff.append("    membertab mt, profilepictab pt ");
@@ -63,8 +66,6 @@ public class MyPageSQL {
 			buff.append("    AND bt.publish_no = pbt.publish_no ");
 			buff.append("    AND pt.isshow = 'Y' ");
 			buff.append("    AND mt.isshow = 'Y' ");
-			buff.append("	 AND lt.pno BETWEEN (SELECT MAX(pno) - 5 FROM poststab) ");
-			buff.append("		AND (SELECT MAX(pno) FROM poststab) ");
 			buff.append("ORDER BY ");
 			buff.append("	 postdate DESC ");
 			break;
@@ -134,6 +135,35 @@ public class MyPageSQL {
 			buff.append("    fallowtab ft ");
 			buff.append("WHERE ");
 			buff.append("    ft.fallow_no = ? ");
+			break;
+		case NEW_FAL:
+			buff.append("INSERT INTO ");
+			buff.append("    fallowtab(fal_no, fallow_no, fallower_no) ");
+			buff.append("VALUES( ");
+			buff.append("    (SELECT NVL(MAX(fal_no) + 1, 1) FROM fallowtab), ");
+			buff.append("    ?, (SELECT mno FROM membertab WHERE id = ?) ");
+			buff.append(") ");
+			break;
+		case UN_FAL:
+			buff.append("UPDATE ");
+			buff.append("    fallowtab ");
+			buff.append("SET ");
+			buff.append("    ischeck='N' ");
+			buff.append("WHERE ");
+			buff.append("    fallow_no = ? ");
+			buff.append("    AND fallower_no = ");
+			buff.append("        (SELECT mno FROM membertab WHERE id = ?) ");
+			break;
+		case RE_FAL:
+			buff.append("UPDATE ");
+			buff.append("    fallowtab ");
+			buff.append("SET ");
+			buff.append("    ischeck='Y', ");
+			buff.append("    fal_time = sysdate ");
+			buff.append("WHERE ");
+			buff.append("    fallow_no = ? ");
+			buff.append("    AND fallower_no = ");
+			buff.append("        (SELECT mno FROM membertab WHERE id = ?) ");
 			break;
 		}
 		return buff.toString();
