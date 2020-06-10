@@ -30,7 +30,7 @@ public class PostWriteProc implements PageController {
 		
 		if(id == null || id.length() == 0) {
 			//재로그인하게 하기 
-			view = "/member/login.cls";
+			view = "/BookNet/member/login.cls";
 		}
 		
 		//파라미터 가져오기 
@@ -49,8 +49,9 @@ public class PostWriteProc implements PageController {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
-		//데이터베이스 작업하기 
+
+		//데이터베이스 작업하기
+		//해시태그를 db에 올리기 전에 이미 게시글 등록이 끝나야한다.
 		PostsDAO dao = new PostsDAO();
 		
 		int cnt = dao.addPost(id, bno, body, eno);

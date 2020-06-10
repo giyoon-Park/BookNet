@@ -1,11 +1,16 @@
 package com.pageturner.www.util;
-
+/**
+ *	이 클래스는 인터파크에서 도서정보를 받아와서 json으로 파싱, 리스트로 반환하는 클래스이다.
+ *	@author	박기윤
+ *	@since	2020.05.27
+ */
 import java.io.*;
 import java.net.*;
 import java.util.*;
 import org.json.simple.*;
 import org.json.simple.parser.*;
 import com.pageturner.www.vo.*;
+import com.pageturner.www.dao.*;
 
 public class InterParkAPI {
 	private final String KEY = "756476FCE177C662B901F60050D436CDFFDF8BCC7C44966D95B67471225CF8EF"; //인터파크 API를 사용하기 위한 KEY값
@@ -13,16 +18,17 @@ public class InterParkAPI {
 	public final int RECOMMEND = 1002;
 	public final int NEWBOOK = 1003;
 	public final int BESTSELLER = 1004;
+	public JSONArray item;
+	public JSONObject obj;
+	public ArrayList<BookVO> list;
 	
 	String api;
 	String query;
-	JSONArray item;
-	ArrayList<BookVO> list;
 	
 	public InterParkAPI() {
 		this(SEARCH, "java");
 	}
-	public InterParkAPI(int code, String keyword) {
+	public<T> InterParkAPI(int code, T keyword) {
 		String str = null;
 		String json = null;
 		String address = null;
@@ -31,14 +37,15 @@ public class InterParkAPI {
 		String base = api + "?key=" + KEY + "&";
 		
 		try {
-			str = URLEncoder.encode(keyword, "UTF-8");
+			//if(keyword instanceof String)
+				//str = URLEncoder.encode((String)keyword, "UTF-8");
 			
-			if(query == "query") {
-				address = base + "query=" + str + "&output=json&maxResults=30";
+			if(query.equals("query")) {
+				address = base + "query=" + keyword + "&output=json&maxResults=30";
 			} else {
-				address = base + "categoryId=100" + "&output=json&maxResults=30";
+				address = base + "categoryId=" + keyword + "&output=json&maxResults=30";
 			}
-			
+			URLEncoder.encode(address, "UTF-8");
 			json = webConnection(address);
 			this.list = parsingBookInfo(json);
 		} catch (Exception e) {
@@ -90,7 +97,7 @@ public class InterParkAPI {
 		ArrayList<BookVO> list = new ArrayList<BookVO>();
 		
 		JSONParser parser = new JSONParser();
-		JSONObject obj = (JSONObject)parser.parse(json);
+		obj = (JSONObject)parser.parse(json);
 		
 		this.item = (JSONArray)obj.get("item");
 		
@@ -98,7 +105,6 @@ public class InterParkAPI {
 			BookVO bVO = new BookVO();
 			JSONObject tmp = (JSONObject)item.get(i);
 			String ctgr = (String)tmp.get("categoryId");
-			String isbn = (String)tmp.get("isbn");
 			bVO.setAuthor((String)tmp.get("author"));
 			bVO.setTitle((String)tmp.get("title"));
 			bVO.setCategoryId(Integer.parseInt(ctgr));
@@ -109,9 +115,6 @@ public class InterParkAPI {
 			bVO.setIsbn((String)tmp.get("isbn"));
 			bVO.setSaleStatus((String)tmp.get("saleStatus"));
 			list.add(bVO);
-		}
-		
-		for(int i = 0; i < list.size(); i++) {
 		}
 		
 		return list;

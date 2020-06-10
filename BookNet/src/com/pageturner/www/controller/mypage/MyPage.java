@@ -9,6 +9,7 @@ import java.util.*;
 import com.pageturner.www.controller.*;
 import com.pageturner.www.dao.*;
 import com.pageturner.www.vo.*;
+import com.pageturner.www.util.*;
 
 public class MyPage implements PageController {
 
@@ -18,28 +19,43 @@ public class MyPage implements PageController {
 		
 		HttpSession session = req.getSession();
 		String id = (String)session.getAttribute("SID");
-		String pid = (String)req.getAttribute("id");
-		MyPageDAO mpDAO;
+		String pid = req.getParameter("id");
+		MyPageDAO mpDAO = null;
+		ArrayList<AlarmVO> alarmList = null;
 		
+		if(id == null) {
+			view = "/BookNet/member/login.cls";
+			req.setAttribute("isRedirect", true);
+			return view;
+		}
+
 		if(pid == null) {
 			mpDAO = new MyPageDAO(id);
+			Alarm alarm = new Alarm(id);
+			alarmList = alarm.alarmList;
 		} else {
 			mpDAO = new MyPageDAO(pid);
 		}
 
-		MemberVO mInfo = mpDAO.getMemInfo();
+		MemberVO mInfo = mpDAO.getMemInfo(id);
 		int cntPosts = mpDAO.cntPosts();
 		int cntFallow = mpDAO.cntFallow();
 		int cntFallower = mpDAO.cntFallower();
 		ArrayList<PostsVO> postList = mpDAO.getPosts();
 		ArrayList<PostsVO> likeList = mpDAO.getLikedPosts();
-		
+
 		req.setAttribute("INFO", mInfo);
 		req.setAttribute("CNTPOST", cntPosts);
 		req.setAttribute("CNTFALLOW", cntFallow);
 		req.setAttribute("CNTFALLOWER", cntFallower);
 		req.setAttribute("LIKE", likeList);
-		
+
+		if(pid == null) {
+			req.setAttribute("ALARM", alarmList);
+		} else {
+			req.setAttribute("POST", postList);
+		}
+
 		return view;
 	}
 }

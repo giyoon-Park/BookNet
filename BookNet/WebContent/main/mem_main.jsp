@@ -88,6 +88,12 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 	<input type="hidden" id="body" name="body"> <!-- 글 작성할때 넘겨줄 게시글 본문 -->
 	<input type="hidden" id="tags" name="tags"> <!-- 글 작성할때 넘겨줄 해시태그 -->
 </form>
+<form method="POST" id="frm2">
+	<input type="hidden" id="pno" name="pno"> <!-- 게시글 삭제시 넘겨줄 게시글 번호 -->
+</form>
+<form method="POST" id="frm3">
+	<input type="hidden" id="searchinput" name="searchinput"> <!-- 검색시 넘겨줄 키워드 값 -->
+</form>
 	<div>
 		<!-- 본문부분 -->
 		<div id="contents-wrap">
@@ -101,14 +107,15 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 								<div class="wrtProf">
 									<img src="">
 								</div>
-								<div class="wrter" id="">
-									<a href=""><b>${data.id}</b></a>
-								</div>
-								<div class="time" id="">
-									${data.pdate}
-								</div>
-								<div class="like-butt" id="" style="display: flex;'">
-									<span style="font-size: 12px; line-height: 0px;" class="like-img likebtn" id=""></span>
+								<div class="wrter" id="id${data.pno}"><a href=""><b id="">${data.id}</b></a></div>
+								<div class="time" id="time${data.pno}">${data.postDate}</div>
+								<c:if test="${SID eq data.id}">
+									<div class="like-butt" id="${data.pno}" style="display: flex;">
+										<span style="font-size: 12px; line-height: 0px;" class="e-d-img edbtn" id=""></span>
+									</div>
+								</c:if>
+								<div class="like-butt" id="${data.pno}" style="display: flex;">
+									<span style="font-size: 12px; line-height: 0px;" class="like-img likebtn" id="like${data.pno}"></span>
 								</div>
 							</div>
 							<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
@@ -116,83 +123,88 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 								<!-- 도서사진, 도서이름, 게시글본문 -->
 								<div class="book-pic">
 									<!-- 도서 사진 들어갈 부분 -->
-									<img src="${data.largeimg}" style="width: 90%; height: auto;" />
+									<img id="img${data.pno}" src="${data.largeimg}" style="width: 90%; height: auto;" />
 								</div>
-								<div class="genre-name" style="font-size: 12px; text-align: left;">
+								<div class="genre-name" style="font-size: 12px; text-align: left;" id="genre${data.pno}">
 									<!-- 도서장르 들어갈 부분 -->
 									${data.gname}
 								</div>
-								<div class="book-name">
+								<div class="book-name" id="bname${data.pno}">
 									<!-- 도서명 들어갈 부분 -->
 									<b>${data.bname}</b>
 								</div>
 								<div class="post-body">
 									<!-- 게시글 부분 -->
-									<a style="box-sizing: border-box; font-size: 18px;">${data.postcont}</a>
+									<a style="box-sizing: border-box; font-size: 18px;" id="pbody${data.pno}">${data.postcont}</a>
 								</div>
 							</div>
 							<div class="wrtInfo">
-								<div class="etcdiv" style="text-align: left; font-size: 13px;">${data.hash}</div>
+								<div class="etcdiv" style="text-align: left; font-size: 13px;" id="hash${data.pno}">${data.hash}</div>
 								<span class="modifdiv modi_post" id="${data.pno}"></span>
-							</div>
-							<!-- 게시물 상세보는 모달 -->
-							<div class="modal detailPost ${data.pno}" role="none">
-								<div class="p-modal-content" style="height: 540px;">
-									<span class="close w-x-btn" id="d-close_butt">x</span>
-									<div class="w100-pt10">
-										<div class="wrtProf" style="width: 45px; height: 45px;">
-											<img src="">
-										</div>
-										<div class="wrter" style="line-height: 40px;" id="">
-											<a href="" style="font-size: 18px;"><b>${data.id}</b></a>
-										</div>
-										<div class="time" style="line-height: 40px;" id="">${data.pdate}</div>
-										<div class="like-butt" id="">
-											<span style="font-size: 12px; line-height: 0px;" class="comt-img comtbtn"></span>
-										</div>
-										<div class="like-butt" id="" style="display: flex;'">
-											<span style="font-size: 12px; line-height: 0px;" class="like-img likebtn" id=""></span>
-										</div>
-										<div class="w100-h290">
-											<div class="book-pic">
-												<!-- 도서 사진 들어갈 부분 -->
-												<img src="${data.largeimg}" style="float: left; box-sizing: border-box;" />
-											</div>
-											<div class="genre-pad">${data.gname}</div>
-											<div class="genre-pad" style="font-size: 25px; line-height: 25px;"><b>${data.bname}</b></div>
-											<div class="detail-body">
-												<!-- 게시글 부분 -->
-												<a style="box-sizing: border-box; font-size: 15px;">${data.postcont}</a>
-											</div>
-										</div>
-										<div class="w100-h35">
-											<div style="margin-left: 20px; text-align: left; font-size: 12px;">${data.hash}</div>
-										</div>
-										<div class="w100-h95">
-											<!-- 댓글 리스트 뽑아오기 -->
-											<%-- <c:forEach val="comm" begin="1" end="4"> --%>
-												<div class="listcomt" id="댓글번호">
-													<div style="float: left; width: 30px; height: 30px; border: 1px dashed black">
-														<img src="" style="box-sizing: border-box;"/>
-													</div>
-													<div class="h30-m10" style="width: 60px;">댓글작성자</div>
-													<div class="h30-m10" style="width: 80px;">댓글시간</div>
-													<div class="h30-m10" style="width: 350px;">댓글 내용</div>
-												</div>
-											<%-- </c:forEach> --%>
-										</div>
-										<div class="wrtcomt hidcommt" style="display: none;" id="">
-											<div class="comwrter">
-												<a>${SID}</a>
-											</div>
-											<input type="text" class="combody" placeholder="댓글을 입력하세요." />
-											<input type="button" class="comsubbtn" value="등록"/>
-										</div>
-									</div>
-								</div>
 							</div>
 						</article>
 					</c:forEach>
+					<!-- 게시물 수정 삭제 선택 띄워주는 모달 -->
+					<div class="modal edit-del-modal" role="none">
+						<div class="e-modal-content" style="margin: 100px auto;" id="">
+							<div class="w100-pt10" style="height: 40px; border-top: 1px solid black; border-bottom: 1px solid black;">
+								<a id="e-btn" style="font-size: 15px; position: absolute; line-height: 1;">수 정</a>
+							</div>
+							<div class="w100-pt10" style="height: 40px;">
+								<a id="d-btn" style="font-size: 15px; position: absolute; line-height: 1;">삭 제</a>
+							</div>
+							<div class="w100-pt10" style="height: 40px; border-top: 1px solid black; border-bottom: 1px solid black;">
+								<a id="c-btn" style="font-size: 15px; position: absolute; line-height: 1;">취 소</a>
+							</div>
+						</div>
+					</div>
+					<!-- 게시물 상세보는 모달 -->
+					<div class="modal detailPost" role="none">
+						<div class="p-modal-content" id="" style="height: 540px;">
+							<span class="close w-x-btn" id="d-close_butt">x</span>
+							<div class="w100-pt10">
+								<div class="wrtProf" style="width: 45px; height: 45px;">
+									<img src="">
+								</div>
+								<div class="wrter" style="line-height: 40px;" id="">
+									<a href="" style="font-size: 18px;"><b class="wrter"></b></a>
+								</div>
+								<div class="time" style="line-height: 40px;" id="time"></div>
+								<div class="like-butt" id="">
+									<span style="font-size: 12px; line-height: 0px;" class="comt-img comtbtn"></span>
+								</div>
+								<div class="like-butt" id="" style="display: flex;'">
+									<span style="font-size: 12px; line-height: 0px;" class="like-img likebtn" id=""></span>
+								</div>
+								<div class="w100-h290">
+									<div class="book-pic">
+										<!-- 도서 사진 들어갈 부분 -->
+										<img id="bimg" src="" style="float: left; box-sizing: border-box;" />
+									</div>
+									<div class="genre-pad" id="genre-pad"></div>
+									<div class="genre-pad" style="font-size: 25px; line-height: 25px;"><b id="genre-name"><b></b></b></div>
+									<div class="detail-body">
+										<!-- 게시글 부분 -->
+										<a style="box-sizing: border-box; font-size: 15px;" id="p-body"></a>
+									</div>
+								</div>
+								<div class="w100-h35">
+									<div style="margin-left: 20px; text-align: left; font-size: 12px;" id="gethash"></div>
+								</div>
+								<div class="w100-h95" id="">
+									<!-- 댓글 리스트 뽑아오기 -->
+								</div>
+								<div class="wrtcomt hidcommt" style="display: none;" id="">
+									<div class="comwrter">
+										<input type="hidden">
+										<a>${SID}</a>
+									</div>
+									<input type="text" class="combody" placeholder="댓글을 입력하세요." />
+									<input type="button" class="comsubbtn" value="등록" id=""/>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 				<!-- 우측 정보 부분 : 고정페이지로 들어갈 것-->
 				<div class="info_area">
@@ -219,6 +231,10 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 					<input class="searchinput" type="text" placeholder="search">
 				</div>
 				<div class="iconsbox">
+					<div style="float: left; width:80px;"> 
+						<a href="/BookNet/member/logoutProc.cls">로그아웃</a>
+						<!-- <img class="iconimg" id="" src="/BookNet/img/iconmonstr-compass-4-240.png"> -->
+					</div> 
 					<!-- 알람표시아이콘 -->
 					<div class="span_icons">
 						<button type="button" class="butt" id="aBtn">
@@ -240,9 +256,6 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 							</div>
 						</div>
 					</div>
-					<div class="span_icons"> 
-						<img class="iconimg" id="" src="/BookNet/img/iconmonstr-compass-4-240.png">
-					</div> 
 					<div class="span_icons" id=""> 
 						<button type="button" class="butt" id="wBtn">
 							<img class="iconimg" id="" src="/BookNet/img/iconmonstr-pen-15-240.png">
@@ -285,43 +298,21 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 							<!-- 도서검색 결과 모달창 -->
  							<div class="w3-modal" id="-s-b-modal">
  								<div id="" class="s-modal-content">
- 									<span class="close w-x-btn" id="s-close_butt">x</span>
+ 									<span class="close w-x-btn" style="position: fixed;" id="s-close_butt">x</span>
  									<div class="-s-rst" id="rst-cont">
  										<b>검색 결과</b>
  									</div>
- 									<%-- <c:forEach var="rstBook" items="${}"> --%>
- 									<div class="w100perh300 rstbook" id="">
- 										<!-- 검색 결과의 수만큼 이 div가 생성되어야한다. -->
-  										<div class="-s-b-img">
- 											<img id="b-image"/>
- 										</div>
- 										<div class="-s-b-info">
- 											<div style="float: left; margin-right: 15px;">도서장르 : </div> 
- 											<div style="float: left;"id="b-genre"></div>
- 										</div>
- 										<div class="-s-b-info">
- 											<div style="float: left; margin-right: 15px;">도서명 : </div> 
- 											<div style="float: left;"id="b-title"></div>
- 										</div>
- 										<div class="-s-b-info">
- 											<div style="float: left; margin-right: 15px;">저 자 : </div> 
- 											<div style="float: left;"id="b-author"></div>
- 										</div>
- 										<div class="-s-b-info" id="notrans">
- 											<div style="float: left; margin-right: 15px;">옮긴이 : </div> 
- 											<div style="float: left;"id="b-author"></div>
- 										</div>
-	 									<div class="-s-b-submit">
-			 								<input type="button" value="책 등록" id="sel-b-submit"/>
-	 									</div>
- 									</div>
- 									<%-- </c:forEach> --%>
+ 									<div class="rstPage">
+ 										<!-- 검색결과 리스트 -->
+	 								</div>
  								</div>
  							</div>
 						</div>
 					</div> 
 					<div class="span_icons"> 
-						<img class="iconimg" id="" src="/BookNet/img/iconmonstr-user-19-240.png">
+						<button type="button" class="butt" id="myBtn">
+							<img class="iconimg" id="" src="/BookNet/img/iconmonstr-user-19-240.png">
+						</button>
 					</div>
 				</div>
 			</div>
@@ -342,7 +333,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 			    <img src="https://img.icons8.com/dusk/64/000000/homer-simpson.png" style="position:absolute; top:100px; left: 1752px; display: flex; width:64px; height: 64px;"/>
 			    <img src="https://img.icons8.com/dusk/64/000000/futurama-zoidberg.png" style="position:absolute; top:100px; left: 1830px; display: flex; width:64px; height: 64px;"/>
 			    <div style="/*border:2px solid #fff;*/ width: 400px; height:80px; line-height:65px; color:#fff;font-size:60px; text-align:center; position:absolute; top:10px; left: 1490px;" id="clock">
-				</div>
+				</div>  
 		</footer>
 	</div>
 </body>

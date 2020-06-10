@@ -21,7 +21,13 @@ a{
 	text-decoration:none}
 	
 .blind{
-	position:absolute;clip:rect(0 0 0 0);width:1px;height:1px;margin:-1px;overflow:hidden}
+	position:absolute;
+	clip:rect(0 0 0 0);
+	width:1px;
+	height:1px;
+	margin:-1px;
+	overflow:hidden
+	}
 	
 html{
 	height:100%}
@@ -30,7 +36,9 @@ body{
 	position:relative;height:100%;background:#f5f6f7}#wrap{position:relative;min-height:100%}
 	
 #container{
-	padding-bottom:50px;min-height:185px}
+	padding-bottom:50px;
+	min-height:185px
+	}
 	
 #container,#header{
 	width:768px;margin:0 auto}
@@ -42,7 +50,8 @@ body{
 	color:#08A600}
 	
 .blue{
-	color:#336fc9;text-decoration:underline}
+	color:#336fc9;
+	text-decoration:underline}
 	
 #footer ul li,.logo,.sp,.wrg{
 	background:url(https://static.nid.naver.com/images/ui/login/pc_sp_login_190522.png) no-repeat}
@@ -237,10 +246,23 @@ a.link_login_help{
 	display:inline;color:#08A600}
 	
 .find_info{
-	font-size:12px;line-height:14px;padding-top:20px;text-align:center;color:#8e8e8e;border-top:1px solid #e4e4e5}
+	font-size:12px;
+	line-height:14px;
+	padding-top:20px;
+	text-align:center;
+	color:#FFFFFF;
+	border-top:1px solid #e4e4e5
+	}
 	
 .find_info a{
-	font-size:12px;line-height:13px;display:inline-block;text-decoration:none;color:#8e8e8e}html[lang=en] 
+	font-size:12px;
+	line-height:13px;
+	display:inline-block;
+	text-decoration:none;
+	color:#FFFFFF;
+	font-weight: bold;
+	}
+	html[lang=en] 
 	
 .find_info a,html[lang=zh-Hant] 
 
@@ -325,8 +347,11 @@ a.link_login_help{
 	font-size:15px;
 	line-height:16px;
 	position:absolute;
-	z-index:8;top:16px;
-	left:15px;color:#8e8e8e}
+	z-index:8;
+	top:16px;
+	left:15px;
+	color:#8e8e8e
+	}
 	
 .ie7 .lbl,.ie8 .lbl,.ie9 .lbl{
 	z-index:10}
@@ -395,10 +420,14 @@ a.link_login_help{
 	cursor:pointer;
 	color:#333;
 	border:1px solid #f5f6f7\9;
-	background-position:-2px -115px;background-color:#f5f6f7}
+	background-position:-2px -115px;
+	background-color:#f5f6f7;
+	}
 
 .login_check_box input:checked+label{
-	border:1px solid #f5f6f7\9;background-position:-2px -145px}
+	border:1px solid #f5f6f7\9;
+	background-position:-2px -145px;
+	}
 	
 .login_check_box label.sp.on{
 	background-position:-2px -145px}
@@ -679,7 +708,7 @@ a.btn_info{
 	padding-top:1px;
 	border:none;
 	border-radius:0;
-	background-color:#03c75a;
+	background-color:black;
 	cursor:pointer;
 	text-align:center;
 	color:#fff;
@@ -739,3 +768,7 @@ a.btn_info{
 .btn_type+.btn_type{
 	margin-top:10px}
 	
+.logo_font{
+	color: white;
+	font-size: 40px;
+}

@@ -49,17 +49,18 @@ public class PostsDAO {
 
 				// 데이터 담기
 				vo.setPno(rs.getInt("pno"));
+				vo.setMno(rs.getInt("mno"));
+				vo.setCnt(rs.getInt("cnt"));
 				vo.setId(rs.getString("id"));
 				vo.setBname(rs.getString("bname"));
 				vo.setPostcont(rs.getString("postcont"));
 				vo.setPostDate(rs.getDate("postdate"));
 				vo.setPostTime(rs.getTime("postdate"));
 				vo.setPdate();
-//				vo.setEmotion(rs.getString("emotion"));
+				vo.setEmotion(rs.getString("emotion"));
 				vo.setLargeimg(rs.getString("largeimg"));
 				vo.setGname(rs.getString("gname"));
 				vo.setHash(rs.getString("hash"));
-
 				// 담은 데이터(vo 클래스)를 리스트에 담기
 				list.add(vo);
 			}
@@ -148,7 +149,6 @@ public class PostsDAO {
 				vo.setWriter(rs.getString("writer"));
 				vo.setTrans(rs.getString("trans"));
 				vo.setLargeimg(rs.getString("largeimg"));
-				vo.setPublish(rs.getString("publish"));
 
 				// 리스트에 담기
 				list.add(vo);
@@ -181,7 +181,7 @@ public class PostsDAO {
 
 			// 질의명령 실어서 보내기
 			cnt = pstmt.executeUpdate();
-
+			System.out.println(cnt);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -216,11 +216,11 @@ public class PostsDAO {
 	}
 
 	// 게시글 삭제해줄 데이터베이스 처리 전담함수
-	public int delPosts(int pno) {
+	public int delPost(int pno) {
 		int cnt = 0;
 
 		con = db.getCon();
-		String sql = bSQL.getSQL(bSQL.DEL_POSTS);
+		String sql = cSQL.getSQL(cSQL.DEL_POST);
 		pstmt = db.getPSTMT(con, sql);
 
 		try {
@@ -298,39 +298,5 @@ public class PostsDAO {
 			db.close(con);
 		}
 		return cnt;
-	}
-	
-	//게시글 내에 달린 댓글리스트 처리 전담함수
-	public JSONArray showListRpl(int pno){
-		JSONArray list = new JSONArray();
-		
-		con = db.getCon();
-		String sql = cSQL.getSQL(cSQL.SHOW_RPL);
-		pstmt = db.getPSTMT(con, sql);
-		
-		try {
-			pstmt.setInt(1, pno);
-			
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				CommentVO vo = new CommentVO();
-				vo.setCno(rs.getInt("cno"));
-				vo.setPno(rs.getInt("pno"));
-				vo.setMno(rs.getInt("mno"));
-				vo.setCdate(rs.getDate("cdate"));
-				vo.setCtime(rs.getTime("cdate"));
-				vo.setSdate();
-				
-				list.add(vo);
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			db.close(rs);
-			db.close(pstmt);
-			db.close(con);
-		}
-		return list;
 	}
 }

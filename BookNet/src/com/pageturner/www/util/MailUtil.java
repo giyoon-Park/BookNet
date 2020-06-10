@@ -53,7 +53,7 @@ public class MailUtil {
 			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(getFrom));
 			
 			msg.setSubject("회원가입 인증 메일 발송");	// 메일 제목
-			msg.setText("인증번호: " + cout + "입니다");	// 메일 본문
+			msg.setText("인증번호는 [***" + cout + "***] 입니다");	// 메일 본문
 			
 			Transport.send(msg);
 			cnt = 1;

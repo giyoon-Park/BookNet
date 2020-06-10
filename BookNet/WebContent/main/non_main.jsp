@@ -1,219 +1,65 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
+<!DOCTYPE html>
 <%--
 	이 페이지는 비회원에게 보여지는 게시물 메인페이지 | 로그인, 가입하기 유도 페이지 입니다.
   @author 서동혁
   @version v.0.1.0
   @since 2020.05.25
  --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html style="background-color: #F3F0F7">
 <head>
 <meta charset="UTF-8">
 <title>비회원 메인페이지</title>
 <link rel="stylesheet" href="/BookNet/css/nonmem.css">
 <link rel="stylesheet" href="/BookNet/css/proj_fixed.css">
+<link rel="stylesheet" href="/BookNet/css/modal.css">
+<link rel="stylesheet" href="/BookNet/css/w3.css">
+<link rel="stylesheet" href="/BookNet/css/non_search.css">
 <script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
-<script type="text/javascript" src="/BookNet/js/fixed.js"></script>
-<style>
-
-*{
-    overflow-y: none;
-   -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-}*::-webkit-scrollbar {
-display: none; /*Chrome, Safari, Opera*/
-}
-
-#logolink{
-	text-decoration: none;
-	color:black;
-	 font-weight: 400;
-}#logolink:active{
-	color:black;
-	 font-weight: 400;
-}
-	input[type=text]:-ms-clear{
-    display: none;
-    }
-    #searchclear {
-	position: relative;
-    left: 135px;
-    top: -52px;
-    bottom: 0;
-    width: 10px;
-    /* height: 14px; */
-    /* margin: auto; */
-    font-size: 12px;
-    cursor: pointer;
-    color: #ccc;
-    background-color: #fff;
-}
-</style>
-<style>
-	/* transition css */
-	.eachPost{
-		overflow: hidden;
-	}
-	.eachPostTran{
-		position: relative;
-		right: 205px;
-		hegiht: 157.5px;
-		width: 205px; 
-	}
-		.swal-overlay {  background-color: rgba(43, 165, 137, 0.45);
-}
-</style>
+<script type="text/javascript" src="/BookNet/js/clock.js"></script>
+<script type="text/javascript" src="/BookNet/js/footer.js"></script>
+<script type="text/javascript" src="/BookNet/js/nonmem.js"></script>
 <script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
-<script>
-$(function(){
-	 
-   $('#lbtn').click(function(){
-      $(location).attr('href','/BookNet/member/login.cls');
-   })
-   $('#lbtn2').click(function(){
-      $(location).attr('href','/BookNet/member/login.cls');
-   })
-   $('#jbtn').click(function(){ 
-      $(location).attr('href','/BookNet/member/join.cls');
-   })
-   $('#jbtn2').click(function(){
-      $(location).attr('href','/BookNet/member/join.cls');
-   })
-   $('.dCJp8').click(function(){
-      $('.closeing').remove();
-   })
-  /*  // 스크롤 함수
-  $(document).scroll(function() {
-    var maxHeight = $(document).height();
-    var currentScroll = $(window).scrollTop() + $(window).height();
-    if (maxHeight <= currentScroll + 100) {
-       $('.posts_area').append('<article class="eachPost" id="이곳은게시물번호가들어갈자리"><!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  --><div class="wrtInfo"><img src="https://img.icons8.com/nolan/64/apple-seed.png" style=" width: 49px;height: 49px; position: relative ; right: 215px; bottom: 19px;"/><div class="wrtProf"></div><div class="wrter" id=""><b>작성자아이디</b></div><div class="like-butt" id=""><span style="font-size: 12px; line-height: 0px;" class="comt-img"></span></div><div class="like-butt" id="" style="display: flex;"><span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span></div></div><!-- 게시글의 본문부분::도서사진,도서이름,본문 --><div class="postCont" style="text-align: center; font-size: 16px;"><!-- 도서사진, 도서이름, 게시글본문 --><div class="book-pic"><!-- 도서 사진 들어갈 부분 --></div><div class="book-name"><!-- 도서명 들어갈 부분 --></div><div class="post-body"><!-- 게시글 부분 --></div></div><div class="etcdiv" style="text-align: center; font-size: 16px;">태그<!-- 게시글 해시태그 부분 --><button class="Bbtn">버튼</button></div></article>');
-    }
-    
-  }) */
-	// footerUp
-	var hei = $('#footer-wrap').css("height"); 
-	var wei = 0;
-		// 올리기
-	 $("#footer-wrap").mouseenter(function(){
-			if($('#footer-wrap').css("height") == hei){
-				$('#footer-wrap').css("transition","all 0.6s");
-				$('#footer-wrap').css("background-color","#F7B3D2");
-				$('#footer-wrap').css("color","#FFF");
-				$('#footer-wrap').css("height","186.438px");
-			} else if($('#footer-wrap').css("height") == wei){
-				$('#footer-wrap').css("transition","all 0.6s");
-				$('#footer-wrap').css("background-color","#F7B3D2");
-				$('#footer-wrap').css("color","#FFF");
-				$('#footer-wrap').css("height","186.438px");
-			}
-			
-	// 내리기
-	 	$("#footer-wrap").mouseleave(function(){
-	 		 wei = $('#footer-wrap').css("height");
-	 		if($('#footer-wrap').css("height") == wei){
-	 			$('#footer-wrap').css("height", hei);
-				$('#footer-wrap').css("background-color","#F3F0F7");
-				$('#footer-wrap').css("color","#FFF");
-				$('#footer-wrap').css("transition","all 0.6s");
-				$('#footer-wrap').css("overflow","hidden");
-	 		}
-		});
-	});
-				// search clear
-				var $ipt = $('#searchinput'),
-				    $clearIpt = $('#searchclear');
-						// keyup시 x표시
-					$ipt.keyup(function(){
-					  $("#searchclear").toggle(Boolean($(this).val()));
-					});
-						
-						
-					$clearIpt.toggle(Boolean($ipt.val()));
-					$clearIpt.click(function(){
-					  $("#searchinput").val('').focus();
-					  // display 속성을 none으로 바꾼다. : 감춘다
-					  $(this).hide();
-					});
-					
-				// login_alert	
-				$('#searchinput').keyup(function(e){
-					if(e.keyCode==13){
-						swal ({ text:"Oops" , title:"Please use after login!" ,  icon:"error" });
-					/* 	swal({
-							  title:  "Please use after login!" , icon: "success", buttons:["12314", "Do it!"],
-							}); */
-							
-					}
-				})
-}) 
-</script>
-<script>
-// 시계만들기
-
-function printClock() {
-  var clock = document.getElementById("clock");            // 출력할 장소 선택
-  var currentDate = new Date();                                     // 현재시간
-  var calendar = currentDate.getFullYear() + "-" + (currentDate.getMonth()+1) + "-" + currentDate.getDate() // 현재 날짜
-  var amPm = 'AM'; // 초기값 AM
-  var currentHours = addZeros(currentDate.getHours(),2); 
-  var currentMinute = addZeros(currentDate.getMinutes() ,2);
-  var currentSeconds =  addZeros(currentDate.getSeconds(),2);
-			  
-	  if(currentHours >= 12){ // 시간이 12보다 클 때 PM으로 세팅, 12를 빼줌
-	  	amPm = 'PM';
-	  	currentHours = addZeros(currentHours - 12,2);
-	  }
-			
-	  if(currentSeconds >= 50){// 50초 이상일 때 색을 변환해 준다.
-	     currentSeconds = '<span style="color:#de1951;">'+currentSeconds+'</span>'
-	  }
-	  clock.innerHTML = currentHours+":"+currentMinute+":"+currentSeconds +" <span style='font-size:50px;'>"+ amPm+"</span>"; //날짜를 출력해 줌
-			  
-	  setTimeout("printClock()",1000);         // 1초마다 printClock() 함수 호출
-	}
-			
-function addZeros(num, digit) { // 자릿수 맞춰주기
-	  var zero = ''; 
-	  num = num.toString();
-	  if (num.length < digit) {
-	    for (i = 0; i < digit - num.length; i++) {
-	      zero += '0';
-	    }
-	  }
-	  return zero + num;
-}
-
-</script>
 </head>
 <body onload="printClock()"/>
-
-   <div>
-   
-    <!-- 본문부분 -->
+<!-- 파라미터로 넘길 데이터값 -->
+<form method="POST" id="frm">
+	<input type="hidden" id="bno" name="bno"> <!-- 글 작성할때 넘겨줄 책 번호 -->
+	<input type="hidden" id="eno" name="eno"> <!-- 글 작성할때 넘겨줄 감정번호 -->
+	<input type="hidden" id="body" name="body"> <!-- 글 작성할때 넘겨줄 게시글 본문 -->
+	<input type="hidden" id="tags" name="tags"> <!-- 글 작성할때 넘겨줄 해시태그 -->
+</form>
+<form method="POST" id="frm2">
+	<input type="hidden" id="pno" name="pno"> <!-- 게시글 삭제시 넘겨줄 게시글 번호 -->
+</form>
+	<div>
+		<!-- 본문부분 -->
 		<div id="contents-wrap">
 			<div class="contents">
 				<!-- 좌측 게시글 부분 -->
 				<div class="posts_area">
 					<c:forEach var="data" items="${LIST}">
-						<article class="eachPost" id="${data.pno}">
+						<article class="eachPost"><!-- id="${data.pno}" -->
 							<!-- 작성자 정보 & 버튼 :: 아이디 불러와야함  -->
 							<div class="wrtInfo">
 								<div class="wrtProf">
 									<img src="">
 								</div>
-								<div class="wrter" id="">
-									<a href=""><b>${data.id}</b></a>
-								</div>
-								<div class="time" id="">
+								<div class="wrter" id="id${data.pno}">
+									<a href=""><b id="">${data.id}</b></a>
+								</div> 
+								<div class="time" id="time${data.pno}">
 									${data.pdate}
 								</div>
-								<div class="like-butt" id="">
-									<span style="font-size: 12px; line-height: 0px;" class="comt-img"></span>
-								</div>
+								<c:if test="${SID eq data.id}">
+									<div class="like-butt" id="${data.pno}" style="display: flex;'">
+										<span style="font-size: 12px; line-height: 0px;" class="e-d-img edbtn" id=""></span>
+									</div>
+								</c:if>
 								<div class="like-butt" id="" style="display: flex;'">
-									<span style="font-size: 12px; line-height: 0px;" class="like-img" id="likebtn"></span>
+									<span style="font-size: 12px; line-height: 0px;" class="like-img likebtn" onclick=" id=""></span>
 								</div>
 							</div>
 							<!-- 게시글의 본문부분::도서사진,도서이름,본문 -->
@@ -221,30 +67,30 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 								<!-- 도서사진, 도서이름, 게시글본문 -->
 								<div class="book-pic">
 									<!-- 도서 사진 들어갈 부분 -->
-									<img src="${data.largeimg}" style="width: 90%; height: auto;" />
+									<img id="img${data.pno}" src="${data.largeimg}" style="width: 90%; height: auto;" />
 								</div>
-								<div class="genre-name" style="font-size: 12px; text-align: left;">
+								<div class="genre-name" style="font-size: 12px; text-align: left;" id="genre${data.pno}">
 									<!-- 도서장르 들어갈 부분 -->
 									${data.gname}
 								</div>
-								<div class="book-name">
+								<div class="book-name" id="bname${data.pno}">
 									<!-- 도서명 들어갈 부분 -->
 									<b>${data.bname}</b>
 								</div>
 								<div class="post-body">
 									<!-- 게시글 부분 -->
-									<a style="box-sizing: border-box; font-size: 18px;">${data.postcont}</a>
+									<a style="box-sizing: border-box; font-size: 18px;" id="pbody${data.pno}">${data.postcont}</a>
 								</div>
 							</div>
-							<div class="wrtInfo"id="${data.pno}">
-								<div class="etcdiv" style="text-align: left; font-size: 13px;">${data.hash}</div>
-								<span class="modifdiv modi_post"></span>
+							<div class="wrtInfo">
+								<div class="etcdiv" style="text-align: left; font-size: 13px;" id="hash${data.pno}">${data.hash}</div>
+								<span class="modifdiv modi_post" id="${data.pno}"></span>
 							</div>
 						</article>
-						<!-- 게시물 상세보는 모달 -->
-						<div id="detailPost" class="modal" role="none">
-						</div>
 					</c:forEach>
+					<div class="modal detailPost" role="none">
+					<!-- 게시물 클릭시 로그인 유도-->
+					</div>
 				</div>
 				<!-- 우측 정보 부분 : 고정페이지로 들어갈 것-->
 				<div class="info_area">
@@ -258,76 +104,71 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 				<!-- 우측 정보 끝! -->
 			</div>
 		</div>
-      <!-- 헤더부분 -->
-      <div id="header-wrap">
-         <div class="header">
-            <div class="logobox">
-               		<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
-               	 <div style="box-sizing: border-box; font-size: 30px; text-align: center;">
-              	 	<a href="/BookNet/main/non.cls" id="logolink">PageTurner</a>
-              	 </div>
-       		</div>
-            <div class="searchbox">
-               <input id="searchinput" class="searchinput" type="text" placeholder="search"  >
-               	<span id="searchclear">X</span>
-            </div>
-            <div class="iconsbox">
+		<!-- 헤더부분 -->
+		<div id="header-wrap">
+			<div class="header">
+				<div class="logobox">
+					<div style="box-sizing: border-box; font-size: 30px; text-align: center;">
+						<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
+						<a href="/BookNet/main/non.cls" style="color: #120E0A;"><b>PageTurner</b></a>
+					</div>
+				</div>
+				<div class="searchbox">
+					<input class="searchinput" type="text" placeholder="search">
+				</div>
+			  <div class="iconsbox">
                <!-- 상단 로그인, 가입하기 버튼 -->
                <a href="#" class="ft-log foot-box mg-whtie"  style="color: #fff;"id="lbtn">로그인</a>
                <a href="#" class="ft-join joinc0l0" style="padding-left:15px; color:rgba(var(--d69,0,149,246),1);" id="jbtn">가입하기</a>
                <!-- /상단 로그인, 가입하기 버튼 -->
             </div>
-         </div>
-      </div>
-      <!-- 풋터부분 -->
-      <!-- Footer Link -->
-      <div class="closeing bgalss dCJb6 rBNOH Igw0E pmxbr HcJZg XfCBB IY_1 4EzTm" style="z-index: 2; height:111.938px; bottom: 0px; position: fixed;">
-         <!-- close button -->
-         <button class="xqRnw dCJp8">
-            <!-- <span aria-label="닫기" style="text-align: center; margin: 0px auto;"><img src="https://img.icons8.com/plasticine/100/000000/close-window.png" style="width: 24px; height: 24px;"/></span> -->
-            <span aria-label="닫기" class="insbak insgreyClose" style="margin: 3px;"></span>
-         </button>
-         <!-- /close button -->
-         <!-- div area -->
-         <div class="divflex" style="width: 903px; margin: 0px auto;">
-            <!-- area in icon -->
-            <div style="height: 56px; width: 56px; border: 1px solid white;" class="inblock posit bd-rad">
-               <span aria-label="로그인" style="color: white; display: block; padding: 6px; padding-top: 15px;" class="XfCBB HcThg dCJb6 full0">LOGO</span>
-            </div>
-            <!-- /area in icon -->
-            <!-- text body -->
-            <div class="mg-left dblock rG18m">
-               <!-- from Login -->
-               <div class="mg-whtie">
-                  <div>PageTurner에 로그인</div>
-               </div>
-               <!-- /from Login -->
-               <!-- body -->
-               <div class="footbody">PageTurner에서 다른 사람들과 당신이 좋아하는 책에 대해 이야기해보세요<img style="width: 20px; hieght: 20px;"src="https://img.icons8.com/cotton/64/000000/apple--v2.png"/></div>
-               <!-- /body -->
-            </div>
-            <!-- /text body -->
-            <!-- Login, Join button -->
-            <div class="ft-btn">
-               <!-- Login -->
-               <div class="mt-12">
-                  <a href="#" class="ft-log foot-box mg-whtie"style="color: #fff;" id="lbtn2">로그인</a>
-               </div>
-               <!-- /Login -->
-               <!-- Join -->
-               <div style="text-align:center; margin-top: 12px; padding: 0px 30px;">
-                  <a href="#" class="ft-join joinc0l0" style="color:rgba(var(--d69,0,149,246),1);"id="jbtn2">가입하기</a>
-               </div>
-               <!-- /Join -->
-            </div>
-            <!-- /Login, Join button -->
-         </div> 
-         <!-- /div area -->
-      </div>
-      <!-- /Footer Link -->
-      
- 
-
+			</div>
+		</div>
+		<!-- Footer Link -->
+		     <div class="closeing bgalss dCJb6 rBNOH Igw0E pmxbr HcJZg XfCBB IY_1 4EzTm" style="z-index: 2; height:111.938px; bottom: 0px; position: fixed;">
+		         <!-- close button -->
+		         <button class="xqRnw dCJp8">
+		            <!-- <span aria-label="닫기" style="text-align: center; margin: 0px auto;"><img src="https://img.icons8.com/plasticine/100/000000/close-window.png" style="width: 24px; height: 24px;"/></span> -->
+		            <span aria-label="닫기" class="insbak insgreyClose" style="margin: 3px;"></span>
+		         </button>
+		         <!-- /close button -->
+		         <!-- div area -->
+		         <div class="divflex" style="width: 903px; margin: 0px auto;">
+		            <!-- area in icon -->
+		            <div style="height: 56px; width: 56px; border: 1px solid white;" class="inblock posit bd-rad">
+		               <span aria-label="로그인" style="color: white; display: block; padding: 6px; padding-top: 15px;" class="XfCBB HcThg dCJb6 full0">LOGO</span>
+		            </div>
+		            <!-- /area in icon -->
+		            <!-- text body -->
+		            <div class="mg-left dblock rG18m">
+		               <!-- from Login -->
+		               <div class="mg-whtie">
+		                  <div>PageTurner에 로그인</div>
+		               </div>
+		               <!-- /from Login -->
+		               <!-- body -->
+		               <div class="footbody">PageTurner에서 다른 사람들과 당신이 좋아하는 책에 대해 이야기해보세요<img style="width: 20px; hieght: 20px;"src="https://img.icons8.com/cotton/64/000000/apple--v2.png"/></div>
+		               <!-- /body -->
+		            </div>
+		            <!-- /text body -->
+		            <!-- Login, Join button -->
+		            <div class="ft-btn">
+		               <!-- Login -->
+		               <div class="mt-12">
+		                  <a href="#" class="ft-log foot-box mg-whtie"style="color: #fff;" id="lbtn2">로그인</a>
+		               </div>
+		               <!-- /Login -->
+		               <!-- Join -->
+		               <div style="text-align:center; margin-top: 12px; padding: 0px 30px;">
+		                  <a href="#" class="ft-join joinc0l0" style="color:rgba(var(--d69,0,149,246),1);"id="jbtn2">가입하기</a>
+		               </div>
+		               <!-- /Join -->
+		            </div>
+		            <!-- /Login, Join button -->
+		         </div> 
+		         <!-- /div area -->
+		      </div>
+		<!-- /Footer Link -->
 	<!-- 풋터부분 -->
 			<footer id="footer-wrap" style="padding:10px; height: 86.45px; color: #FFF;">		
 					<h3 style="position:absolute; top:40px; left: 255px; display: flex;font-family:Verdana,sans-serif;">Company</h3><br><h4 style="position:absolute;  top:35px; left: 380px; display: flex; font-size: 10pt;font-family:Verdana,sans-serif;">Increpas</h4><br><h4 style="position:absolute; top:55px; left: 380px; display: flex; font-size:10pt;font-family:Verdana,sans-serif;">서울특별시 관악구 신림동 시흥대로 552</h4>

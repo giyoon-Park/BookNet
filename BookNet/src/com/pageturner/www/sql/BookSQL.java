@@ -12,7 +12,8 @@ public class BookSQL {
 	public final int FIND_PW = 1004; //비밀번호찾기 질의명령
 	public final int SEL_USER = 1005; //회원정보조회 질의명령
 	public final int EDIT_USER = 1006; //회원정보수정 질의명령
-	public final int DEL_USER = 1007; //회원탈퇴 질의명령
+	public final int ADD_PROFILE = 1007; //프사 등록 질의명령
+	public final int DEL_USER = 1008; //회원탈퇴 질의명령
 	
 	public final int SEL_ALL_POST = 2001; //비로그인 회원 메인화면에 보여줄 게시글 질의명령 
 	public final int SEL_ALL_POST_MEM = 2002; //로그인 회원 메인화면에 보여줄 게시글 질의명령
@@ -76,6 +77,14 @@ public class BookSQL {
 			buff.append("WHERE "); 
 			buff.append("    id = ? ");
 			break;
+		case ADD_PROFILE:
+			buff.append("INSERT INTO profilepictab(pf_pt_no, mno, ori_name, save_name, save_loc) "); 
+			buff.append("VALUES( "); 
+			buff.append("    (select nvl(max(pf_pt_no)+1, 1) from profilepictab), "); 
+			buff.append("    (select mno from membertab where id = ?), "); 
+			buff.append("    ?, ?, ? "); 
+			buff.append(") ");
+			break;
 		case DEL_USER:
 			buff.append("UPDATE "); 
 			buff.append("    membertab "); 
@@ -87,7 +96,8 @@ public class BookSQL {
 			
 		case SEL_ALL_POST: //프로필 사진 가져올 수 있게 질의명령 수정해야함 
 			buff.append("SELECT ");
-			buff.append("    pt.pno, pt.mno, bname, ht.hash hash, id, postcont, postdate, emotion, gname, largeimg ");
+			buff.append("    DISTINCT pt.pno, pt.mno, bname, ht.hash hash, m.id, postcont, postdate, emotion, gname, largeimg, ");
+			buff.append("    cnt ");
 			buff.append("FROM ");
 			buff.append("    poststab pt, membertab m, ");
 			buff.append("    (SELECT ");
@@ -98,20 +108,31 @@ public class BookSQL {
 			buff.append("    WHERE ");
 			buff.append("       p.pno = h.pno ");
 			buff.append("    GROUP BY ");
-			buff.append("        h.pno) ht, emotiontab e, genretab g, booktab b ");
+			buff.append("        h.pno) ht,  ");
+			buff.append("    (SELECT ");
+			buff.append("        COUNT(*) cnt, p.pno, p.mno ");
+			buff.append("    FROM ");
+			buff.append("        liketab l, poststab p ");
+			buff.append("    WHERE ");
+			buff.append("        l.pno = p.pno ");
+			buff.append("    GROUP BY ");
+			buff.append("        p.pno, p.mno) lc, ");
+			buff.append("    emotiontab e, genretab g, booktab b, fallowtab f ");
 			buff.append("WHERE ");
 			buff.append("    pt.pno = ht.pno (+) ");
 			buff.append("    AND pt.isshow = 'Y' ");
-			buff.append("    AND pt.mno = m.mno ");
 			buff.append("    AND pt.eno = e.eno ");
 			buff.append("    AND b.genre = g.genre ");
 			buff.append("    AND pt.bno = b.bno ");
+			buff.append("    AND lc.pno = pt.pno ");
+			buff.append("    AND m.mno = lc.mno ");
 			buff.append("ORDER BY ");
-			buff.append("	postdate DESC ");
+			buff.append("    postdate, cnt DESC ");
 			break;
 		case SEL_ALL_POST_MEM: //로그인한 회원이 보는 메인페이지 :: 
 			buff.append("SELECT ");
-			buff.append("    DISTINCT pt.pno, pt.mno, bname, ht.hash hash, mp.id, postcont, postdate, gname, largeimg ");
+			buff.append("    DISTINCT pt.pno, pt.mno, bname, ht.hash hash, m.id, postcont, postdate, emotion, gname, largeimg, ");
+			buff.append("    cnt , lc.ischeck ");
 			buff.append("FROM ");
 			buff.append("    poststab pt, membertab m, ");
 			buff.append("    (SELECT ");
@@ -122,37 +143,46 @@ public class BookSQL {
 			buff.append("    WHERE ");
 			buff.append("       p.pno = h.pno ");
 			buff.append("    GROUP BY ");
-			buff.append("        h.pno) ht, ");
+			buff.append("        h.pno) ht,  ");
 			buff.append("    (SELECT ");
 			buff.append("        DISTINCT mno, id ");
 			buff.append("    FROM ");
 			buff.append("        membertab m, fallowtab ");
 			buff.append("    WHERE ");
-			buff.append("        m.mno = (SELECT mno FROM membertab WHERE id = ?) ");
-			buff.append("        OR (fallower_no = (SELECT mno FROM membertab WHERE id = ?) AND m.mno = fallow_no)) mp, ");
-			buff.append("		 emotiontab e, genretab g, booktab b, fallowtab f ");
+			buff.append("        m.mno = (SELECT mno FROM membertab WHERE id = ? ) ");
+			buff.append("        OR (fallower_no = (SELECT mno FROM membertab WHERE id = ? ) AND m.mno = fallow_no)) mp, ");
+			buff.append("    (SELECT ");
+			buff.append("        COUNT(*) cnt, p.pno, p.mno, l.ischeck ");
+			buff.append("    FROM ");
+			buff.append("        liketab l, poststab p ");
+			buff.append("    WHERE ");
+			buff.append("        l.pno = p.pno ");
+			buff.append("    GROUP BY ");
+			buff.append("        p.pno, p.mno, l.ischeck) lc, ");
+			buff.append("    emotiontab e, genretab g, booktab b, fallowtab f ");
 			buff.append("WHERE ");
 			buff.append("    pt.pno = ht.pno (+) ");
 			buff.append("    AND pt.isshow = 'Y' ");
 			buff.append("    AND pt.eno = e.eno ");
 			buff.append("    AND b.genre = g.genre ");
 			buff.append("    AND pt.bno = b.bno ");
+			buff.append("    AND lc.pno = pt.pno ");
+			buff.append("    AND m.mno = lc.mno ");
 			buff.append("    AND pt.mno = mp.mno ");
 			buff.append("ORDER BY ");
-			buff.append("    postdate DESC");
+			buff.append("    postdate, cnt DESC");
 			break;
 			
 		case POST_SEARCH_BOOK:
 			buff.append("SELECT ");
-			buff.append("    bno, bname, gname, writer, trans, largeimg, publish ");
+			buff.append("    bno, bname, gname, writer, trans, largeimg ");
 			buff.append("FROM ");
-			buff.append("    booktab b, publishtab p, genretab g ");
+			buff.append("    booktab b, genretab g ");
 			buff.append("WHERE ");
-			buff.append("    b.publish_no = p.publish_no ");
-			buff.append("    AND b.genre = g.genre ");
-			buff.append("	AND bname LIKE ? ");
-			buff.append("    OR writer LIKE ? ");
-			buff.append("    OR publish LIKE ?");
+			buff.append("    b.genre = g.genre ");
+			buff.append("	 AND bname LIKE ?  ");
+			buff.append("    OR writer LIKE ?  ");
+			buff.append("    OR trans LIKE ?");
 			break;
 		case ADD_POSTS:
 			buff.append("INSERT INTO ");

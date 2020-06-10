@@ -19,7 +19,7 @@ public class ORCLJDBC {
 	private String url;
 	
 	public ORCLJDBC() {
-		this("jdbc:oracle:thin:@localhost:1521:orcl", "hello", "hello");
+		this("jdbc:oracle:thin:@localhost:1521:orcl", "grapefruit", "increpas");
 	}
 	
 	public ORCLJDBC(String url, String user, String pw) {

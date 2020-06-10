@@ -13,16 +13,6 @@
 <script type="text/javascript" src="/BookNet/js/jquery-3.5.0.min.js"></script>
 <script type="text/javascript" src="/BookNet/js/fixed.js"></script>
 <style>
-	.w-x-btn {margin: 5px; width: 10px; height: 10px; line-height: 10px; font-size: 13px;}
-	.w-b-input {text-align: left; width: 100%; height: 40px; line-height: 40px;}
-	.wrt-div {width: 100%; height: 220px; line-height: 220px; margin-top: 25px;}
-	.wrt-b-img {float: left; width: 180px; margin: 0 15px; border: dashed 1px blue; text-align: center;}
-	.wrt-body {float: left; width: 440px; height: 225px; line-height: 255px; padding: 10px; text-align: center;}
-	.-a-t {float: left; width: 425px; height: 150px; line-height: 150px; margin-top: 13px;}
-	.wrt-last {width: 100%; height: 50px; line-height: 50px; padding-top: 10px; margin-top: 10px;}
-	.hash-input {float: left; width: 500px; height: 40px; line-height: 40px;}
-	.p-submit {float: right; width: 130px; height: 40px; line-height: 40px;}
-	.-s-rst {width: 100%; padding: 10px 30px; height: 55px; line-height: 15px; text-align: center; font-size: 30px;}
 	
 	/*input tag안에 x표 사라지게 한다고 한다..*/
 	input[type=text]:-ms-clear{
@@ -48,33 +38,6 @@
 <script type="text/javascript">
 	$(document).ready(
 		function() {
-			$('#more_butt').click(function() { //modal에서 알림페이지로 이동 
-				$(location).attr('href', '/BookNet/fixed/activity.cls');
-			});
-
-			$('#aBtn').click(function() { //modal 열기
-				$('#actModal').css('display', 'block');
-			});
-
-			$('#a-close_butt').click(function() { //modal 닫기버튼 
-				$('#actModal').css('display', 'none');
-			});
-			
-			$('#likebtn').click(function(){ //like 버튼 클릭시 빨강하트로 변경 
-				$(this).css('background-position', '-208px -370px');
-			});
-			
-			$('#wBtn').click(function(){ //글쓰기 modal 열기 
-				$('#writeModal').css('display', 'block');
-			});
-			
-			$('#w-close_butt').click(function(){ //글쓰기 모달 닫기 
-				$('#writeModal').css('display', 'none');
-			});
-			
-			$('#s-close_butt').click(function(){ //도서검색 모달 닫기 
-				$('#-s-b-modal').css('display', 'none');
-			});
 			// footerUp
 			var hei = $('#footer-wrap').css("height"); 
 			 $("#footer-wrap").mouseenter(function(){
@@ -161,23 +124,26 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 		<div id="contents-wrap">
 			<div class="contents">
 				<!-- 이곳에 본문내용을 넣어주세요! -->
+				
 			</div>
 		</div>
 		<!-- 헤더부분 -->
 		<div id="header-wrap">
 			<div class="header">
 				<div class="logobox">
-					<div
-						style="box-sizing: border-box; font-size: 30px; text-align: center;">
+					<div style="box-sizing: border-box; font-size: 30px; text-align: center;">
 						<!-- 로고 이미지 혹은 링크 들어갈 자리 class="div_logo" -->
-						<a href="/BookNet/main/mem_main.cls">PageTurner</a>
+						<a href="/BookNet/main/main.cls" style="color: #120E0A;"><b>PageTurner</b></a>
 					</div>
 				</div>
 				<div class="searchbox">
-					<input id="searchinput" class="searchinput" type="text" placeholder="search" >
-					<span id="searchclear">X</span>
+					<input class="searchinput" type="text" placeholder="search">
 				</div>
 				<div class="iconsbox">
+					<div style="float: left; width:80px;"> 
+						<a href="/BookNet/member/logoutProc.cls">로그아웃</a>
+						<!-- <img class="iconimg" id="" src="/BookNet/img/iconmonstr-compass-4-240.png"> -->
+					</div> 
 					<!-- 알람표시아이콘 -->
 					<div class="span_icons">
 						<button type="button" class="butt" id="aBtn">
@@ -199,9 +165,6 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 							</div>
 						</div>
 					</div>
-					<div class="span_icons"> 
-						<img class="iconimg" id="" src="/BookNet/img/iconmonstr-compass-4-240.png">
-					</div> 
 					<div class="span_icons" id=""> 
 						<button type="button" class="butt" id="wBtn">
 							<img class="iconimg" id="" src="/BookNet/img/iconmonstr-pen-15-240.png">
@@ -213,43 +176,52 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 									<!-- onclick="document.getElementById('actModal').style.display='none'" -->
 								<!-- 도서검색 -->
 								<div class="w-b-input">
-									<input type="search" id="findBook" placeholder="도서검색"/>
-									<input type="button" id="book-search" value="검색" style="width: 40px;"/>
+									<input type="search" id="findBook" placeholder="도서검색" style="float: left; width: 190px; height: 40px; line-height: 40px;"/>
+									<input type="button" id="book-search" value="검색" style="float: left; width: 40px; height: 40px; line-height: 40px; margin-left: 10px;"/>
+									<!-- 감정 셀렉트 -->
+									<div class="w-e-sel">
+										<select name="emotion" id="selEmo">
+											<option value="">감정을 선택해주세요X)</option>
+											<option value="2">덜덜;무서워욧!</option>
+											<option value="3">ㅠ_ㅠ불안해요..</option>
+											<option value="4">very exciting!</option>
+											<option value="1">행복해요X)</option>
+											<option value="5">그리워요;ㅁ;</option>
+										</select>
+									</div>
 	 							</div>
 	 							<div class="wrt-div">
-									<div class="wrt-b-img">책!</div>
+									<div class="wrt-b-img">
+										<img id="sel-wrt-b-img"/>
+									</div>
 		 							<div class="wrt-body">
-		 								<p style="height: 40px; line-height: 40px;">책 제목</p>
-	 									<textarea class="-a-t"></textarea>
+		 								<p style="height: 80px; line-height: 80px; margin-bottom: 30px; font-size: 25px;" id="sel-wrt-b-ttl"></p>
+	 									<textarea class="-a-t" id="postBody"></textarea>
 	 								</div>
 	 							</div>
 	 							<div class="wrt-last">
-	 								<input type="text" placeholder="hashTags" class="hash-input" id=""/>
+	 								<input type="text" placeholder="hashTags" class="hash-input" id="hash-input"/>
 	 								<input type="button" value="글 등록" class="p-submit" id="p-submit"/>
 	 							</div>
 							</div>
- 							<!-- 도서검색 결과 모달창 -->
+							<!-- 도서검색 결과 모달창 -->
  							<div class="w3-modal" id="-s-b-modal">
  								<div id="" class="s-modal-content">
- 									<span class="close w-x-btn" id="s-close_butt">x</span>
- 									<div class="-s-rst">
+ 									<span class="close w-x-btn" style="position: fixed;" id="s-close_butt">x</span>
+ 									<div class="-s-rst" id="rst-cont">
  										<b>검색 결과</b>
  									</div>
- 									<%-- <c:forEach var="rstBook" items="${}"> --%>
- 									<div style="width: 100%; height: 80px; line-height: 80px; margin: 0 auto; margin-bottom: 20px; border: solid 1px black;">
- 										<!-- 검색 결과의 수만큼 이 div가 생성되어야한다. -->
- 										<div style="width: 100%; height: 20px; line-height: 20px;" id="b-title"></div>
- 									</div>
- 									<%-- </c:forEach> --%>
- 									<div class="p-submit">
-		 								<input type="button" value="책 등록" class="p-submit" id="-s-b-submit"/>
- 									</div>
+ 									<div class="rstPage">
+ 										<!-- 검색결과 리스트 -->
+	 								</div>
  								</div>
  							</div>
 						</div>
 					</div> 
 					<div class="span_icons"> 
-						<img class="iconimg" id="" src="/BookNet/img/iconmonstr-user-19-240.png">
+						<button type="button" class="butt" id="myBtn">
+							<img class="iconimg" id="" src="/BookNet/img/iconmonstr-user-19-240.png">
+						</button>
 					</div>
 				</div>
 			</div>
@@ -261,6 +233,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 					<h3 style="position:absolute; top:40px; left: 1135px; display: flex;">만든이</h3><br><h4 style="position:absolute; top:35px; left: 1202px; display: flex; font-size: 10pt;">박 기윤 | 김 이슬 | 이 명환</h4><br><h4 style="position:absolute; top:55px; left: 1202px; display: flex; font-size:10pt;">서 동혁 | 우 현우 |</h4>
 			    <small>
 			    <p style="position:absolute; top:120px; left: 800px; display: flex;">Copyright © 2020 BookNet.co.,Ltd. All rights reserved.</p>
+			    <a href="#"  style="position:absolute; top:139px; left: 1037px; display: flex;"><address style="font-size:12px; color:#fff;">@인플루언서 신청 ., @ Apply for Influencer</address></a>
 			    <address style="position:absolute; top:140px; left: 800px; display: flex;">Contact increpas for more information. </address>
 			    </small>
 			    <img src="https://img.icons8.com/dusk/64/000000/finn.png" style="position:absolute; top:100px; left: 1497px; display: flex; width:64px; height: 64px;"/>
@@ -269,7 +242,7 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 			    <img src="https://img.icons8.com/dusk/64/000000/homer-simpson.png" style="position:absolute; top:100px; left: 1752px; display: flex; width:64px; height: 64px;"/>
 			    <img src="https://img.icons8.com/dusk/64/000000/futurama-zoidberg.png" style="position:absolute; top:100px; left: 1830px; display: flex; width:64px; height: 64px;"/>
 			    <div style="/*border:2px solid #fff;*/ width: 400px; height:80px; line-height:65px; color:#fff;font-size:60px; text-align:center; position:absolute; top:10px; left: 1490px;" id="clock">
-				</div>
+				</div>  
 		</footer>
 	</div>
 </form>

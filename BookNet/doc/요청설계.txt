@@ -122,6 +122,13 @@
 	파라미터	: 검색어
 	컨트롤러	: com.pageturner.www.controller.ajax.SearchBook
 	뷰		: 없음(모달에 띄워줄 예정)
+	
+(+) 게시글 좋아요 처리 요청
+	요청내용	: /ajax/clickLikeBtn.cls
+	파라미터	: pno, id
+	컨트롤러	: com.pageturner.www.controller.ajax.ClickLikeBtn
+	뷰		: 없음
+	
 --------------------------------------------------------
 23. 게시글 삭제 처리 요청
 	요청내용:/post/postDelProc.cls
@@ -144,6 +151,12 @@
 
 =========================================================
 #이명환
+
+(+)메일인증번호 발송 처리요청
+	요청내용:/ajax/mailProc.cls
+	파라미터:mail
+	컨트롤러:com.pageturner.www.controller.ajax.MailProc
+	뷰		:현재페이지(ajax)
 
 5. 회원가입 페이지 요청
 	요청내용:/member/join.cls
@@ -174,4 +187,4 @@
 	파라미터:none
 	컨트롤러:com.pageturner.www.controller.member.DropOut
 	뷰		:redirect(/main/non.cls)
---------------------------------------------------------
+————————————————————————————

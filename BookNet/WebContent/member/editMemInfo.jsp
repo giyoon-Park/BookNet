@@ -15,6 +15,33 @@
 		document.msCapsLockWarningOff = true;
 		function setContainerHeight(height) {}
 		function clearDocs(){}
+		
+		$(function(){
+			$('#inputImage').change(function(e){
+				var img = URL.createObjectURL(e.target.files[0]);
+				$('#imgThumb').attr('src', img);
+			});
+			
+			$('#btnConfirm').click(function(){
+				$('#profileForm').attr('action', '/BookNet/member/editMemInfoProc.cls');
+				$('#profileForm').submit();
+			});
+			
+			$('#btnCancel').click(function(){
+				alert('마이페이지로 돌아갑니다.');
+				$(location).attr('href', '/BookNet/mypage/mypage.cls');
+			});
+			
+			$('#delete').click(function(){
+				var result = confirm("정말로 회원탈퇴하시겠습니까?");
+				if(result){
+					$(location).attr('href', '/BookNet/member/dropOut.cls');
+				} else {
+					return;
+				}
+			});
+		});
+		
 	</script>
 	<meta name="decorator" content="USER_PROFILE">
 <style id="gnb_style" type="text/css">@charset "UTF-8";
@@ -342,16 +369,16 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
 #gnb.gnb_one_flat .gnb_login_li .gnb_btn_login .gnb_txt {color: #777;}</style><style type="text/css">@keyframes resizeanim { from { opacity: 0; } to { opacity: 0; } } .resize-triggers { animation: 1ms resizeanim; visibility: hidden; opacity: 0; } .resize-triggers, .resize-triggers > div, .contract-trigger:before { content: " "; display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; overflow: hidden; } .resize-triggers > div { background: #eee; overflow: auto; } .contract-trigger:before { width: 200%; height: 200%; }</style><script src="./프로필 수정_files/clickcrD.js.다운로드" id="gnb_clickcrD" charset="utf-8"></script></head>
 
 <body onclick="clearDocs();gnbClose();" id="mainBody">
-<div id="wrap">
+<div id="wrap" style="z-index: 0;">
 
 	<div id="container" style="height: 695px;">
 		<!-- CONTENTS -->
 		<div id="content" style="background-color: #fff;">
     <div class="c_header">
         <h2>프로필 수정</h2>
-        <p class="contxt">PageTurner에 등록한 내 정보를 수정하실 수 있습니다.</p>
+        <p class="contxt" style="font-size: 30px;">PageTurner에 등록한 내 정보를 수정하실 수 있습니다.</p>
     </div>
-    <form id="profileForm" method="post" enctype="multipart/form-data">
+    <form id="profileForm" method="post" action="" enctype="multipart/form-data">
         <input type="hidden" id="helpToken" name="token_help" value="3bjObALRnLxxaTw1">
         <input type="hidden" id="deleteYn" name="deleteYn" value="N">
         <input type="hidden" id="ieLessThan9Yn" name="ieLessThan9Yn" value="N">
@@ -365,12 +392,12 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                 <tbody>
                 <tr>
                     <th scope="row">
-                        <div class="thcell"><label for="inpNickname">현재 비밀번호</label></div>
+                        <div class="thcell"><label for="pw">현재 비밀번호</label></div>
                     </th>
                     <td>
                         <div class="tdcell">
                             <p class="contxt_webctrl nickname">
-                                <input type="text" name="nickname" id="inpNickname" value="" style="width:254px" >
+                                <input type="password" name="pw" id="pw" value="" style="width:254px" >
                                 <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
                                 <input type="text" style="display: none;">
                             </p>
@@ -379,12 +406,12 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                 </tr>
                 <tr>
                     <th scope="row">
-                        <div class="thcell"><label for="inpNickname">새 비밀번호</label></div>
+                        <div class="thcell"><label for="newpw">새 비밀번호</label></div>
                     </th>
                     <td>
                         <div class="tdcell">
                             <p class="contxt_webctrl nickname">
-                                <input type="text" name="nickname" id="inpNickname" value="" style="width:254px" >
+                                <input type="password" name="newpw" id="newpw" value="" style="width:254px" >
                                 <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
                                 <input type="text" style="display: none;">
                             </p>
@@ -393,12 +420,12 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                 </tr>
                 <tr>
                     <th scope="row">
-                        <div class="thcell"><label for="inpNickname">새 비밀번호 확인</label></div>
+                        <div class="thcell"><label for="newpwck">새 비밀번호 확인</label></div>
                     </th>
                     <td>
                         <div class="tdcell">
                             <p class="contxt_webctrl nickname">
-                                <input type="text" name="nickname" id="inpNickname" value="" style="width:254px" >
+                                <input type="password" name="newpwck" id="newpwck" value="" style="width:254px" >
                                 <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
                                 <input type="text" style="display: none;">
                             </p>
@@ -412,8 +439,7 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                     <td>
                         <div class="tdcell">
                             <div class="profile_photo">
-                                <img id="imgThumb" src="./프로필 수정_files/default.png" width="100" height="100">
-                                <span class="mask"></span>
+                                <img id="imgThumb" src="" width="100" height="100">
                             </div>
                             <div class="btn_area_btm">
                                 <span class="btn_file">
@@ -427,12 +453,12 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                 </tr>
                 <tr>
                     <th scope="row">
-                        <div class="thcell"><label for="inpNickname">닉네임</label></div>
+                        <div class="thcell"><label for="nickname">닉네임</label></div>
                     </th>
                     <td>
                         <div class="tdcell">
                             <p class="contxt_webctrl nickname">
-                                <input type="text" name="nickname" id="inpNickname" value="" style="width:254px" >
+                                <input type="text" name="nickname" id="nickname" value="${data.nickname }" style="width:254px" >
                                 <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
                                 <input type="text" style="display: none;">
                             </p>
@@ -441,12 +467,12 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                 </tr>
                 <tr>
                     <th scope="row">
-                        <div class="thcell"><label for="inpNickname">관심분야</label></div>
+                        <div class="thcell"><label for="interest">관심분야</label></div>
                     </th>
                     <td>
                         <div class="tdcell">
                             <p class="contxt_webctrl nickname">
-                                <input type="text" name="nickname" id="inpNickname" value="" style="width:254px" >
+                                <input type="text" name="interest" id="interest" value="${data.interest }" style="width:254px" >
                                 <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
                                 <input type="text" style="display: none;">
                             </p>
@@ -455,12 +481,12 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                 </tr>
                 <tr>
                     <th scope="row">
-                        <div class="thcell"><label for="inpNickname">간단소개</label></div>
+                        <div class="thcell"><label for="describe">간단소개</label></div>
                     </th>
                     <td>
                         <div class="tdcell">
                             <p class="contxt_webctrl nickname">
-                                <input type="text" name="nickname" id="inpNickname" value="" style="width:254px">
+                                <input type="text" name="describe" id="describe" value="${data.describe }" style="width:254px">
                                 <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
                                 <input type="text" style="display: none;">
                             </p>
@@ -469,7 +495,7 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                 </tr>
                 <tr>
                     <th scope="row">
-                        <div class="thcell"><label for="inpNickname">정보공개설정</label></div>
+                        <div class="thcell"><label>정보공개설정</label></div>
                     </th>
                     <td>
                         <div class="tdcell">
@@ -485,8 +511,8 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                 </tbody>
             </table>
             <div class="btn_wrap">
-                <a href="javascript:;" class="btn_model"><b id="btnConfirm" class="btn2 txt_disable" >적용</b></a>
-                <a href="javascript:;" class="btn_model"><b id="btnCancel" class="btn2" onclick="clickcr(this,&#39;prf.cancel&#39;,&#39;&#39;,&#39;&#39;,event);">취소</b></a>
+                <a href="javascript:;" class="btn_model"><b id="btnConfirm" class="btn2" >적용</b></a>
+                <a href="javascript:;" class="btn_model"><b id="btnCancel" class="btn2" >취소</b></a>
             </div>
         </fieldset>
     </form>
@@ -500,7 +526,7 @@ a.gnb_service_all:hover, a.gnb_service_all:visited, a.gnb_service_all:active, a.
                     <td>
                         <div class="tdcell">
                             <p class="contxt_webctrl nickname">
-                            	<button style="display: inline-block; border: 2px solid gray;">회원탈퇴하시겠습니까?</button>
+                            	<button style="display: inline-block; border: 2px solid gray;" id="delete">회원탈퇴하시겠습니까?</button>
                                 <!-- Enter 입력으로 submit이 되는걸 방지하기 위한 Input -->
                                 <input type="text" style="display: none;">
                             </p>

@@ -22,44 +22,54 @@ public class MyPageDAO {
 	AlarmSQL aSQL;
 	String id;
 	int mno;
-	SimpleDateFormat form;
+	SimpleDateFormat formD;
+	SimpleDateFormat formT;
 	
+	public MyPageDAO() {
+		db = new WebDBCP();
+		mpSQL = new MyPageSQL();
+	}
 	public MyPageDAO(String id) {
 		db = new WebDBCP();
 		mpSQL = new MyPageSQL();
 		this.id = id;
-		this.mno = getMno(id);
-		this.aSQL = new AlarmSQL();
-		this.form = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		mno = getMno(id);
+		aSQL = new AlarmSQL();
+		formD = new SimpleDateFormat("yyyy-MM-dd");
+		formT = new SimpleDateFormat("HH:mm:ss");
 	}
 
 	// mypage에 공개한 회원정보를 db에서 불러오는 함수
-	public MemberVO getMemInfo() {
+	public MemberVO getMemInfo(String sid) {
 		MemberVO mVO = new MemberVO();
 		con = db.getCon();
 		String sql = mpSQL.getSQL(mpSQL.SEL_MEM_INFO);
 		pstmt = db.getPSTMT(con, sql);
 		try {
-			pstmt.setInt(1, mno);
+			pstmt.setString(1, sid);
+			pstmt.setInt(2, mno);
 			rs = pstmt.executeQuery();
+			rs.next();
+			mVO.setId(rs.getString("id"));
 			mVO.setNickname(rs.getString("nickname"));
 			mVO.setDescribe(rs.getString("describe"));
-			if(rs.getString("intershow") == "Y") {
+			if(rs.getString("intershow").equals("Y")) {
 				mVO.setInterest(rs.getString("interest"));
 			}
-			if(rs.getString("birthshow") == "Y") {
+			if(rs.getString("birthshow").equals("Y")) {
 				mVO.setMdate(rs.getDate("birthdate"));
 				mVO.setMtime(rs.getTime("birthdate"));
 				mVO.setBirthdate();
 			}
-			if(rs.getString("genshow") == "Y") {
+			if(rs.getString("genshow").equals("Y")) {
 				mVO.setGen(rs.getString("gen"));
 			}
-			if(rs.getString("isinflu") == "Y") {
+			if(rs.getString("isinflu").equals("Y")) {
 				mVO.setIsinflu(rs.getString("isinflu"));
 			}
 			mVO.setSave_name(rs.getString("save_name"));
 			mVO.setSave_loc(rs.getString("save_loc"));
+			mVO.setIscheck(rs.getString("ischeck"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -89,6 +99,27 @@ public class MyPageDAO {
 			db.close(con);
 		}
 		return idmno;
+	}
+	
+	// mno로 id를 찾는 함수
+	public String getId(int mno) {
+		String id = null;
+		con = db.getCon();
+		String sql = mpSQL.getSQL(mpSQL.SEL_MEM_ID);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, mno);
+			rs = pstmt.executeQuery();
+			rs.next();
+			id = rs.getString("id");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		return id;
 	}
 	
 	// 회원이 작성한 게시글중 최신글을 불러오는 함수
@@ -179,7 +210,7 @@ public class MyPageDAO {
 	}
 	
 	//팔로우 리스트를 불러오는 함수
-	public ArrayList<FallowVO> getFallowList() {
+	public ArrayList<FallowVO> getFallowList(int mno) {
 		ArrayList<FallowVO> list = new ArrayList<FallowVO>();
 		con = db.getCon();
 		String sql = mpSQL.getSQL(mpSQL.SEL_FALLOW_LIST);
@@ -206,7 +237,7 @@ public class MyPageDAO {
 	}
 	
 	//팔로워 리스트를 불러오는 함수
-	public ArrayList<FallowVO> getFallowerList() {
+	public ArrayList<FallowVO> getFallowerList(int mno) {
 		ArrayList<FallowVO> list = new ArrayList<FallowVO>();
 		con = db.getCon();
 		String sql = mpSQL.getSQL(mpSQL.SEL_FALLOWER_LIST);
@@ -275,20 +306,26 @@ public class MyPageDAO {
 	}
 	
 	// 좋아요 알람 리스트를 불러오는 함수
-	public ArrayList getLikeAlarm() {
-		ArrayList list = new ArrayList();
+	public ArrayList<AlarmVO> getLikeAlarm() {
+		ArrayList<AlarmVO> list = new ArrayList<AlarmVO>();
 		con = db.getCon();
 		String sql = aSQL.getSQL(aSQL.SEL_LIKE);
 		pstmt = db.getPSTMT(con, sql);
 		try {
 			pstmt.setString(1, id);
+			pstmt.setString(2, id);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				list.add("L");
-				list.add(form.format(rs.getDate("lk_time")));
-				list.add(rs.getInt("pno"));
-				list.add(rs.getString("bname"));
-				list.add(rs.getString("id"));
+				AlarmVO aVO = new AlarmVO();
+				aVO.setType("L");
+				aVO.setDate(rs.getDate("lk_time"));
+				aVO.setTime(rs.getTime("lk_time"));
+				aVO.setExtime();
+				aVO.setPno(rs.getInt("pno"));
+				aVO.setBname(rs.getString("bname"));
+				aVO.setId(rs.getString("id"));
+				aVO.setSave_loc(rs.getString("save_loc"));
+				list.add(aVO);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -301,20 +338,26 @@ public class MyPageDAO {
 	}
 	
 	// 댓글 알람 리스트를 불러오는 함수
-	public ArrayList getComnt() {
-		ArrayList list = new ArrayList();
+	public ArrayList<AlarmVO> getComntAlarm() {
+		ArrayList<AlarmVO> list = new ArrayList<AlarmVO>();
 		con = db.getCon();
 		String sql = aSQL.getSQL(aSQL.SEL_COMNT);
 		pstmt = db.getPSTMT(con, sql);
 		try {
 			pstmt.setString(1, id);
+			pstmt.setString(2, id);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				list.add("C");
-				list.add(form.format(rs.getDate("cdate")));
-				list.add(rs.getInt("pno"));
-				list.add(rs.getString("bname"));
-				list.add(rs.getString("id"));
+				AlarmVO aVO = new AlarmVO();
+				aVO.setType("C");
+				aVO.setDate(rs.getDate("cdate"));
+				aVO.setTime(rs.getTime("cdate"));
+				aVO.setExtime();
+				aVO.setPno(rs.getInt("pno"));
+				aVO.setBname(rs.getString("bname"));
+				aVO.setId(rs.getString("id"));
+				aVO.setSave_loc(rs.getString("save_loc"));
+				list.add(aVO);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -327,8 +370,8 @@ public class MyPageDAO {
 	}
 	
 	// 팔로우 알람 리스트를 불러오는 함수
-	public ArrayList getFal() {
-		ArrayList list = new ArrayList();
+	public ArrayList<AlarmVO> getFalAlarm() {
+		ArrayList<AlarmVO> list = new ArrayList<AlarmVO>();
 		con = db.getCon();
 		String sql = aSQL.getSQL(aSQL.SEL_FAL);
 		pstmt = db.getPSTMT(con, sql);
@@ -336,9 +379,14 @@ public class MyPageDAO {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				list.add("F");
-				list.add(form.format(rs.getDate("fal_time")));
-				list.add(rs.getString("id"));
+				AlarmVO aVO = new AlarmVO();
+				aVO.setType("F");
+				aVO.setDate(rs.getDate("fal_time"));
+				aVO.setTime(rs.getTime("fal_time"));
+				aVO.setExtime();
+				aVO.setId(rs.getString("id"));
+				aVO.setSave_loc("save_loc");
+				list.add(aVO);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -348,5 +396,62 @@ public class MyPageDAO {
 			db.close(con);
 		}
 		return list;
+	}
+	
+	// 팔로우하기 함수
+	public int newFallow(String sid) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = mpSQL.getSQL(mpSQL.NEW_FAL);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, mno);
+			pstmt.setString(2, sid);
+			cnt = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
+	}
+	
+	// 언팔로우하기 함수
+	public int unFallow(String sid) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = mpSQL.getSQL(mpSQL.UN_FAL);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, mno);
+			pstmt.setString(2, sid);
+			cnt = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
+	}
+	
+	// 다시 팔로우하기 함수
+	public int reFallow(String sid) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = mpSQL.getSQL(mpSQL.RE_FAL);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, mno);
+			pstmt.setString(2, sid);
+			cnt = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
 	}
 }

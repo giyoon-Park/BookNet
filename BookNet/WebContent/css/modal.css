@@ -56,6 +56,15 @@
     z-index: 3;
 }
 
+.e-modal-content {
+	background-color: #fefefe;
+    width: 600px;
+    margin: 70px auto;
+    padding: 10px;
+    border-radius: 4px;
+    z-index: 3;
+}
+
 /* Close Button */
 .close {
 	color: #aaa;

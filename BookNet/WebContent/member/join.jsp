@@ -15,7 +15,116 @@
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
+		var cert = '';
+		
+		$('#mailUtil').click(function(){
+			$('#frm').attr('action', '/BookNet/ajax/mail.cls');
+			var mail = $('#mail').val();
+			
+			if(mail == ''){
+				alert('이메일을 입력해주세요');
+				return
+			}
+			$.ajax({
+				url: '/BookNet/ajax/mail.cls',
+				type: 'post',
+				dataType: 'json',
+				data:{
+					'mail': mail
+				},
+				success: function(obj){
+					alert('인증번호가 발송되었습니다. 이메일을 확인해주세요.');
+					cert = obj.tno;
+					
+				},
+				error: function(){
+					alert('통신에러');
+				}
+			});
+			
+		});
+		
 		$('#btnJoin').click(function(){
+			var id = $('#id').val();
+			var pw = $('#pw').val();
+			var pswd2 = $('#pswd2').val();
+			var name = $('#name').val();
+			var nickname = $('#nickname').val();
+			var yy = $('#yy').val();
+			var mm = $('#mm').val();
+			var dd = $('#dd').val();
+			var gen = $('#gen').val();
+			var mail = $('#mail').val();
+			var tel = $('#tel').val();
+			var cert_no = $('#cert_no').val();
+			var interest = $('#interest').val();
+			var describe = $('#describe').val();
+			
+			if(id == ''){
+				alert('아이디를 입력해주세요');
+				$('#id').focus();
+				return;
+			}
+			if(pw == ''){
+				alert('비밀번호를 입력해주세요');
+				$('#pw').focus();
+				return;
+			}
+			if(pw != pswd2){
+				alert('비밀번호가 일치하지 않습니다. 비밀번호를 확인해주세요');
+				$('#pswd2').val('');
+				$('#pswd2').focus();
+				return;
+			}
+			if(name == ''){
+				alert('이름을 입력해주세요');
+				$('#name').focus();
+				return;
+			}
+			if(nickname = ''){
+				$('#nickname').val('-');
+			}
+			if(yy == ''){
+				alert('생년월일을 입력해주세요');
+				$('#yy').focus();
+				return;
+			}
+			if(mm == ''){
+				alert('생년월일을 입력해주세요');
+				$('#mm').focus();
+				return;
+			}
+			if(dd == ''){
+				alert('생년월일을 입력해주세요');
+				$('#dd').focus();
+				return;
+			}
+			if(gen == ''){
+				alert('성별을 선택해주세요');
+				$('#gen').focus();
+				return;
+			}
+			if(mail == ''){
+				alert('이메일을 입력해주세요');
+				$('#mail').focus();
+				return;
+			}
+			if(cert != cert_no){
+				alert('인증번호가 일치하지 않습니다');
+				return;
+			}
+			if(tel == ''){
+				alert('휴대전화를 입력해주세요');
+				$('#tel').focus();
+				return;
+			}
+			if(interest == ''){
+				$('#interest').val('-');
+			}
+			if(describe == ''){
+				$('#describe').val('-');
+			}
+			
 			$('#join_form').submit();
 		});
 	});
@@ -24,7 +133,7 @@
 <body>
 <!-- header -->
 <div id="header" class="join_membership" role="banner">
-    <h1><a href="http://www.naver.com/" class="h_logo">로고</a></h1>
+    <h1><a href="/BookNet/main/non.cls" style="width: 100%; height: auto; margin: 0 auto; color: rgb(19, 16, 13); font-size: 50px;">PageTurner</a></h1>
 </div>
 <!-- // header -->
 
@@ -167,7 +276,13 @@
                     <div class="join_row join_email">
                         <h3 class="join_title"><label for="email">본인 확인 이메일</label></h3>
                         <span class="ps_box int_email box_right_space">
-							<input type="text" id="mail" name="mail" placeholder="선택입력" aria-label="선택입력" class="int" maxlength="100">
+							<input type="text" id="mail" name="mail" aria-label="선택입력" class="int" maxlength="100">
+						</span>
+                        <div class="btn_area">
+                    		<button type="button" id="mailUtil" class="btn_type btn_primary" style="background-color: black;"><span>메일로 인증번호 받기</span></button>
+                		</div>
+                        <span class="ps_box int_email box_right_space">
+							<input type="text" id="cert_no" name="cert_no" placeholder="인증번호" aria-label="인증번호" class="int" maxlength="50">
 						</span>
                     </div>
                     <span class="error_next_box" id="emailMsg" style="display:none" aria-live="assertive"></span>
@@ -181,10 +296,6 @@
                         <select id="nationNo" name="nationNo" class="sel" aria-label="전화번호 입력">
                                         <option value="233">
                                             가나 +233
-                                        </option>
-                                        <option value="241">
-                                            가봉 +241
-                                        </option>
                                         <option value="592">
                                             가이아나 +592
                                         </option>
@@ -824,20 +935,13 @@
                         </select>
                     </div>
                     <div class="int_mobile_area">
-						<span class="ps_box int_mobile">
-							<input type="tel" id="tel" name="tel" placeholder="전화번호 입115757175력" aria-label="전화번호 입력" class="int" maxlength="16">
+						<span class="ps_box int_mobile" style="width: 460px;">
+							<input type="tel" id="tel" name="tel" placeholder="전화번호 입력('-' 포함하여 입력해주세요)" aria-label="전화번호 입력" class="int" maxlength="16">
 							<label for="phoneNo" class="lbl"></label>
 						</span>
-                        <a href="https://nid.naver.com/user2/V2Join.nhn?token_sjoin=CrMVbMuUqJxRkOD4&amp;chk_all=on&amp;termsService=on&amp;termsPrivacy=on&amp;termsLocation=Y&amp;termsEmail=Y#" class="btn_verify btn_primary" id="btnSend" role="button">
+                        <!-- <a href="https://nid.naver.com/user2/V2Join.nhn?token_sjoin=CrMVbMuUqJxRkOD4&amp;chk_all=on&amp;termsService=on&amp;termsPrivacy=on&amp;termsLocation=Y&amp;termsEmail=Y#" class="btn_verify btn_primary" id="btnSend" role="button">
                             <span class="">누르지마세요!</span>
-                        </a>
-                    </div>
-                    <div class="ps_box_disable box_right_space" id="authNoBox">
-                        <input type="tel" id="authNo" name="authNo" placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요" aria-describedby="wa_verify" class="int" disabled="" maxlength="4">
-                        <label id="wa_verify" for="authNo" class="lbl">
-                            <span class="wa_blind">인증받은 후 인증번호를 입력해야 합니다.</span>
-                            <span class="input_code" id="authNoCode" style="display:none;"></span>
-                        </label>
+                        </a> -->
                     </div>
 
                     <span class="error_next_box" id="phoneNoMsg" style="display:none" aria-live="assertive"></span>
@@ -847,7 +951,7 @@
                 <!-- // 휴대전화 번호, 인증번호 입력 -->
                 <!-- 관심분야 -->
                 <div class="join_row join_email">
-                    <h3 class="join_title"><label for="email">관심분야<span class="terms_choice">(선택)</span></label></h3>
+                    <h3 class="join_title"><label for="interest">관심분야<span class="terms_choice">(선택)</span></label></h3>
                     <span class="ps_box int_email box_right_space">
 						<input type="text" id="interest" name="interest" title="관심분야" class="int" maxlength="40">
 					</span>
@@ -862,203 +966,9 @@
                 <span class="error_next_box" id="nameMsg" style="display:none" aria-live="assertive"></span>
                 </div>
                 <!-- //간단소개 -->
-                <!-- tg-display=>{"보호자 모바일 인증": [], "오류 메시지": []} -->
-                <div class="join_minor tab" id="pmobDiv" style="display:none">
-                    <ul class="tab_m" role="tablist">
-                        <li class="m1" role="presentation"><a href="https://nid.naver.com/user2/V2Join.nhn?token_sjoin=CrMVbMuUqJxRkOD4&amp;chk_all=on&amp;termsService=on&amp;termsPrivacy=on&amp;termsLocation=Y&amp;termsEmail=Y#" onclick="return false;" class="on" role="tab" aria-selected="true" aria-controls="wa_tab_phone">휴대전화인증</a></li>
-                        <li class="m2" role="presentation"><a href="https://nid.naver.com/user2/V2Join.nhn?token_sjoin=CrMVbMuUqJxRkOD4&amp;chk_all=on&amp;termsService=on&amp;termsPrivacy=on&amp;termsLocation=Y&amp;termsEmail=Y#" id="tabPrtsIpin" role="tab" aria-selected="false" aria-controls="wa_tab_ipin">아이핀 인증</a></li>
-                    </ul>
-                    <div id="wa_tab_phone" role="tabpanel">
-                        <div class="agree_check_wrap">
-                            <div class="terms_chk_all">
-                                <span class="input_chk">
-                                    <input type="checkbox" id="pagree_all" class="chk_all">
-                                    <label for="pagree_all">
-                                        <span class="chk_all_txt">아래 약관에 모두 동의합니다.</span>
-                                    </label>
-                                </span>
-                            </div>
-                            <div class="small_check_box">
-                                <span class="input_chk">
-                                    <input type="checkbox" id="pagree_01" class="chk">
-                                    <label for="pagree_01">
-                                        <a href="https://nid.naver.com/user2/common/terms/terms.nhn?m=viewPersonalInfoTerms" target="_blank"><span>개인정보 이용</span></a>
-                                    </label>
-                                </span>
-                                <span class="input_chk">
-                                    <input type="checkbox" id="pagree_02" class="chk">
-                                    <label for="pagree_02">
-                                        <a href="https://nid.naver.com/user2/common/terms/terms.nhn?m=viewUniqInfoTerms" target="_blank"><span>고유식별정보 처리</span></a>
-                                    </label>
-                                </span>
-                                <span class="input_chk">
-                                    <input type="checkbox" id="pagree_03" class="chk">
-                                    <label for="pagree_03">
-                                        <a href="https://nid.naver.com/user2/common/terms/terms.nhn?m=viewCellPhoneCarriersTerms" target="_blank"><span>통신사 이용약관</span></a>
-                                    </label>
-                                </span>
-                                <span class="input_chk">
-                                    <input type="checkbox" id="pagree_04" class="chk">
-                                    <label for="pagree_04">
-                                        <a href="https://nid.naver.com/user2/common/terms/terms.nhn?m=viewServiceTerms" target="_blank"><span>인증사 이용약관</span></a>
-                                    </label>
-                                </span>
-                                <span class="input_chk">
-                                    <input type="checkbox" id="pagree_05" class="chk">
-                                    <label for="pagree_05">
-                                        <a href="https://nid.naver.com/user2/common/terms/terms.nhn?m=viewNaverTerms" target="_blank"><span>네이버 개인정보 수집</span></a>
-                                    </label>
-                                </span>
-                            </div>
-                            <span class="error_next_box" id="pagreeMsg" style="display:none" aria-live="assertive">필수 정보입니다.</span>
-                        </div>
-                        <div class="row_group">
-                            <div class="join_row">
-                                <h3 class="join_title"><label for="pname">보호자 이름</label></h3>
-                                <span class="ps_box box_right_space">
-                                    <input type="text" id="pname" name="pname" title="보호자 이름" class="int" maxlength="40">
-                                </span>
-                                <span class="error_next_box" id="pnameMsg" style="display:none" aria-live="assertive">필수 정보입니다.</span>
-                            </div>
-                            <div class="join_row join_birthday">
-                                <h3 class="join_title"><label for="pyy">보호자 생년월일</label></h3>
-                                <div class="bir_wrap">
-                                    <div class="bir_yy">
-                                        <span class="ps_box">
-                                            <input type="text" id="pyy" placeholder="년(4자)" aria-label="년(4자)" class="int" maxlength="4">
-                                        </span>
-                                    </div>
-                                    <div class="bir_mm">
-                                        <span class="ps_box">
-                                            <select id="pmm" name="pmm" class="sel" aria-label="월">
-                                                <option>월</option>
-                                                <option>1</option><option>2</option><option>3</option>
-                                                <option>4</option><option>5</option><option>6</option>
-                                                <option>7</option><option>8</option><option>9</option>
-                                                <option>10</option><option>11</option><option>12</option>
-                                            </select>
-                                        </span>
-                                    </div>
-                                    <div class="bir_dd">
-                                        <span class="ps_box">
-                                            <input type="text" id="pdd" placeholder="일" aria-label="일" class="int" maxlength="2">
-                                            <label for="pdd" class="lbl"></label>
-                                        </span>
-                                    </div>
-                                </div>
-                                <span class="error_next_box" id="pbirthdayMsg" style="display:none" aria-live="assertive">필수 정보입니다.</span>
-                            </div>
-                            <div class="join_row">
-                                <h3 class="join_title"><label for="pgender">보호자 성별/국적</label></h3>
-                                <div class="join_guardian">
-                                    <div class="gender_nationality">
-                                        <div class="ps_box gender_code">
-                                            <select id="pgender" name="pgender" class="sel" aria-label="성별">
-                                                <option value="" selected="">성별</option>
-                                                <option value="0">남자</option>
-                                                <option value="1">여자</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="gender_nationality">
-                                        <div class="ps_box gender_code">
-                                            <select id="pforeign" name="pforeign" class="sel" aria-label="내국인여부">
-                                                <option value="0" selected="">내국인</option>
-                                                <option value="1">외국인</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <span class="error_next_box" id="pgenderMsg" style="display:none" aria-live="assertive"></span>
-                            </div>
-                        </div>
-                        <div class="join_row join_mobile">
-                            <h3 class="join_title"><label for="ptelecom">통신사</label></h3>
-                            <div class="ps_box country_code">
-                                <select id="ptelecom" name="ptelecom" class="sel" aria-label="통신사">
-                                    <option value="SKT">SKT</option>
-                                    <option value="KTF">KT</option>
-                                    <option value="LGT">LG U+</option>
-                                    <option value="SKR">SKT 알뜰폰</option>
-                                    <option value="KTR">KT 알뜰폰</option>
-                                    <option value="LGR">LG U+ 알뜰폰</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="join_row join_mobile">
-                            <h3 class="join_title"><label for="pphoneNo">휴대전화</label></h3>
-                            <div class="int_mobile_area">
-                                <span class="ps_box int_mobile">
-                                    <input type="tel" id="pphoneNo" name="pphoneNo" placeholder="010-1010-1010" aria-label="010-1010-1010" class="int" maxlength="16">
-                                </span>
-                                <a href="https://nid.naver.com/user2/V2Join.nhn?token_sjoin=CrMVbMuUqJxRkOD4&amp;chk_all=on&amp;termsService=on&amp;termsPrivacy=on&amp;termsLocation=Y&amp;termsEmail=Y#" class="btn_verify btn_primary" id="btnPrtsSend" role="button">
-                                    <span class="">인증번호 받기</span>
-                                </a>
-                            </div>
-                            <div class="ps_box_disable box_right_space" id="pauthNoBox">
-                                <input type="tel" id="pauthNo" name="pauthNo" placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요" aria-describedby="pwa_verify" class="int" disabled="" maxlength="6">
-                                <label id="pwa_verify" for="pauthNo" class="lbl">
-                                    <span class="wa_blind">인증받은 후 인증번호를 입력해야 합니다.</span>
-                                    <span class="input_code" id="pauthNoCode" style="display:none;"></span>
-                                </label>
-                            </div>
-                            <span class="error_next_box" id="pphoneNoMsg" style="display:none" aria-live="assertive">필수 정보입니다.</span>
-                            <span class="error_next_box" id="pauthNoMsg" style="display:none" aria-live="assertive">필수 정보입니다.</span>
-                            <span class="error_next_box" id="pjoinMsg" style="display:none" aria-live="assertive">필수 정보입니다.</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- tg-display -->
-
-                <!-- tg-display=>{"보호자 아이핀 인증": [], "오류 메시지": []} -->
-                <div class="join_minor tab" id="pipinDiv" style="display:none">
-                    <ul class="tab_m" role="tablist">
-                        <li class="m1" role="presentation"><a href="https://nid.naver.com/user2/V2Join.nhn?token_sjoin=CrMVbMuUqJxRkOD4&amp;chk_all=on&amp;termsService=on&amp;termsPrivacy=on&amp;termsLocation=Y&amp;termsEmail=Y#" id="tabPrtsMobile" role="tab" aria-selected="false" aria-controls="wa_tab_phone">휴대전화인증</a></li>
-                        <li class="m2" role="presentation"><a href="https://nid.naver.com/user2/V2Join.nhn?token_sjoin=CrMVbMuUqJxRkOD4&amp;chk_all=on&amp;termsService=on&amp;termsPrivacy=on&amp;termsLocation=Y&amp;termsEmail=Y#" onclick="return false;" class="on" role="tab" aria-selected="true" aria-controls="wa_tab_ipin">아이핀 인증</a></li>
-                    </ul>
-                    <div id="wa_tab_ipin" role="tabpanel">
-                        <div class="terms_chk_all">
-                            <span class="input_chk">
-                                <input type="checkbox" id="iagree_all" class="chk">
-                                <label for="iagree_all" class="ipin_label">
-                                    <span class="txt">보호자 인증이 완료되면 보호자 이름, 생년월일, 성별, 중복가입확인정보(DI)가 보호자 동의 확인을 위하여 아동의 정보와 함께 저장되며, 아동이 성년이 되는 시점에 파기됩니다.</span>
-                                </label>
-                            </span>
-                            <span class="error_next_box" id="iagreeMsg" style="display:none" aria-live="assertive">필수 정보입니다.</span>
-                        </div>
-                        <div class="ipin_box">
-                            <p class="ipin_certify_txt">보호자 명의의 아이핀으로 인증 후<br> 가입이 가능 합니다.</p>
-                            <button type="button" id="btnIpinPopup" class="ipin_certify_btn" title="새 창">
-                                <span>아이핀 인증하기</span>
-                            </button>
-                            <span class="error_next_box" id="ipopupMsg" style="display:none" aria-live="assertive">필수 정보입니다.</span>
-                        </div>
-                        <div class="join_row join_mobile">
-                            <h3 class="join_title"><label for="iphoneNo">휴대전화</label></h3>
-                            <div class="int_mobile_area">
-                                <span class="ps_box int_mobile">
-                                    <input type="tel" id="iphoneNo" name="iphoneNo" placeholder="전화번호 입력" aria-label="전화번호 입력" class="int" maxlength="16">
-                                </span>
-                                <a href="https://nid.naver.com/user2/V2Join.nhn?token_sjoin=CrMVbMuUqJxRkOD4&amp;chk_all=on&amp;termsService=on&amp;termsPrivacy=on&amp;termsLocation=Y&amp;termsEmail=Y#" class="btn_verify btn_primary" id="btnIpinSend" role="button">
-                                    <span class="">인증번호 받기</span>
-                                </a>
-                            </div>
-                            <div class="ps_box_disable box_right_space" id="iauthNoBox">
-                                <input type="tel" id="iauthNo" name="iauthNo" placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요" aria-describedby="iwa_verify" class="int" disabled="" maxlength="4">
-                                <label id="iwa_verify" for="iauthNo" class="lbl">
-                                    <span class="wa_blind">인증받은 후 인증번호를 입력해야 합니다.</span>
-                                    <span class="input_code" id="iauthNoCode" style="display:none;"></span>
-                                </label>
-                            </div>
-                            <span class="error_next_box" id="iphoneNoMsg" style="display:none" aria-live="assertive">필수 정보입니다.</span>
-                            <span class="error_next_box" id="iauthNoMsg" style="display:none" aria-live="assertive">필수 정보입니다.</span>
-                            <span class="error_next_box" id="ijoinMsg" style="display:none" aria-live="assertive">필수 정보입니다.</span>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="btn_area">
-                    <button type="button" id="btnJoin" class="btn_type btn_primary"><span>가입하기</span></button>
+                    <button type="button" id="btnJoin" class="btn_type btn_primary" style="background-color: black;"><span>가입하기</span></button>
                 </div>
             </div>
         </div>
@@ -1076,23 +986,6 @@
 
 </script>
 
-	<!-- footer -->
-	<div id="footer" role="contentinfo">
-		<ul>
-			<li><a href="http://policy.naver.com/rules/service.html">이용약관</a></li>
-			<li><strong><a href="http://policy.naver.com/policy/privacy.html">개인정보처리방침</a></strong></li>
-			<li><a href="http://policy.naver.com/rules/disclaimer.html">책임의 한계와 법적고지</a></li>
-			<li><a href="https://help.naver.com/support/alias/membership/p.membership/p.membership_26.naver" target="_blank">회원정보 고객센터 </a></li>
-		</ul>
-		<address>
-			<em><a href="https://www.navercorp.com/" target="_blank" class="logo"><span class="blind">naver</span></a></em>
-			<em class="copy">Copyright</em>
-			<em class="u_cri">©</em>
-			<a href="https://www.navercorp.com/" target="_blank" class="u_cra">NAVER Corp.</a>
-			<span class="all_r">All Rights Reserved.</span>
-		</address>
-	</div>
-	<!-- //footer -->
 </div>
 
 </body></html>
