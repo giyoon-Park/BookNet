@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app 
+		version="3.1" 
+		xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+	<!-- 
+		서블릿 매핑 방법
+		
+			1. 서블릿을 만들고
+				==> servlet-class 경로는 자바에서 사용하는 패키지형식의 경로를 사용해야 한다.
+			2. 만든 서블릿을 매핑해서 처리한다.
+				==> url-pattern 은 실제 클라이언트가 주소입력창에 입력할 경로 형식으로 만들어야 한다.
+			
+			
+	 -->
+	<!-- 로그인 요청처리 서블릿 -->
+	<!--
+	<servlet>
+        <servlet-name>1st_login</servlet-name>
+        <servlet-class>day04.Login</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>1st_login</servlet-name>
+    	<url-pattern>/pre/Login.cls2</url-pattern>
+    </servlet-mapping>
+    -->
+</web-app>

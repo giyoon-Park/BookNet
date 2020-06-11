@@ -1,0 +1,190 @@
+=========================================================
+#우현우
+3. 로그인 페이지 요청
+	요청내용:/member/login.cls
+	파라미터:none
+	컨트롤러:com.pageturner.www.controller.member.LoginForm
+	뷰		:/member/loginForm.jsp
+--------------------------------------------------------
+4. 로그인 처리 요청
+	요청내용:/member/loginProc.cls
+	파라미터:id, pw
+	컨트롤러:com.pageturner.www.controller.member.LoginProc
+	뷰		:redirect(/main/mem.cls or /member/login.cls)
+--------------------------------------------------------
+7. 아이디 찾기 페이지 요청	#이명환
+	요청내용:/member/findID.cls
+	파라미터:none
+	컨트롤러:com.pageturner.controller.member.FindID
+	뷰		:/member/findID.jsp
+--------------------------------------------------------
+8. 아이디 찾기 처리 요청	#이명환
+	요청내용:/member/findIDProc.cls
+	파라미터:name, mail
+	컨트롤러:com.pageturner.controller.member.FindIDProc
+	뷰		:redirect(/member/login.cls)
+--------------------------------------------------------
+9. 비밀번호 찾기 페이지 요청#이명환(사용하지 않고 있음)
+	요청내용:/member/findPW.cls
+	파라미터:none
+	컨트롤러:com.pageturner.controller.member.FindPW
+	뷰		:/member/findPW.jsp
+--------------------------------------------------------
+10. 비밀번호 찾기 처리 요청	#이명환
+	요청내용:/member/findPWProc.cls
+	파라미터:id, name, mail
+	컨트롤러:com.pageturner.controller.member.FindPWProc
+	뷰		:redirect(/member/login.cls)
+--------------------------------------------------------
+21. 에러페이지 요청
+	요청내용:/main/error.cls
+	파라미터:none
+	컨트롤러:com.pageturner.www.controller.main.Error
+	뷰		:/main/error.jsp
+--------------------------------------------------------
+	
+=========================================================
+#서동혁
+1. 비회원 메인 페이지 요청
+	요청내용:/main/non.cls
+	파라미터:none
+	컨트롤러:com.pageturner.www.controller.main.NonMem
+	뷰		:/main/non_main.jsp
+--------------------------------------------------------
+13. 모든 검색 결과 페이지 요청
+	요청내용:/search/searchAll.cls
+	파라미터:keyword
+	컨트롤러:com.pageturner.www.controller.search.SearchAll
+	뷰		:/search/searchAll.jsp
+--------------------------------------------------------
+14. 책 검색 결과 페이지 요청
+	요청내용:/search/searchBook.cls
+	파라미터:bname
+	컨트롤러:com.pageturner.www.controller.search.SearchBook
+	뷰		:/search/searchBook.jsp
+--------------------------------------------------------
+15. 회원 검색 결과 페이지 요청
+	요청내용:/search/searchMember.cls
+	파라미터:nickname
+	컨트롤러:com.pageturner.www.controller.search.SearchMember
+	뷰		:/search/searchMember.jsp
+--------------------------------------------------------
+16. 해쉬태그 검색 결과 페이지 요청
+	요청내용:/search/searchHash.cls
+	파라미터:hname
+	컨트롤러:com.pageturner.www.controller.search.SearchHash
+	뷰		:/search/searchHash.jsp
+--------------------------------------------------------
+
+=========================================================
+#박기윤
+17. 팔로우 페이지 요청
+	요청내용:/mypage/fallow.cls
+	파라미터:fallower_no
+	컨트롤러:com.pageturner.www.controller.mypage.Fallow
+	뷰		:/mypage/fallow.jsp
+--------------------------------------------------------
+18. 팔로워 페이지 요청
+	요청내용:/mypage/fallower.cls
+	파라미터:fallow_no
+	컨트롤러:com.pageturner.www.controller.mypage.Fallower
+	뷰		:/mypage/fallower.jsp
+--------------------------------------------------------
+19. 본인 마이페이지 요청
+	요청내용:/mypage/mypage.cls
+	파라미터:none
+	컨트롤러:com.pageturner.www.controller.mypage.SelfPage
+	뷰		:/mypage/mypage.jsp
+--------------------------------------------------------
+20. 타인 마이페이지 요청
+	요청내용:/mypage/pageOfOther.cls
+	파라미터:mno
+	컨트롤러:com.pageturner.www.controller.mypage.OtherPage
+	뷰		:/mypage/pageOfOther.jsp
+--------------------------------------------------------
+
+=========================================================
+#김이슬
+2. 회원 메인 페이지 요청
+	요청내용:/main/main.cls
+	파라미터:none
+	컨트롤러:com.pageturner.www.controller.main.Mem
+	뷰		:/main/mem_main.jsp
+--------------------------------------------------------
+22. 게시글 작성 처리 요청
+	요청내용:/post/postWriteProc.cls
+	파라미터:mno, bno, postcont, linkno, eno, hname, publish, gname, writer, trans, ori_name
+	컨트롤러:com.pageturner.www.controller.post.PostWriteProc
+	뷰		:redirect(/main/main.cls 혹은 머물렀던 페이지로 이동)
+		
+(+) 게시글 작성시 도서검색 요청
+	요청내용	: /ajax/searchBook.cls
+	파라미터	: 검색어
+	컨트롤러	: com.pageturner.www.controller.ajax.SearchBook
+	뷰		: 없음(모달에 띄워줄 예정)
+	
+(+) 게시글 좋아요 처리 요청
+	요청내용	: /ajax/clickLikeBtn.cls
+	파라미터	: pno, id
+	컨트롤러	: com.pageturner.www.controller.ajax.ClickLikeBtn
+	뷰		: 없음
+	
+--------------------------------------------------------
+23. 게시글 삭제 처리 요청
+	요청내용:/post/postDelProc.cls
+	파라미터:pno
+	컨트롤러:com.pageturner.www.controller.post.PostDelProc
+	뷰		:redirect(/main/mem.cls)
+--------------------------------------------------------
+24. 게시글 수정 처리 요청
+	요청내용:/post/postEditProc.cls
+	파라미터:mno, bno, postcont, linkno, eno, hname, publish, gname, writer, trans, ori_name
+	컨트롤러:com.pageturner.www.controller.post.PostEditProc
+	뷰		:redirect(/main/mem.cls)
+--------------------------------------------------------
+25. 알림 페이지 요청
+	요청내용:/alarm/alarmPage.cls
+	파라미터:none
+	컨트롤러:com.pageturner.www.controller.alarm.AlarmPage
+	뷰		:/alarm/alarmPage.jsp
+--------------------------------------------------------
+
+=========================================================
+#이명환
+
+(+)메일인증번호 발송 처리요청
+	요청내용:/ajax/mailProc.cls
+	파라미터:mail
+	컨트롤러:com.pageturner.www.controller.ajax.MailProc
+	뷰		:현재페이지(ajax)
+
+5. 회원가입 페이지 요청
+	요청내용:/member/join.cls
+	파라미터:none
+	컨트롤러:com.pageturner.www.controller.member.JoinForm
+	뷰		:/member/joinForm.jsp
+--------------------------------------------------------
+6. 회원가입 처리 요청
+	요청내용:/member/joinProc.cls
+	파라미터:id, pw, name, mail, tel, gen, birthdate, interest, nickname, describe, ori_name
+	컨트롤러:com.pageturner.www.controller.member.JoinProc
+	뷰		:redirect(/main/mem.cls)
+--------------------------------------------------------
+11. 회원정보 수정 페이지 요청
+	요청내용:/member/editMemInfo.cls
+	파라미터:none
+	컨트롤러:com.pageturner.controller.member.EditMemInfo
+	뷰		:/member/editMemInfo.jsp
+--------------------------------------------------------
+12. 회원정보 수정 처리 요청
+	요청내용:/member/editMemInfoProc.cls
+	파라미터:pw, mail, tel, interest, nickname, describe, intershow, birthshow, genshow, ori_name
+	컨트롤러:com.pageturner.controller.member.EditMemInfoProc
+	뷰		:redirect(/mypage/mypage.cls)
+--------------------------------------------------------
+26. 회원 탈퇴 처리 요청
+	요청내용:/member/dropOut.cls
+	파라미터:none
+	컨트롤러:com.pageturner.www.controller.member.DropOut
+	뷰		:redirect(/main/non.cls)
+————————————————————————————
