@@ -135,7 +135,7 @@ public class SearchBook implements PageController {
 //		JSONObject item = api.obj;
 		
 		//db에 저장시켜줄 클래스 호출 >> 이렇게 되면 이미 검색된 책 정보는 db에 저장이 되어있을 것이다.
-//		UploadBookData upBook = new UploadBookData(api.list);
+		UploadBookData upBook = new UploadBookData(api.list);
 		
 		Gson gson = new GsonBuilder().create();
 		String gstr = gson.toJson(item);

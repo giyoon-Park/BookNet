@@ -13,7 +13,7 @@ import java.text.*;
 public class PostsVO {
 	private int pno, mno, eno, bno, linkno, cnt;
 	private String id, profile, bname, writer, trans, postcont, pdate,
-					largeimg, gname, hash, publish, ischeck, emotion;
+				smallimg, largeimg, gname, hash, publish, ischeck, emotion;
 	private Date postDate;
 	private Time postTime;
 	
@@ -112,6 +112,12 @@ public class PostsVO {
 	}
 	public void setPdate(String pdate) {
 		this.pdate = pdate;
+	}
+	public String getSmallimg() {
+		return smallimg;
+	}
+	public void setSmallimg(String smallimg) {
+		this.smallimg = smallimg;
 	}
 	public String getLargeimg() {
 		return largeimg;

@@ -8,7 +8,7 @@ import java.sql.*;
 import java.text.*;
 
 public class AlarmVO {
-	private String type, extime, bname, id, save_loc;
+	private String type, extime, bname, id, save_loc, dday;
 	private int pno;
 	private Date date;
 	private Time time;
@@ -35,6 +35,12 @@ public class AlarmVO {
 		SimpleDateFormat formD = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat formT = new SimpleDateFormat("HH:mm:ss");
 		this.extime = formD.format(date) + " " + formT.format(time);
+	}
+	public String getDday() {
+		return dday;
+	}
+	public void setDday(String dday) {
+		this.dday = dday;
 	}
 	public String getBname() {
 		return bname;

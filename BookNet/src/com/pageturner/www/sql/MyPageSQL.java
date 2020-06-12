@@ -19,17 +19,19 @@ public class MyPageSQL {
 	public final int SEL_FALLOWER_LIST = 4002;
 	public final int CNT_FALLOW = 4003;
 	public final int CNT_FALLOWER = 4004;
-	public final int NEW_FAL = 4005;
-	public final int UN_FAL = 4006;
-	public final int RE_FAL = 4007;
+	public final int CK_FAL = 4005;
+	public final int NEW_FAL = 4006;
+	public final int UN_FAL = 4007;
+	public final int RE_FAL = 4008;
 	
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();
 		switch(code) {
 		case SEL_MEM_INFO:
 			buff.append("SELECT ");
-			buff.append("    id, gen, birthdate, interest, nickname, describe, intershow, ");
-			buff.append("    birthshow, genshow, isinflu, save_name, save_loc, ischeck ");
+			buff.append("    id, DECODE(gen, 'M', '남성', 'F', '여성') gen, birthdate, ");
+			buff.append("    interest, nickname, describe, intershow, birthshow, ");
+			buff.append("    genshow, isinflu, save_name, save_loc, ischeck ");
 			buff.append("FROM ");
 			buff.append("    membertab mt, profilepictab pt, ");
 			buff.append("    (SELECT ");
@@ -64,8 +66,9 @@ public class MyPageSQL {
 			break;
 		case SEL_POST_LIST:
 			buff.append("SELECT ");
-			buff.append("    pt.pno, postcont, postdate, bname, linkno, ");
-			buff.append("                writer, publish, smallimg, id, ischeck ");
+			buff.append("    pt.pno, postcont, postdate, linkno, ");
+			buff.append("    (substr(bname, 1, 10) || '...') bname, ");
+			buff.append("    writer, publish, smallimg, id, ischeck ");
 			buff.append("FROM ");
 			buff.append("    poststab pt, liketab lt, booktab bt, membertab mt, publishtab pbt ");
 			buff.append("where ");
@@ -77,7 +80,7 @@ public class MyPageSQL {
 			buff.append("    AND pt.isshow = 'Y' ");
 			buff.append("    AND mt.isshow = 'Y' ");
 			buff.append("ORDER BY ");
-			buff.append("	 postdate DESC ");
+			buff.append("    postdate DESC ");
 			break;
 		case CNT_POST:
 			buff.append("SELECT ");
@@ -90,8 +93,8 @@ public class MyPageSQL {
 			break;
 		case SEL_LIKE_LIST:
 			buff.append("SELECT ");
-			buff.append("    DISTINCT lt.pno, postcont, postdate, bname, linkno, ");
-			buff.append("                writer, publish, smallimg, id, ischeck ");
+			buff.append("    lt.pno, postcont, postdate, (substr(bname, 1, 10) || '...') bname, linkno, ");
+			buff.append("    writer, publish, smallimg, id, ischeck ");
 			buff.append("FROM ");
 			buff.append("    poststab pt, liketab lt, booktab bt, membertab mt, publishtab pbt ");
 			buff.append("where ");
@@ -104,7 +107,7 @@ public class MyPageSQL {
 			buff.append("    AND pt.isshow = 'Y' ");
 			buff.append("    AND mt.isshow = 'Y' ");
 			buff.append("ORDER BY ");
-			buff.append("	 postdate DESC ");
+			buff.append("    postdate DESC ");
 			break;
 		case SEL_FALLOW_LIST:
 			buff.append("SELECT ");
@@ -145,6 +148,16 @@ public class MyPageSQL {
 			buff.append("    fallowtab ft ");
 			buff.append("WHERE ");
 			buff.append("    ft.fallow_no = ? ");
+			break;
+		case CK_FAL:
+			buff.append("SELECT ");
+			buff.append("    COUNT(*) cnt ");
+			buff.append("FROM ");
+			buff.append("    fallowtab ");
+			buff.append("WHERE ");
+			buff.append("    fallow_no = ? ");
+			buff.append("    AND fallower_no = ");
+			buff.append("        (SELECT mno FROM membertab WHERE id = ?) ");
 			break;
 		case NEW_FAL:
 			buff.append("INSERT INTO ");

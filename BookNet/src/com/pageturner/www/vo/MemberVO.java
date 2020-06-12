@@ -5,9 +5,8 @@ package com.pageturner.www.vo;
  * @since 2020.05.25
  * 
  */
-import java.sql.Date;
-import java.sql.Time;
-import java.text.SimpleDateFormat;
+import java.sql.*;
+import java.text.*;
 
 public class MemberVO {
 	private int mno;
@@ -15,7 +14,6 @@ public class MemberVO {
 					describe, isshow, sdate, yy, mm, dd, intershow, birthshow, genshow,
 					isinflu, ori_name, save_name, save_loc, ischeck;
 	private Date mdate;
-	private Time mtime;
 	
 	public int getMno() {
 		return mno;
@@ -51,9 +49,8 @@ public class MemberVO {
 		return birthdate;
 	}
 	public void setBirthdate() {
-		SimpleDateFormat form1 = new SimpleDateFormat("yyyy/MM/dd");
-		SimpleDateFormat form2 = new SimpleDateFormat("HH:mm");
-		this.birthdate = form1.format(mdate) + " " + form2.format(mtime);
+		SimpleDateFormat form = new SimpleDateFormat("yyyy/MM/dd");
+		this.birthdate = form.format(mdate);
 	}
 	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
@@ -123,12 +120,6 @@ public class MemberVO {
 	}
 	public void setMdate(Date mdate) {
 		this.mdate = mdate;
-	}
-	public Time getMtime() {
-		return mtime;
-	}
-	public void setMtime(Time mtime) {
-		this.mtime = mtime;
 	}
 	public String getIntershow() {
 		return intershow;

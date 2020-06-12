@@ -88,7 +88,7 @@
 							<h2 style="margin-top: 0px; margin-left: 5px;">${INFO.interest}</h2>
 						</c:if>
 						<h6 style="margin-bottom: 0px;">한줄 소개</h6>
-						<h2 style="margin-top: 0px; margin-left: 5px;">${INFO.describe}</h2>
+						<h5 style="margin-top: 0px; margin-left: 5px;">${INFO.describe}</h5>
 					</div>
 					<c:if test="${SID eq INFO.id}">
 						<div class="w3-col m10" style="margin: 0px;"><p></p></div>
@@ -103,31 +103,27 @@
 							</h2>
 						</div>
 						<div class="w3-border" style="height: 183px; border-radius: 5px; overflow: auto;">
-							<c:forEach begin="0" end="5" var="alarm" items="${ALARM}">
+							<c:forEach begin="0" end="4" var="alarm" items="${ALARM}">
 								<div class="w3-padding" id="${alarm.pno}">
-									<c:if test="${alarm.type eq 'C'}">
-										<div>
-											<h5>
-												<a href="/BookNet/mypage/mypage.cls?id=${alarm.id}" id="${alarm.id}">${alarm.id}</a>님이 <a href="" id="${alarm.bname}">${alarm.bname}</a> 게시글에 댓글을 달았습니다.
-											</h5>
-										</div>
-									</c:if>
-									<c:if test="${alarm.type eq 'L'}">
-										<div>
-											<h5>
-												<a href="/BookNet/mypage/mypage.cls?id=${alarm.id}" id="${alarm.id}">${alarm.id}</a>님이 <a href="" id="${alarm.bname}">${alarm.bname}</a> 게시글에 댓글을 달았습니다.
-											</h5>
-										</div>
-									</c:if>
-									<c:if test="${alarm.type eq 'F'}">
-										<div>
-											<h5>
-												<a href="/BookNet/mypage/mypage.cls?id=${alarm.id}" id="${alarm.id}">${alarm.id}</a>님이 <a href="" id="${alarm.bname}">${alarm.bname}</a> 게시글에 댓글을 달았습니다.
-											</h5>
-										</div>
-									</c:if>
+									<div>
+										<c:if test="${alarm.type eq 'C'}">
+												<h5>
+													<a href="/BookNet/mypage/mypage.cls?id=${alarm.id}" id="${alarm.id}">${alarm.id}</a>님이 <a href="" id="${alarm.pno}">${alarm.bname}</a> 게시글에 댓글을 달았습니다.
+												</h5>
+										</c:if>
+										<c:if test="${alarm.type eq 'L'}">
+												<h5>
+													<a href="/BookNet/mypage/mypage.cls?id=${alarm.id}" id="${alarm.id}">${alarm.id}</a>님이 <a href="" id="${alarm.pno}">${alarm.bname}</a> 게시글에 좋아요를 눌렀습니다.
+												</h5>
+										</c:if>
+										<c:if test="${alarm.type eq 'F'}">
+												<h5>
+													<a href="/BookNet/mypage/mypage.cls?id=${alarm.id}" id="${alarm.id}">${alarm.id}</a>님이 팔로우하였습니다.
+												</h5>
+										</c:if>
+									</div>
 									<div style="text-align: right;">
-										${alarm.extime}
+										${alarm.dday}
 									</div>
 								</div>
 							</c:forEach>
@@ -139,13 +135,13 @@
 						</h2>
 					</div>
 					<div class="w3-border" style="height: 183px; border-radius: 5px; overflow: auto;">
-						<c:forEach begin="1" end="5" var="like" items="${LIKE}">
-							<div class="w3-col w3-border" style="height: 64px;" id="${like.pno}">
-								<div class="w3-col m1 w3-border">
-									<img src="${like.smallimg}" />
+						<c:forEach begin="0" end="4" var="like" items="${LIKE}">
+							<div class="w3-col w3-border" style="height: 150px;" id="${like.pno}">
+								<div class="w3-col m2" style="margin-top: 10px;">
+									<img src="${like.smallimg}" style="width: 96.88px; height: auto;" />
 								</div>
 								<div class="w3-col m9">
-
+									<h5 class="w3-col m3" style="margin-left: 7px">${like.bname}</h5>
 								</div>
 								<div class="w3-col m2 w3-right-align" style="margin-top: 0px;">
 									<span class="like-img"></span>

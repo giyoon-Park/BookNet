@@ -75,7 +75,7 @@
 											</div>
 										</c:if>
 										<div style="text-align: right;">
-											${alarm.extime}
+											${alarm.dday}
 										</div>
 									</div>
 								</div>

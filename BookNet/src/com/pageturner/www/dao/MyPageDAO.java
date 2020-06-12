@@ -7,10 +7,12 @@ package com.pageturner.www.dao;
  */
 import java.sql.*;
 import java.util.*;
+import java.util.Date;
 import java.text.*;
 import com.pageturner.www.vo.*;
 import com.pageturner.www.DB.*;
 import com.pageturner.www.sql.*;
+import com.pageturner.www.util.*;
 
 public class MyPageDAO {
 	WebDBCP db;
@@ -22,12 +24,12 @@ public class MyPageDAO {
 	AlarmSQL aSQL;
 	String id;
 	int mno;
-	SimpleDateFormat formD;
-	SimpleDateFormat formT;
+	SimpleDateFormat form;
+	Date date;
+	CountDays diff;
 	
 	public MyPageDAO() {
-		db = new WebDBCP();
-		mpSQL = new MyPageSQL();
+		this("yoon");
 	}
 	public MyPageDAO(String id) {
 		db = new WebDBCP();
@@ -35,8 +37,9 @@ public class MyPageDAO {
 		this.id = id;
 		mno = getMno(id);
 		aSQL = new AlarmSQL();
-		formD = new SimpleDateFormat("yyyy-MM-dd");
-		formT = new SimpleDateFormat("HH:mm:ss");
+		form = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		date = new Date();
+		diff = new CountDays(date);
 	}
 
 	// mypage에 공개한 회원정보를 db에서 불러오는 함수
@@ -53,20 +56,14 @@ public class MyPageDAO {
 			mVO.setId(rs.getString("id"));
 			mVO.setNickname(rs.getString("nickname"));
 			mVO.setDescribe(rs.getString("describe"));
-			if(rs.getString("intershow").equals("Y")) {
-				mVO.setInterest(rs.getString("interest"));
-			}
-			if(rs.getString("birthshow").equals("Y")) {
-				mVO.setMdate(rs.getDate("birthdate"));
-				mVO.setMtime(rs.getTime("birthdate"));
-				mVO.setBirthdate();
-			}
-			if(rs.getString("genshow").equals("Y")) {
-				mVO.setGen(rs.getString("gen"));
-			}
-			if(rs.getString("isinflu").equals("Y")) {
-				mVO.setIsinflu(rs.getString("isinflu"));
-			}
+			mVO.setIntershow(rs.getString("intershow"));
+			mVO.setInterest(rs.getString("interest"));
+			mVO.setBirthshow(rs.getString("birthshow"));
+			mVO.setMdate(rs.getDate("birthdate"));
+			mVO.setBirthdate();
+			mVO.setGenshow(rs.getString("genshow"));
+			mVO.setGen(rs.getString("gen"));
+			mVO.setIsinflu(rs.getString("isinflu"));
 			mVO.setSave_name(rs.getString("save_name"));
 			mVO.setSave_loc(rs.getString("save_loc"));
 			mVO.setIscheck(rs.getString("ischeck"));
@@ -122,7 +119,7 @@ public class MyPageDAO {
 		return id;
 	}
 	
-	// 회원이 작성한 게시글중 최신글을 불러오는 함수
+	// 회원이 작성한 게시글중 최신순으로 불러오는 함수
 	public ArrayList<PostsVO> getPosts() {
 		ArrayList<PostsVO> list = new ArrayList<PostsVO>();
 		con = db.getCon();
@@ -141,6 +138,7 @@ public class MyPageDAO {
 				pVO.setBname(rs.getString("bname"));
 				pVO.setWriter(rs.getString("writer"));
 				pVO.setLinkno(rs.getInt("linkno"));
+				pVO.setSmallimg(rs.getString("smallimg"));
 				pVO.setId(rs.getString("id"));
 				pVO.setIscheck(rs.getString("ischeck"));
 				list.add(pVO);
@@ -195,6 +193,7 @@ public class MyPageDAO {
 				pVO.setBname(rs.getString("bname"));
 				pVO.setWriter(rs.getString("writer"));
 				pVO.setLinkno(rs.getInt("linkno"));
+				pVO.setSmallimg(rs.getString("smallimg"));
 				pVO.setId(rs.getString("id"));
 				pVO.setIscheck(rs.getString("ischeck"));
 				list.add(pVO);
@@ -317,10 +316,17 @@ public class MyPageDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				AlarmVO aVO = new AlarmVO();
+				String cdate;
+				Date ddate;
+				String dday;
 				aVO.setType("L");
 				aVO.setDate(rs.getDate("lk_time"));
 				aVO.setTime(rs.getTime("lk_time"));
 				aVO.setExtime();
+				cdate = aVO.getExtime();
+				ddate = diff.parseDate(cdate);
+				dday = diff.countDdays(ddate);
+				aVO.setDday(dday);
 				aVO.setPno(rs.getInt("pno"));
 				aVO.setBname(rs.getString("bname"));
 				aVO.setId(rs.getString("id"));
@@ -349,10 +355,17 @@ public class MyPageDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				AlarmVO aVO = new AlarmVO();
+				String cdate;
+				Date ddate;
+				String dday;
 				aVO.setType("C");
 				aVO.setDate(rs.getDate("cdate"));
 				aVO.setTime(rs.getTime("cdate"));
 				aVO.setExtime();
+				cdate = aVO.getExtime();
+				ddate = diff.parseDate(cdate);
+				dday = diff.countDdays(ddate);
+				aVO.setDday(dday);
 				aVO.setPno(rs.getInt("pno"));
 				aVO.setBname(rs.getString("bname"));
 				aVO.setId(rs.getString("id"));
@@ -380,10 +393,17 @@ public class MyPageDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				AlarmVO aVO = new AlarmVO();
+				String cdate;
+				Date ddate;
+				String dday;
 				aVO.setType("F");
 				aVO.setDate(rs.getDate("fal_time"));
 				aVO.setTime(rs.getTime("fal_time"));
 				aVO.setExtime();
+				cdate = aVO.getExtime();
+				ddate = diff.parseDate(cdate);
+				dday = diff.countDdays(ddate);
+				aVO.setDday(dday);
 				aVO.setId(rs.getString("id"));
 				aVO.setSave_loc("save_loc");
 				list.add(aVO);
@@ -396,6 +416,24 @@ public class MyPageDAO {
 			db.close(con);
 		}
 		return list;
+	}
+	
+	// 팔로우 여부 체크 함수
+	public int ckFallow(String sid) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = mpSQL.getSQL(mpSQL.CK_FAL);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, mno);
+			pstmt.setString(2, sid);
+			rs = pstmt.executeQuery();
+			rs.next();
+			cnt = rs.getInt("cnt");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cnt;
 	}
 	
 	// 팔로우하기 함수

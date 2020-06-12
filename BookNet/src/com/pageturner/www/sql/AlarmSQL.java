@@ -15,14 +15,15 @@ public class AlarmSQL {
 		switch(code) {
 		case SEL_LIKE:
 			buff.append("SELECT ");
-			buff.append("    pt.pno pno, bname, mt.id, lk_time, save_loc ");
+			buff.append("    pt.pno pno, mt.id, lk_time, save_loc, ");
+			buff.append("    (substr(bname, 1, 10) || '...') bname ");
 			buff.append("FROM ");
 			buff.append("    booktab bt, poststab pt, ");
-			buff.append("	 liketab lt, membertab mt, profilepictab ppt ");
+			buff.append("    liketab lt, membertab mt, profilepictab ppt ");
 			buff.append("WHERE ");
 			buff.append("    pt.pno = (SELECT pno FROM poststab, membertab ");
-			buff.append("			   WHERE poststab.mno = membertab.mno ");
-			buff.append("			   AND id = ?) ");
+			buff.append("                WHERE poststab.mno = membertab.mno ");
+			buff.append("                AND id = ?) ");
 			buff.append("    AND lt.pno = pt.pno ");
 			buff.append("    AND bt.bno = pt.bno ");
 			buff.append("    AND lt.mno = mt.mno ");
@@ -30,7 +31,7 @@ public class AlarmSQL {
 			buff.append("    AND lt.ischeck = 'Y' ");
 			buff.append("    AND pt.isshow = 'Y' ");
 			buff.append("    AND mt.isshow = 'Y' ");
-			buff.append("	 AND NOT mt.id = ? ");
+			buff.append("    AND NOT mt.id = ? ");
 			break;
 		case SEL_FAL:
 			buff.append("SELECT ");
@@ -47,10 +48,11 @@ public class AlarmSQL {
 			break;
 		case SEL_COMNT:
 			buff.append("SELECT ");
-			buff.append("    pt.pno pno, bname, mt.id, cdate, save_loc ");
+			buff.append("    pt.pno pno, mt.id, cdate, save_loc, ");
+			buff.append("    (substr(bname, 1, 10) || '...') bname ");
 			buff.append("FROM ");
 			buff.append("    poststab pt, booktab bt, ");
-			buff.append("	 commenttab ct, membertab mt, profilepictab ppt ");
+			buff.append("    commenttab ct, membertab mt, profilepictab ppt ");
 			buff.append("WHERE ");
 			buff.append("    pt.mno = (SELECT mno FROM membertab WHERE id = ?) ");
 			buff.append("    AND pt.bno = bt.bno ");
@@ -60,7 +62,7 @@ public class AlarmSQL {
 			buff.append("    AND ct.isshow = 'Y' ");
 			buff.append("    AND pt.isshow = 'Y' ");
 			buff.append("    AND mt.isshow = 'Y' ");
-			buff.append("	 AND NOT mt.id = ? ");
+			buff.append("    AND NOT mt.id = ? ");
 			break;
 		}
 		return buff.toString();
